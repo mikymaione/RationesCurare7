@@ -6,8 +6,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Data.Common;
 using System.Collections.Generic;
+using System.Data.Common;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -18,9 +18,7 @@ namespace RationesCurare7.DB.DataWrapper
         public DateTime UltimoAggiornamentoDB = DateTime.Now.AddYears(-10);
         public DateTime UltimaModifica = DateTime.Now.AddYears(-5);
 
-        public cUtente() : this(-1)
-        {
-        }
+        public cUtente() : this(-1) { }
 
         public cUtente(int ID_)
         {
