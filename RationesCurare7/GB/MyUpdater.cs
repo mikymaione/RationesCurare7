@@ -72,16 +72,11 @@ namespace RationesCurare7
 
                     //*.msi
                     if (!trov)
-                    {
-                        var maxMsiL = (msi == null ? 0 : msi.Length);
-
-                        for (var j = 0; j < maxMsiL; j++)
+                        if (msi != null && msi.Length > 0)
                         {
-                            il_setup = msi[j];
+                            il_setup = msi[0];
                             trov = true;
-                            break;
                         }
-                    }
 
                     if (trov && System.IO.File.Exists(il_setup))
                         if (cGB.MsgBox($"Vuoi installare la nuova versione di {Application.ProductName}?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, true) == DialogResult.Yes)
