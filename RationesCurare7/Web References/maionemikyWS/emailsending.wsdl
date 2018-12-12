@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.maionemiky.it/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.maionemiky.it/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.maionemiky.it/">
+      <s:element name="ComparaDBRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="yyyyMMddHHmmss" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComparaDBRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComparaDBRCResult" type="tns:Comparazione" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Comparazione">
+        <s:restriction base="s:string">
+          <s:enumeration value="Uguale" />
+          <s:enumeration value="Server" />
+          <s:enumeration value="Client" />
+          <s:enumeration value="AccessoNonAutizzato" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="VersioneDB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VersioneDBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersioneDBResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OttieniUltimoDBRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="yyyyMMddHHmmss" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OttieniUltimoDBRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OttieniUltimoDBRCResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SonoLicenziato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SonoLicenziatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SonoLicenziatoResult" type="tns:Licenza" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Licenza">
+        <s:restriction base="s:string">
+          <s:enumeration value="Fallito" />
+          <s:enumeration value="RegistratoOK" />
+          <s:enumeration value="CodiceInesistente" />
+          <s:enumeration value="GiaRegistrato" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="RecuperaPswRC_Six">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Psw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperaPswRC_SixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RecuperaPswRC_SixResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GiaEsisteArchivioFoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="descrizione" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GiaEsisteArchivioFotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GiaEsisteArchivioFotoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaUtente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="u" type="tns:UtenteProgramma" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UtenteProgramma">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Programma" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Versione" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AggiornaUtenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AggiornaUtenteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeZippaDBRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PathFile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeZippaDBRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeZippaDBRCResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MapPath_" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Directory_" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Credenziali" type="tns:CredenzialiDiAccesso" />
+            <s:element minOccurs="1" maxOccurs="1" name="CredenzialiRC" type="tns:CredenzialiDiAccessoRC" />
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CredenzialiDiAccesso">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeApplicazione" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CredenzialiDiAccessoRC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Psw" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadFileFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileFullResult" type="tns:CredenzialiRisultatoFull" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CredenzialiRisultatoFull">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CredenzialiRisultato_" type="tns:CredenzialiRisultato" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errore" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CredenzialiRisultato">
+        <s:restriction base="s:string">
+          <s:enumeration value="TuttoOK" />
+          <s:enumeration value="Presente_PasswordErrata" />
+          <s:enumeration value="Assente" />
+          <s:enumeration value="Errore" />
+          <s:enumeration value="ProgrammaNonAutorizzato" />
+          <s:enumeration value="FileInviato" />
+          <s:enumeration value="DBSulServerEPiuRecente" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Credenziali" type="tns:CredenzialiDiAccesso" />
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileResult" type="tns:CredenzialiRisultato" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Credenziali" type="tns:CredenzialiDiAccessoRC" />
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileRCResult" type="tns:CredenzialiRisultato" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileRC_simple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="yyyyMMddHHmmss" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Psw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="f" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileRC_simpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileRC_simpleResult" type="tns:CredenzialiRisultatoFull" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaDBPerRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CredenzialiRC" type="tns:CredenzialiDiAccessoRC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaDBPerRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreaDBPerRCResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaDBPerRC_simple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaDBPerRC_simpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreaDBPerRC_simpleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiProg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Credenziali" type="tns:CredenzialiDiAccesso" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiProgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ControllaCredenzialiProgResult" type="tns:CredenzialiRisultato" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiRC_simple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Utente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiRC_simpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ControllaCredenzialiRC_simpleResult" type="tns:CredenzialiRisultato" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiRC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CredenzialiRC" type="tns:CredenzialiDiAccessoRC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ControllaCredenzialiRCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ControllaCredenzialiRCResult" type="tns:CredenzialiRisultato" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MandaMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Oggetto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Testo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MandaMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MandaMailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ComparaDBRCSoapIn">
+    <wsdl:part name="parameters" element="tns:ComparaDBRC" />
+  </wsdl:message>
+  <wsdl:message name="ComparaDBRCSoapOut">
+    <wsdl:part name="parameters" element="tns:ComparaDBRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="VersioneDBSoapIn">
+    <wsdl:part name="parameters" element="tns:VersioneDB" />
+  </wsdl:message>
+  <wsdl:message name="VersioneDBSoapOut">
+    <wsdl:part name="parameters" element="tns:VersioneDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="OttieniUltimoDBRCSoapIn">
+    <wsdl:part name="parameters" element="tns:OttieniUltimoDBRC" />
+  </wsdl:message>
+  <wsdl:message name="OttieniUltimoDBRCSoapOut">
+    <wsdl:part name="parameters" element="tns:OttieniUltimoDBRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="SonoLicenziatoSoapIn">
+    <wsdl:part name="parameters" element="tns:SonoLicenziato" />
+  </wsdl:message>
+  <wsdl:message name="SonoLicenziatoSoapOut">
+    <wsdl:part name="parameters" element="tns:SonoLicenziatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaPswRC_SixSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperaPswRC_Six" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaPswRC_SixSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperaPswRC_SixResponse" />
+  </wsdl:message>
+  <wsdl:message name="GiaEsisteArchivioFotoSoapIn">
+    <wsdl:part name="parameters" element="tns:GiaEsisteArchivioFoto" />
+  </wsdl:message>
+  <wsdl:message name="GiaEsisteArchivioFotoSoapOut">
+    <wsdl:part name="parameters" element="tns:GiaEsisteArchivioFotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaUtenteSoapIn">
+    <wsdl:part name="parameters" element="tns:AggiornaUtente" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaUtenteSoapOut">
+    <wsdl:part name="parameters" element="tns:AggiornaUtenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeZippaDBRCSoapIn">
+    <wsdl:part name="parameters" element="tns:DeZippaDBRC" />
+  </wsdl:message>
+  <wsdl:message name="DeZippaDBRCSoapOut">
+    <wsdl:part name="parameters" element="tns:DeZippaDBRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileFullSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileFull" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileFullSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRCSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileRC" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRCSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRC_simpleSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileRC_simple" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRC_simpleSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileRC_simpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreaDBPerRCSoapIn">
+    <wsdl:part name="parameters" element="tns:CreaDBPerRC" />
+  </wsdl:message>
+  <wsdl:message name="CreaDBPerRCSoapOut">
+    <wsdl:part name="parameters" element="tns:CreaDBPerRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreaDBPerRC_simpleSoapIn">
+    <wsdl:part name="parameters" element="tns:CreaDBPerRC_simple" />
+  </wsdl:message>
+  <wsdl:message name="CreaDBPerRC_simpleSoapOut">
+    <wsdl:part name="parameters" element="tns:CreaDBPerRC_simpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiProgSoapIn">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiProg" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiProgSoapOut">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiProgResponse" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiRC_simpleSoapIn">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiRC_simple" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiRC_simpleSoapOut">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiRC_simpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiRCSoapIn">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiRC" />
+  </wsdl:message>
+  <wsdl:message name="ControllaCredenzialiRCSoapOut">
+    <wsdl:part name="parameters" element="tns:ControllaCredenzialiRCResponse" />
+  </wsdl:message>
+  <wsdl:message name="MandaMailSoapIn">
+    <wsdl:part name="parameters" element="tns:MandaMail" />
+  </wsdl:message>
+  <wsdl:message name="MandaMailSoapOut">
+    <wsdl:part name="parameters" element="tns:MandaMailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EmailSendingSoap">
+    <wsdl:operation name="ComparaDBRC">
+      <wsdl:input message="tns:ComparaDBRCSoapIn" />
+      <wsdl:output message="tns:ComparaDBRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VersioneDB">
+      <wsdl:input message="tns:VersioneDBSoapIn" />
+      <wsdl:output message="tns:VersioneDBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRC">
+      <wsdl:input message="tns:OttieniUltimoDBRCSoapIn" />
+      <wsdl:output message="tns:OttieniUltimoDBRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SonoLicenziato">
+      <wsdl:input message="tns:SonoLicenziatoSoapIn" />
+      <wsdl:output message="tns:SonoLicenziatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaPswRC_Six">
+      <wsdl:input message="tns:RecuperaPswRC_SixSoapIn" />
+      <wsdl:output message="tns:RecuperaPswRC_SixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GiaEsisteArchivioFoto">
+      <wsdl:input message="tns:GiaEsisteArchivioFotoSoapIn" />
+      <wsdl:output message="tns:GiaEsisteArchivioFotoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaUtente">
+      <wsdl:input message="tns:AggiornaUtenteSoapIn" />
+      <wsdl:output message="tns:AggiornaUtenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeZippaDBRC">
+      <wsdl:input message="tns:DeZippaDBRCSoapIn" />
+      <wsdl:output message="tns:DeZippaDBRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileFull">
+      <wsdl:input message="tns:UploadFileFullSoapIn" />
+      <wsdl:output message="tns:UploadFileFullSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC">
+      <wsdl:input message="tns:UploadFileRCSoapIn" />
+      <wsdl:output message="tns:UploadFileRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC_simple">
+      <wsdl:input message="tns:UploadFileRC_simpleSoapIn" />
+      <wsdl:output message="tns:UploadFileRC_simpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC">
+      <wsdl:input message="tns:CreaDBPerRCSoapIn" />
+      <wsdl:output message="tns:CreaDBPerRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC_simple">
+      <wsdl:input message="tns:CreaDBPerRC_simpleSoapIn" />
+      <wsdl:output message="tns:CreaDBPerRC_simpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiProg">
+      <wsdl:input message="tns:ControllaCredenzialiProgSoapIn" />
+      <wsdl:output message="tns:ControllaCredenzialiProgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC_simple">
+      <wsdl:input message="tns:ControllaCredenzialiRC_simpleSoapIn" />
+      <wsdl:output message="tns:ControllaCredenzialiRC_simpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC">
+      <wsdl:input message="tns:ControllaCredenzialiRCSoapIn" />
+      <wsdl:output message="tns:ControllaCredenzialiRCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MandaMail">
+      <wsdl:input message="tns:MandaMailSoapIn" />
+      <wsdl:output message="tns:MandaMailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmailSendingSoap" type="tns:EmailSendingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ComparaDBRC">
+      <soap:operation soapAction="http://www.maionemiky.it/ComparaDBRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VersioneDB">
+      <soap:operation soapAction="http://www.maionemiky.it/VersioneDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRC">
+      <soap:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SonoLicenziato">
+      <soap:operation soapAction="http://www.maionemiky.it/SonoLicenziato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaPswRC_Six">
+      <soap:operation soapAction="http://www.maionemiky.it/RecuperaPswRC_Six" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GiaEsisteArchivioFoto">
+      <soap:operation soapAction="http://www.maionemiky.it/GiaEsisteArchivioFoto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaUtente">
+      <soap:operation soapAction="http://www.maionemiky.it/AggiornaUtente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeZippaDBRC">
+      <soap:operation soapAction="http://www.maionemiky.it/DeZippaDBRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileFull">
+      <soap:operation soapAction="http://www.maionemiky.it/UploadFileFull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://www.maionemiky.it/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC">
+      <soap:operation soapAction="http://www.maionemiky.it/UploadFileRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC_simple">
+      <soap:operation soapAction="http://www.maionemiky.it/UploadFileRC_simple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC">
+      <soap:operation soapAction="http://www.maionemiky.it/CreaDBPerRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC_simple">
+      <soap:operation soapAction="http://www.maionemiky.it/CreaDBPerRC_simple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiProg">
+      <soap:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiProg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC_simple">
+      <soap:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiRC_simple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC">
+      <soap:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MandaMail">
+      <soap:operation soapAction="http://www.maionemiky.it/MandaMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmailSendingSoap12" type="tns:EmailSendingSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ComparaDBRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/ComparaDBRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VersioneDB">
+      <soap12:operation soapAction="http://www.maionemiky.it/VersioneDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SonoLicenziato">
+      <soap12:operation soapAction="http://www.maionemiky.it/SonoLicenziato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaPswRC_Six">
+      <soap12:operation soapAction="http://www.maionemiky.it/RecuperaPswRC_Six" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GiaEsisteArchivioFoto">
+      <soap12:operation soapAction="http://www.maionemiky.it/GiaEsisteArchivioFoto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaUtente">
+      <soap12:operation soapAction="http://www.maionemiky.it/AggiornaUtente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeZippaDBRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/DeZippaDBRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileFull">
+      <soap12:operation soapAction="http://www.maionemiky.it/UploadFileFull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://www.maionemiky.it/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/UploadFileRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileRC_simple">
+      <soap12:operation soapAction="http://www.maionemiky.it/UploadFileRC_simple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/CreaDBPerRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaDBPerRC_simple">
+      <soap12:operation soapAction="http://www.maionemiky.it/CreaDBPerRC_simple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiProg">
+      <soap12:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiProg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC_simple">
+      <soap12:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiRC_simple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControllaCredenzialiRC">
+      <soap12:operation soapAction="http://www.maionemiky.it/ControllaCredenzialiRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MandaMail">
+      <soap12:operation soapAction="http://www.maionemiky.it/MandaMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmailSending">
+    <wsdl:port name="EmailSendingSoap" binding="tns:EmailSendingSoap">
+      <soap:address location="http://www.maionemiky.it/EmailSending.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EmailSendingSoap12" binding="tns:EmailSendingSoap12">
+      <soap12:address location="http://www.maionemiky.it/EmailSending.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

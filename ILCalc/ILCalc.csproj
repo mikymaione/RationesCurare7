@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C413C2E-73BA-40E2-9D01-68796471FE62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ILCalc</RootNamespace>
+    <AssemblyName>ILCalc</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>CalcKey.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <ReleaseVersion>20.16.1203</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <Description>Arithmetical expressions compiler and evaluator.</Description>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;FULL_FW</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>-Microsoft.Globalization#CA1305</CodeAnalysisRules>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;FULL_FW</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>calculator.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalcContext.cs" />
+    <Compile Include="Common\MathHelper.cs" />
+    <Compile Include="Collections\ArgumentCollection.cs" />
+    <Compile Include="Collections\ConstantDictionary.cs" />
+    <Compile Include="Common\ICompiler.cs" />
+    <Compile Include="Common\IArithmetic.cs" />
+    <Compile Include="Compiler\CalcContext.Methods.cs" />
+    <Compile Include="Collections\FunctionInfo.cs" />
+    <Compile Include="Collections\FunctionCollection.cs" />
+    <Compile Include="Collections\FunctionFactory.cs" />
+    <Compile Include="Collections\FunctionGroup.cs" />
+    <Compile Include="Compiler\Compiler.Owner.cs" />
+    <Compile Include="Compiler\Tabulator\Tabulator.Alloc.cs" />
+    <Compile Include="Interpreter\Interpret\Interpret.Alloc.cs" />
+    <Compile Include="Interpreter\Interpret\InterpretImpl.cs" />
+    <Compile Include="Interpreter\QuickInterpImpl.cs" />
+    <Compile Include="Others\ImportHelper.cs" />
+    <Compile Include="Others\Validator.cs" />
+    <Compile Include="Compiler\Evaluator\Evaluator.cs" />
+    <Compile Include="Common\IEvaluator.cs" />
+    <Compile Include="Interpreter\Interpret\Interpret.Serialize.cs" />
+    <Compile Include="Interpreter\Interpret\Interpret.cs" />
+    <Compile Include="Compiler\Tabulator\Tabulator.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Common\Codes.cs" />
+    <Compile Include="Common\Delegates.cs" />
+    <Compile Include="Others\SupportCollection.cs" />
+    <Compile Include="Others\ValueRange\ValueRange.Exception.cs" />
+    <Compile Include="Others\ValueRange\ValueRange.cs" />
+    <Compile Include="Others\ValueRange\ValueRange.Generics.cs" />
+    <Compile Include="Interpreter\Arithmetic.cs" />
+    <Compile Include="Compiler\CompilerBase.cs" />
+    <Compile Include="Compiler\Compiler.Generics.cs" />
+    <Compile Include="Compiler\Evaluator\EvaluatorCompiler.cs" />
+    <Compile Include="Compiler\Tabulator\TabulatorCompiler.cs" />
+    <Compile Include="Common\TypeHelper.cs" />
+    <Compile Include="Common\IExpressionOutput.cs" />
+    <Compile Include="Interpreter\Interpret\FuncCall.cs" />
+    <Compile Include="Interpreter\Interpret\FuncCall.Serialize.cs" />
+    <Compile Include="Interpreter\Interpret\InterpretCreator.cs" />
+    <Compile Include="Interpreter\QuickInterp.cs" />
+    <Compile Include="Others\Optimizer\OptimizeModes.cs" />
+    <Compile Include="Others\Optimizer\OptimizeOutput.cs" />
+    <Compile Include="Others\Specials\BufferOutput.cs" />
+    <Compile Include="Others\Specials\NullOutput.cs" />
+    <Compile Include="Common\ILiteralParser.cs" />
+    <Compile Include="Parser\LiteralParser.cs" />
+    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Parser\ParserMain.cs" />
+    <Compile Include="Parser\ScanIdentifier.cs" />
+    <Compile Include="Parser\ScanLiteral.cs" />
+    <Compile Include="Others\SyntaxException.cs" />
+    <Compile Include="Parser\ThrowHelpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Others\Resource.pl.resx" />
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Others\Resource.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="calculator.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

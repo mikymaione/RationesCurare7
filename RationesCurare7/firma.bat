@@ -1,0 +1,1 @@
+SignTool sign /debug /f maionemiky.it.pfx /p davidguetta RC7Setup.msi

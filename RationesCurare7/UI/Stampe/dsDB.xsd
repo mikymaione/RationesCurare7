@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+RationesCurare7 - Gestione piccola contabilità
+Copyright (C) 2015 [MAIONE MIKY]
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. 
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
+You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
+-->
+<xs:schema id="dsDB" targetNamespace="http://tempuri.org/dsDB.xsd" xmlns:mstns="http://tempuri.org/dsDB.xsd" xmlns="http://tempuri.org/dsDB.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDB" msprop:Generator_UserDSName="dsDB">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Movimenti" msprop:Generator_TableClassName="MovimentiDataTable" msprop:Generator_TableVarName="tableMovimenti" msprop:Generator_TablePropName="Movimenti" msprop:Generator_RowDeletingName="MovimentiRowDeleting" msprop:Generator_UserTableName="Movimenti" msprop:Generator_RowChangingName="MovimentiRowChanging" msprop:Generator_RowEvHandlerName="MovimentiRowChangeEventHandler" msprop:Generator_RowDeletedName="MovimentiRowDeleted" msprop:Generator_RowEvArgName="MovimentiRowChangeEvent" msprop:Generator_RowChangedName="MovimentiRowChanged" msprop:Generator_RowClassName="MovimentiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" type="xs:string" minOccurs="0" />
+              <xs:element name="soldi" msprop:Generator_ColumnVarNameInTable="columnsoldi" msprop:Generator_ColumnPropNameInRow="soldi" msprop:Generator_ColumnPropNameInTable="soldiColumn" msprop:Generator_UserColumnName="soldi" type="xs:double" minOccurs="0" />
+              <xs:element name="data" msprop:Generator_ColumnVarNameInTable="columndata" msprop:Generator_ColumnPropNameInRow="data" msprop:Generator_ColumnPropNameInTable="dataColumn" msprop:Generator_UserColumnName="data" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:string" minOccurs="0" />
+              <xs:element name="descrizione" msprop:Generator_ColumnVarNameInTable="columndescrizione" msprop:Generator_ColumnPropNameInRow="descrizione" msprop:Generator_ColumnPropNameInTable="descrizioneColumn" msprop:Generator_UserColumnName="descrizione" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="MovimentiKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Movimenti" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

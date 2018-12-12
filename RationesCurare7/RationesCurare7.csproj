@@ -1,0 +1,1006 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C657B6F-0EB2-4577-BC8C-00846ADCEF5C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RationesCurare7</RootNamespace>
+    <AssemblyName>RationesCurare7</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ReleaseVersion>20.17.1104</ReleaseVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>rc.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RationesCurare7.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>maionemiky.it.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox, Version=2.16.21.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.21.0\lib\FastColoredTextBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SQLITE DLL\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB\cDB.cs" />
+    <Compile Include="DB\DataWrapper\cAggiornamenti.cs" />
+    <Compile Include="DB\DataWrapper\cCalendario.cs" />
+    <Compile Include="DB\DataWrapper\cCasse.cs" />
+    <Compile Include="DB\DataWrapper\cMovimenti.cs" />
+    <Compile Include="DB\DataWrapper\cPeriodici.cs" />
+    <Compile Include="DB\DataWrapper\cUtente.cs" />
+    <Compile Include="GB\cComboItem.cs" />
+    <Compile Include="GB\cFiltriRicerca.cs" />
+    <Compile Include="GB\cGB.cs" />
+    <Compile Include="GB\cOpzioniProgramma.cs" />
+    <Compile Include="GB\MikyCloud.cs" />
+    <Compile Include="GB\MyUpdater.cs" />
+    <Compile Include="UI\Controlli\cAbout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cAbout.Designer.cs">
+      <DependentUpon>cAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cBaseGrafico.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendar.Designer.cs">
+      <DependentUpon>cCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendario.Designer.cs">
+      <DependentUpon>cCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendarItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCalendarItem.Designer.cs">
+      <DependentUpon>cCalendarItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cCasse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCasse.Designer.cs">
+      <DependentUpon>cCasse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cCosaNePensi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cCosaNePensi.Designer.cs">
+      <DependentUpon>cCosaNePensi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cDateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cDateControl.Designer.cs">
+      <DependentUpon>cDateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cGrafico.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cGrafico.Designer.cs">
+      <DependentUpon>cGrafico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cGroupList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cGroupList.Designer.cs">
+      <DependentUpon>cGroupList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cMacroAree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cMacroAree.Designer.cs">
+      <DependentUpon>cMacroAree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cMathEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cMathEdit.Designer.cs">
+      <DependentUpon>cMathEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cMovimentiPeriodici.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cMovimentiPeriodici.Designer.cs">
+      <DependentUpon>cMovimentiPeriodici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cMovimentoInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cMovimentoInfo.Designer.cs">
+      <DependentUpon>cMovimentoInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cMyUCRicerca.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cMyUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cNovita.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cNovita.Designer.cs">
+      <DependentUpon>cNovita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cGraficoTorta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cGraficoTorta.Designer.cs">
+      <DependentUpon>cGraficoTorta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cParamEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cParamEdit.Designer.cs">
+      <DependentUpon>cParamEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cRicerca.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cRicerca.Designer.cs">
+      <DependentUpon>cRicerca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cSaldo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cSaldo.Designer.cs">
+      <DependentUpon>cSaldo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cTime.Designer.cs">
+      <DependentUpon>cTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cUtente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cUtente.Designer.cs">
+      <DependentUpon>cUtente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\cUtenteListElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cUtenteListElement.Designer.cs">
+      <DependentUpon>cUtenteListElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\DragDropListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\DroppedEventArgs.cs" />
+    <Compile Include="UI\Controlli\fCalc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\fCalc.Designer.cs">
+      <DependentUpon>fCalc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controlli\IDragDropSource.cs" />
+    <Compile Include="UI\Controlli\VisualCue.cs" />
+    <Compile Include="UI\Controlli\Win32.cs" />
+    <Compile Include="UI\Forms\fCassa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fCassa.Designer.cs">
+      <DependentUpon>fCassa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fCredenzialiWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fCredenzialiWeb.Designer.cs">
+      <DependentUpon>fCredenzialiWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fDateSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fDateSelector.Designer.cs">
+      <DependentUpon>fDateSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fDBDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fDettaglioUtente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fDettaglioUtente.Designer.cs">
+      <DependentUpon>fDettaglioUtente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fGiroconto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fGiroconto.Designer.cs">
+      <DependentUpon>fGiroconto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimento.Designer.cs">
+      <DependentUpon>fInserimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoCalendario.Designer.cs">
+      <DependentUpon>fInserimentoCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoCalendario2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoCalendario2.Designer.cs">
+      <DependentUpon>fInserimentoCalendario2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoPeriodico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fInserimentoPeriodico.Designer.cs">
+      <DependentUpon>fInserimentoPeriodico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fListaUtenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fListaUtenti.Designer.cs">
+      <DependentUpon>fListaUtenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Forms\fMyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fOpzioniDb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fOpzioniDb.Designer.cs">
+      <DependentUpon>fOpzioniDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fPromemoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fPromemoria.Designer.cs">
+      <DependentUpon>fPromemoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fPromemoriaPeriodici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fPromemoriaPeriodici.Designer.cs">
+      <DependentUpon>fPromemoriaPeriodici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fPsw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fPsw.Designer.cs">
+      <DependentUpon>fPsw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fSceltaEvento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fSceltaEvento.Designer.cs">
+      <DependentUpon>fSceltaEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fSceltaTipoModificaCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fSceltaTipoModificaCalendario.Designer.cs">
+      <DependentUpon>fSceltaTipoModificaCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fSQL.Designer.cs">
+      <DependentUpon>fSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\fSQLParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\fSQLParams.designer.cs">
+      <DependentUpon>fSQLParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stampe\dsDB.cs">
+      <DependentUpon>dsDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stampe\dsDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Stampe\fStampa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Stampe\fStampa.Designer.cs">
+      <DependentUpon>fStampa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\maionemikyWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Controlli\cAbout.resx">
+      <DependentUpon>cAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cCalendar.resx">
+      <DependentUpon>cCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cCalendario.resx">
+      <DependentUpon>cCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cCalendarItem.resx">
+      <DependentUpon>cCalendarItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cCasse.resx">
+      <DependentUpon>cCasse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cCosaNePensi.resx">
+      <DependentUpon>cCosaNePensi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cDateControl.resx">
+      <DependentUpon>cDateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cGrafico.resx">
+      <DependentUpon>cGrafico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cGroupList.resx">
+      <DependentUpon>cGroupList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cMacroAree.resx">
+      <DependentUpon>cMacroAree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cMathEdit.resx">
+      <DependentUpon>cMathEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cMovimentiPeriodici.resx">
+      <DependentUpon>cMovimentiPeriodici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cMovimentoInfo.resx">
+      <DependentUpon>cMovimentoInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cNovita.resx">
+      <DependentUpon>cNovita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cGraficoTorta.resx">
+      <DependentUpon>cGraficoTorta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cParamEdit.resx">
+      <DependentUpon>cParamEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cRicerca.resx">
+      <DependentUpon>cRicerca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cSaldo.resx">
+      <DependentUpon>cSaldo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cTime.resx">
+      <DependentUpon>cTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cUtente.resx">
+      <DependentUpon>cUtente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cUtenteListElement.resx">
+      <DependentUpon>cUtenteListElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\fCalc.resx">
+      <DependentUpon>fCalc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fCassa.resx">
+      <DependentUpon>fCassa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fCredenzialiWeb.resx">
+      <DependentUpon>fCredenzialiWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fDateSelector.resx">
+      <DependentUpon>fDateSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fDBDate.resx">
+      <DependentUpon>fDBDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fDettaglioUtente.resx">
+      <DependentUpon>fDettaglioUtente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fGiroconto.resx">
+      <DependentUpon>fGiroconto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fInserimento.resx">
+      <DependentUpon>fInserimento.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fInserimentoCalendario.resx">
+      <DependentUpon>fInserimentoCalendario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fInserimentoCalendario2.resx">
+      <DependentUpon>fInserimentoCalendario2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fInserimentoPeriodico.resx">
+      <DependentUpon>fInserimentoPeriodico.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fListaUtenti.resx">
+      <DependentUpon>fListaUtenti.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Forms\fMyForm.resx">
+      <DependentUpon>fMyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fOpzioniDb.resx">
+      <DependentUpon>fOpzioniDb.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fPromemoria.resx">
+      <DependentUpon>fPromemoria.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fPromemoriaPeriodici.resx">
+      <DependentUpon>fPromemoriaPeriodici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fPsw.resx">
+      <DependentUpon>fPsw.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fSceltaEvento.resx">
+      <DependentUpon>fSceltaEvento.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fSceltaTipoModificaCalendario.resx">
+      <DependentUpon>fSceltaTipoModificaCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fSQL.resx">
+      <DependentUpon>fSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\fSQLParams.resx">
+      <DependentUpon>fSQLParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Stampe\fStampa.resx">
+      <DependentUpon>fStampa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Stampe\Saldo.rdlc" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="boump.pdn" />
+    <None Include="firma.bat" />
+    <None Include="Licenza.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="maionemiky.it.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="standard.rqd8">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="standard.rqs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="UI\Stampe\dsDB.xsc">
+      <DependentUpon>dsDB.xsd</DependentUpon>
+    </None>
+    <None Include="UI\Stampe\dsDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\Stampe\dsDB.xss">
+      <DependentUpon>dsDB.xsd</DependentUpon>
+    </None>
+    <None Include="Web References\maionemikyWS\Comparazione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\maionemikyWS\CredenzialiRisultato.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\maionemikyWS\CredenzialiRisultatoFull.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\maionemikyWS\Licenza.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\maionemikyWS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\maionemikyWS\emailsending.wsdl" />
+    <None Include="Web References\maionemikyWS\emailsending.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ingranaggio32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cassaforte32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salvadanaio32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portafoglio32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dare32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Avere32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saldo32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\perdioci32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="boump.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\avere.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\cassaforte.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\dare.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\portafogli.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_Bancomat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_BNL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_BPS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_CheBanca.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\P_ING.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_Intesa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_MasterCard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_Mediolanum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_PosteItaliane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_Salvadanaio.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\p_Visa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Casse_Immagini\salvadanaio.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Aggiornamenti.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\AggiornamentiDBUtente.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_AggiornaSerie.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_Dettaglio.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_Elimina.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_EliminaSerie.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_Inserisci.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Calendario_Ricerca.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Carica.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Elimina.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Inserisci.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Lista.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_ListaEX.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Ricerca.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Casse_Valute.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_AggiornaMacroAree.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_AutoCompleteSource.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_AutoCompleteSourceMA.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Data.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Dettaglio.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Elimina.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GetMacroAree_E_Descrizioni.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoAnnuale.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoMensile.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoSaldo.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoTorta.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Inserisci.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_MovimentiPerCassa.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Ricerca.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_Saldo.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Dettaglio.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Elimina.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Inserisci.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Ricerca.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_RicercaAccess.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Periodici_Scadenza.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_ByPath.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_Dettaglio.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_Elimina.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_Inserisci.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Utenti_Lista.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Errori.txt" />
+    <Content Include="Novita.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rc.ico" />
+    <Content Include="rcDB.ico" />
+    <Content Include="rcDBBackup.ico" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\application_delete.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\computer.png" />
+    <Content Include="rcDBBackupS.ico" />
+    <Content Include="rcDBS.ico" />
+    <None Include="Resources\world_add.png" />
+    <None Include="Resources\page_white_database.png" />
+    <None Include="Resources\database_lightning.png" />
+    <Content Include="SQLITE DLL\SQLite.Interop.dll" />
+    <Content Include="SQLITE DLL\System.Data.SQLite.dll" />
+    <Content Include="SQLITE DLL\System.Windows.Forms.DataVisualization.dll" />
+    <Content Include="Utenti\Amnesia-anime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Avatar-The-Last-Airbender.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Bleach-anime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Dragonball-Goku.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Fairy-Tail.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Fullmetal-Alchemist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Hyouka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Inuyasha.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Kuroko-No-Basuke.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Naruto.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\One-Piece-anime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Souleater.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Sword-Art-Online.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Vampire-Knight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utenti\Zetsuen-No-Tempest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Strumenti32.png" />
+    <None Include="Resources\opzioni.png" />
+    <None Include="Resources\PieChart.png" />
+    <None Include="Resources\MacroAree.png" />
+    <None Include="Resources\world_connect.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\gradient1.png" />
+    <None Include="Resources\clock_red.png" />
+    <None Include="Resources\calculator.png" />
+    <None Include="Resources\disk1.png" />
+    <None Include="Resources\weather_clouds.png" />
+    <None Include="Resources\DBNotFound.png" />
+    <None Include="Resources\exclamation.png" />
+    <None Include="Resources\folder_up.png" />
+    <None Include="Resources\folder_image.png" />
+    <None Include="Resources\folder_database.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\database_refresh.png" />
+    <None Include="Resources\database_copy.png" />
+    <None Include="Resources\email_star.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\url.png" />
+    <None Include="Resources\time.png" />
+    <None Include="Resources\email.png" />
+    <None Include="Resources\Bordini.png" />
+    <None Include="Resources\arrowRed.png" />
+    <None Include="Resources\arrowGreen.png" />
+    <None Include="Resources\rcHomeBig.png" />
+    <None Include="Resources\zoom.png" />
+    <None Include="Resources\accept.png" />
+    <None Include="Resources\calendar_view_day.png" />
+    <None Include="Resources\resultset_next.png" />
+    <None Include="Resources\resultset_previous.png" />
+    <None Include="Resources\disk.png" />
+    <None Include="Resources\divider.png" />
+    <None Include="Resources\Folder-Options-icon32.png" />
+    <None Include="Resources\optiozni321.png" />
+    <None Include="Resources\cash-register-icon32.png" />
+    <None Include="Resources\user_log_out16.png" />
+    <None Include="Resources\user50.png" />
+    <None Include="Resources\equal.png" />
+    <None Include="Resources\printer32.png" />
+    <None Include="Resources\find321.png" />
+    <None Include="Resources\edit32.png" />
+    <None Include="Resources\delete32.png" />
+    <None Include="Resources\giroconto.png" />
+    <None Include="Resources\aggiungiPEriodico.png" />
+    <None Include="Resources\Add32.png" />
+    <None Include="Resources\db32.png" />
+    <None Include="Resources\Aggiornamenti32.png" />
+    <None Include="Resources\about32.png" />
+    <None Include="Resources\star32.png" />
+    <None Include="Resources\mail32.png" />
+    <None Include="Resources\sync32.png" />
+    <None Include="Resources\optiozni32.png" />
+    <None Include="Resources\controllaAlert32.png" />
+    <None Include="Resources\controllaperiodici32.png" />
+    <None Include="Resources\calcolatrice32.png" />
+    <None Include="Resources\calendario32.png" />
+    <None Include="Resources\find32.png" />
+    <None Include="Resources\grafico32.png" />
+    <None Include="Resources\gear_16.png" />
+    <None Include="Resources\strumenti.png" />
+    <None Include="Resources\cashg16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ILCalc\ILCalc.csproj">
+      <Project>{7C413C2E-73BA-40E2-9D01-68796471FE62}</Project>
+      <Name>ILCalc</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://www.maionemiky.it/EmailSending.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\maionemikyWS\</RelPath>
+      <UpdateFromURL>http://www.maionemiky.it/EmailSending.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>RationesCurare7_maionemikyWS_EmailSending</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

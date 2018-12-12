@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="errAmbiguousMatch" xml:space="preserve">
+    <value>Неопределённость среди</value>
+  </data>
+  <data name="errArgumentExist" xml:space="preserve">
+    <value>Аргумент "{0}" уже содержится в списке.</value>
+  </data>
+  <data name="errConstantExist" xml:space="preserve">
+    <value>Константа "{0}" уже содержится в коллекции.</value>
+  </data>
+  <data name="errConstantNotExist" xml:space="preserve">
+    <value>Константы с именем "{0}" не существует коллекции.</value>
+  </data>
+  <data name="errCultureExtract" xml:space="preserve">
+    <value>Невозможно извлечь специфичные для культуры символы-разделители.</value>
+  </data>
+  <data name="errDelegateInvCount" xml:space="preserve">
+    <value>Делегат должен указывать только на один метод.</value>
+  </data>
+  <data name="errDelegateWithTarget" xml:space="preserve">
+    <value>Делегаты, указывающие на методы экземпляров, не поддерживаются (может быть из-за замыкания на контекст).</value>
+  </data>
+  <data name="errDisbalanceClose" xml:space="preserve">
+    <value>Скобки не сбалансированы (не все закрыты).</value>
+  </data>
+  <data name="errDisbalanceOpen" xml:space="preserve">
+    <value>Скобки не сбалансированы (не все открыты).</value>
+  </data>
+  <data name="errEndlessLoop" xml:space="preserve">
+    <value>Шаг промежутка приводит к бесконечному циклу.</value>
+  </data>
+  <data name="errExistOverload" xml:space="preserve">
+    <value>Существует перегрузка с {0} аргументами.</value>
+  </data>
+  <data name="errFunctionNoBrace" xml:space="preserve">
+    <value>Открывающая скобка должна следовать после имени функции</value>
+  </data>
+  <data name="errFunctionNotExist" xml:space="preserve">
+    <value>Функции с именем "{0}" не существует в коллекции.</value>
+  </data>
+  <data name="errGenericRange" xml:space="preserve">
+    <value>Некорретный промежуток: тип '{0}' не поддерживается в качестве параметра-типа структуры ValueRange&lt;T&gt;.</value>
+  </data>
+  <data name="errIdentifierEmpty" xml:space="preserve">
+    <value>Имя идентфикатора пустое или null.</value>
+  </data>
+  <data name="errIdentifierFromLambda" xml:space="preserve">
+    <value>Может быть импортируется лямбда-функция без указания имени?</value>
+  </data>
+  <data name="errIdentifierStartsWith" xml:space="preserve">
+    <value>Некорректное имя идентификатора: "{0}". Имя должно начинаться с буквы или символа подчёркивания.</value>
+  </data>
+  <data name="errIdentifierSymbol" xml:space="preserve">
+    <value>Некорректный символ '{0}' в имени идентификатора "{1}". Допустимы только буквы, цифры и символ подчёркивания.</value>
+  </data>
+  <data name="errIncorrectConstr" xml:space="preserve">
+    <value>Некорректная последовательность</value>
+  </data>
+  <data name="errInvalidSeparator" xml:space="preserve">
+    <value>Некорректное использование разделителя аргументов.</value>
+  </data>
+  <data name="errMethodBadParam" xml:space="preserve">
+    <value>имеет параметр #{0} типа '{1}'. Все параметры должны быть типа '{2}'.</value>
+  </data>
+  <data name="errMethodBadReturn" xml:space="preserve">
+    <value>возвращает значение типа '{0}'. Тип возвращаемого значения должен быть '{1}'.</value>
+  </data>
+  <data name="errMethodImportFailed" xml:space="preserve">
+    <value>Импорт невозможен: метод</value>
+  </data>
+  <data name="errMethodNonPublic" xml:space="preserve">
+    <value>Метод '{0}' не является публичным.</value>
+  </data>
+  <data name="errMethodNotFounded" xml:space="preserve">
+    <value>Метод с именем "{0}" не может быть найден (не в публичном доступе или не статический?).</value>
+  </data>
+  <data name="errMethodNotInstance" xml:space="preserve">
+    <value>должен быть методом экземпляра.</value>
+  </data>
+  <data name="errMethodNotRuntimeMethod" xml:space="preserve">
+    <value>должен быть стандартным методом (DynamicMethod не поддерживается).</value>
+  </data>
+  <data name="errMethodNotStatic" xml:space="preserve">
+    <value>должен быть статическим.</value>
+  </data>
+  <data name="errNeutralCulture" xml:space="preserve">
+    <value>Культура '{0}' - нейтральная культура. Она не может быть использована для форматирования и разбора выражения.</value>
+  </data>
+  <data name="errNotSupported" xml:space="preserve">
+    <value>Операция ({0}) не может быть применена к значению типа '{1}'.</value>
+  </data>
+  <data name="errNumberFormat" xml:space="preserve">
+    <value>Некорретный формат числа:</value>
+  </data>
+  <data name="errNumberOverflow" xml:space="preserve">
+    <value>Переполнение числовой константы:</value>
+  </data>
+  <data name="errOverloadImpossible" xml:space="preserve">
+    <value>Функция с таким же кол-вом аргументов ({0}) уже содержится в списке (перегрузка невозможна).</value>
+  </data>
+  <data name="errRangeNotFinite" xml:space="preserve">
+    <value>Некорректный промежуток: значение Begin, End или Step не является конечным числом (Inf / NaN).</value>
+  </data>
+  <data name="errRangeZeroInit" xml:space="preserve">
+    <value>Некорректный промежуток: не инициализирован (не используйте конструктор по умолчанию или default(ValueRange&lt;T&gt;)).</value>
+  </data>
+  <data name="errTabulatorWrongArgs" xml:space="preserve">
+    <value>Tabulator может быть скомпилирован только для выражения с одним или более аргументами.</value>
+  </data>
+  <data name="errTooLongRange" xml:space="preserve">
+    <value>Некоррентный промежуток: количество итераций промежутка лежит вне границ представления целых чисел.</value>
+  </data>
+  <data name="errTypeNonPublic" xml:space="preserve">
+    <value>Класс '{0}' находится вне зоны видимости ILCalc.</value>
+  </data>
+  <data name="errUnresolvedIdentifier" xml:space="preserve">
+    <value>Неопознанный идентификатор:</value>
+  </data>
+  <data name="errUnresolvedSymbol" xml:space="preserve">
+    <value>Неопознанный символ:</value>
+  </data>
+  <data name="errWrongArgsCount" xml:space="preserve">
+    <value>Неправильное кол-во аргументов: {0}. Методу Evaluate() следует указать {1} аргументов.</value>
+  </data>
+  <data name="errWrongOverload" xml:space="preserve">
+    <value>не имеет перегрузки с {0} аргументами.</value>
+  </data>
+  <data name="errWrongRangesCount" xml:space="preserve">
+    <value>Неправильное кол-во промежутков: {0}. Методу Tabulate() следует указать {1} промежутков.</value>
+  </data>
+  <data name="errWrongStepSign" xml:space="preserve">
+    <value>Некорректный промежуток: не правильный знак значения Step.</value>
+  </data>
+  <data name="errWrongTargetType" xml:space="preserve">
+    <value>Неверный тип объекта вызова: {0} (не совместимый с {1}).</value>
+  </data>
+  <data name="sAnd" xml:space="preserve">
+    <value>и</value>
+  </data>
+  <data name="sArgument" xml:space="preserve">
+    <value>Аргумент</value>
+  </data>
+  <data name="sConstant" xml:space="preserve">
+    <value>Константа</value>
+  </data>
+  <data name="sFunction" xml:space="preserve">
+    <value>Функция</value>
+  </data>
+</root>
