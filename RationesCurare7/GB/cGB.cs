@@ -36,13 +36,22 @@ namespace RationesCurare7
             public string PathDB, UserName, Email, Psw, TipoDB;
         }
 
-        public static bool DesignTime
+        public static bool IAmInDebug
         {
             get
             {
-                return (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+                try
+                {
+                    return System.Diagnostics.Process.GetCurrentProcess().ProcessName.Equals("RationesCurare7.vshost", StringComparison.OrdinalIgnoreCase);
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
+
+        public static bool DesignTime => (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
 
         public static string PathDBUtenti
         {
@@ -157,15 +166,9 @@ namespace RationesCurare7
             }
         }
 
-        public static string PathFolderDB()
-        {
-            return System.IO.Path.GetDirectoryName(UtenteConnesso.PathDB);
-        }
+        public static string PathFolderDB() => System.IO.Path.GetDirectoryName(UtenteConnesso.PathDB);
 
-        public static string PathDBBackup()
-        {
-            return System.IO.Path.ChangeExtension(UtenteConnesso.PathDB, System.IO.Path.GetExtension(UtenteConnesso.PathDB) + "b");
-        }
+        public static string PathDBBackup() => System.IO.Path.ChangeExtension(UtenteConnesso.PathDB, System.IO.Path.GetExtension(UtenteConnesso.PathDB) + "b");
 
         public static bool StringInArray(string s, string[] a)
         {
@@ -214,14 +217,11 @@ namespace RationesCurare7
             return t;
         }
 
-        public static string TimeToString(DateTime t)
+        public static string TimeToString(DateTime t) => TimeToString(new Time()
         {
-            return TimeToString(new Time()
-            {
-                Ora = t.Hour,
-                Minuto = t.Minute
-            });
-        }
+            Ora = t.Hour,
+            Minuto = t.Minute
+        });
 
         public static string TimeToString(Time t)
         {
@@ -241,25 +241,13 @@ namespace RationesCurare7
             return (h + "." + m);
         }
 
-        public static System.Windows.Forms.DialogResult MsgBox(Exception s)
-        {
-            return MsgBox(s.Message, System.Windows.Forms.MessageBoxIcon.Exclamation);
-        }
+        public static System.Windows.Forms.DialogResult MsgBox(Exception s) => MsgBox(s.Message, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s)
-        {
-            return MsgBox(s, System.Windows.Forms.MessageBoxIcon.Information);
-        }
+        public static System.Windows.Forms.DialogResult MsgBox(string s) => MsgBox(s, System.Windows.Forms.MessageBoxIcon.Information);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxIcon ico)
-        {
-            return MsgBox(s, System.Windows.Forms.MessageBoxButtons.OK, ico);
-        }
+        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxIcon ico) => MsgBox(s, System.Windows.Forms.MessageBoxButtons.OK, ico);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxButtons but, System.Windows.Forms.MessageBoxIcon ico, bool TopMost = false)
-        {
-            return System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form() { TopMost = true }, s, "RationesCurare7", but, ico);
-        }
+        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxButtons but, System.Windows.Forms.MessageBoxIcon ico, bool TopMost = false) => System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form() { TopMost = true }, s, "RationesCurare7", but, ico);
 
         public static DateTime ObjectToDateTime(object o, DateTime defa)
         {
@@ -280,10 +268,7 @@ namespace RationesCurare7
             return d;
         }
 
-        public static DateTime ObjectToDateTime(object o)
-        {
-            return ObjectToDateTime(o, DateTime.MinValue);
-        }
+        public static DateTime ObjectToDateTime(object o) => ObjectToDateTime(o, DateTime.MinValue);
 
         public static double ObjectToDouble(object o, double Default_ = 0)
         {
@@ -301,10 +286,7 @@ namespace RationesCurare7
             return d;
         }
 
-        public static double ObjectToMoney(object o)
-        {
-            return ObjectToMoney(o, 0);
-        }
+        public static double ObjectToMoney(object o) => ObjectToMoney(o, 0);
 
         public static double ObjectToMoney(object o, double default_)
         {
@@ -343,18 +325,9 @@ namespace RationesCurare7
             return i;
         }
 
-        public static string QQ(string s, bool active)
-        {
-            if (active)
-                return "%" + s + "%";
-            else
-                return "%%";
-        }
+        public static string QQ(string s, bool active) => (active ? "%" + s + "%" : "%%");
 
-        public static string QQ(string s)
-        {
-            return QQ(s, true);
-        }
+        public static string QQ(string s) => QQ(s, true);
 
         public static string HolidayName(DateTime data)
         {
@@ -462,17 +435,7 @@ namespace RationesCurare7
             }
         }
 
-        public static void StartExplorer(string z)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("explorer.exe", z);
-            }
-            catch
-            {
-                //cannot open
-            }
-        }
+        public static void StartExplorer(string z) => System.Diagnostics.Process.Start("explorer.exe", z);
 
         public static void CreaIcona(string titolo)
         {
@@ -631,11 +594,7 @@ namespace RationesCurare7
             }
         }
 
-        public static void DoTheAutoUpdate()
-        {
-            new System.Threading.Thread(DoTheAutoUpdate_t).Start();
-            //DoTheAutoUpdate_t();
-        }
+        public static void DoTheAutoUpdate() => new System.Threading.Thread(DoTheAutoUpdate_t).Start();
 
         private static void DoTheAutoUpdate_t()
         {
@@ -703,12 +662,7 @@ namespace RationesCurare7
                 return a.ToString("C");
         }
 
-        public static string DoubleToMoneyString(double d)
-        {
-            var a = Math.Round(d, 2);
-
-            return a.ToString();
-        }
+        public static string DoubleToMoneyString(double d) => Math.Round(d, 2).ToString();
 
         public static double DoubleToMoney(string sa)
         {
@@ -731,43 +685,19 @@ namespace RationesCurare7
             return Math.Round(ObjectToDouble(sa), 2);
         }
 
-        public static DateTime DateToOnlyDate(DateTime d)
-        {
-            return new DateTime(d.Year, d.Month, d.Day);
-        }
+        public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
 
-        public static bool StringIsNullorEmpty(string s)
-        {
-            return ("".Equals(s ?? ""));
-        }
+        public static bool StringIsNullorEmpty(string s) => ("".Equals(s ?? ""));
 
-        public static string NullStringToEmpty(string s)
-        {
-            if (s == null)
-                s = "";
+        public static string NullStringToEmpty(string s) => (s ?? "");
 
-            return s;
-        }
+        public static DateTime DateTo00000(DateTime d) => new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
 
-        public static DateTime DateTo00000(DateTime d)
-        {
-            return new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
-        }
+        public static DateTime DateTo235959(DateTime d) => new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
 
-        public static DateTime DateTo235959(DateTime d)
-        {
-            return new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
-        }
+        public static bool DateSonoUgualiPer_YYYYMMDD(DateTime a, DateTime b) => (a.Year == b.Year) && (a.Month == b.Month) && (a.Day == b.Day);
 
-        public static bool DateSonoUgualiPer_YYYYMMDD(DateTime a, DateTime b)
-        {
-            return (a.Year == b.Year) && (a.Month == b.Month) && (a.Day == b.Day);
-        }
-
-        public static void EliminaRC6()
-        {
-            new System.Threading.Thread(EliminaRC6_t).Start();
-        }
+        public static void EliminaRC6() => new System.Threading.Thread(EliminaRC6_t).Start();
 
         private static void EliminaRC6_t()
         {
@@ -828,13 +758,7 @@ namespace RationesCurare7
             }
         }
 
-        public static object ValueToDBNULL(bool PutNull, object ElseValue)
-        {
-            if (PutNull)
-                return DBNull.Value;
-            else
-                return ElseValue;
-        }
+        public static object ValueToDBNULL(bool PutNull, object ElseValue) => (PutNull ? DBNull.Value : ElseValue);
 
         public static string LoadImage_Casuale_Try(ref System.Windows.Forms.PictureBox pb)
         {
@@ -853,7 +777,7 @@ namespace RationesCurare7
 
                     try
                     {
-                        cGB.LoadImage(j, ref pb);
+                        LoadImage(j, ref pb);
 
                         return j;
                     }
@@ -891,16 +815,31 @@ namespace RationesCurare7
             }
         }
 
-        public static bool PathDBUtentiIsAccess()
-        {
-            return System.IO.Path.GetExtension(PathDBUtenti).Equals(".rqd", StringComparison.OrdinalIgnoreCase);
-        }
+        public static bool PathDBUtentiIsAccess() => System.IO.Path.GetExtension(PathDBUtenti).Equals(".rqd", StringComparison.OrdinalIgnoreCase);
 
         public static DateTime DBNow()
         {
             var d = DateTime.Now;
 
             return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
+        }
+
+        public static bool ControllaGiaInEsecuzione_SeContinuare()
+        {
+            try
+            {
+                var p = System.Diagnostics.Process.GetProcessesByName("RationesCurare7");
+
+                if ((p?.Length ?? 0) > 1)
+                    if (MsgBox("RationesCurare è già in esecuzione, vuoi avviarne un altro?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
+                        return false;
+            }
+            catch
+            {
+                //errore
+            }
+
+            return true;
         }
 
 

@@ -88,13 +88,20 @@ namespace RationesCurare7.DB.DataWrapper
 
         public void AggiornaDataDB()
         {
+            AggiornaDataDB(DateTime.MinValue);
+        }
+
+        public void AggiornaDataDB(DateTime forza_data)
+        {
             DbTransaction trans = null;
             var sql = "update utenti set UltimoAggiornamentoDB = @UltimoAggiornamentoDB where ID = @ID";
 
             foreach (var u in cDB.DBUtentiAggiornati)
             {
+                var laD = (forza_data > DateTime.MinValue ? forza_data : u.Value);
+
                 var p = new DbParameter[] {
-                    cDB.NewPar("UltimoAggiornamentoDB", u.Value),
+                    cDB.NewPar("UltimoAggiornamentoDB", laD),
                     cDB.NewPar("ID", u.Key)
                 };
 

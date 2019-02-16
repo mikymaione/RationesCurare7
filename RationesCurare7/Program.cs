@@ -19,24 +19,10 @@ namespace RationesCurare7
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var ImDebug = false;
-            try
-            {
-                ImDebug = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "RationesCurare7.vshost");
-
-                var p = System.Diagnostics.Process.GetProcessesByName("RationesCurare7");
-
-                if ((p?.Length ?? 0) > 1)
-                    if (cGB.MsgBox("RationesCurare è già in esecuzione, vuoi avviarne un altro?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-                        return;
-            }
-            catch
-            {
-                //no debug
-            }
+            if (!cGB.ControllaGiaInEsecuzione_SeContinuare())
+                return; //exit
 
             Inizio:
-
             cGB.DoTheAutoUpdate();
 
             try
@@ -114,17 +100,17 @@ namespace RationesCurare7
                     if (cGB.RestartMe)
                         goto Inizio;
 
-                    if (!ImDebug)
-                        if (cGB.OpzioniProgramma.SincronizzaDB)
-                        {
-                            var mc = new GB.MikyCloud(cGB.UtenteConnesso);
-                            mc.MandaDBSulSito(DB.cDB.UltimaModifica);
-                        }
+                    //if (!cGB.IAmInDebug)
+                    if (cGB.OpzioniProgramma.SincronizzaDB)
+                    {
+                        var mc = new GB.MikyCloud(cGB.UtenteConnesso);
+                        mc.MandaDBSulSito(DB.cDB.UltimaModifica);
+                    }
 
                     DB.cDB.ApriConnessione(DB.cDB.DataBase.SQLite, cGB.PathDBUtenti, true);
 
                     var ca = new DB.DataWrapper.cAggiornamenti();
-                    ca.AggiornaDataDB();
+                    ca.AggiornaDataDB(DB.cDB.UltimaModifica);
 
                     DB.cDB.ChiudiConnessione();
                 }

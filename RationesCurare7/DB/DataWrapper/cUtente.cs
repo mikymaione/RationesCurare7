@@ -26,64 +26,44 @@ namespace RationesCurare7.DB.DataWrapper
                 CaricaByID(ID_);
         }
 
-        public void SetTipoDBByExtension(String ext)
+        public void SetTipoDBByExtension(string ext)
         {
             ext = ext.Replace(".", "");
             TipoDB = (ext.Equals("rqd8", StringComparison.OrdinalIgnoreCase) ? "S" : "A");
         }
 
-        public int Salva()
-        {
-            var i = 0;
+        public int Salva() => (ID < 0 ? Inserisci() : Aggiorna());
 
-            if (ID < 0)
-            {
-                i = Inserisci();
+        private int Aggiorna() => cDB.EseguiSQLNoQuery(
+            cDB.LeggiQuery(cDB.Queries.Utenti_Aggiorna),
+            new DbParameter[] {
+                cDB.NewPar("nome", nome),
+                cDB.NewPar("psw", psw),
+                cDB.NewPar("path", path),
+                cDB.NewPar("Email", Email),
+                cDB.NewPar("TipoDB", TipoDB),
+                cDB.NewPar("ID", ID)
             }
-            else
-            {
-                i = Aggiorna();
+        );
+
+        private int Inserisci() => cDB.EseguiSQLNoQuery(
+            cDB.LeggiQuery(cDB.Queries.Utenti_Inserisci),
+            new DbParameter[] {
+                cDB.NewPar("nome", nome),
+                cDB.NewPar("psw", psw),
+                cDB.NewPar("path", path),
+                cDB.NewPar("Email", Email),
+                cDB.NewPar("TipoDB", TipoDB),
+                cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB)
             }
+        );
 
-            return i;
-        }
-
-        private int Aggiorna()
-        {
-            var p = new DbParameter[] {
-                DB.cDB.NewPar("nome", nome),
-                DB.cDB.NewPar("psw", psw),
-                DB.cDB.NewPar("path", path),
-                DB.cDB.NewPar("Email", Email),
-                DB.cDB.NewPar("TipoDB", TipoDB),
-                DB.cDB.NewPar("ID", ID)
-            };
-
-            return DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Utenti_Aggiorna), p);
-        }
-
-        private int Inserisci()
-        {
-            var p = new DbParameter[] {
-                DB.cDB.NewPar("nome", nome),
-                DB.cDB.NewPar("psw", psw),
-                DB.cDB.NewPar("path", path),
-                DB.cDB.NewPar("Email", Email),
-                DB.cDB.NewPar("TipoDB", TipoDB),
-                DB.cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB)
-            };
-
-            return DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Utenti_Inserisci), p);
-        }
-
-        public int Elimina(int ID__)
-        {
-            var p = new DbParameter[] {
+        public int Elimina(int ID__) => cDB.EseguiSQLNoQuery(
+            cDB.LeggiQuery(cDB.Queries.Utenti_Elimina),
+            new DbParameter[] {
                 cDB.NewPar("ID", ID__)
-            };
-
-            return cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Utenti_Elimina), p);
-        }
+            }
+        );
 
         public List<cUtente> ListaUtenti()
         {
@@ -110,15 +90,9 @@ namespace RationesCurare7.DB.DataWrapper
             return cc;
         }
 
-        private void CaricaByID(int ID__)
-        {
-            CaricaBy(ID__, "");
-        }
+        private void CaricaByID(int ID__) => CaricaBy(ID__, "");
 
-        public void CaricaByPath(string z)
-        {
-            CaricaBy(-1, z);
-        }
+        public void CaricaByPath(string z) => CaricaBy(-1, z);
 
         private void CaricaBy(int ID__, string path_)
         {
