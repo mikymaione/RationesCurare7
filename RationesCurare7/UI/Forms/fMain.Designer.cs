@@ -29,56 +29,50 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-
-            System.Windows.Forms.TreeNode tnGestioneCasse = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);
-            System.Windows.Forms.TreeNode tnCassaforte = new System.Windows.Forms.TreeNode("(F9) Cassaforte", 6, 6);
-            System.Windows.Forms.TreeNode tnSalvadanaio = new System.Windows.Forms.TreeNode("(F12) Salvadanaio", 21, 21);
-            System.Windows.Forms.TreeNode tnPortafoglio = new System.Windows.Forms.TreeNode("(F4) Portafoglio", 19, 19);
-            System.Windows.Forms.TreeNode tnDare = new System.Windows.Forms.TreeNode("(F1) Dare", 9, 9);
-            System.Windows.Forms.TreeNode tnAvere = new System.Windows.Forms.TreeNode("(F2) Avere", 2, 2);
-            System.Windows.Forms.TreeNode tnSaldo = new System.Windows.Forms.TreeNode("(F5) Saldo", 20, 20);
-            System.Windows.Forms.TreeNode tnMovimentiPeriodici = new System.Windows.Forms.TreeNode("Movimenti Periodici", 17, 17);
-            System.Windows.Forms.TreeNode tnCasse = new System.Windows.Forms.TreeNode("(Alt +1) Casse", 5, 5, new System.Windows.Forms.TreeNode[] {
-                tnGestioneCasse,
-                tnCassaforte,
-                tnSalvadanaio,
-                tnPortafoglio,
-                tnDare,
-                tnAvere,
-                tnSaldo,
-                tnMovimentiPeriodici
-            });
-            System.Windows.Forms.TreeNode tnCerca = new System.Windows.Forms.TreeNode("(F3) Cerca", 11, 11);
-            System.Windows.Forms.TreeNode tnTorta = new System.Windows.Forms.TreeNode("(F10) Torta", 18, 18);
-            System.Windows.Forms.TreeNode tnGrafico = new System.Windows.Forms.TreeNode("(F11) Grafico", 12, 12);
-            System.Windows.Forms.TreeNode tnCalendario = new System.Windows.Forms.TreeNode("(F6) Calendario", 4, 4);
-            System.Windows.Forms.TreeNode tnCalcolatrice = new System.Windows.Forms.TreeNode("(F7) Calcolatrice", 3, 3);
-            System.Windows.Forms.TreeNode tnMacroaree = new System.Windows.Forms.TreeNode("Macro aree", 14, 14);
-            System.Windows.Forms.TreeNode tnControllaMovimentiPeriodici = new System.Windows.Forms.TreeNode("Controlla movimenti periodici", 8, 8);
-            System.Windows.Forms.TreeNode tnControllaPromemoria = new System.Windows.Forms.TreeNode("Controlla promemoria", 7, 7);
-            System.Windows.Forms.TreeNode tnStrumenti = new System.Windows.Forms.TreeNode("(Alt + 2) Strumenti", 23, 23, new System.Windows.Forms.TreeNode[] {
-                tnCerca,
-                tnTorta,
-                tnGrafico,
-                tnCalendario,
-                tnCalcolatrice,
-                tnMacroaree,
-                tnControllaMovimentiPeriodici,
-                tnControllaPromemoria
-            });
-            System.Windows.Forms.TreeNode tnOpzioniDB = new System.Windows.Forms.TreeNode("(F8) Opzioni DB", 10, 10);
-            System.Windows.Forms.TreeNode tnCosaNePensi = new System.Windows.Forms.TreeNode("Cosa ne pensi?", 15, 15);
-            System.Windows.Forms.TreeNode tnNovita = new System.Windows.Forms.TreeNode("Novità", 22, 22);
-            System.Windows.Forms.TreeNode tnAbout = new System.Windows.Forms.TreeNode("About", 0, 0);
-            System.Windows.Forms.TreeNode tnOpzioni = new System.Windows.Forms.TreeNode("(Alt + 3) Opzioni", 16, 16, new System.Windows.Forms.TreeNode[] {
-                tnOpzioniDB,
-                tnCosaNePensi,
-                tnNovita,
-                tnAbout
-            });
-
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("(F9) Cassaforte", 6, 6);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("(F12) Salvadanaio", 21, 21);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("(F4) Portafoglio", 19, 19);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("(F1) Dare", 9, 9);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("(F2) Avere", 2, 2);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("(F5) Saldo", 20, 20);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Movimenti Periodici", 17, 17);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("(Alt +1) Casse", 5, 5, new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("(F3) Cerca", 11, 11);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("(F10) Torta", 18, 18);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("(F11) Grafico", 12, 12);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("(F6) Calendario", 4, 4);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("(F7) Calcolatrice", 3, 3);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Macro aree", 14, 14);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Controlla movimenti periodici", 8, 8);
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Controlla promemoria", 7, 7);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("(Alt + 2) Strumenti", 23, 23, new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("(F8) Opzioni DB", 10, 10);
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Cosa ne pensi?", 15, 15);
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Novità", 22, 22);
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("About", 0, 0);
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("(Alt + 3) Opzioni", 16, 16, new System.Windows.Forms.TreeNode[] {
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
-
             this.pLeft = new System.Windows.Forms.Panel();
             this.cAlbero = new System.Windows.Forms.TreeView();
             this.ilAlbero = new System.Windows.Forms.ImageList(this.components);
@@ -100,8 +94,9 @@
             this.pLeft.Controls.Add(this.cAlbero);
             this.pLeft.Controls.Add(this.cUtente1);
             this.pLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pLeft.Location = new System.Drawing.Point(0, 0);            
-            this.pLeft.Size = new System.Drawing.Size(257, 661);
+            this.pLeft.Location = new System.Drawing.Point(0, 0);
+            this.pLeft.Name = "pLeft";
+            this.pLeft.Size = new System.Drawing.Size(300, 661);
             this.pLeft.TabIndex = 5;
             // 
             // cAlbero
@@ -111,111 +106,112 @@
             this.cAlbero.HideSelection = false;
             this.cAlbero.ImageIndex = 0;
             this.cAlbero.ImageList = this.ilAlbero;
-            this.cAlbero.Location = new System.Drawing.Point(0, 70);            
-            tnGestioneCasse.ImageIndex = 13;
-            tnGestioneCasse.Name = "nGestioneCasse";
-            tnGestioneCasse.SelectedImageIndex = 13;
-            tnGestioneCasse.Text = "Gestione casse";
-            tnCassaforte.ImageIndex = 6;
-            tnCassaforte.Name = "nCassaforte";
-            tnCassaforte.SelectedImageIndex = 6;
-            tnCassaforte.Tag = "Cassaforte";
-            tnCassaforte.Text = "(F9) Cassaforte";
-            tnSalvadanaio.ImageIndex = 21;
-            tnSalvadanaio.Name = "nSalvadanaio";
-            tnSalvadanaio.SelectedImageIndex = 21;
-            tnSalvadanaio.Tag = "Salvadanaio";
-            tnSalvadanaio.Text = "(F12) Salvadanaio";
-            tnPortafoglio.ImageIndex = 19;
-            tnPortafoglio.Name = "nPortafoglio";
-            tnPortafoglio.SelectedImageIndex = 19;
-            tnPortafoglio.Tag = "Portafogli";
-            tnPortafoglio.Text = "(F4) Portafoglio";
-            tnDare.ImageIndex = 9;
-            tnDare.Name = "nDare";
-            tnDare.SelectedImageIndex = 9;
-            tnDare.Tag = "Dare";
-            tnDare.Text = "(F1) Dare";
-            tnAvere.ImageIndex = 2;
-            tnAvere.Name = "nAvere";
-            tnAvere.SelectedImageIndex = 2;
-            tnAvere.Tag = "Avere";
-            tnAvere.Text = "(F2) Avere";
-            tnSaldo.ImageIndex = 20;
-            tnSaldo.Name = "nSaldo";
-            tnSaldo.SelectedImageIndex = 20;
-            tnSaldo.Tag = "Saldo";
-            tnSaldo.Text = "(F5) Saldo";
-            tnMovimentiPeriodici.ImageIndex = 17;
-            tnMovimentiPeriodici.Name = "nMovimentiPeriodici";
-            tnMovimentiPeriodici.SelectedImageIndex = 17;
-            tnMovimentiPeriodici.Text = "Movimenti Periodici";
-            tnCasse.ImageIndex = 5;
-            tnCasse.Name = "nCasse";            
-            tnCasse.SelectedImageIndex = 5;
-            tnCasse.Text = "(Alt +1) Casse";
-            tnCerca.ImageIndex = 11;
-            tnCerca.Name = "nCerca";
-            tnCerca.SelectedImageIndex = 11;
-            tnCerca.Text = "(F3) Cerca";
-            tnTorta.ImageIndex = 18;
-            tnTorta.Name = "nTorta";
-            tnTorta.SelectedImageIndex = 18;
-            tnTorta.Text = "(F10) Torta";
-            tnGrafico.ImageIndex = 12;
-            tnGrafico.Name = "nGrafico";
-            tnGrafico.SelectedImageIndex = 12;
-            tnGrafico.Text = "(F11) Grafico";
-            tnCalendario.ImageIndex = 4;
-            tnCalendario.Name = "nCalendario";
-            tnCalendario.SelectedImageIndex = 4;
-            tnCalendario.Text = "(F6) Calendario";
-            tnCalcolatrice.ImageIndex = 3;
-            tnCalcolatrice.Name = "nCalcolatrice";
-            tnCalcolatrice.SelectedImageIndex = 3;
-            tnCalcolatrice.Text = "(F7) Calcolatrice";
-            tnMacroaree.ImageIndex = 14;
-            tnMacroaree.Name = "nMacroAree";
-            tnMacroaree.SelectedImageIndex = 14;
-            tnMacroaree.Text = "Macro aree";
-            tnControllaMovimentiPeriodici.ImageIndex = 8;
-            tnControllaMovimentiPeriodici.Name = "nControllaMovimentiPeriodici";
-            tnControllaMovimentiPeriodici.SelectedImageIndex = 8;
-            tnControllaMovimentiPeriodici.Text = "Controlla movimenti periodici";
-            tnControllaPromemoria.ImageIndex = 7;
-            tnControllaPromemoria.Name = "nControllaPromemoria";
-            tnControllaPromemoria.SelectedImageIndex = 7;
-            tnControllaPromemoria.Text = "Controlla promemoria";
-            tnStrumenti.ImageIndex = 23;
-            tnStrumenti.Name = "nStrumenti";
-            tnStrumenti.SelectedImageIndex = 23;
-            tnStrumenti.Text = "(Alt + 2) Strumenti";
-            tnOpzioniDB.ImageIndex = 10;
-            tnOpzioniDB.Name = "nOpzioniDB";
-            tnOpzioniDB.SelectedImageIndex = 10;
-            tnOpzioniDB.Text = "(F8) Opzioni DB";
-            tnCosaNePensi.ImageIndex = 15;
-            tnCosaNePensi.Name = "nCosaNePensi";
-            tnCosaNePensi.SelectedImageIndex = 15;
-            tnCosaNePensi.Text = "Cosa ne pensi?";
-            tnNovita.ImageIndex = 22;
-            tnNovita.Name = "nNovita";
-            tnNovita.SelectedImageIndex = 22;
-            tnNovita.Text = "Novità";
-            tnAbout.ImageIndex = 0;
-            tnAbout.Name = "nAbout";
-            tnAbout.SelectedImageIndex = 0;
-            tnAbout.Text = "About";
-            tnOpzioni.ImageIndex = 16;
-            tnOpzioni.Name = "nOpzioni";
-            tnOpzioni.SelectedImageIndex = 16;
-            tnOpzioni.Text = "(Alt + 3) Opzioni";
+            this.cAlbero.Location = new System.Drawing.Point(0, 70);
+            this.cAlbero.Name = "cAlbero";
+            treeNode1.ImageIndex = 13;
+            treeNode1.Name = "nGestioneCasse";
+            treeNode1.SelectedImageIndex = 13;
+            treeNode1.Text = "Gestione casse";
+            treeNode2.ImageIndex = 6;
+            treeNode2.Name = "nCassaforte";
+            treeNode2.SelectedImageIndex = 6;
+            treeNode2.Tag = "Cassaforte";
+            treeNode2.Text = "(F9) Cassaforte";
+            treeNode3.ImageIndex = 21;
+            treeNode3.Name = "nSalvadanaio";
+            treeNode3.SelectedImageIndex = 21;
+            treeNode3.Tag = "Salvadanaio";
+            treeNode3.Text = "(F12) Salvadanaio";
+            treeNode4.ImageIndex = 19;
+            treeNode4.Name = "nPortafoglio";
+            treeNode4.SelectedImageIndex = 19;
+            treeNode4.Tag = "Portafogli";
+            treeNode4.Text = "(F4) Portafoglio";
+            treeNode5.ImageIndex = 9;
+            treeNode5.Name = "nDare";
+            treeNode5.SelectedImageIndex = 9;
+            treeNode5.Tag = "Dare";
+            treeNode5.Text = "(F1) Dare";
+            treeNode6.ImageIndex = 2;
+            treeNode6.Name = "nAvere";
+            treeNode6.SelectedImageIndex = 2;
+            treeNode6.Tag = "Avere";
+            treeNode6.Text = "(F2) Avere";
+            treeNode7.ImageIndex = 20;
+            treeNode7.Name = "nSaldo";
+            treeNode7.SelectedImageIndex = 20;
+            treeNode7.Tag = "Saldo";
+            treeNode7.Text = "(F5) Saldo";
+            treeNode8.ImageIndex = 17;
+            treeNode8.Name = "nMovimentiPeriodici";
+            treeNode8.SelectedImageIndex = 17;
+            treeNode8.Text = "Movimenti Periodici";
+            treeNode9.ImageIndex = 5;
+            treeNode9.Name = "nCasse";
+            treeNode9.SelectedImageIndex = 5;
+            treeNode9.Text = "(Alt +1) Casse";
+            treeNode10.ImageIndex = 11;
+            treeNode10.Name = "nCerca";
+            treeNode10.SelectedImageIndex = 11;
+            treeNode10.Text = "(F3) Cerca";
+            treeNode11.ImageIndex = 18;
+            treeNode11.Name = "nTorta";
+            treeNode11.SelectedImageIndex = 18;
+            treeNode11.Text = "(F10) Torta";
+            treeNode12.ImageIndex = 12;
+            treeNode12.Name = "nGrafico";
+            treeNode12.SelectedImageIndex = 12;
+            treeNode12.Text = "(F11) Grafico";
+            treeNode13.ImageIndex = 4;
+            treeNode13.Name = "nCalendario";
+            treeNode13.SelectedImageIndex = 4;
+            treeNode13.Text = "(F6) Calendario";
+            treeNode14.ImageIndex = 3;
+            treeNode14.Name = "nCalcolatrice";
+            treeNode14.SelectedImageIndex = 3;
+            treeNode14.Text = "(F7) Calcolatrice";
+            treeNode15.ImageIndex = 14;
+            treeNode15.Name = "nMacroAree";
+            treeNode15.SelectedImageIndex = 14;
+            treeNode15.Text = "Macro aree";
+            treeNode16.ImageIndex = 8;
+            treeNode16.Name = "nControllaMovimentiPeriodici";
+            treeNode16.SelectedImageIndex = 8;
+            treeNode16.Text = "Controlla movimenti periodici";
+            treeNode17.ImageIndex = 7;
+            treeNode17.Name = "nControllaPromemoria";
+            treeNode17.SelectedImageIndex = 7;
+            treeNode17.Text = "Controlla promemoria";
+            treeNode18.ImageIndex = 23;
+            treeNode18.Name = "nStrumenti";
+            treeNode18.SelectedImageIndex = 23;
+            treeNode18.Text = "(Alt + 2) Strumenti";
+            treeNode19.ImageIndex = 10;
+            treeNode19.Name = "nOpzioniDB";
+            treeNode19.SelectedImageIndex = 10;
+            treeNode19.Text = "(F8) Opzioni DB";
+            treeNode20.ImageIndex = 15;
+            treeNode20.Name = "nCosaNePensi";
+            treeNode20.SelectedImageIndex = 15;
+            treeNode20.Text = "Cosa ne pensi?";
+            treeNode21.ImageIndex = 22;
+            treeNode21.Name = "nNovita";
+            treeNode21.SelectedImageIndex = 22;
+            treeNode21.Text = "Novità";
+            treeNode22.ImageIndex = 0;
+            treeNode22.Name = "nAbout";
+            treeNode22.SelectedImageIndex = 0;
+            treeNode22.Text = "About";
+            treeNode23.ImageIndex = 16;
+            treeNode23.Name = "nOpzioni";
+            treeNode23.SelectedImageIndex = 16;
+            treeNode23.Text = "(Alt + 3) Opzioni";
             this.cAlbero.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            tnCasse,
-            tnStrumenti,
-            tnOpzioni});
+            treeNode9,
+            treeNode18,
+            treeNode23});
             this.cAlbero.SelectedImageIndex = 0;
-            this.cAlbero.Size = new System.Drawing.Size(257, 591);
+            this.cAlbero.Size = new System.Drawing.Size(300, 591);
             this.cAlbero.TabIndex = 7;
             this.cAlbero.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.advTree1_NodeMouseClick);
             // 
@@ -255,7 +251,7 @@
             this.cUtente1.Dock = System.Windows.Forms.DockStyle.Top;
             this.cUtente1.Location = new System.Drawing.Point(0, 0);
             this.cUtente1.Name = "cUtente1";
-            this.cUtente1.Size = new System.Drawing.Size(257, 70);
+            this.cUtente1.Size = new System.Drawing.Size(300, 70);
             this.cUtente1.TabIndex = 6;
             // 
             // tcSchede
@@ -263,11 +259,11 @@
             this.tcSchede.ContextMenuStrip = this.contextMenuStrip1;
             this.tcSchede.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcSchede.ImageList = this.ilTabs;
-            this.tcSchede.Location = new System.Drawing.Point(257, 0);
+            this.tcSchede.Location = new System.Drawing.Point(300, 0);
             this.tcSchede.Name = "tcSchede";
             this.tcSchede.SelectedIndex = 0;
-            this.tcSchede.Size = new System.Drawing.Size(727, 624);
-            this.tcSchede.TabIndex = 6;            
+            this.tcSchede.Size = new System.Drawing.Size(684, 624);
+            this.tcSchede.TabIndex = 6;
             this.tcSchede.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tcSchede_MouseClick);
             // 
             // contextMenuStrip1
@@ -296,16 +292,16 @@
             this.pQuickInserimento.Controls.Add(this.bNuovoGiroconto);
             this.pQuickInserimento.Controls.Add(this.bNuovoMovimento);
             this.pQuickInserimento.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pQuickInserimento.Location = new System.Drawing.Point(257, 624);
+            this.pQuickInserimento.Location = new System.Drawing.Point(300, 624);
             this.pQuickInserimento.Name = "pQuickInserimento";
-            this.pQuickInserimento.Size = new System.Drawing.Size(727, 37);
+            this.pQuickInserimento.Size = new System.Drawing.Size(684, 37);
             this.pQuickInserimento.TabIndex = 7;
             // 
             // bNuovoGiroconto
             // 
             this.bNuovoGiroconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bNuovoGiroconto.Image = global::RationesCurare7.Properties.Resources.giroconto;
-            this.bNuovoGiroconto.Location = new System.Drawing.Point(595, 6);
+            this.bNuovoGiroconto.Location = new System.Drawing.Point(552, 6);
             this.bNuovoGiroconto.Name = "bNuovoGiroconto";
             this.bNuovoGiroconto.Size = new System.Drawing.Size(120, 25);
             this.bNuovoGiroconto.TabIndex = 1;
@@ -318,7 +314,7 @@
             // 
             this.bNuovoMovimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bNuovoMovimento.Image = global::RationesCurare7.Properties.Resources.Add32;
-            this.bNuovoMovimento.Location = new System.Drawing.Point(469, 6);
+            this.bNuovoMovimento.Location = new System.Drawing.Point(426, 6);
             this.bNuovoMovimento.Name = "bNuovoMovimento";
             this.bNuovoMovimento.Size = new System.Drawing.Size(120, 25);
             this.bNuovoMovimento.TabIndex = 0;
@@ -335,7 +331,7 @@
             this.Controls.Add(this.pLeft);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(1000, 700);
+            this.MinimumSize = new System.Drawing.Size(1000, 678);
             this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RationesCurare7 - [MAIONE MIKY]";
