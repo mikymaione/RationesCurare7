@@ -181,6 +181,9 @@ namespace RationesCurare7.UI.Forms
 
             if (CasseAggiuntive != null)
                 if (CasseAggiuntive.Count > 0)
+                {
+                    var sette = 7;
+
                     foreach (var caz in CasseAggiuntive)
                     {
                         if (!ilAlbero.Images.ContainsKey(caz.nome))
@@ -195,8 +198,10 @@ namespace RationesCurare7.UI.Forms
                             SelectedImageKey = caz.nome
                         };
 
-                        nCasse.Nodes.Insert(7, n);
+                        nCasse.Nodes.Insert(sette, n);
+                        sette++;
                     }
+                }
         }
 
         private Image ImageFromByte(byte[] img)
@@ -698,12 +703,18 @@ namespace RationesCurare7.UI.Forms
                 var treeNodeName = "";
                 cAlbero.Select();
 
-                if (e.KeyCode == Keys.D1)
-                    treeNodeName = "nCasse";
-                else if (e.KeyCode == Keys.D2)
-                    treeNodeName = "nStrumenti";
-                else if (e.KeyCode == Keys.D3)
-                    treeNodeName = "nOpzioni";
+                switch (e.KeyCode)
+                {
+                    case Keys.D1:
+                        treeNodeName = "nCasse";
+                        break;
+                    case Keys.D2:
+                        treeNodeName = "nStrumenti";
+                        break;
+                    case Keys.D3:
+                        treeNodeName = "nOpzioni";
+                        break;
+                }
 
                 if (!treeNodeName.Equals(""))
                 {
@@ -720,65 +731,54 @@ namespace RationesCurare7.UI.Forms
             }
             else
             {
-                if (e.KeyCode == Keys.Escape)
+                switch (e.KeyCode)
                 {
-                    ChiudiSchedaCorrente();
-                }
-                else if (e.KeyCode == Keys.Enter)
-                {
-                    if (cAlbero.SelectedNode != null)
-                    {
-                        LastSelectedNode = cAlbero.SelectedNode;
-                        button_NodeClick(cAlbero.SelectedNode);
-                    }
-                }
-                else if (e.KeyCode == Keys.F1)
-                {
-                    Action(eActions.Dare);
-                }
-                else if (e.KeyCode == Keys.F2)
-                {
-                    Action(eActions.Avere);
-                }
-                else if (e.KeyCode == Keys.F3)
-                {
-                    Action(eActions.Cerca);
-                }
-                else if (e.KeyCode == Keys.F4)
-                {
-                    Action(eActions.Portafogli);
-                }
-                else if (e.KeyCode == Keys.F5)
-                {
-                    Action(eActions.Saldo);
-                }
-                else if (e.KeyCode == Keys.F6)
-                {
-                    Action(eActions.Calendario);
-                }
-                else if (e.KeyCode == Keys.F7)
-                {
-                    Action(eActions.Calcolatrice);
-                }
-                else if (e.KeyCode == Keys.F8)
-                {
-                    Action(eActions.OpzioniDB);
-                }
-                else if (e.KeyCode == Keys.F9)
-                {
-                    Action(eActions.Cassaforte);
-                }
-                else if (e.KeyCode == Keys.F10)
-                {
-                    Action(eActions.Torta);
-                }
-                else if (e.KeyCode == Keys.F11)
-                {
-                    Action(eActions.Grafico);
-                }
-                else if (e.KeyCode == Keys.F12)
-                {
-                    Action(eActions.Salvadanaio);
+                    case Keys.Escape:
+                        ChiudiSchedaCorrente();
+                        break;
+                    case Keys.Enter:
+                        if (cAlbero.SelectedNode != null)
+                        {
+                            LastSelectedNode = cAlbero.SelectedNode;
+                            button_NodeClick(cAlbero.SelectedNode);
+                        }
+                        break;
+                    case Keys.F1:
+                        Action(eActions.Dare);
+                        break;
+                    case Keys.F2:
+                        Action(eActions.Avere);
+                        break;
+                    case Keys.F3:
+                        Action(eActions.Cerca);
+                        break;
+                    case Keys.F4:
+                        Action(eActions.Portafogli);
+                        break;
+                    case Keys.F5:
+                        Action(eActions.Saldo);
+                        break;
+                    case Keys.F6:
+                        Action(eActions.Calendario);
+                        break;
+                    case Keys.F7:
+                        Action(eActions.Calcolatrice);
+                        break;
+                    case Keys.F8:
+                        Action(eActions.OpzioniDB);
+                        break;
+                    case Keys.F9:
+                        Action(eActions.Cassaforte);
+                        break;
+                    case Keys.F10:
+                        Action(eActions.Torta);
+                        break;
+                    case Keys.F11:
+                        Action(eActions.Grafico);
+                        break;
+                    case Keys.F12:
+                        Action(eActions.Salvadanaio);
+                        break;
                 }
             }
         }

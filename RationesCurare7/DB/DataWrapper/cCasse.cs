@@ -130,7 +130,7 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var cc = new List<cCasse>();
 
-            using (var dr = DB.cDB.EseguiSQLDataReader(DB.cDB.LeggiQuery(cDB.Queries.Casse_Ricerca)))
+            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Casse_Ricerca)))
             {
                 if (dr.HasRows)
                 {
