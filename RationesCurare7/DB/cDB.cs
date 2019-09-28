@@ -41,7 +41,9 @@ namespace RationesCurare7.DB
             Movimenti_GraficoAnnuale,
             Movimenti_GraficoMensile,
             Movimenti_GraficoSaldo,
+            Movimenti_GraficoSaldoSpline,
             Movimenti_GraficoTortaSaldo,
+            Movimenti_GraficoSplineAnnuale,
             Movimenti_Data,
             Casse_Ricerca,
             Casse_Elimina,
@@ -110,10 +112,12 @@ namespace RationesCurare7.DB
                 new sQueriesGiaLette(){ Query = Queries.Periodici_Elimina },
                 new sQueriesGiaLette(){ Query = Queries.Periodici_Inserisci },
                 new sQueriesGiaLette(){ Query = Queries.Periodici_Aggiorna },
+                new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSplineAnnuale },
                 new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoTorta },
                 new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoAnnuale },
                 new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoMensile },
                 new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSaldo },
+                new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSaldoSpline },
                 new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoTortaSaldo },
                 new sQueriesGiaLette(){ Query = Queries.Utenti_Lista },
                 new sQueriesGiaLette(){ Query = Queries.Utenti_Inserisci },
@@ -193,8 +197,14 @@ namespace RationesCurare7.DB
                 case Queries.Movimenti_GraficoSaldo:
                     s = "Movimenti_GraficoSaldo";
                     break;
+                case Queries.Movimenti_GraficoSaldoSpline:
+                    s = "Movimenti_GraficoSaldoSpline";
+                    break;
                 case Queries.Movimenti_GraficoTortaSaldo:
                     s = "Movimenti_GraficoTortaSaldo";
+                    break;
+                case Queries.Movimenti_GraficoSplineAnnuale:
+                    s = "Movimenti_GraficoSplineAnnuale";
                     break;
                 case Queries.Movimenti_Data:
                     s = "Movimenti_Data";
@@ -427,7 +437,7 @@ namespace RationesCurare7.DB
                 cm = new System.Data.SQLite.SQLiteCommand(sql, (System.Data.SQLite.SQLiteConnection)Connessione);
 #endif
 
-            if ((param != null))
+            if (param != null)
                 for (var x = 0; x <= param.Length - 1; x++)
                 {
                     if (param[x].DbType == DbType.Decimal)

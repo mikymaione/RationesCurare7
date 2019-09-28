@@ -27,6 +27,7 @@ namespace RationesCurare7.UI.Forms
             Salvadanaio,
             Cerca,
             Grafico,
+            GraficoSpline,
             Torta,
             Calendario,
             Calcolatrice,
@@ -613,6 +614,10 @@ namespace RationesCurare7.UI.Forms
                         cGB.MsgBox("Non ricorre nessun movimento periodico.");
                 }
             }
+            else if (a == eActions.GraficoSpline)
+            {
+                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoSpline", "Grafico a linee", Properties.Resources.grafico32);
+            }
             else if (a == eActions.Grafico)
             {
                 AddNewTabGrafico("RationesCurare7.UI.Controlli.cGrafico", "Grafico", Properties.Resources.grafico32);
@@ -809,6 +814,8 @@ namespace RationesCurare7.UI.Forms
                 Action(eActions.Dare);
             else if (s.Name.Equals("nGrafico"))
                 Action(eActions.Grafico);
+            else if (s.Name.Equals("nGraficoSpline"))
+                Action(eActions.GraficoSpline);
             else if (s.Name.Equals("nTorta"))
                 Action(eActions.Torta);
             else if (s.Name.Equals("nMovimentiPeriodici"))

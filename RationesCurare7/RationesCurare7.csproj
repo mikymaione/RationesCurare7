@@ -166,6 +166,12 @@
     <Compile Include="UI\Controlli\cGrafico.Designer.cs">
       <DependentUpon>cGrafico.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controlli\cGraficoSpline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controlli\cGraficoSpline.Designer.cs">
+      <DependentUpon>cGraficoSpline.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controlli\cGroupList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -427,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Controlli\cGrafico.resx">
       <DependentUpon>cGrafico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controlli\cGraficoSpline.resx">
+      <DependentUpon>cGraficoSpline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Controlli\cGroupList.resx">
       <DependentUpon>cGroupList.cs</DependentUpon>
@@ -773,6 +782,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DB\DBW\Movimenti_GraficoSaldo.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoSaldoSpline.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\Movimenti_GraficoSplineAnnuale.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DB\DBW\Movimenti_GraficoTorta.sql">

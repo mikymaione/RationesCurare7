@@ -6,9 +6,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Collections.Generic;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -277,18 +277,21 @@ namespace RationesCurare7.DB.DataWrapper
             return cDB.EseguiSQLDataTable(query, p, colonne);
         }
 
-        public double RicercaGraficoSaldo()
+        public double RicercaGraficoSaldo(bool UsaParametri = true)
         {
-            var x = -1;
             var d = 0D;
-            var p = new DbParameter[4];
 
-            p[x += 1] = DB.cDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione));
-            p[x += 1] = DB.cDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea));
-            p[x += 1] = DB.cDB.NewPar("DataDa", DataDa);
-            p[x += 1] = DB.cDB.NewPar("DataA", DataA);
+            var p = (UsaParametri ?
+                new DbParameter[] {
+                    cDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
+                    cDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
+                    cDB.NewPar("DataDa", DataDa),
+                    cDB.NewPar("DataA", DataA),
+                } :
+                new DbParameter[0]
+            );
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_GraficoSaldo), p))
+            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(UsaParametri ? cDB.Queries.Movimenti_GraficoSaldo : cDB.Queries.Movimenti_GraficoSaldoSpline), p))
             {
                 if (dr.HasRows)
                     while (dr.Read())
@@ -319,6 +322,13 @@ namespace RationesCurare7.DB.DataWrapper
             }
 
             return d;
+        }
+
+        public DbDataReader RicercaGraficoSpline()
+        {
+            var s = cDB.LeggiQuery(cDB.Queries.Movimenti_GraficoSplineAnnuale);
+
+            return cDB.EseguiSQLDataReader(s);
         }
 
         public DbDataReader RicercaGrafico(bool Annuale)
