@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_02F2205E32DF422A94D71AF49B4F7894"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_04316957E5774098A6325EB661AF3367"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,6 +82,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1E38043C7DEF4D61B6521AACD6039AE4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1F001B9C844A41DA883DC51D44304C63"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -628,37 +640,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7DBAFBD9F025B2B814197046444B0E00"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_911DE9EECD9BED546535C7C0ABF86807"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_148F6D9F5822B0A171AD65462B3BC029"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7A9E9DD003ADE11CB7DCB74CF22CC778"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E46F1CBFD88405F70C9084F3F8C0B70F"
+        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -670,7 +652,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
+        "OwnerKey" = "8:_E46F1CBFD88405F70C9084F3F8C0B70F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7A9E9DD003ADE11CB7DCB74CF22CC778"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_148F6D9F5822B0A171AD65462B3BC029"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_911DE9EECD9BED546535C7C0ABF86807"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7DBAFBD9F025B2B814197046444B0E00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -773,6 +785,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02F2205E32DF422A94D71AF49B4F7894"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSplineAnnuale.sql"
+            "TargetName" = "8:Movimenti_GraficoSplineAnnuale.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04316957E5774098A6325EB661AF3367"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Dettaglio.sql"
@@ -985,6 +1017,26 @@
             "TargetName" = "8:p_Mediolanum.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F001B9C844A41DA883DC51D44304C63"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSaldoSpline.sql"
+            "TargetName" = "8:Movimenti_GraficoSaldoSpline.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
