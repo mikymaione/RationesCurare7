@@ -9,7 +9,7 @@
 
 
 ## Download
-http://www.maionemiky.it/RationesCurare.html
+http://www.maionemiky.it/RationesCurare.shtml
 
 
 ## IDE
