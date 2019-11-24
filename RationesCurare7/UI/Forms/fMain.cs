@@ -160,49 +160,49 @@ namespace RationesCurare7.UI.Forms
 
         public void AggiungiCasseExtra()
         {
-            var defa = new string[] { "", "Cassaforte", "Saldo", "Avere", "Dare", "Salvadanaio", "Portafogli" };
-
-            try
-            {
-                var cas = new DB.DataWrapper.cCasse();
-                CasseAggiuntive = cas.CasseAggiuntive();
-            }
-            catch
-            {
-                //non trovate
-            }
-
-            for (var i = 0; i < nCasse.Nodes.Count; i++)
-                if (nCasse.Nodes[i].Tag != null)
-                    if (!cGB.StringInArray(nCasse.Nodes[i].Tag.ToString(), defa))
-                    {
-                        nCasse.Nodes.RemoveAt(i);
-                        i--;
-                    }
+            var cas = new DB.DataWrapper.cCasse();
+            CasseAggiuntive = cas.CasseAggiuntive(false);
 
             if (CasseAggiuntive != null)
+            {
+                var sette = 7;
+
                 if (CasseAggiuntive.Count > 0)
-                {
-                    var sette = 7;
-
                     foreach (var caz in CasseAggiuntive)
-                    {
-                        if (!ilAlbero.Images.ContainsKey(caz.nome))
-                            ilAlbero.Images.Add(caz.nome, new Bitmap(ImageFromByte(caz.imgName)));
-
-                        var n = new TreeNode(caz.nome)
+                        if (!nCasse.Nodes.ContainsKey(caz.nome))
                         {
-                            Name = caz.nome,
-                            Text = caz.nome,
-                            Tag = caz.nome,
-                            ImageKey = caz.nome,
-                            SelectedImageKey = caz.nome
-                        };
+                            if (!ilAlbero.Images.ContainsKey(caz.nome))
+                                ilAlbero.Images.Add(caz.nome, new Bitmap(ImageFromByte(caz.imgName)));
 
-                        nCasse.Nodes.Insert(sette, n);
-                        sette++;
+                            var n = new TreeNode(caz.nome)
+                            {
+                                Name = caz.nome,
+                                Text = caz.nome,
+                                Tag = caz.nome,
+                                ImageKey = caz.nome,
+                                SelectedImageKey = caz.nome
+                            };
+
+                            nCasse.Nodes.Insert(sette, n);
+                            sette++;
+                        }
+
+                foreach (TreeNode nodo in nCasse.Nodes)
+                    if (nodo.Index > 6)
+                    {
+                        var trovato = false;
+
+                        foreach (var caz in CasseAggiuntive)
+                            if (caz.nome.Equals(nodo.Tag))
+                            {
+                                trovato = true;
+                                break;
+                            }
+
+                        if (!trovato)
+                            nodo.Remove();
                     }
-                }
+            }
         }
 
         private Image ImageFromByte(byte[] img)

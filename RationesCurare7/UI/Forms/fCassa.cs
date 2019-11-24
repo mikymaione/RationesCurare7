@@ -26,9 +26,10 @@ namespace RationesCurare7.UI.Forms
 
                 if (ID__ != "")
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, "", "", null);
+                    var c = new DB.DataWrapper.cCasse(ID__, "", "", null, false);
                     eNome.Text = c.nomenuovo;
                     eValuta.SelectedValue = c.Valuta;
+                    cbNascondi.Checked = c.Nascondi;
                     CaricaIMG(c.imgName);
                 }
             }
@@ -71,10 +72,8 @@ namespace RationesCurare7.UI.Forms
             CaricaIMG();
         }
 
-        private void CaricaIMG()
-        {
+        private void CaricaIMG() =>
             CaricaIMG(null);
-        }
 
         private void CaricaIMG(byte[] b)
         {
@@ -112,9 +111,7 @@ namespace RationesCurare7.UI.Forms
             using (var fs = new System.IO.FileStream(filename_, System.IO.FileMode.Open))
             {
                 var MyData = new byte[fs.Length];
-
                 fs.Read(MyData, 0, (int)fs.Length);
-                fs.Close();
 
                 return MyData;
             }
@@ -140,10 +137,8 @@ namespace RationesCurare7.UI.Forms
             return tot;
         }
 
-        private void bSalva_Click(object sender, EventArgs e)
-        {
+        private void bSalva_Click(object sender, EventArgs e) =>
             Salva();
-        }
 
         private void Salva()
         {
@@ -161,7 +156,7 @@ namespace RationesCurare7.UI.Forms
                 }
                 else
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, eValuta.SelectedValue as string, ImageByte);
+                    var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, eValuta.SelectedValue as string, ImageByte, cbNascondi.Checked);
 
                     if (c.Salva() <= 0)
                     {
@@ -170,7 +165,7 @@ namespace RationesCurare7.UI.Forms
                     else
                     {
                         AggiornaAlbero();
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        this.DialogResult = DialogResult.OK;
                     }
                 }
             }

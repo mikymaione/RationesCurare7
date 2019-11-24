@@ -241,13 +241,20 @@ namespace RationesCurare7
             return (h + "." + m);
         }
 
-        public static System.Windows.Forms.DialogResult MsgBox(Exception s) => MsgBox(s.Message, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        public static System.Windows.Forms.DialogResult MsgBox(Exception s) =>
+            MsgBox(s.Message, System.Windows.Forms.MessageBoxIcon.Exclamation);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s) => MsgBox(s, System.Windows.Forms.MessageBoxIcon.Information);
+        public static System.Windows.Forms.DialogResult MsgBox(string s) =>
+            MsgBox(s, System.Windows.Forms.MessageBoxIcon.Information);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxIcon ico) => MsgBox(s, System.Windows.Forms.MessageBoxButtons.OK, ico);
+        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxIcon ico) =>
+            MsgBox(s, System.Windows.Forms.MessageBoxButtons.OK, ico);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxButtons but, System.Windows.Forms.MessageBoxIcon ico, bool TopMost = false) => System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form() { TopMost = true }, s, "RationesCurare7", but, ico);
+        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxButtons but, System.Windows.Forms.MessageBoxIcon ico, bool TopMost = false) =>
+            System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form() { TopMost = true }, s, "RationesCurare7", but, ico);
+
+        public static DateTime ObjectToDateTime(object o, DateTime defa, int addDays) =>
+            ObjectToDateTime(o, defa).AddDays(addDays);
 
         public static DateTime ObjectToDateTime(object o, DateTime defa)
         {
@@ -268,7 +275,8 @@ namespace RationesCurare7
             return d;
         }
 
-        public static DateTime ObjectToDateTime(object o) => ObjectToDateTime(o, DateTime.MinValue);
+        public static DateTime ObjectToDateTime(object o) =>
+            ObjectToDateTime(o, DateTime.MinValue);
 
         public static double ObjectToDouble(object o, double Default_ = 0)
         {
@@ -286,7 +294,8 @@ namespace RationesCurare7
             return d;
         }
 
-        public static double ObjectToMoney(object o) => ObjectToMoney(o, 0);
+        public static double ObjectToMoney(object o) =>
+            ObjectToMoney(o, 0);
 
         public static double ObjectToMoney(object o, double default_)
         {

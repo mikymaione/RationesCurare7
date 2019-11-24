@@ -37,6 +37,7 @@
             this.pbCassa = new System.Windows.Forms.PictureBox();
             this.eValuta = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbNascondi = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCassa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 106);
+            this.label2.Location = new System.Drawing.Point(12, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -61,10 +62,10 @@
             // bCercaImmagine
             // 
             this.bCercaImmagine.Image = global::RationesCurare7.Properties.Resources.zoom;
-            this.bCercaImmagine.Location = new System.Drawing.Point(82, 129);
+            this.bCercaImmagine.Location = new System.Drawing.Point(82, 140);
             this.bCercaImmagine.Name = "bCercaImmagine";
             this.bCercaImmagine.Size = new System.Drawing.Size(84, 25);
-            this.bCercaImmagine.TabIndex = 2;
+            this.bCercaImmagine.TabIndex = 3;
             this.bCercaImmagine.Text = "Scegli ...";
             this.bCercaImmagine.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bCercaImmagine.UseVisualStyleBackColor = true;
@@ -73,10 +74,10 @@
             // bSalva
             // 
             this.bSalva.Image = global::RationesCurare7.Properties.Resources.disk;
-            this.bSalva.Location = new System.Drawing.Point(15, 177);
+            this.bSalva.Location = new System.Drawing.Point(15, 188);
             this.bSalva.Name = "bSalva";
             this.bSalva.Size = new System.Drawing.Size(84, 25);
-            this.bSalva.TabIndex = 3;
+            this.bSalva.TabIndex = 4;
             this.bSalva.Text = "(F5) Salva";
             this.bSalva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bSalva.UseVisualStyleBackColor = true;
@@ -92,7 +93,7 @@
             // 
             // pbCassa
             // 
-            this.pbCassa.Location = new System.Drawing.Point(15, 122);
+            this.pbCassa.Location = new System.Drawing.Point(15, 133);
             this.pbCassa.Name = "pbCassa";
             this.pbCassa.Size = new System.Drawing.Size(32, 32);
             this.pbCassa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -117,12 +118,23 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Valuta";
             // 
+            // cbNascondi
+            // 
+            this.cbNascondi.AutoSize = true;
+            this.cbNascondi.Location = new System.Drawing.Point(15, 97);
+            this.cbNascondi.Name = "cbNascondi";
+            this.cbNascondi.Size = new System.Drawing.Size(71, 17);
+            this.cbNascondi.TabIndex = 2;
+            this.cbNascondi.Text = "Nascosta";
+            this.cbNascondi.UseVisualStyleBackColor = true;
+            // 
             // fCassa
             // 
             this.AcceptButton = this.bSalva;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 215);
+            this.ClientSize = new System.Drawing.Size(267, 220);
+            this.Controls.Add(this.cbNascondi);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.eValuta);
             this.Controls.Add(this.pbCassa);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.PictureBox pbCassa;
         private System.Windows.Forms.ComboBox eValuta;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cbNascondi;
     }
 }
