@@ -18,6 +18,7 @@ namespace RationesCurare7.DB.DataWrapper
         public DateTime UltimoAggiornamentoDB = DateTime.Now.AddYears(-10);
         public DateTime UltimaModifica = DateTime.Now.AddYears(-5);
 
+
         public cUtente() : this(-1) { }
 
         public cUtente(int ID_)
@@ -29,48 +30,51 @@ namespace RationesCurare7.DB.DataWrapper
         public void SetTipoDBByExtension(string ext)
         {
             ext = ext.Replace(".", "");
-            TipoDB = (ext.Equals("rqd8", StringComparison.OrdinalIgnoreCase) ? "S" : "A");
+            TipoDB = ext.Equals("rqd8", StringComparison.OrdinalIgnoreCase) ? "S" : "A";
         }
 
-        public int Salva() => (ID < 0 ? Inserisci() : Aggiorna());
+        public int Salva() =>
+            ID < 0 ? Inserisci() : Aggiorna();
 
-        private int Aggiorna() => cDB.EseguiSQLNoQuery(
-            cDB.LeggiQuery(cDB.Queries.Utenti_Aggiorna),
-            new DbParameter[] {
-                cDB.NewPar("nome", nome),
-                cDB.NewPar("psw", psw),
-                cDB.NewPar("path", path),
-                cDB.NewPar("Email", Email),
-                cDB.NewPar("TipoDB", TipoDB),
-                cDB.NewPar("ID", ID)
-            }
-        );
+        private int Aggiorna() =>
+            cDB.EseguiSQLNoQuery(
+                cDB.LeggiQuery(cDB.Queries.Utenti_Aggiorna),
+                new DbParameter[] {
+                    cDB.NewPar("nome", nome),
+                    cDB.NewPar("psw", psw),
+                    cDB.NewPar("path", path),
+                    cDB.NewPar("Email", Email),
+                    cDB.NewPar("TipoDB", TipoDB),
+                    cDB.NewPar("ID", ID)
+                }
+            );
 
-        private int Inserisci() => cDB.EseguiSQLNoQuery(
-            cDB.LeggiQuery(cDB.Queries.Utenti_Inserisci),
-            new DbParameter[] {
-                cDB.NewPar("nome", nome),
-                cDB.NewPar("psw", psw),
-                cDB.NewPar("path", path),
-                cDB.NewPar("Email", Email),
-                cDB.NewPar("TipoDB", TipoDB),
-                cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB)
-            }
-        );
+        private int Inserisci() =>
+            cDB.EseguiSQLNoQuery(
+                cDB.LeggiQuery(cDB.Queries.Utenti_Inserisci),
+                new DbParameter[] {
+                    cDB.NewPar("nome", nome),
+                    cDB.NewPar("psw", psw),
+                    cDB.NewPar("path", path),
+                    cDB.NewPar("Email", Email),
+                    cDB.NewPar("TipoDB", TipoDB),
+                    cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB)
+                }
+            );
 
-        public int Elimina(int ID__) => cDB.EseguiSQLNoQuery(
-            cDB.LeggiQuery(cDB.Queries.Utenti_Elimina),
-            new DbParameter[] {
-                cDB.NewPar("ID", ID__)
-            }
-        );
+        public int Elimina(int ID__) =>
+            cDB.EseguiSQLNoQuery(
+                cDB.LeggiQuery(cDB.Queries.Utenti_Elimina),
+                new DbParameter[] {
+                    cDB.NewPar("ID", ID__)
+                }
+            );
 
         public List<cUtente> ListaUtenti()
         {
             var cc = new List<cUtente>();
 
             using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Utenti_Lista)))
-            {
                 if (dr.HasRows)
                     while (dr.Read())
                         cc.Add(new cUtente()
@@ -84,26 +88,24 @@ namespace RationesCurare7.DB.DataWrapper
                             TipoDB = dr["TipoDB"].ToString()
                         });
 
-                dr.Close();
-            }
-
             return cc;
         }
 
-        private void CaricaByID(int ID__) => CaricaBy(ID__, "");
+        private void CaricaByID(int ID__) =>
+            CaricaBy(ID__, "");
 
-        public void CaricaByPath(string z) => CaricaBy(-1, z);
+        public void CaricaByPath(string z) =>
+            CaricaBy(-1, z);
 
         private void CaricaBy(int ID__, string path_)
         {
             var q = cDB.LeggiQuery(ID__ == -1 ? cDB.Queries.Utenti_ByPath : cDB.Queries.Utenti_Dettaglio);
 
             var p = new DbParameter[] {
-                (ID__ == -1 ? cDB.NewPar("path", path_) : cDB.NewPar("ID", ID__))
+                ID__ == -1 ? cDB.NewPar("path", path_) : cDB.NewPar("ID", ID__)
             };
 
             using (var dr = cDB.EseguiSQLDataReader(q, p))
-            {
                 if (dr.HasRows)
                     while (dr.Read())
                     {
@@ -116,11 +118,7 @@ namespace RationesCurare7.DB.DataWrapper
                         UltimoAggiornamentoDB = cGB.ObjectToDateTime(dr["UltimoAggiornamentoDB"], DateTime.Now.AddYears(-50));
                         TipoDB = Convert.ToString(dr["TipoDB"]);
                     }
-
-                dr.Close();
-            }
         }
-
 
     }
 }

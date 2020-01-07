@@ -325,7 +325,10 @@ namespace RationesCurare7.DB
 
             try
             {
-                cm.ExecuteNonQuery();
+                var r = cm.ExecuteNonQuery();
+
+                if (r < 1)
+                    throw new Exception("Can not update last modification date on user DB!");
             }
             catch (Exception ex)
             {
@@ -350,6 +353,11 @@ namespace RationesCurare7.DB
                 {
                     UltimaModifica = cGB.DBNow();
                     AggiornaDataDB();
+
+                    if (DBUtentiAggiornati.ContainsKey(cGB.UtenteConnesso.ID))
+                        DBUtentiAggiornati[cGB.UtenteConnesso.ID] = UltimaModifica;
+                    else
+                        DBUtentiAggiornati.Add(cGB.UtenteConnesso.ID, UltimaModifica);
                 }
             }
             catch //(Exception ex)

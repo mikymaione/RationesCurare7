@@ -6,8 +6,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RationesCurare7
 {
@@ -22,7 +20,7 @@ namespace RationesCurare7
         {
             get
             {
-                string p = cGB.PathDBUtenti_Cartella;
+                var p = cGB.PathDBUtenti_Cartella;
                 p = System.IO.Path.Combine(p, "Opzioni.db");
 
                 return p;
@@ -46,12 +44,11 @@ namespace RationesCurare7
             if (System.IO.Directory.Exists(cGB.PathDBUtenti_Cartella))
                 try
                 {
-                    System.IO.FileStream fs = new System.IO.FileStream(FileOpzioni, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
-
-                    System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    bf.Serialize(fs, this);
-
-                    fs.Close();
+                    using (var fs = new System.IO.FileStream(FileOpzioni, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite))
+                    {
+                        var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        bf.Serialize(fs, this);
+                    }
 
                     FileSavedCorrectly = true;
                 }
@@ -66,12 +63,10 @@ namespace RationesCurare7
             if (System.IO.File.Exists(FileOpzioni))
                 try
                 {
-                    using (System.IO.FileStream fs = new System.IO.FileStream(FileOpzioni, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    using (var fs = new System.IO.FileStream(FileOpzioni, System.IO.FileMode.Open, System.IO.FileAccess.Read))
                     {
-                        System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        cOpzioniProgramma t = (cOpzioniProgramma)bf.Deserialize(fs);
-
-                        fs.Close();
+                        var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        var t = (cOpzioniProgramma)bf.Deserialize(fs);
 
                         t.FileReadedCorrectly = true;
 
