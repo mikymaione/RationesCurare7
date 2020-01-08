@@ -17,6 +17,6 @@ Visual Studio 2017 (http://visualstudio.microsoft.com)
 
 
 ## License
-Copyright 2018 (c) [MAIONE MIKY]. All rights reserved.
+Copyright 2008-2020 (c) [MAIONE MIKY]. All rights reserved.
 
 Licensed under the [GNU](LICENSE) License.

@@ -1,6 +1,6 @@
 ﻿/*
 RationesCurare7 - Gestione piccola contabilità
-Copyright (C) 2015 [MAIONE MIKY]
+Copyright (C) 2008 [MAIONE MIKY]
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
@@ -136,12 +136,12 @@ namespace RationesCurare7.UI.Forms
             bPortafoglio.Text = bPortafoglio_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Portafogli"), "portafogli");
             bSalvadanaio.Text = bSalvadanaio_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Salvadanaio"), "salvadanaio");
 
-            bSaldo.ForeColor = (SaldoToColor(m.Saldo("Saldo")));
-            bAvere.ForeColor = (SaldoToColor(m.Saldo("Avere")));
-            bDare.ForeColor = (SaldoToColor(m.Saldo("Dare")));
-            bCassaforte.ForeColor = (SaldoToColor(m.Saldo("Cassaforte")));
-            bPortafoglio.ForeColor = (SaldoToColor(m.Saldo("Portafogli")));
-            bSalvadanaio.ForeColor = (SaldoToColor(m.Saldo("Salvadanaio")));
+            bSaldo.ForeColor = SaldoToColor(m.Saldo("Saldo"));
+            bAvere.ForeColor = SaldoToColor(m.Saldo("Avere"));
+            bDare.ForeColor = SaldoToColor(m.Saldo("Dare"));
+            bCassaforte.ForeColor = SaldoToColor(m.Saldo("Cassaforte"));
+            bPortafoglio.ForeColor = SaldoToColor(m.Saldo("Portafogli"));
+            bSalvadanaio.ForeColor = SaldoToColor(m.Saldo("Salvadanaio"));
 
             if (CasseAggiuntive != null)
                 if (CasseAggiuntive.Count > 0)
@@ -152,7 +152,7 @@ namespace RationesCurare7.UI.Forms
                                 var saldC = m.Saldo(caz.nome);
 
                                 item.Text = caz.nome + ": " + cGB.DoubleToMoneyStringValuta(saldC, caz.nome);
-                                item.ForeColor = (SaldoToColor(saldC));
+                                item.ForeColor = SaldoToColor(saldC);
                             }
 
             cAlbero.Select();
@@ -188,7 +188,7 @@ namespace RationesCurare7.UI.Forms
                         }
 
                 foreach (TreeNode nodo in nCasse.Nodes)
-                    if (nodo.Index > 6)
+                    if (nodo.Index > 6 && nodo.Index < nCasse.Nodes.Count - 1)
                     {
                         var trovato = false;
 
