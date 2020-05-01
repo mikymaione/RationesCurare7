@@ -291,12 +291,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
-        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6A223B7A17DD42FE8CFB8330DF8C0B53"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -519,6 +513,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CA874C7F010848F5AA63BC8D9260CD2C"
+        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CC292AE138174649BD17FB3EF2B8719F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -533,6 +533,12 @@
         {
         "MsmKey" = "8:_D13605BED35544E3B0C9BF5048854246"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D29C1558AFA9F2FF42D62337F134E071"
+        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -634,13 +640,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
+        "OwnerKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
+        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -682,7 +688,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
+        "OwnerKey" = "8:_D29C1558AFA9F2FF42D62337F134E071"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CA874C7F010848F5AA63BC8D9260CD2C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -912,6 +924,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_148F6D9F5822B0A171AD65462B3BC029"
+                    {
+                    "Name" = "8:Microsoft.ReportViewer.WinForms.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.WinForms.dll"
             "TargetName" = "8:"
@@ -1529,6 +1546,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_56108103035D675E35B73E6B135FA008"
+                    {
+                    "Name" = "8:Microsoft.ReportViewer.DataVisualization.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.DataVisualization.dll"
             "TargetName" = "8:"
@@ -1708,32 +1730,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_680AFFA5BD216BAF19FA72BA5E28FEA3"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ILCalc, Version=20.18.4.11, Culture=neutral, PublicKeyToken=5c31270a473b7e3c, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:ILCalc.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A223B7A17DD42FE8CFB8330DF8C0B53"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Saldo.sql"
@@ -1881,6 +1877,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_7A9E9DD003ADE11CB7DCB74CF22CC778"
+                    {
+                    "Name" = "8:Microsoft.ReportViewer.Common.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.Common.dll"
             "TargetName" = "8:"
@@ -1927,6 +1928,11 @@
             "AssemblyAsmDisplayName" = "8:System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_7DBAFBD9F025B2B814197046444B0E00"
+                    {
+                    "Name" = "8:System.Data.SQLite.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Data.SQLite.dll"
             "TargetName" = "8:"
@@ -2153,6 +2159,11 @@
             "AssemblyAsmDisplayName" = "8:ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_911DE9EECD9BED546535C7C0ABF86807"
+                    {
+                    "Name" = "8:ICSharpCode.SharpZipLib.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ICSharpCode.SharpZipLib.dll"
             "TargetName" = "8:"
@@ -2472,6 +2483,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA874C7F010848F5AA63BC8D9260CD2C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ILCalc, Version=20.18.4.11, Culture=neutral, PublicKeyToken=5c31270a473b7e3c, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_CA874C7F010848F5AA63BC8D9260CD2C"
+                    {
+                    "Name" = "8:ILCalc.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ILCalc.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC292AE138174649BD17FB3EF2B8719F"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Elimina.sql"
@@ -2530,6 +2572,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D29C1558AFA9F2FF42D62337F134E071"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FastColoredTextBox, Version=2.16.21.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D29C1558AFA9F2FF42D62337F134E071"
+                    {
+                    "Name" = "8:FastColoredTextBox.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FastColoredTextBox.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2C5EA4B696B4EADBAFF7CE1B356D141"
@@ -2779,6 +2852,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E46F1CBFD88405F70C9084F3F8C0B70F"
+                    {
+                    "Name" = "8:Microsoft.ReportViewer.ProcessingObjectModel.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.ReportViewer.ProcessingObjectModel.dll"
             "TargetName" = "8:"
@@ -3032,15 +3110,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RationesCurare7"
-        "ProductCode" = "8:{71F052E0-0184-4069-B9AE-57EC58C28A69}"
-        "PackageCode" = "8:{4B9B44E3-7C27-4EE6-BD1A-7969BF9D56F3}"
+        "ProductCode" = "8:{36ED52B3-3968-4D96-A76A-26B37256051B}"
+        "PackageCode" = "8:{D968FC05-A3F1-4B6A-977E-709C0CA1FF8E}"
         "UpgradeCode" = "8:{BD521D0C-80D8-4377-B6EF-68783AA9C67C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:20.20.0108"
+        "ProductVersion" = "8:20.20.0501"
         "Manufacturer" = "8:[MAIONE MIKY]"
         "ARPHELPTELEPHONE" = "8:mikymaione@hotmail.it"
         "ARPHELPLINK" = "8:http://www.maionemiky.it"

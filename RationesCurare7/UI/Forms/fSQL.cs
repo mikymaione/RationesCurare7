@@ -12,9 +12,15 @@ namespace RationesCurare7.UI.Forms
     public partial class fSQL : fMyForm
     {
 
-        public fSQL(string query) : this() => eSQL.Text = query;
+        public fSQL(string query) : this()
+        {
+            eSQL.Text = query;
+        }
 
-        public fSQL() => InitializeComponent();
+        public fSQL()
+        {
+            InitializeComponent();
+        }
 
 
         private void bEsegui_Click(object sender, EventArgs e)
@@ -29,7 +35,7 @@ namespace RationesCurare7.UI.Forms
         private System.Data.Common.DbParameter[] GetParamsForSQL()
         {
             using (var fSP = new fSQLParams(eSQL.Text))
-                if (fSP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (fSP.Valori.Count == 0 || fSP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     return DB.cDB.NewPars(fSP.Valori);
 
             return null;

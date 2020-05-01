@@ -17,9 +17,15 @@ namespace RationesCurare7.UI.Controlli
         public string Valore => eValore.Text;
 
 
-        public cParamEdit(string nome) : this() => lNome.Text = nome;
+        public cParamEdit(string nome) : this()
+        {
+            lNome.Text = nome;
+        }
 
-        public cParamEdit() => InitializeComponent();
+        public cParamEdit()
+        {
+            InitializeComponent();
+        }
 
 
     }

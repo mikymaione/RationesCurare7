@@ -35,10 +35,16 @@ namespace RationesCurare7.UI.Forms
                     CreaComponente(p);
         }
 
-        public fSQLParams() => InitializeComponent();
+        public fSQLParams()
+        {
+            InitializeComponent();
+        }
 
 
-        private void CreaComponente(string p) => flowLayoutPanel1.Controls.Add(new Controlli.cParamEdit(p));
+        private void CreaComponente(string p)
+        {
+            flowLayoutPanel1.Controls.Add(new Controlli.cParamEdit(p));
+        }
 
         private object TryParse(string p)
         {

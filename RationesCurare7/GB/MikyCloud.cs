@@ -197,11 +197,12 @@ namespace RationesCurare7.GB
                             br.Close();
                             fStream.Close();
 
-                            var R = srv.UploadFileRC(Credenziali, data, strFile);
+                            var R = srv.UploadFileRC_simple(yyyyMMddHHmmss, Credenziali.Utente, Credenziali.Psw, data, strFile);
+                            //var R = srv.UploadFileRC(Credenziali, data, strFile);
 
                             try
                             {
-                                switch (R)
+                                switch (R.CredenzialiRisultato_)
                                 {
                                     case maionemikyWS.CredenzialiRisultato.TuttoOK:
                                         return true;
