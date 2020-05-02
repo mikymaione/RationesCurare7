@@ -72,238 +72,80 @@ namespace RationesCurare7.DB
             Calendario_AggiornaSerie,
             Calendario_Elimina,
             Calendario_EliminaSerie,
-            Calendario_Dettaglio
+            Calendario_Dettaglio,
+            DBInfo_Dettaglio,
+            DBInfo_Inserisci,
+            DBInfo_Aggiorna
         }
 
-        private struct sQueriesGiaLette
+        private Dictionary<Queries, string> QueriesGiaLette = new Dictionary<Queries, string>();
+
+        public DbConnection Connessione;
+
+        public readonly bool DeveAggiornareData;
+        public DateTime UltimaModifica = DateTime.MinValue;
+        private DataBase DataBaseAttuale = DataBase.Access;
+        public Dictionary<string, DateTime> UltimaDataAggiornamentiUtenti = new Dictionary<string, DateTime>();
+        public Dictionary<string, DateTime> DBUtentiAggiornati = new Dictionary<string, DateTime>();
+
+
+        public cDB(bool DeveAggiornareData_) : this(DeveAggiornareData_, DataBase.Access, "") { }
+
+        public cDB(bool DeveAggiornareData_, DataBase db_) : this(DeveAggiornareData_, db_, "") { }
+
+        public cDB(bool DeveAggiornareData_, string path_db = "") : this(DeveAggiornareData_, DataBase.Access, path_db) { }
+
+        public cDB(bool DeveAggiornareData_, DataBase db_, string path_db = "")
         {
-            public Queries Query;
-            public string SQL;
-        }
+            DataBaseAttuale = db_;
+            DeveAggiornareData = DeveAggiornareData_;
 
-        private static sQueriesGiaLette[] QueriesGiaLette = {
-            new sQueriesGiaLette(){ Query = Queries.Aggiornamenti },
-            new sQueriesGiaLette(){ Query = Queries.AggiornamentiDBUtente },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Aggiorna },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Carica },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Elimina },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Inserisci },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Lista },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Valute },
-            new sQueriesGiaLette(){ Query = Queries.Casse_ListaEX },
-            new sQueriesGiaLette(){ Query = Queries.Casse_Ricerca },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GetMacroAree_E_Descrizioni },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Aggiorna },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_AggiornaMacroAree },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_AutoCompleteSource },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_AutoCompleteSourceMA },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Dettaglio },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Elimina },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Inserisci },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_MovimentiPerCassa },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Ricerca },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Saldo },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_Data },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Dettaglio },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Ricerca },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_RicercaAccess },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Scadenza },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Elimina },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Inserisci },
-            new sQueriesGiaLette(){ Query = Queries.Periodici_Aggiorna },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSplineAnnuale },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoTorta },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoAnnuale },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoMensile },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSaldo },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoSaldoSpline },
-            new sQueriesGiaLette(){ Query = Queries.Movimenti_GraficoTortaSaldo },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_Lista },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_Inserisci },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_Elimina },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_Dettaglio },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_ByPath },
-            new sQueriesGiaLette(){ Query = Queries.Utenti_Aggiorna },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_Ricerca },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_Inserisci },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_Aggiorna },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_AggiornaSerie },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_Elimina },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_EliminaSerie },
-            new sQueriesGiaLette(){ Query = Queries.Calendario_Dettaglio }
-        };
+            var s = DammiStringaConnessione(path_db);
 
-        private static DbConnection Connessione;
-        public static DateTime UltimaModifica = DateTime.MinValue;
-        private static DataBase DataBaseAttuale = DataBase.Access;
-        public static Dictionary<int, DateTime> UltimaDataAggiornamentiUtenti = new Dictionary<int, DateTime>();
-        public static Dictionary<int, DateTime> DBUtentiAggiornati = new Dictionary<int, DateTime>();
-
-        private static string QueriesToString(Queries q)
-        {
-            var s = "";
-
-            switch (q)
+            try
             {
-                case Queries.Aggiornamenti:
-                    s = "Aggiornamenti";
-                    break;
-                case Queries.AggiornamentiDBUtente:
-                    s = "AggiornamentiDBUtente";
-                    break;
-                case Queries.Movimenti_Inserisci:
-                    s = "Movimenti_Inserisci";
-                    break;
-                case Queries.Movimenti_Aggiorna:
-                    s = "Movimenti_Aggiorna";
-                    break;
-                case Queries.Movimenti_AggiornaMacroAree:
-                    s = "Movimenti_AggiornaMacroAree";
-                    break;
-                case Queries.Movimenti_Ricerca:
-                    s = "Movimenti_Ricerca";
-                    break;
-                case Queries.Movimenti_GetMacroAree_E_Descrizioni:
-                    s = "Movimenti_GetMacroAree_E_Descrizioni";
-                    break;
-                case Queries.Movimenti_Saldo:
-                    s = "Movimenti_Saldo";
-                    break;
-                case Queries.Movimenti_Dettaglio:
-                    s = "Movimenti_Dettaglio";
-                    break;
-                case Queries.Movimenti_Elimina:
-                    s = "Movimenti_Elimina";
-                    break;
-                case Queries.Movimenti_AutoCompleteSource:
-                    s = "Movimenti_AutoCompleteSource";
-                    break;
-                case Queries.Movimenti_AutoCompleteSourceMA:
-                    s = "Movimenti_AutoCompleteSourceMA";
-                    break;
-                case Queries.Movimenti_MovimentiPerCassa:
-                    s = "Movimenti_MovimentiPerCassa";
-                    break;
-                case Queries.Movimenti_GraficoTorta:
-                    s = "Movimenti_GraficoTorta";
-                    break;
-                case Queries.Movimenti_GraficoAnnuale:
-                    s = "Movimenti_GraficoAnnuale";
-                    break;
-                case Queries.Movimenti_GraficoMensile:
-                    s = "Movimenti_GraficoMensile";
-                    break;
-                case Queries.Movimenti_GraficoSaldo:
-                    s = "Movimenti_GraficoSaldo";
-                    break;
-                case Queries.Movimenti_GraficoSaldoSpline:
-                    s = "Movimenti_GraficoSaldoSpline";
-                    break;
-                case Queries.Movimenti_GraficoTortaSaldo:
-                    s = "Movimenti_GraficoTortaSaldo";
-                    break;
-                case Queries.Movimenti_GraficoSplineAnnuale:
-                    s = "Movimenti_GraficoSplineAnnuale";
-                    break;
-                case Queries.Movimenti_Data:
-                    s = "Movimenti_Data";
-                    break;
-                case Queries.Casse_Ricerca:
-                    s = "Casse_Ricerca";
-                    break;
-                case Queries.Casse_Lista:
-                    s = "Casse_Lista";
-                    break;
-                case Queries.Casse_ListaEX:
-                    s = "Casse_ListaEX";
-                    break;
-                case Queries.Casse_Valute:
-                    s = "Casse_Valute";
-                    break;
-                case Queries.Casse_Inserisci:
-                    s = "Casse_Inserisci";
-                    break;
-                case Queries.Casse_Aggiorna:
-                    s = "Casse_Aggiorna";
-                    break;
-                case Queries.Casse_Carica:
-                    s = "Casse_Carica";
-                    break;
-                case Queries.Casse_Elimina:
-                    s = "Casse_Elimina";
-                    break;
-                case Queries.Periodici_Dettaglio:
-                    s = "Periodici_Dettaglio";
-                    break;
-                case Queries.Periodici_Ricerca:
-                    s = "Periodici_Ricerca";
-                    break;
-                case Queries.Periodici_RicercaAccess:
-                    s = "Periodici_RicercaAccess";
-                    break;
-                case Queries.Periodici_Scadenza:
-                    s = "Periodici_Scadenza";
-                    break;
-                case Queries.Periodici_Elimina:
-                    s = "Periodici_Elimina";
-                    break;
-                case Queries.Periodici_Inserisci:
-                    s = "Periodici_Inserisci";
-                    break;
-                case Queries.Periodici_Aggiorna:
-                    s = "Periodici_Aggiorna";
-                    break;
-                case Queries.Utenti_Lista:
-                    s = "Utenti_Lista";
-                    break;
-                case Queries.Utenti_Inserisci:
-                    s = "Utenti_Inserisci";
-                    break;
-                case Queries.Utenti_Aggiorna:
-                    s = "Utenti_Aggiorna";
-                    break;
-                case Queries.Utenti_Elimina:
-                    s = "Utenti_Elimina";
-                    break;
-                case Queries.Utenti_Dettaglio:
-                    s = "Utenti_Dettaglio";
-                    break;
-                case Queries.Utenti_ByPath:
-                    s = "Utenti_ByPath";
-                    break;
-                case Queries.Calendario_Ricerca:
-                    s = "Calendario_Ricerca";
-                    break;
-                case Queries.Calendario_Inserisci:
-                    s = "Calendario_Inserisci";
-                    break;
-                case Queries.Calendario_Aggiorna:
-                    s = "Calendario_Aggiorna";
-                    break;
-                case Queries.Calendario_AggiornaSerie:
-                    s = "Calendario_AggiornaSerie";
-                    break;
-                case Queries.Calendario_Elimina:
-                    s = "Calendario_Elimina";
-                    break;
-                case Queries.Calendario_EliminaSerie:
-                    s = "Calendario_EliminaSerie";
-                    break;
-                case Queries.Calendario_Dettaglio:
-                    s = "Calendario_Dettaglio";
-                    break;
+                if (DataBaseAttuale == DataBase.Access)
+                    Connessione = new System.Data.OleDb.OleDbConnection(s);
+                else if (DataBaseAttuale == DataBase.SQLite)
+#if __MonoCS__
+                    Connessione = new Mono.Data.Sqlite.SqliteConnection(s);
+#else
+                    Connessione = new System.Data.SQLite.SQLiteConnection(s);
+#endif
+
+                Connessione.Open();
             }
+            catch (Exception ex)
+            {
+                cGB.MsgBox("Non riesco a connettermi al DB (" + ex.Message + ")", System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                var ca = new DataWrapper.cAggiornamenti();
+                ca.EseguiUpdate();
+            }
+            catch
+            {
+                //errore
+            }
+        }
+
+
+        private string QueriesToString(Queries q)
+        {
+            var s = q.ToString();
 
             return s + ".sql";
         }
 
-        private static string DammiStringaConnessione(string path_db = "")
+        private string DammiStringaConnessione(string path_db = "")
         {
             var s = "";
             var p = "";
 
             if (path_db == "")
-                p = cGB.UtenteConnesso.PathDB;
+                p = cGB.DatiDBFisico.Path;
             else
                 p = path_db;
 
@@ -315,29 +157,33 @@ namespace RationesCurare7.DB
             return s;
         }
 
-        public static void AggiornaDataDB()
+        public void AggiornaDataDB()
         {
-            const string sql = "update utenti set UltimaModifica = @UltimaModifica";
-
-            var cm = CreaCommandNoConnection(sql, new DbParameter[] {
-                NewPar("UltimaModifica", UltimaModifica)
-            });
-
-            try
+            if (DeveAggiornareData)
             {
-                var r = cm.ExecuteNonQuery();
+                const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
-                if (r < 1)
-                    throw new Exception("Can not update last modification date on user DB!");
-            }
-            catch (Exception ex)
-            {
-                //non aggiornata
-                cGB.MsgBox(ex);
+                var cm = CreaCommandNoConnection(sql, new DbParameter[]
+                {
+                    NewPar("UltimaModifica", UltimaModifica)
+                });
+
+                try
+                {
+                    var r = cm.ExecuteNonQuery();
+
+                    if (r < 1)
+                        throw new Exception("Can not update last modification date on user DB!");
+                }
+                catch (Exception ex)
+                {
+                    //non aggiornata
+                    cGB.MsgBox(ex);
+                }
             }
         }
 
-        public static int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param, bool AggiornaDataDiUltimaModifica = true)
+        public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param, bool AggiornaDataDiUltimaModifica = true)
         {
             var i = -1;
             var cm = CreaCommandNoConnection(sql, param);
@@ -349,15 +195,15 @@ namespace RationesCurare7.DB
             {
                 i = cm.ExecuteNonQuery();
 
-                if (i > 0 && AggiornaDataDiUltimaModifica)
+                if (i > 0 && AggiornaDataDiUltimaModifica && DeveAggiornareData)
                 {
                     UltimaModifica = cGB.DBNow();
                     AggiornaDataDB();
 
-                    if (DBUtentiAggiornati.ContainsKey(cGB.UtenteConnesso.ID))
-                        DBUtentiAggiornati[cGB.UtenteConnesso.ID] = UltimaModifica;
+                    if (DBUtentiAggiornati.ContainsKey(cGB.DatiUtente.Email))
+                        DBUtentiAggiornati[cGB.DatiUtente.Email] = UltimaModifica;
                     else
-                        DBUtentiAggiornati.Add(cGB.UtenteConnesso.ID, UltimaModifica);
+                        DBUtentiAggiornati.Add(cGB.DatiUtente.Email, UltimaModifica);
                 }
             }
             catch //(Exception ex)
@@ -369,44 +215,51 @@ namespace RationesCurare7.DB
             return i;
         }
 
-        public static int EseguiSQLNoQuery(string sql)
+        public int EseguiSQLNoQuery(string sql)
         {
             return EseguiSQLNoQuery(sql, null);
         }
 
-        public static int EseguiSQLNoQuery(Queries q, DbParameter[] param)
+        public int EseguiSQLNoQuery(Queries q, DbParameter[] param, bool AggiornaDataDiUltimaModifica)
+        {
+            DbTransaction tr = null;
+
+            return EseguiSQLNoQuery(ref tr, LeggiQuery(q), param, AggiornaDataDiUltimaModifica);
+        }
+
+        public int EseguiSQLNoQuery(Queries q, DbParameter[] param)
         {
             return EseguiSQLNoQuery(LeggiQuery(q), param);
         }
 
-        public static int EseguiSQLNoQuery(string sql, DbParameter[] param)
+        public int EseguiSQLNoQuery(string sql, DbParameter[] param)
         {
             DbTransaction tr = null;
 
             return EseguiSQLNoQuery(ref tr, sql, param);
         }
 
-        public static DataTable EseguiSQLDataTable(Queries q)
+        public DataTable EseguiSQLDataTable(Queries q)
         {
             return EseguiSQLDataTable(q, null);
         }
 
-        public static DataTable EseguiSQLDataTable(string sql)
+        public DataTable EseguiSQLDataTable(string sql)
         {
             return EseguiSQLDataTable(sql, null);
         }
 
-        public static DataTable EseguiSQLDataTable(Queries q, DbParameter[] param)
+        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param)
         {
             return EseguiSQLDataTable(LeggiQuery(q), param);
         }
 
-        public static DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, DataColumn[] colonne = null)
+        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, DataColumn[] colonne = null)
         {
             return EseguiSQLDataTable(LeggiQuery(q), param, colonne);
         }
 
-        public static DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null)
+        public DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null)
         {
             var t = new DataTable();
 
@@ -431,7 +284,7 @@ namespace RationesCurare7.DB
             return t;
         }
 
-        private static DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
+        private DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
         {
             DbCommand cm = null;
 
@@ -456,26 +309,26 @@ namespace RationesCurare7.DB
             return cm;
         }
 
-        public static DbDataReader EseguiSQLDataReader(string sql)
+        public DbDataReader EseguiSQLDataReader(string sql)
         {
             DbTransaction tr = null;
 
             return EseguiSQLDataReader(ref tr, sql, null);
         }
 
-        public static DbDataReader EseguiSQLDataReader(Queries q, DbParameter[] param)
+        public DbDataReader EseguiSQLDataReader(Queries q, DbParameter[] param)
         {
             return EseguiSQLDataReader(LeggiQuery(q), param);
         }
 
-        public static DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
+        public DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
         {
             DbTransaction tr = null;
 
             return EseguiSQLDataReader(ref tr, sql, param);
         }
 
-        public static DbDataReader EseguiSQLDataReader(ref DbTransaction Trans, string sql, DbParameter[] param)
+        public DbDataReader EseguiSQLDataReader(ref DbTransaction Trans, string sql, DbParameter[] param)
         {
             using (var cm = CreaCommandNoConnection(sql, param))
             {
@@ -486,7 +339,7 @@ namespace RationesCurare7.DB
             }
         }
 
-        public static string LeggiQuery(Queries q)
+        public string LeggiQuery(Queries q)
         {
             var q2 = q;
 
@@ -496,21 +349,11 @@ namespace RationesCurare7.DB
             return LeggiQuery_(q2);
         }
 
-        private static string LeggiQuery_(Queries q)
+        private string LeggiQuery_(Queries q)
         {
-            var iq = -1;
-            var z = "";
-
-            for (var i = 0; i < QueriesGiaLette.Length; i++)
-                if (QueriesGiaLette[i].Query == q)
-                {
-                    iq = i;
-                    z = QueriesGiaLette[i].SQL;
-                    break;
-                }
-
-            if (cGB.StringIsNullorEmpty(z))
+            if (!QueriesGiaLette.ContainsKey(q))
             {
+                var z = "";
                 var path_to_sql = "";
                 path_to_sql = System.Windows.Forms.Application.StartupPath;
                 path_to_sql = System.IO.Path.Combine(path_to_sql, "DB");
@@ -533,13 +376,13 @@ namespace RationesCurare7.DB
                     z = z.Replace("Format(m.data, 'yyyy/mm')", "strftime('%Y/%m',m.data)");
                 }
 
-                QueriesGiaLette[iq].SQL = z;
+                QueriesGiaLette.Add(q, z);
             }
 
-            return z;
+            return QueriesGiaLette[q];
         }
 
-        public static DbParameter[] NewPars(Dictionary<string, object> Valori)
+        public DbParameter[] NewPars(Dictionary<string, object> Valori)
         {
             if (Valori != null && Valori.Count > 0)
             {
@@ -557,7 +400,7 @@ namespace RationesCurare7.DB
             }
         }
 
-        public static DbParameter NewPar(string Nome, object Valore)
+        public DbParameter NewPar(string Nome, object Valore)
         {
             DbParameter o = null;
 
@@ -593,7 +436,7 @@ namespace RationesCurare7.DB
             return o;
         }
 
-        public static DbParameter NewPar(string Nome, object Valore, DbType tipo)
+        public DbParameter NewPar(string Nome, object Valore, DbType tipo)
         {
             DbParameter o = null;
 
@@ -620,77 +463,12 @@ namespace RationesCurare7.DB
             return o;
         }
 
-        public static void ChiudiConnessione()
-        {
-            try
-            {
-                Connessione.Close();
-                Connessione.Dispose();
-            }
-            catch
-            {
-                //cannot close               
-            }
-        }
-
-        public static void ApriConnessione(bool ForceClose)
-        {
-            ApriConnessione(DataBase.Access, "", ForceClose);
-        }
-
-        public static void ApriConnessione(DataBase db_, bool ForceClose)
-        {
-            ApriConnessione(db_, "", ForceClose);
-        }
-
-        public static void ApriConnessione(string path_db = "", bool ForceClose = false)
-        {
-            ApriConnessione(DataBase.Access, path_db, ForceClose);
-        }
-
-        public static void ApriConnessione(DataBase db_, string path_db = "", bool ForceClose = false)
-        {
-            DataBaseAttuale = db_;
-            var s = DammiStringaConnessione(path_db);
-
-            if (ForceClose)
-                ChiudiConnessione();
-
-            try
-            {
-                if (DataBaseAttuale == DataBase.Access)
-                    Connessione = new System.Data.OleDb.OleDbConnection(s);
-                else if (DataBaseAttuale == DataBase.SQLite)
-#if __MonoCS__
-                    Connessione = new Mono.Data.Sqlite.SqliteConnection(s);
-#else
-                    Connessione = new System.Data.SQLite.SQLiteConnection(s);
-#endif
-
-                Connessione.Open();
-            }
-            catch (Exception ex)
-            {
-                cGB.MsgBox("Non riesco a connettermi al DB (" + ex.Message + ")", System.Windows.Forms.MessageBoxIcon.Error);
-            }
-
-            try
-            {
-                var ca = new DataWrapper.cAggiornamenti();
-                ca.EseguiUpdate();
-            }
-            catch
-            {
-                //errore
-            }
-        }
-
-        public static DbTransaction CreaTransazione()
+        public DbTransaction CreaTransazione()
         {
             return Connessione.BeginTransaction();
         }
 
-        public static int GetColumnType(string TName, string CName)
+        public int GetColumnType(string TName, string CName)
         {
             try
             {
@@ -709,7 +487,7 @@ namespace RationesCurare7.DB
             return -1;
         }
 
-        public static HashSet<string> ParseParameters(string query_)
+        public HashSet<string> ParseParameters(string query_)
         {
             var paras = new HashSet<string>();
             var rxPattern = @"\@\w+";

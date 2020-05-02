@@ -15,22 +15,22 @@ namespace RationesCurare7.DB.DataWrapper
 
         public int EseguiUpdate()
         {
-            if (cGB.UtenteConnesso.ID > 0) //utente
-                return EseguiUpdateUtente();
-            else
+            if ("".Equals(cGB.DatiUtente.Email))
                 return EseguiUpdateSistema();
+            else
+                return EseguiUpdateUtente(); //utente
         }
 
         private int EseguiUpdateUtente()
         {
             var i = 0;
-            var sql = cDB.LeggiQuery(cDB.Queries.Aggiornamenti);
+            var sql = cGB.sDB.LeggiQuery(cDB.Queries.Aggiornamenti);
             var queries = sql.Split(new char[] { ';' });
             var UltimaDataQ = DateTime.MinValue;
             var UltimaDataU = DateTime.MinValue;
 
-            if (cDB.UltimaDataAggiornamentiUtenti.ContainsKey(cGB.UtenteConnesso.ID))
-                UltimaDataU = cDB.UltimaDataAggiornamentiUtenti[cGB.UtenteConnesso.ID];
+            if (cGB.sDB.UltimaDataAggiornamentiUtenti.ContainsKey(cGB.DatiUtente.Email))
+                UltimaDataU = cGB.sDB.UltimaDataAggiornamentiUtenti[cGB.DatiUtente.Email];
 
             for (var n = 0; n < (queries?.Length ?? 0); n++)
             {
@@ -43,13 +43,13 @@ namespace RationesCurare7.DB.DataWrapper
                 }
 
                 if (UltimaDataQ.CompareTo(UltimaDataU) > 0)
-                    i += cDB.EseguiSQLNoQuery(queries[n]);
+                    i += cGB.sDB.EseguiSQLNoQuery(queries[n]);
             }
 
-            if (cDB.DBUtentiAggiornati.ContainsKey(cGB.UtenteConnesso.ID))
-                cDB.DBUtentiAggiornati[cGB.UtenteConnesso.ID] = cGB.DBNow();
+            if (cGB.sDB.DBUtentiAggiornati.ContainsKey(cGB.DatiUtente.Email))
+                cGB.sDB.DBUtentiAggiornati[cGB.DatiUtente.Email] = cGB.DBNow();
             else
-                cDB.DBUtentiAggiornati.Add(cGB.UtenteConnesso.ID, cGB.DBNow());
+                cGB.sDB.DBUtentiAggiornati.Add(cGB.DatiUtente.Email, cGB.DBNow());
 
             return i;
         }
@@ -57,7 +57,7 @@ namespace RationesCurare7.DB.DataWrapper
         private int EseguiUpdateSistema()
         {
             var i = 0;
-            var sql = cDB.LeggiQuery(cDB.Queries.Aggiornamenti);
+            var sql = cGB.sDB.LeggiQuery(cDB.Queries.Aggiornamenti);
             var queries = sql.Split(new char[] { ';' });
             var UltimaDataQ = DateTime.MinValue;
             var UltimaDataU = DateTime.MinValue;
@@ -65,7 +65,7 @@ namespace RationesCurare7.DB.DataWrapper
 
             ultimoAggiornamento();
 
-            foreach (var ulti in cDB.UltimaDataAggiornamentiUtenti)
+            foreach (var ulti in cGB.sDB.UltimaDataAggiornamentiUtenti)
                 if (ulti.Value > UltimaDataU)
                     UltimaDataU = ulti.Value;
 
@@ -80,7 +80,7 @@ namespace RationesCurare7.DB.DataWrapper
                 }
 
                 if (UltimaDataQ.CompareTo(UltimaDataU) > 0)
-                    i += cDB.EseguiSQLNoQuery(ref trans, queries[n], null, false);
+                    i += cGB.sDB.EseguiSQLNoQuery(ref trans, queries[n], null, false);
             }
 
             return i;
@@ -94,44 +94,34 @@ namespace RationesCurare7.DB.DataWrapper
         public void AggiornaDataDB(DateTime forza_data)
         {
             DbTransaction trans = null;
-            var sql = "update utenti set UltimoAggiornamentoDB = @UltimoAggiornamentoDB where ID = @ID";
+            var sql = "update DBInfo set UltimoAggiornamentoDB = @UltimoAggiornamentoDB where ID = @ID";
 
-            foreach (var u in cDB.DBUtentiAggiornati)
+            foreach (var u in cGB.sDB.DBUtentiAggiornati)
             {
                 var laD = (forza_data > DateTime.MinValue ? forza_data : u.Value);
 
                 var p = new DbParameter[] {
-                    cDB.NewPar("UltimoAggiornamentoDB", laD),
-                    cDB.NewPar("ID", u.Key)
+                    cGB.sDB.NewPar("UltimoAggiornamentoDB", laD),
+                    cGB.sDB.NewPar("ID", u.Key)
                 };
 
-                cDB.EseguiSQLNoQuery(ref trans, sql, p, false);
+                cGB.sDB.EseguiSQLNoQuery(ref trans, sql, p, false);
             }
         }
 
         private void ultimoAggiornamento()
         {
-            try
-            {
-                var sql = "select ID, UltimoAggiornamentoDB from utenti";
+            var sql = "select Email, UltimoAggiornamentoDB from DBInfo";
 
-                using (var dr = cDB.EseguiSQLDataReader(sql))
-                {
-                    if (dr.HasRows)
-                        while (dr.Read())
-                        {
-                            var id = cGB.ObjectToInt(dr["ID"], -1);
-                            var d = cGB.ObjectToDateTime(dr["UltimoAggiornamentoDB"], DateTime.MinValue);
-                            cDB.UltimaDataAggiornamentiUtenti.Add(id, d);
-                        }
+            using (var dr = cGB.sDB.EseguiSQLDataReader(sql))
+                if (dr.HasRows)
+                    while (dr.Read())
+                    {
+                        var id = Convert.ToString(dr["Email"]);
+                        var d = cGB.ObjectToDateTime(dr["UltimoAggiornamentoDB"], DateTime.MinValue);
 
-                    dr.Close();
-                }
-            }
-            catch
-            {
-                //eror
-            }
+                        cGB.sDB.UltimaDataAggiornamentiUtenti.Add(id, d);
+                    }
         }
 
 

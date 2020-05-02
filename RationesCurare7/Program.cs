@@ -27,9 +27,7 @@ namespace RationesCurare7
                 try
                 {
                     cGB.RestartMe = false;
-                    cGB.OpzioniProgramma = cOpzioniProgramma.Carica();
-
-                    DB.cDB.ApriConnessione(DB.cDB.DataBase.SQLite, cGB.PathDBUtenti, true);
+                    cGB.sPC = new DB.cDB(false, DB.cDB.DataBase.SQLite, cGB.PathDBUtenti);
                 }
                 catch (Exception ex)
                 {
@@ -39,7 +37,7 @@ namespace RationesCurare7
                 var CaricaQuestoIDUtente = -1;
                 if (cGB.Parametri != null && !cGB.Parametri.Equals("") && System.IO.File.Exists(cGB.Parametri)) //se fai doppio click su un file
                 {
-                    var u = new DB.DataWrapper.cUtente();
+                    var u = new DB.DataWrapper.cUtenti();
                     u.CaricaByPath(cGB.Parametri);
 
                     CaricaQuestoIDUtente = u.ID;
@@ -55,29 +53,27 @@ namespace RationesCurare7
                 var ok = false;
                 if (CaricaQuestoIDUtente > -1)
                 {
-                    var u = new DB.DataWrapper.cUtente(CaricaQuestoIDUtente);
+                    var u = new DB.DataWrapper.cUtenti(CaricaQuestoIDUtente);
 
                     if (u.ID > -1)
-                        using (var psw = new UI.Forms.fPsw(u.Email, u.psw))
-                            ok = (psw.ShowDialog() == DialogResult.OK);
+                    {
+                        var ute = new DB.DataWrapper.cDBInfo(u.Email);
 
-                    if (ok)
-                        cGB.UtenteConnesso = new cGB.sUtente()
-                        {
-                            PathDB = u.path,
-                            UserName = u.nome,
-                            ID = u.ID,
-                            Psw = u.psw,
-                            Email = u.Email,
-                            TipoDB = u.TipoDB
-                        };
+                        using (var psw = new UI.Forms.fPsw(ute.Email, ute.Psw))
+                            ok = (psw.ShowDialog() == DialogResult.OK);
+                    }
                 }
                 else
                 {
                     try
                     {
                         using (var fus = new UI.Forms.fListaUtenti())
+                        {
                             ok = (fus.ShowDialog() == DialogResult.OK);
+
+                            if (ok)
+                                CaricaQuestoIDUtente = fus.IDUtente;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -87,31 +83,30 @@ namespace RationesCurare7
 
                 if (ok)
                 {
+                    cGB.DatiDBFisico = new DB.DataWrapper.cUtenti(CaricaQuestoIDUtente);
+
+                    cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite);
+
+                    cGB.DatiUtente = new DB.DataWrapper.cDBInfo(cGB.DatiDBFisico.Email);
+
                     cGB.ControllaDBSulServer();
 
-                    DB.cDB.ApriConnessione(cGB.UtenteConnesso.TipoDB.Equals("S") ? DB.cDB.DataBase.SQLite : DB.cDB.DataBase.Access, true);
+                    if (cGB.sDB.Connessione.State == System.Data.ConnectionState.Closed)
+                        cGB.sDB.Connessione.Open();
 
                     using (cGB.RationesCurareMainForm = new UI.Forms.fMain())
                     {
                         Application.Run(cGB.RationesCurareMainForm);
 
-                        cGB.UtenteConnesso.ID = -1;
                         if (cGB.RestartMe)
                             goto Inizio;
 
-                        //if (!cGB.IAmInDebug)
-                        if (cGB.OpzioniProgramma.SincronizzaDB)
-                        {
-                            var mc = new GB.MikyCloud(cGB.UtenteConnesso);
-                            mc.MandaDBSulSito(DB.cDB.UltimaModifica);
-                        }
-
-                        DB.cDB.ApriConnessione(DB.cDB.DataBase.SQLite, cGB.PathDBUtenti, true);
-
-                        var ca = new DB.DataWrapper.cAggiornamenti();
-                        ca.AggiornaDataDB(DB.cDB.UltimaModifica);
-
-                        DB.cDB.ChiudiConnessione();
+                        if (!cGB.IAmInDebug)
+                            if (cGB.DatiUtente.SincronizzaDB)
+                            {
+                                var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                                mc.MandaDBSulSito(cGB.sDB.UltimaModifica);
+                            }
                     }
                 }
             }

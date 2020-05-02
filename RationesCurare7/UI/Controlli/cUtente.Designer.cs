@@ -65,7 +65,7 @@
             this.iUtente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iUtente.TabIndex = 0;
             this.iUtente.TabStop = false;
-            this.iUtente.Click += new System.EventHandler(this.iUtente_Click);
+
             // 
             // bUtente
             // 
@@ -79,7 +79,7 @@
             this.bUtente.TabStop = true;
             this.bUtente.Text = "Utente";
             this.bUtente.VisitedLinkColor = System.Drawing.SystemColors.ControlText;
-            this.bUtente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.bUtente_LinkClicked);
+
             // 
             // tOrologio
             // 

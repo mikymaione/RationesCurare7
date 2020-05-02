@@ -44,9 +44,9 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[1];
 
-            p[x += 1] = DB.cDB.NewPar("ID", ID_);
+            p[x += 1] = cGB.sDB.NewPar("ID", ID_);
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Movimenti_Elimina), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Elimina), p);
 
             return i;
         }
@@ -75,14 +75,14 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[6];
 
-            p[x += 1] = DB.cDB.NewPar("nome", nome);
-            p[x += 1] = DB.cDB.NewPar("tipo", tipo);
-            p[x += 1] = DB.cDB.NewPar("descrizione", descrizione);
-            p[x += 1] = DB.cDB.NewPar("soldi", soldi);
-            p[x += 1] = DB.cDB.NewPar("data", data);
-            p[x += 1] = DB.cDB.NewPar("MacroArea", MacroArea);
+            p[x += 1] = cGB.sDB.NewPar("nome", nome);
+            p[x += 1] = cGB.sDB.NewPar("tipo", tipo);
+            p[x += 1] = cGB.sDB.NewPar("descrizione", descrizione);
+            p[x += 1] = cGB.sDB.NewPar("soldi", soldi);
+            p[x += 1] = cGB.sDB.NewPar("data", data);
+            p[x += 1] = cGB.sDB.NewPar("MacroArea", MacroArea);
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Movimenti_Inserisci), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Inserisci), p);
 
             return i;
         }
@@ -92,15 +92,15 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[7];
 
-            p[x += 1] = DB.cDB.NewPar("nome", nome);
-            p[x += 1] = DB.cDB.NewPar("tipo", tipo);
-            p[x += 1] = DB.cDB.NewPar("descrizione", descrizione);
-            p[x += 1] = DB.cDB.NewPar("soldi", soldi);
-            p[x += 1] = DB.cDB.NewPar("data", data);
-            p[x += 1] = DB.cDB.NewPar("MacroArea", MacroArea);
-            p[x += 1] = DB.cDB.NewPar("ID", ID);
+            p[x += 1] = cGB.sDB.NewPar("nome", nome);
+            p[x += 1] = cGB.sDB.NewPar("tipo", tipo);
+            p[x += 1] = cGB.sDB.NewPar("descrizione", descrizione);
+            p[x += 1] = cGB.sDB.NewPar("soldi", soldi);
+            p[x += 1] = cGB.sDB.NewPar("data", data);
+            p[x += 1] = cGB.sDB.NewPar("MacroArea", MacroArea);
+            p[x += 1] = cGB.sDB.NewPar("ID", ID);
 
-            return DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Movimenti_Aggiorna), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Aggiorna), p);
         }
 
         public double Saldo(string tipo_)
@@ -116,18 +116,18 @@ namespace RationesCurare7.DB.DataWrapper
         private double Saldo_(string tipo_)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("tipo", tipo_),
-                cDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
-                cDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
-                cDB.NewPar("bSoldi", (bSoldi ? 1 : 0)),
-                cDB.NewPar("SoldiDa", SoldiDa),
-                cDB.NewPar("SoldiA", SoldiA),
-                cDB.NewPar("bData", (bData ? 1 : 0)),
-                cDB.NewPar("DataDa", DataDa, DbType.Date),
-                cDB.NewPar("DataA", DataA, DbType.Date),
+                cGB.sDB.NewPar("tipo", tipo_),
+                cGB.sDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
+                cGB.sDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
+                cGB.sDB.NewPar("bSoldi", (bSoldi ? 1 : 0)),
+                cGB.sDB.NewPar("SoldiDa", SoldiDa),
+                cGB.sDB.NewPar("SoldiA", SoldiA),
+                cGB.sDB.NewPar("bData", (bData ? 1 : 0)),
+                cGB.sDB.NewPar("DataDa", DataDa, DbType.Date),
+                cGB.sDB.NewPar("DataA", DataA, DbType.Date),
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_Saldo), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Saldo), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         try
@@ -145,10 +145,10 @@ namespace RationesCurare7.DB.DataWrapper
         public int NumeroMovimentiPerCassa(string cassa)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("tipo", cassa)
+                cGB.sDB.NewPar("tipo", cassa)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_MovimentiPerCassa), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_MovimentiPerCassa), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         return cGB.ObjectToInt(dr["Tot"], 0);
@@ -164,10 +164,10 @@ namespace RationesCurare7.DB.DataWrapper
             var z = new List<string>();
             var p = new DbParameter[]
             {
-                cDB.NewPar("MacroArea", Tutti ? "FALSE" : "TRUE")
+                cGB.sDB.NewPar("MacroArea", Tutti ? "FALSE" : "TRUE")
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_AutoCompleteSource), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_AutoCompleteSource), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         z.Add(dr["descrizione"].ToString());
@@ -191,7 +191,7 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var z = new System.Windows.Forms.AutoCompleteStringCollection();
 
-            using (var dr = DB.cDB.EseguiSQLDataReader(DB.cDB.LeggiQuery(cDB.Queries.Movimenti_AutoCompleteSourceMA)))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_AutoCompleteSourceMA)))
                 if (dr.HasRows)
                     while (dr.Read())
                         z.Add(Convert.ToString(dr["MacroArea"]));
@@ -203,7 +203,7 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var z = new List<sMacroArea_e_Descrizione>();
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_GetMacroAree_E_Descrizioni)))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_GetMacroAree_E_Descrizioni)))
                 if (dr.HasRows)
                     while (dr.Read())
                         z.Add(new sMacroArea_e_Descrizione()
@@ -224,19 +224,21 @@ namespace RationesCurare7.DB.DataWrapper
 
         public DataTable Ricerca(out string query)
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("tipo", tipo),
-                cDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
-                cDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
-                cDB.NewPar("bSoldi", (bSoldi ? 1 : 0)),
-                cDB.NewPar("SoldiDa", SoldiDa),
-                cDB.NewPar("SoldiA", SoldiA),
-                cDB.NewPar("bData", (bData ? 1 : 0)),
-                cDB.NewPar("DataDa", cGB.DateToDBDateNullable(DataDa)),
-                cDB.NewPar("DataA", cGB.DateToDBDateNullable(DataA)),
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("tipo", tipo),
+                cGB.sDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
+                cGB.sDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
+                cGB.sDB.NewPar("bSoldi", (bSoldi ? 1 : 0)),
+                cGB.sDB.NewPar("SoldiDa", SoldiDa),
+                cGB.sDB.NewPar("SoldiA", SoldiA),
+                cGB.sDB.NewPar("bData", (bData ? 1 : 0)),
+                cGB.sDB.NewPar("DataDa", cGB.DateToDBDateNullable(DataDa)),
+                cGB.sDB.NewPar("DataA", cGB.DateToDBDateNullable(DataA)),
             };
 
-            var colonne = new DataColumn[] {
+            var colonne = new DataColumn[]
+            {
                 new DataColumn("ID", typeof(Int64)),
                 new DataColumn("nome", typeof(String)),
                 new DataColumn("data", typeof(DateTime)),
@@ -246,23 +248,23 @@ namespace RationesCurare7.DB.DataWrapper
                 new DataColumn("soldi", typeof(Double))
             };
 
-            query = cDB.LeggiQuery(cDB.Queries.Movimenti_Ricerca);
+            query = cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Ricerca);
 
-            return cDB.EseguiSQLDataTable(query, p, colonne);
+            return cGB.sDB.EseguiSQLDataTable(query, p, colonne);
         }
 
         public double RicercaGraficoSaldo(bool UsaParametri = true)
         {
             var p = UsaParametri ?
                 new DbParameter[] {
-                    cDB.NewPar("descrizione", descrizione == null ? "%%" : descrizione),
-                    cDB.NewPar("MacroArea", MacroArea == null ? "%%" : MacroArea),
-                    cDB.NewPar("DataDa", DataDa),
-                    cDB.NewPar("DataA", DataA),
+                    cGB.sDB.NewPar("descrizione", descrizione == null ? "%%" : descrizione),
+                    cGB.sDB.NewPar("MacroArea", MacroArea == null ? "%%" : MacroArea),
+                    cGB.sDB.NewPar("DataDa", DataDa),
+                    cGB.sDB.NewPar("DataA", DataA),
                 } :
                 new DbParameter[0];
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(UsaParametri ? cDB.Queries.Movimenti_GraficoSaldo : cDB.Queries.Movimenti_GraficoSaldoSpline), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(UsaParametri ? DB.cDB.Queries.Movimenti_GraficoSaldo : DB.cDB.Queries.Movimenti_GraficoSaldoSpline), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         return cGB.ObjectToMoney(dr["Soldini_TOT"]);
@@ -273,12 +275,12 @@ namespace RationesCurare7.DB.DataWrapper
         public double RicercaGraficoTortaSaldo(int positivita)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("sPos", positivita, DbType.Int32),
-                cDB.NewPar("DataDa", DataDa, DbType.Date),
-                cDB.NewPar("DataA", DataA, DbType.Date),
+                cGB.sDB.NewPar("sPos", positivita, DbType.Int32),
+                cGB.sDB.NewPar("DataDa", DataDa, DbType.Date),
+                cGB.sDB.NewPar("DataA", DataA, DbType.Date),
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_GraficoTortaSaldo), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_GraficoTortaSaldo), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         return cGB.ObjectToMoney(dr["Soldini_TOT"]);
@@ -287,42 +289,42 @@ namespace RationesCurare7.DB.DataWrapper
         }
 
         public DbDataReader RicercaGraficoSpline() =>
-            cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_GraficoSplineAnnuale));
+            cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_GraficoSplineAnnuale));
 
         public DbDataReader RicercaGrafico(bool Annuale)
         {
-            var s = cDB.LeggiQuery(Annuale ? cDB.Queries.Movimenti_GraficoAnnuale : cDB.Queries.Movimenti_GraficoMensile);
+            var s = cGB.sDB.LeggiQuery(Annuale ? DB.cDB.Queries.Movimenti_GraficoAnnuale : DB.cDB.Queries.Movimenti_GraficoMensile);
 
             var p = new DbParameter[] {
-                cDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
-                cDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
-                cDB.NewPar("DataDa", DataDa),
-                cDB.NewPar("DataA", DataA)
+                cGB.sDB.NewPar("descrizione", (descrizione == null ? "%%" : descrizione)),
+                cGB.sDB.NewPar("MacroArea", (MacroArea == null ? "%%" : MacroArea)),
+                cGB.sDB.NewPar("DataDa", DataDa),
+                cGB.sDB.NewPar("DataA", DataA)
             };
 
-            return cDB.EseguiSQLDataReader(s, p);
+            return cGB.sDB.EseguiSQLDataReader(s, p);
         }
 
         public DbDataReader RicercaTorta(int positivita)
         {
-            var s = cDB.LeggiQuery(cDB.Queries.Movimenti_GraficoTorta);
+            var s = cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_GraficoTorta);
 
             var p = new DbParameter[] {
-                cDB.NewPar("sPos", positivita, DbType.Int32),
-                cDB.NewPar("DataDa", DataDa, DbType.Date),
-                cDB.NewPar("DataA", DataA, DbType.Date)
+                cGB.sDB.NewPar("sPos", positivita, DbType.Int32),
+                cGB.sDB.NewPar("DataDa", DataDa, DbType.Date),
+                cGB.sDB.NewPar("DataA", DataA, DbType.Date)
             };
 
-            return cDB.EseguiSQLDataReader(s, p);
+            return cGB.sDB.EseguiSQLDataReader(s, p);
         }
 
         private void CaricaByID(int ID_)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("ID", ID_)
+                cGB.sDB.NewPar("ID", ID_)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_Dettaglio), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Dettaglio), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
@@ -343,17 +345,17 @@ namespace RationesCurare7.DB.DataWrapper
             if (m != null)
                 if (m.Count > 0)
                 {
-                    var z = cDB.LeggiQuery(cDB.Queries.Movimenti_AggiornaMacroAree);
-                    var t = cDB.CreaTransazione();
+                    var z = cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_AggiornaMacroAree);
+                    var t = cGB.sDB.CreaTransazione();
 
                     foreach (var e in m)
                     {
                         var p = new DbParameter[] {
-                            cDB.NewPar("MacroArea", e.MacroArea),
-                            cDB.NewPar("descrizione", e.Descrizione)
+                            cGB.sDB.NewPar("MacroArea", e.MacroArea),
+                            cGB.sDB.NewPar("descrizione", e.Descrizione)
                         };
 
-                        r += cDB.EseguiSQLNoQuery(ref t, z, p);
+                        r += cGB.sDB.EseguiSQLNoQuery(ref t, z, p);
                     }
 
                     t.Commit();
@@ -370,7 +372,7 @@ namespace RationesCurare7.DB.DataWrapper
             Da = defa1;
             A = defa2;
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Movimenti_Data)))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Movimenti_Data)))
                 if (dr.HasRows)
                     while (dr.Read())
                     {

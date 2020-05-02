@@ -35,8 +35,6 @@
             this.bSalva = new System.Windows.Forms.Button();
             this.eNome = new System.Windows.Forms.TextBox();
             this.pbCassa = new System.Windows.Forms.PictureBox();
-            this.eValuta = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbNascondi = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCassa)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 117);
+            this.label2.Location = new System.Drawing.Point(12, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -62,7 +60,7 @@
             // bCercaImmagine
             // 
             this.bCercaImmagine.Image = global::RationesCurare7.Properties.Resources.zoom;
-            this.bCercaImmagine.Location = new System.Drawing.Point(82, 140);
+            this.bCercaImmagine.Location = new System.Drawing.Point(82, 103);
             this.bCercaImmagine.Name = "bCercaImmagine";
             this.bCercaImmagine.Size = new System.Drawing.Size(84, 25);
             this.bCercaImmagine.TabIndex = 3;
@@ -74,7 +72,7 @@
             // bSalva
             // 
             this.bSalva.Image = global::RationesCurare7.Properties.Resources.disk;
-            this.bSalva.Location = new System.Drawing.Point(15, 188);
+            this.bSalva.Location = new System.Drawing.Point(15, 151);
             this.bSalva.Name = "bSalva";
             this.bSalva.Size = new System.Drawing.Size(84, 25);
             this.bSalva.TabIndex = 4;
@@ -93,35 +91,17 @@
             // 
             // pbCassa
             // 
-            this.pbCassa.Location = new System.Drawing.Point(15, 133);
+            this.pbCassa.Location = new System.Drawing.Point(15, 96);
             this.pbCassa.Name = "pbCassa";
             this.pbCassa.Size = new System.Drawing.Size(32, 32);
             this.pbCassa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCassa.TabIndex = 5;
             this.pbCassa.TabStop = false;
             // 
-            // eValuta
-            // 
-            this.eValuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.eValuta.FormattingEnabled = true;
-            this.eValuta.Location = new System.Drawing.Point(15, 70);
-            this.eValuta.Name = "eValuta";
-            this.eValuta.Size = new System.Drawing.Size(237, 21);
-            this.eValuta.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Valuta";
-            // 
             // cbNascondi
             // 
             this.cbNascondi.AutoSize = true;
-            this.cbNascondi.Location = new System.Drawing.Point(15, 97);
+            this.cbNascondi.Location = new System.Drawing.Point(15, 60);
             this.cbNascondi.Name = "cbNascondi";
             this.cbNascondi.Size = new System.Drawing.Size(71, 17);
             this.cbNascondi.TabIndex = 2;
@@ -133,10 +113,8 @@
             this.AcceptButton = this.bSalva;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 220);
+            this.ClientSize = new System.Drawing.Size(267, 187);
             this.Controls.Add(this.cbNascondi);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.eValuta);
             this.Controls.Add(this.pbCassa);
             this.Controls.Add(this.eNome);
             this.Controls.Add(this.bSalva);
@@ -165,8 +143,6 @@
         private System.Windows.Forms.Button bSalva;
         private System.Windows.Forms.TextBox eNome;
         private System.Windows.Forms.PictureBox pbCassa;
-        private System.Windows.Forms.ComboBox eValuta;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox cbNascondi;
     }
 }

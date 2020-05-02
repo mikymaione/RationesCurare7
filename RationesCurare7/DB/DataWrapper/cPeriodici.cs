@@ -115,10 +115,10 @@ namespace RationesCurare7.DB.DataWrapper
         public int Elimina(int ID_)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("ID", ID_)
+                cGB.sDB.NewPar("ID", ID_)
             };
 
-            return cDB.EseguiSQLNoQuery((cDB.Queries.Periodici_Elimina), p);
+            return cGB.sDB.EseguiSQLNoQuery((DB.cDB.Queries.Periodici_Elimina), p);
         }
 
         public int Salva()
@@ -140,19 +140,19 @@ namespace RationesCurare7.DB.DataWrapper
             var vuota = new DateTime(1, 1, 1);
 
             var p = new DbParameter[] {
-                cDB.NewPar("nome", nome),
-                cDB.NewPar("tipo", tipo),
-                cDB.NewPar("descrizione", descrizione),
-                cDB.NewPar("soldi", soldi),
-                cDB.NewPar("NumeroGiorni", NumeroGiorni),
-                cDB.NewPar("GiornoDelMese", cGB.ValueToDBNULL(GiornoDelMese == vuota, cGB.DateToOnlyDate(GiornoDelMese))),
-                cDB.NewPar("PartendoDalGiorno", cGB.ValueToDBNULL(PartendoDalGiorno == vuota, cGB.DateToOnlyDate(PartendoDalGiorno))),
-                cDB.NewPar("Scadenza", cGB.ValueToDBNULL(Scadenza == vuota, cGB.DateToOnlyDate(Scadenza))),
-                cDB.NewPar("TipoGiorniMese", TipoGiorniMese, DbType.StringFixedLength),
-                cDB.NewPar("MacroArea", MacroArea)
+                cGB.sDB.NewPar("nome", nome),
+                cGB.sDB.NewPar("tipo", tipo),
+                cGB.sDB.NewPar("descrizione", descrizione),
+                cGB.sDB.NewPar("soldi", soldi),
+                cGB.sDB.NewPar("NumeroGiorni", NumeroGiorni),
+                cGB.sDB.NewPar("GiornoDelMese", cGB.ValueToDBNULL(GiornoDelMese == vuota, cGB.DateToOnlyDate(GiornoDelMese))),
+                cGB.sDB.NewPar("PartendoDalGiorno", cGB.ValueToDBNULL(PartendoDalGiorno == vuota, cGB.DateToOnlyDate(PartendoDalGiorno))),
+                cGB.sDB.NewPar("Scadenza", cGB.ValueToDBNULL(Scadenza == vuota, cGB.DateToOnlyDate(Scadenza))),
+                cGB.sDB.NewPar("TipoGiorniMese", TipoGiorniMese, DbType.StringFixedLength),
+                cGB.sDB.NewPar("MacroArea", MacroArea)
             };
 
-            return cDB.EseguiSQLNoQuery((cDB.Queries.Periodici_Inserisci), p);
+            return cGB.sDB.EseguiSQLNoQuery((DB.cDB.Queries.Periodici_Inserisci), p);
         }
 
         private int Aggiorna()
@@ -160,29 +160,29 @@ namespace RationesCurare7.DB.DataWrapper
             var vuota = new DateTime(1, 1, 1);
 
             var p = new DbParameter[] {
-                cDB.NewPar("nome", nome),
-                cDB.NewPar("tipo", tipo),
-                cDB.NewPar("descrizione", descrizione),
-                cDB.NewPar("soldi", soldi),
-                cDB.NewPar("NumeroGiorni", NumeroGiorni),
-                cDB.NewPar("GiornoDelMese", cGB.ValueToDBNULL(GiornoDelMese == vuota, cGB.DateToOnlyDate(GiornoDelMese))),
-                cDB.NewPar("PartendoDalGiorno", cGB.ValueToDBNULL(PartendoDalGiorno == vuota, cGB.DateToOnlyDate(PartendoDalGiorno))),
-                cDB.NewPar("Scadenza", cGB.ValueToDBNULL(Scadenza == vuota, cGB.DateToOnlyDate(Scadenza))),
-                cDB.NewPar("TipoGiorniMese", TipoGiorniMese, DbType.StringFixedLength),
-                cDB.NewPar("MacroArea", MacroArea),
-                cDB.NewPar("ID", ID)
+                cGB.sDB.NewPar("nome", nome),
+                cGB.sDB.NewPar("tipo", tipo),
+                cGB.sDB.NewPar("descrizione", descrizione),
+                cGB.sDB.NewPar("soldi", soldi),
+                cGB.sDB.NewPar("NumeroGiorni", NumeroGiorni),
+                cGB.sDB.NewPar("GiornoDelMese", cGB.ValueToDBNULL(GiornoDelMese == vuota, cGB.DateToOnlyDate(GiornoDelMese))),
+                cGB.sDB.NewPar("PartendoDalGiorno", cGB.ValueToDBNULL(PartendoDalGiorno == vuota, cGB.DateToOnlyDate(PartendoDalGiorno))),
+                cGB.sDB.NewPar("Scadenza", cGB.ValueToDBNULL(Scadenza == vuota, cGB.DateToOnlyDate(Scadenza))),
+                cGB.sDB.NewPar("TipoGiorniMese", TipoGiorniMese, DbType.StringFixedLength),
+                cGB.sDB.NewPar("MacroArea", MacroArea),
+                cGB.sDB.NewPar("ID", ID)
             };
 
-            return cDB.EseguiSQLNoQuery((cDB.Queries.Periodici_Aggiorna), p);
+            return cGB.sDB.EseguiSQLNoQuery((DB.cDB.Queries.Periodici_Aggiorna), p);
         }
 
         private void CaricaByID(int ID_)
         {
             var p = new DbParameter[] {
-                cDB.NewPar("ID", ID_)
+                cGB.sDB.NewPar("ID", ID_)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader((cDB.Queries.Periodici_Dettaglio), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader((DB.cDB.Queries.Periodici_Dettaglio), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
@@ -218,7 +218,7 @@ namespace RationesCurare7.DB.DataWrapper
                 new DataColumn("Periodo_H", typeof(string))
             };
 
-            return cDB.EseguiSQLDataTable((cDB.Queries.Periodici_Ricerca), null, colonne);
+            return cGB.sDB.EseguiSQLDataTable((DB.cDB.Queries.Periodici_Ricerca), null, colonne);
         }
 
         public List<cPeriodici> RicercaScadenzeEntroOggi()
@@ -313,11 +313,11 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var c = new List<cPeriodici>();
             var p = new DbParameter[] {
-                cDB.NewPar("GiornoDa", da),
-                cDB.NewPar("GiornoA", a)
+                cGB.sDB.NewPar("GiornoDa", da),
+                cGB.sDB.NewPar("GiornoA", a)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader((cDB.Queries.Periodici_Scadenza), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader((DB.cDB.Queries.Periodici_Scadenza), p))
                 if (dr.HasRows)
                     while (dr.Read())
                         c.Add(new cPeriodici()

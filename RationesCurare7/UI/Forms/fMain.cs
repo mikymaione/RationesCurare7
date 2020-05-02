@@ -19,12 +19,7 @@ namespace RationesCurare7.UI.Forms
             NuovoMovimento,
             NuovoGiroconto,
             Saldo,
-            Avere,
-            Dare,
             MacroAree,
-            Cassaforte,
-            Portafogli,
-            Salvadanaio,
             Cerca,
             Grafico,
             GraficoSpline,
@@ -43,7 +38,7 @@ namespace RationesCurare7.UI.Forms
         }
 
         private TreeNode nCasse = null;
-        private TreeNode bSaldo, bAvere, bDare, bCassaforte, bPortafoglio, bSalvadanaio;
+        private TreeNode bSaldo;
         private List<DB.DataWrapper.cCasse> CasseAggiuntive = null;
         private string bSaldo_Text, bAvere_Text, bDare_Text, bCassaforte_Text, bPortafoglio_Text, bSalvadanaio_Text;
         private TreeNode LastSelectedNode = null;
@@ -65,19 +60,8 @@ namespace RationesCurare7.UI.Forms
 
         private void Init()
         {
-            bSaldo = cAlbero.Nodes[0].Nodes[6];
-            bAvere = cAlbero.Nodes[0].Nodes[5];
-            bDare = cAlbero.Nodes[0].Nodes[4];
-            bCassaforte = cAlbero.Nodes[0].Nodes[1];
-            bPortafoglio = cAlbero.Nodes[0].Nodes[3];
-            bSalvadanaio = cAlbero.Nodes[0].Nodes[2];
-
+            bSaldo = cAlbero.Nodes[0].Nodes[1];
             bSaldo_Text = bSaldo.Text;
-            bAvere_Text = bAvere.Text;
-            bDare_Text = bDare.Text;
-            bCassaforte_Text = bCassaforte.Text;
-            bPortafoglio_Text = bPortafoglio.Text;
-            bSalvadanaio_Text = bSalvadanaio.Text;
 
             foreach (TreeNode item in cAlbero.Nodes)
                 if (item.Name.Equals("nCasse"))
@@ -129,19 +113,8 @@ namespace RationesCurare7.UI.Forms
         {
             var m = new DB.DataWrapper.cMovimenti();
 
-            bSaldo.Text = bSaldo_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Saldo"), "saldo");
-            bAvere.Text = bAvere_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Avere"), "avere");
-            bDare.Text = bDare_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Dare"), "dare");
-            bCassaforte.Text = bCassaforte_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Cassaforte"), "cassaforte");
-            bPortafoglio.Text = bPortafoglio_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Portafogli"), "portafogli");
-            bSalvadanaio.Text = bSalvadanaio_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Salvadanaio"), "salvadanaio");
-
+            bSaldo.Text = bSaldo_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Saldo"));
             bSaldo.ForeColor = SaldoToColor(m.Saldo("Saldo"));
-            bAvere.ForeColor = SaldoToColor(m.Saldo("Avere"));
-            bDare.ForeColor = SaldoToColor(m.Saldo("Dare"));
-            bCassaforte.ForeColor = SaldoToColor(m.Saldo("Cassaforte"));
-            bPortafoglio.ForeColor = SaldoToColor(m.Saldo("Portafogli"));
-            bSalvadanaio.ForeColor = SaldoToColor(m.Saldo("Salvadanaio"));
 
             if (CasseAggiuntive != null)
                 if (CasseAggiuntive.Count > 0)
@@ -151,7 +124,7 @@ namespace RationesCurare7.UI.Forms
                             {
                                 var saldC = m.Saldo(caz.nome);
 
-                                item.Text = caz.nome + ": " + cGB.DoubleToMoneyStringValuta(saldC, caz.nome);
+                                item.Text = caz.nome + ": " + cGB.DoubleToMoneyStringValuta(saldC);
                                 item.ForeColor = SaldoToColor(saldC);
                             }
 
@@ -165,7 +138,7 @@ namespace RationesCurare7.UI.Forms
 
             if (CasseAggiuntive != null)
             {
-                var sette = 7;
+                var sette = 1;
 
                 if (CasseAggiuntive.Count > 0)
                     foreach (var caz in CasseAggiuntive)
@@ -349,27 +322,7 @@ namespace RationesCurare7.UI.Forms
         {
             LastSelectedNode = cAlbero.SelectedNode;
 
-            if (a == eActions.Cassaforte)
-            {
-                ShowCash(bCassaforte);
-            }
-            else if (a == eActions.Salvadanaio)
-            {
-                ShowCash(bSalvadanaio);
-            }
-            else if (a == eActions.Dare)
-            {
-                ShowCash(bDare);
-            }
-            else if (a == eActions.Avere)
-            {
-                ShowCash(bAvere);
-            }
-            else if (a == eActions.Portafogli)
-            {
-                ShowCash(bPortafoglio);
-            }
-            else if (a == eActions.Saldo)
+            if (a == eActions.Saldo)
             {
                 ShowCash(bSaldo);
             }
@@ -748,17 +701,8 @@ namespace RationesCurare7.UI.Forms
                             button_NodeClick(cAlbero.SelectedNode);
                         }
                         break;
-                    case Keys.F1:
-                        Action(eActions.Dare);
-                        break;
-                    case Keys.F2:
-                        Action(eActions.Avere);
-                        break;
                     case Keys.F3:
                         Action(eActions.Cerca);
-                        break;
-                    case Keys.F4:
-                        Action(eActions.Portafogli);
                         break;
                     case Keys.F5:
                         Action(eActions.Saldo);
@@ -772,17 +716,11 @@ namespace RationesCurare7.UI.Forms
                     case Keys.F8:
                         Action(eActions.OpzioniDB);
                         break;
-                    case Keys.F9:
-                        Action(eActions.Cassaforte);
-                        break;
                     case Keys.F10:
                         Action(eActions.Torta);
                         break;
                     case Keys.F11:
                         Action(eActions.Grafico);
-                        break;
-                    case Keys.F12:
-                        Action(eActions.Salvadanaio);
                         break;
                 }
             }
@@ -792,14 +730,10 @@ namespace RationesCurare7.UI.Forms
         {
             if (s.Name.Equals("nAbout"))
                 Action(eActions.About);
-            else if (s.Name.Equals("nAvere"))
-                Action(eActions.Avere);
             else if (s.Name.Equals("nCalcolatrice"))
                 Action(eActions.Calcolatrice);
             else if (s.Name.Equals("nCalendario"))
                 Action(eActions.Calendario);
-            else if (s.Name.Equals("nCassaforte"))
-                Action(eActions.Cassaforte);
             else if (s.Name.Equals("nGestioneCasse"))
                 Action(eActions.Casse);
             else if (s.Name.Equals("nCerca"))
@@ -810,8 +744,6 @@ namespace RationesCurare7.UI.Forms
                 Action(eActions.ControllaPeriodici, true);
             else if (s.Name.Equals("nCosaNePensi"))
                 Action(eActions.CosaNePensi);
-            else if (s.Name.Equals("nDare"))
-                Action(eActions.Dare);
             else if (s.Name.Equals("nGrafico"))
                 Action(eActions.Grafico);
             else if (s.Name.Equals("nGraficoSpline"))
@@ -824,12 +756,8 @@ namespace RationesCurare7.UI.Forms
                 Action(eActions.Novita);
             else if (s.Name.Equals("nOpzioniDB"))
                 Action(eActions.OpzioniDB);
-            else if (s.Name.Equals("nPortafoglio"))
-                Action(eActions.Portafogli);
             else if (s.Name.Equals("nSaldo"))
                 Action(eActions.Saldo);
-            else if (s.Name.Equals("nSalvadanaio"))
-                Action(eActions.Salvadanaio);
             else if (s.Name.Equals("nMacroAree"))
                 Action(eActions.MacroAree);
             else if (s.Tag != null) //casse extra

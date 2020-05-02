@@ -6,11 +6,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -52,16 +47,16 @@ namespace RationesCurare7.UI.Controlli
 
             if (TuttoRiempito)
             {
-                bool ok = false;
-                string r = "";
+                var ok = false;
+                var r = "";
 
                 this.Enabled = false;
 
                 try
                 {
-                    string t = cGB.UtenteConnesso.UserName + " [" + cGB.UtenteConnesso.Email + "] :" + Environment.NewLine + eTesto.Text;
+                    var t = cGB.DatiUtente.Nome + " [" + cGB.DatiUtente.Email + "] :" + Environment.NewLine + eTesto.Text;
 
-                    using (maionemikyWS.EmailSending e = new maionemikyWS.EmailSending())
+                    using (var e = new maionemikyWS.EmailSending())
                         r = e.MandaMail(eOggetto.Text + " [" + cbGiudizio.Text + "]", t, "mikymaione@hotmail.it");
 
                     ok = r.Equals("OK", StringComparison.OrdinalIgnoreCase);
@@ -87,7 +82,7 @@ namespace RationesCurare7.UI.Controlli
             {
                 cGB.MsgBox("Si prega di riempire tutti i campi!", MessageBoxIcon.Exclamation);
             }
-        }     
+        }
 
 
     }

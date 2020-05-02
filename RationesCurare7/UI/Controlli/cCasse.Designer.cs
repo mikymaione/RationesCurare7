@@ -47,7 +47,6 @@
             this.bElimina = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValutaD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgName = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -202,8 +201,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nome,
-            this.imgName,
-            this.ValutaD
+            this.imgName
             });
             this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -223,14 +221,7 @@
             this.nome.Name = "nome";
             this.nome.ReadOnly = true;
             this.nome.Width = 200;
-            // 
-            // Valuta
-            // 
-            this.ValutaD.DataPropertyName = "ValutaD";
-            this.ValutaD.HeaderText = "Valuta";
-            this.ValutaD.Name = "ValutaD";
-            this.ValutaD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ValutaD.ReadOnly = true;            
+
             // 
             // imgName
             // 
@@ -302,6 +293,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewImageColumn imgName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome, ValutaD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
     }
 }

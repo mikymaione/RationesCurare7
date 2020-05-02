@@ -1,6 +1,6 @@
 update utenti set
-	nome = @nome,
-	psw = @psw,
+	nome = @nome,	
+	Psw = @Psw,
 	path = @path,
 	Email = @Email,	
 	TipoDB = @TipoDB

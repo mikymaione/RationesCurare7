@@ -46,7 +46,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>DEBUG</DefineConstants>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
@@ -108,13 +108,14 @@
     <Compile Include="DB\DataWrapper\cAggiornamenti.cs" />
     <Compile Include="DB\DataWrapper\cCalendario.cs" />
     <Compile Include="DB\DataWrapper\cCasse.cs" />
+    <Compile Include="DB\DataWrapper\cDBInfo.cs" />
     <Compile Include="DB\DataWrapper\cMovimenti.cs" />
     <Compile Include="DB\DataWrapper\cPeriodici.cs" />
-    <Compile Include="DB\DataWrapper\cUtente.cs" />
+    <Compile Include="DB\DataWrapper\cUtenti.cs" />
+    <Compile Include="DB\DataWrapper\cValute.cs" />
     <Compile Include="GB\cComboItem.cs" />
     <Compile Include="GB\cFiltriRicerca.cs" />
     <Compile Include="GB\cGB.cs" />
-    <Compile Include="GB\cOpzioniProgramma.cs" />
     <Compile Include="GB\MikyCloud.cs" />
     <Compile Include="GB\MyUpdater.cs" />
     <Compile Include="UI\Controlli\cAbout.cs">
@@ -590,6 +591,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RC.rqd8">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="standard.rqd8">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -693,15 +697,13 @@
     <Content Include="Casse_Immagini\p_PosteItaliane.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Casse_Immagini\p_Salvadanaio.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Casse_Immagini\p_Visa.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Casse_Immagini\salvadanaio.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="DB\DB.sql" />
     <Content Include="DB\DBW\Aggiornamenti.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -751,6 +753,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DB\DBW\Casse_Valute.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\DBInfo_Aggiorna.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\DBInfo_Dettaglio.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\DBW\DBInfo_Inserisci.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DB\DBW\Movimenti_Aggiorna.sql">

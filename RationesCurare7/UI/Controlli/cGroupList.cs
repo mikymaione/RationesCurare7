@@ -7,10 +7,7 @@ You should have received a copy of the GNU General Public License along with thi
 */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -113,7 +110,7 @@ namespace RationesCurare7.UI.Controlli
             {
                 Lista.Items.AddRange(Lista_);
             }
-            catch 
+            catch
             {
                 //lista is empty             
             }
@@ -172,7 +169,7 @@ namespace RationesCurare7.UI.Controlli
         public void AddRange(object[] o)
         {
             Lista.Items.AddRange(o);
-            Lista_ = o;            
+            Lista_ = o;
         }
 
         public void ClearSelected()

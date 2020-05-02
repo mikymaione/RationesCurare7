@@ -13,16 +13,19 @@ namespace RationesCurare7
 {
     public static class cGB
     {
+        public static DB.cDB sDB, sPC;
+
+        public static DB.DataWrapper.cUtenti DatiDBFisico;
+        public static DB.DataWrapper.cDBInfo DatiUtente;
+
         public static bool AggiornamentiDisponibili = false;
         public static bool RestartMe = false;
         public static UI.Forms.fMain RationesCurareMainForm;
-        public static sUtente UtenteConnesso = new sUtente();
-        public static cOpzioniProgramma OpzioniProgramma = null;
         public static Pen myPenLeft = new Pen(Color.FromArgb(137, 140, 149));
         public static Pen myPenBottom = new Pen(Color.FromArgb(160, 160, 160));
         public static Random random = new Random(DateTime.Now.Second * DateTime.Now.Millisecond + DateTime.Now.Hour + DateTime.Now.Minute);
         public static System.Windows.Forms.NotifyIcon MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-        private static System.Collections.Generic.Dictionary<string, System.Globalization.CultureInfo> ListaCasseValute = null;
+        internal static System.Globalization.CultureInfo valutaCorrente;
 
 
         public struct Time
@@ -30,11 +33,6 @@ namespace RationesCurare7
             public int Ora, Minuto;
         }
 
-        public struct sUtente
-        {
-            public int ID;
-            public string PathDB, UserName, Email, Psw, TipoDB;
-        }
 
         public static bool IAmInDebug
         {
@@ -51,24 +49,25 @@ namespace RationesCurare7
             }
         }
 
-        public static bool DesignTime => (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+        public static bool DesignTime =>
+            (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
 
         public static string PathDBUtenti
         {
             get
             {
-                //string z = System.IO.Path.Combine(PathDBUtenti_Cartella, "RC.rqd");
-                var z2 = System.IO.Path.Combine(PathDBUtenti_Cartella, "RC.rqd8");
+                const string RCDBName = "RC.rqd8";
 
-                //if (System.IO.File.Exists(z))                
-                //  return z;
+                var z = System.IO.Path.Combine(PathDBUtenti_Cartella, RCDBName);
 
-                if (System.IO.File.Exists(z2))
-                    return z2;
+                if (System.IO.File.Exists(z))
+                {
+                    return z;
+                }
                 else
                 {
-                    var j = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                    j = System.IO.Path.Combine(j, "standard.rqd8");
+                    var j = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    j = System.IO.Path.Combine(j, RCDBName);
 
                     var p = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                     p = System.IO.Path.Combine(p, @"[MAIONE MIKY]\RationesCurare7\");
@@ -83,7 +82,7 @@ namespace RationesCurare7
                             //cannot create
                         }
 
-                    p = System.IO.Path.Combine(p, "RC.rqd8");
+                    p = System.IO.Path.Combine(p, RCDBName);
 
                     if (!System.IO.File.Exists(p))
                         try
@@ -95,10 +94,10 @@ namespace RationesCurare7
                             //cannot copy
                         }
 
-                    z2 = p;
+                    z = p;
                 }
 
-                return z2;
+                return z;
             }
         }
 
@@ -166,9 +165,9 @@ namespace RationesCurare7
             }
         }
 
-        public static string PathFolderDB() => System.IO.Path.GetDirectoryName(UtenteConnesso.PathDB);
+        public static string PathFolderDB() => System.IO.Path.GetDirectoryName(DatiDBFisico.Path);
 
-        public static string PathDBBackup() => System.IO.Path.ChangeExtension(UtenteConnesso.PathDB, System.IO.Path.GetExtension(UtenteConnesso.PathDB) + "b");
+        public static string PathDBBackup() => System.IO.Path.ChangeExtension(DatiDBFisico.Path, System.IO.Path.GetExtension(DatiDBFisico.Path) + "b");
 
         public static bool StringInArray(string s, string[] a)
         {
@@ -433,7 +432,7 @@ namespace RationesCurare7
                         new maionemikyWS.UtenteProgramma()
                         {
                             Programma = "RationesCurare7",
-                            Utente = UtenteConnesso.UserName,
+                            Utente = DatiDBFisico.Nome,
                             Versione = MyProductVersion
                         }
                     );
@@ -501,10 +500,7 @@ namespace RationesCurare7
                                     var fullZipToPath = System.IO.Path.Combine(db_path, entryFileName);
 
                                     using (var streamWriter = System.IO.File.Create(fullZipToPath))
-                                    {
                                         Copy(zipStream, streamWriter, buffer);
-                                        streamWriter.Close();
-                                    }
                                 }
 
                                 zip.Close();
@@ -541,18 +537,19 @@ namespace RationesCurare7
 
             try
             {
-                var cUte = new DB.DataWrapper.cUtente(UtenteConnesso.ID);
-
                 using (var e = new maionemikyWS.EmailSending())
                 {
-                    var yyyyMMddHHmmss = cUte.UltimoAggiornamentoDB.ToString("yyyyMMddHHmmss");
-                    var yyyyMMddHHmmss_WEB = e.VersioneDB(UtenteConnesso.Email, UtenteConnesso.Psw);
-                    var comparazione = e.ComparaDBRC(yyyyMMddHHmmss, UtenteConnesso.Email, UtenteConnesso.Psw);
+                    var yyyyMMddHHmmss = DatiUtente.UltimoAggiornamentoDB.ToString("yyyyMMddHHmmss");
+                    var yyyyMMddHHmmss_WEB = e.VersioneDB(DatiUtente.Email, DatiUtente.Psw);
+                    var comparazione = e.ComparaDBRC(yyyyMMddHHmmss, DatiUtente.Email, DatiUtente.Psw);
 
                     if (comparazione == maionemikyWS.Comparazione.Server)
-                        using (var fdbd = new UI.Forms.fDBDate(cUte.UltimoAggiornamentoDB, yyyyMMddHHmmss_WEB))
+                        using (var fdbd = new UI.Forms.fDBDate(DatiUtente.UltimoAggiornamentoDB, yyyyMMddHHmmss_WEB))
                             if (fdbd.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
-                                ok = ScaricaUltimoDBDalWeb(e, yyyyMMddHHmmss, UtenteConnesso.PathDB, UtenteConnesso.Email, UtenteConnesso.Psw, false);
+                            {
+                                sDB.Connessione.Close();
+                                ok = ScaricaUltimoDBDalWeb(e, yyyyMMddHHmmss, DatiDBFisico.Path, DatiUtente.Email, DatiUtente.Psw, false);
+                            }
                 }
             }
             catch (Exception ex)
@@ -636,39 +633,30 @@ namespace RationesCurare7
                 return DBNull.Value;
         }
 
-        public static string DoubleToMoneyStringValuta(double a, string cassa = "")
+        public static string DoubleToMoneyStringValuta(double a)
         {
-            if (cassa == "")
+            var cultures = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.SpecificCultures);
+
+            foreach (var cultura in cultures)
+                try
+                {
+                    var ri = new System.Globalization.RegionInfo(cultura.Name);
+
+                    if (DatiUtente.Valuta.Equals(ri.ISOCurrencySymbol, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        valutaCorrente = cultura;
+                        break;
+                    }
+                }
+                catch
+                {
+                    //non disponibile
+                }
+
+            if (valutaCorrente == null)
                 return a.ToString("C");
-
-            if (ListaCasseValute == null)
-            {
-                ListaCasseValute = new System.Collections.Generic.Dictionary<string, System.Globalization.CultureInfo>();
-
-                var c = new DB.DataWrapper.cCasse();
-                var li = c.ListaCasseValute();
-
-                var cultures = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.SpecificCultures);
-
-                foreach (var cultura in cultures)
-                    try
-                    {
-                        var ri = new System.Globalization.RegionInfo(cultura.Name);
-
-                        foreach (var l in li)
-                            if (l.Value == ri.ISOCurrencySymbol)
-                                ListaCasseValute.Add(l.Key, cultura);
-                    }
-                    catch
-                    {
-                        //non disponibile
-                    }
-            }
-
-            if (ListaCasseValute.ContainsKey(cassa))
-                return a.ToString("C", ListaCasseValute[cassa]);
             else
-                return a.ToString("C");
+                return a.ToString("C", valutaCorrente);
         }
 
         public static string DoubleToMoneyString(double d) => Math.Round(d, 2).ToString();

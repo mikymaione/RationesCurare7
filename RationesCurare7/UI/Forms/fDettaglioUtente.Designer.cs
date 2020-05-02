@@ -44,12 +44,14 @@
             this.pbImmagine = new System.Windows.Forms.PictureBox();
             this.bOk = new System.Windows.Forms.Button();
             this.bScegliDB = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.eValuta = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImmagine)).BeginInit();
             this.SuspendLayout();
             // 
             // eNome
             // 
-            this.eNome.Location = new System.Drawing.Point(15, 25);
+            this.eNome.Location = new System.Drawing.Point(13, 25);
             this.eNome.MaxLength = 255;
             this.eNome.Name = "eNome";
             this.eNome.Size = new System.Drawing.Size(200, 20);
@@ -58,17 +60,17 @@
             // 
             // ePathDB
             // 
-            this.ePathDB.Location = new System.Drawing.Point(15, 142);
+            this.ePathDB.Location = new System.Drawing.Point(13, 182);
             this.ePathDB.Name = "ePathDB";
             this.ePathDB.ReadOnly = true;
             this.ePathDB.Size = new System.Drawing.Size(322, 20);
-            this.ePathDB.TabIndex = 3;
+            this.ePathDB.TabIndex = 4;
             this.ePathDB.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
@@ -77,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 48);
+            this.label2.Location = new System.Drawing.Point(13, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 5;
@@ -86,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 87);
+            this.label3.Location = new System.Drawing.Point(13, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 13);
             this.label3.TabIndex = 6;
@@ -95,7 +97,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 126);
+            this.label4.Location = new System.Drawing.Point(13, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 7;
@@ -112,16 +114,16 @@
             // 
             // ePsw
             // 
-            this.ePsw.Location = new System.Drawing.Point(15, 64);
+            this.ePsw.Location = new System.Drawing.Point(13, 64);
             this.ePsw.MaxLength = 255;
             this.ePsw.Name = "ePsw";
-            this.ePsw.UseSystemPasswordChar = true;
             this.ePsw.Size = new System.Drawing.Size(200, 20);
             this.ePsw.TabIndex = 1;
+            this.ePsw.UseSystemPasswordChar = true;
             // 
             // eEmail
             // 
-            this.eEmail.Location = new System.Drawing.Point(15, 103);
+            this.eEmail.Location = new System.Drawing.Point(13, 103);
             this.eEmail.MaxLength = 80;
             this.eEmail.Name = "eEmail";
             this.eEmail.Size = new System.Drawing.Size(200, 20);
@@ -137,10 +139,10 @@
             // 
             this.bApriPathDB.Enabled = false;
             this.bApriPathDB.Image = global::RationesCurare7.Properties.Resources.folder_up;
-            this.bApriPathDB.Location = new System.Drawing.Point(343, 140);
+            this.bApriPathDB.Location = new System.Drawing.Point(343, 180);
             this.bApriPathDB.Name = "bApriPathDB";
             this.bApriPathDB.Size = new System.Drawing.Size(25, 25);
-            this.bApriPathDB.TabIndex = 4;
+            this.bApriPathDB.TabIndex = 5;
             this.toolTip1.SetToolTip(this.bApriPathDB, "Vai alla cartella del DB");
             this.bApriPathDB.UseVisualStyleBackColor = true;
             this.bApriPathDB.Click += new System.EventHandler(this.bApriPathDB_Click);
@@ -160,10 +162,10 @@
             // bOk
             // 
             this.bOk.Image = global::RationesCurare7.Properties.Resources.accept;
-            this.bOk.Location = new System.Drawing.Point(296, 199);
+            this.bOk.Location = new System.Drawing.Point(296, 211);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(72, 25);
-            this.bOk.TabIndex = 6;
+            this.bOk.TabIndex = 7;
             this.bOk.Text = "(F5) Ok";
             this.bOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bOk.UseVisualStyleBackColor = true;
@@ -172,21 +174,41 @@
             // bScegliDB
             // 
             this.bScegliDB.Image = global::RationesCurare7.Properties.Resources.folder_database;
-            this.bScegliDB.Location = new System.Drawing.Point(15, 168);
+            this.bScegliDB.Location = new System.Drawing.Point(13, 211);
             this.bScegliDB.Name = "bScegliDB";
             this.bScegliDB.Size = new System.Drawing.Size(200, 25);
-            this.bScegliDB.TabIndex = 5;
+            this.bScegliDB.TabIndex = 6;
             this.bScegliDB.Text = "(F3) Scegli dove salvare il DB";
             this.bScegliDB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bScegliDB.UseVisualStyleBackColor = true;
             this.bScegliDB.Click += new System.EventHandler(this.bScegliDB_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Valuta";
+            // 
+            // eValuta
+            // 
+            this.eValuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.eValuta.FormattingEnabled = true;
+            this.eValuta.Location = new System.Drawing.Point(13, 142);
+            this.eValuta.Name = "eValuta";
+            this.eValuta.Size = new System.Drawing.Size(200, 21);
+            this.eValuta.TabIndex = 3;
             // 
             // fDettaglioUtente
             // 
             this.AcceptButton = this.bOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 232);
+            this.ClientSize = new System.Drawing.Size(379, 250);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.eValuta);
             this.Controls.Add(this.bApriPathDB);
             this.Controls.Add(this.eEmail);
             this.Controls.Add(this.ePsw);
@@ -230,5 +252,7 @@
         private System.Windows.Forms.TextBox eEmail;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button bApriPathDB;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox eValuta;
     }
 }

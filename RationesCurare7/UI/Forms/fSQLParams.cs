@@ -28,7 +28,7 @@ namespace RationesCurare7.UI.Forms
 
         public fSQLParams(string sql) : this()
         {
-            var paras = DB.cDB.ParseParameters(sql);
+            var paras = cGB.sDB.ParseParameters(sql);
 
             if (paras != null)
                 foreach (var p in paras)

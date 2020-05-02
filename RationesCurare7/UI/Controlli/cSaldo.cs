@@ -32,6 +32,7 @@ namespace RationesCurare7.UI.Controlli
             {
                 MyBindingSource = bindingSource1;
                 dataGridView1.AutoGenerateColumns = false;
+                Soldi.DefaultCellStyle.FormatProvider = cGB.valutaCorrente;
 
                 CashName = CashName_;
                 LoadData(false, f);
@@ -67,7 +68,7 @@ namespace RationesCurare7.UI.Controlli
             UltimaRicerca = m.Ricerca(out Query);
             bindingSource1.DataSource = UltimaRicerca;
             CurSaldo = m.Saldo(cc);
-            lSaldo.Text = cGB.DoubleToMoneyStringValuta(CurSaldo, CashName);
+            lSaldo.Text = cGB.DoubleToMoneyStringValuta(CurSaldo);
 
             var R = Math.Round(CurSaldo, 2);
 

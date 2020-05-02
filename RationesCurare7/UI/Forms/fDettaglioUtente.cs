@@ -6,11 +6,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Forms
@@ -19,14 +14,13 @@ namespace RationesCurare7.UI.Forms
     {
         private string ImgPath = "";
         private int ID__ = -1;
-        private string tipoDB = "S";
         private string RecuperaDB = "";
 
         public string DBPath
         {
             set
             {
-                DB.DataWrapper.cUtente u = new DB.DataWrapper.cUtente();
+                DB.DataWrapper.cUtenti u = new DB.DataWrapper.cUtenti();
                 u.CaricaByPath(value);
                 ID__ = u.ID;
 
@@ -62,15 +56,26 @@ namespace RationesCurare7.UI.Forms
         public fDettaglioUtente()
         {
             InitializeComponent();
+            CaricaValute();
             ImgPath = cGB.LoadImage_Casuale_Try(ref pbImmagine);
         }
 
-        public fDettaglioUtente(DB.DataWrapper.cUtente default_) : this()
+        public fDettaglioUtente(DB.DataWrapper.cUtenti default_) : this()
         {
             LoadControls(default_, true);
         }
 
-        private void LoadControls(DB.DataWrapper.cUtente u, bool forza = false)
+        private void CaricaValute()
+        {
+            var c = new DB.DataWrapper.cValute();
+
+            eValuta.DisplayMember = "Descrizione";
+            eValuta.ValueMember = "Valuta";
+            eValuta.DataSource = c.ListaValute();
+            eValuta.SelectedIndex = -1;
+        }
+
+        private void LoadControls(DB.DataWrapper.cUtenti u, bool forza = false)
         {
             if (forza || u.ID > -1)
             {
@@ -80,19 +85,21 @@ namespace RationesCurare7.UI.Forms
 
                 try
                 {
-                    p = System.IO.Path.GetDirectoryName(u.path);
+                    p = System.IO.Path.GetDirectoryName(u.Path);
                 }
                 catch
                 {
                     //not found
                 }
 
-                tipoDB = u.TipoDB;
-                ePsw.Text = u.psw;
-                eNome.Text = u.nome;
-                eEmail.Text = u.Email;
+                var dbU = new DB.DataWrapper.cDBInfo(u.Email);
+
+                ePsw.Text = dbU.Psw;
+                eNome.Text = dbU.Nome;
+                eEmail.Text = dbU.Email;
                 ePathDB.Text = p;
-                RecuperaDB = u.path;
+                RecuperaDB = u.Path;
+                eValuta.SelectedValue = dbU.Valuta;
 
                 var jem = u.Email;
                 if (jem == null || jem.Equals(""))
@@ -106,7 +113,7 @@ namespace RationesCurare7.UI.Forms
         {
             if (ID_ > -1)
             {
-                DB.DataWrapper.cUtente u = new DB.DataWrapper.cUtente(ID_);
+                var u = new DB.DataWrapper.cUtenti(ID_);
                 LoadControls(u);
             }
         }
@@ -137,19 +144,25 @@ namespace RationesCurare7.UI.Forms
                 return false;
             }
 
+            if (eValuta.SelectedIndex < 0)
+            {
+                cGB.MsgBox("Selezionare una valuta!", MessageBoxIcon.Exclamation);
+                return false;
+            }
+
             if (ID__ <= -1)
             {
-                DB.DataWrapper.cUtente u = new DB.DataWrapper.cUtente();
-                List<DB.DataWrapper.cUtente> us = u.ListaUtenti();
+                var u = new DB.DataWrapper.cUtenti();
+                var us = u.ListaUtenti();
 
                 if (us != null)
-                if (us.Count > 0)
-                    foreach (DB.DataWrapper.cUtente usi in us)
-                        if (usi.nome.Equals(eNome.Text, StringComparison.OrdinalIgnoreCase))
-                        {
-                            cGB.MsgBox("È già presente un utente con lo stesso nome!", MessageBoxIcon.Exclamation);
-                            return false;
-                        }
+                    if (us.Count > 0)
+                        foreach (var usi in us)
+                            if (usi.Nome.Equals(eNome.Text, StringComparison.OrdinalIgnoreCase))
+                            {
+                                cGB.MsgBox("È già presente un utente con lo stesso nome!", MessageBoxIcon.Exclamation);
+                                return false;
+                            }
             }
 
             return true;
@@ -162,8 +175,8 @@ namespace RationesCurare7.UI.Forms
 
         private void bScegliDBClick()
         {
-            using (FolderBrowserDialog s = new FolderBrowserDialog())
-                if (s.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            using (var s = new FolderBrowserDialog())
+                if (s.ShowDialog() == DialogResult.OK)
                 {
                     if (!System.IO.Directory.Exists(s.SelectedPath))
                         try
@@ -210,86 +223,91 @@ namespace RationesCurare7.UI.Forms
             var a = "";
 
             if (cGB.MsgBox("Tutto corretto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            if (Controlla())
-            {                
-                var dbda = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                dbda = System.IO.Path.Combine(dbda, "standard.rqd8");
-
-                a = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text + ".rqd" + (tipoDB.Equals("S") ? "8" : ""));
-
-                if (RecuperaDB.Equals(""))
+                if (Controlla())
                 {
-                    //crea DB nuovo 
-                    if (ID__ <= -1)
+                    var dbda = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                    dbda = System.IO.Path.Combine(dbda, "standard.rqd8");
+
+                    a = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text + ".rqd8");
+
+                    if (RecuperaDB.Equals(""))
+                    {
+                        //crea DB nuovo 
+                        if (ID__ <= -1)
+                            try
+                            {
+                                if (!System.IO.Directory.Exists(this.ePathDB.Text))
+                                    System.IO.Directory.CreateDirectory(this.ePathDB.Text);
+
+                                if (!System.IO.File.Exists(a))
+                                    System.IO.File.Copy(dbda, a, false);
+                            }
+                            catch (Exception ex)
+                            {
+                                erro = true;
+                                cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
+                            }
+                    }
+                    else
+                    {
+                        // recupero DB
                         try
                         {
                             if (!System.IO.Directory.Exists(this.ePathDB.Text))
                                 System.IO.Directory.CreateDirectory(this.ePathDB.Text);
 
                             if (!System.IO.File.Exists(a))
-                                System.IO.File.Copy(dbda, a, false);
+                                System.IO.File.Copy(RecuperaDB, a, false);
                         }
                         catch (Exception ex)
                         {
                             erro = true;
                             cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
                         }
-                }
-                else
-                {
-                    // recupero DB
+                    }
+
+                    //copia img
                     try
                     {
-                        if (!System.IO.Directory.Exists(this.ePathDB.Text))
-                            System.IO.Directory.CreateDirectory(this.ePathDB.Text);
+                        var t = System.IO.Path.GetExtension(ImgPath);
+                        var imga = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text);
 
-                        if (!System.IO.File.Exists(a))
-                            System.IO.File.Copy(RecuperaDB, a, false);
+                        System.IO.File.Copy(ImgPath, System.IO.Path.ChangeExtension(imga + t, ".jpg"), true);
                     }
-                    catch (Exception ex)
+                    catch //(Exception ex)
                     {
-                        erro = true;
-                        cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
+                        //erro = true;
+                        //cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
                     }
-                }
 
-                //copia img
-                try
-                {
-                    var t = System.IO.Path.GetExtension(ImgPath);
-                    var imga = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text);
-
-                    System.IO.File.Copy(ImgPath, System.IO.Path.ChangeExtension(imga + t, ".jpg"), true);
-                }
-                catch //(Exception ex)
-                {
-                    //erro = true;
-                    //cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
-                }
-
-                if (!erro)
-                {
-                    var u = new DB.DataWrapper.cUtente()
+                    if (!erro)
                     {
-                        ID = ID_,
-                        nome = eNome.Text,
-                        psw = ePsw.Text,
-                        Email = eEmail.Text,
-                        path = a,
-                        TipoDB = tipoDB,
-                        UltimaModifica = DateTime.Now
-                    };
+                        cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite, a);
 
-                    if (u.Salva() <= 0)
-                    {
-                        MsgErroreSalvataggio();
-                    }
-                    else
-                    {
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        var x = new DB.DataWrapper.cUtenti(ID_)
+                        {
+                            Nome = eNome.Text,
+                            Psw = ePsw.Text,
+                            Email = eEmail.Text,
+                            Path = a,
+                            TipoDB = "S"
+                        };
+
+                        var u = new DB.DataWrapper.cDBInfo(eEmail.Text)
+                        {
+                            Nome = eNome.Text,
+                            Psw = ePsw.Text,
+                            Email = eEmail.Text,
+                            UltimaModifica = DateTime.Now,
+                            Valuta = eValuta.SelectedValue as string
+                        };
+
+                        if (x.Salva() > 0 && (u.DatiCaricati && u.Aggiorna() > 0 || u.Inserisci() > 0))
+                            this.DialogResult = DialogResult.OK;
+                        else
+                            MsgErroreSalvataggio();
                     }
                 }
-            }
         }
 
         private void eNome_Leave(object sender, EventArgs e)
@@ -305,7 +323,7 @@ namespace RationesCurare7.UI.Forms
         }
 
         private void pbImmagineClick()
-        {            
+        {
             var j = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             j = System.IO.Path.Combine(j, "Utenti");
 
@@ -317,8 +335,8 @@ namespace RationesCurare7.UI.Forms
                 InitialDirectory = j
             })
                 if (op.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                if (System.IO.File.Exists(op.FileName))
-                    CaricaImg(op.FileName);
+                    if (System.IO.File.Exists(op.FileName))
+                        CaricaImg(op.FileName);
         }
 
         private void bApriPathDB_Click(object sender, EventArgs e)

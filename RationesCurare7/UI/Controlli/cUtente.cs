@@ -6,11 +6,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -30,35 +25,11 @@ namespace RationesCurare7.UI.Controlli
 
         private void Carica()
         {
-            string h = System.IO.Path.Combine(cGB.PathFolderDB(), cGB.UtenteConnesso.Email + ".jpg");
-            bUtente.Text = cGB.UtenteConnesso.UserName;
+            var h = System.IO.Path.Combine(cGB.PathFolderDB(), cGB.DatiUtente.Email + ".jpg");
+            bUtente.Text = cGB.DatiUtente.Nome;
 
             //iUtente.Image = Image.FromFile(h);
             cGB.LoadImage_Try(h, ref iUtente);
-        }
-
-        private void iUtente_Click(object sender, EventArgs e)
-        {
-            MostraUtente();
-        }
-
-        private void bUtente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MostraUtente();
-        }
-
-        private void MostraUtente()
-        {
-            using (UI.Forms.fDettaglioUtente u = new Forms.fDettaglioUtente())
-            {
-                DB.cDB.ApriConnessione(DB.cDB.DataBase.SQLite, cGB.PathDBUtenti, true);
-
-                u.ID_ = cGB.UtenteConnesso.ID;
-                u.ShowDialog();
-
-                Carica();
-                DB.cDB.ApriConnessione(DB.cDB.DataBase.SQLite, true);
-            }
         }
 
         private void bDisconnetti_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

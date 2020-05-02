@@ -68,7 +68,7 @@ namespace RationesCurare7.UI.Forms
                 eDescrizione.AutoCompleteCustomSource = m.TutteLeDescrizioni();
                 eMacroArea.AutoCompleteCustomSource = m.TutteLeMacroAree();
                 eData.Value_ = DateTime.Now;
-                eNome.Text = cGB.UtenteConnesso.UserName;
+                eNome.Text = cGB.DatiUtente.Nome;
                 cbPeriodicita.SelectedIndex = 0;
             }
         }

@@ -56,10 +56,10 @@ namespace RationesCurare7.DB.DataWrapper
             var c = new List<cCalendario>();
             var p = new DbParameter[2];
 
-            p[x += 1] = DB.cDB.NewPar("GiornoDa", da);
-            p[x += 1] = DB.cDB.NewPar("GiornoA", a);
+            p[x += 1] = cGB.sDB.NewPar("GiornoDa", da);
+            p[x += 1] = cGB.sDB.NewPar("GiornoA", a);
 
-            using (var dr = DB.cDB.EseguiSQLDataReader(DB.cDB.LeggiQuery(cDB.Queries.Calendario_Ricerca), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Ricerca), p))
             {
                 if (dr.HasRows)
                     while (dr.Read())
@@ -82,19 +82,19 @@ namespace RationesCurare7.DB.DataWrapper
         public int Inserisci(cCalendario[] elems)
         {
             var i = 0;
-            var t = DB.cDB.CreaTransazione();            
+            var t = cGB.sDB.CreaTransazione();
 
             for (var z = 0; z < elems.Length; z++)
             {
                 var x = -1;
                 var p = new DbParameter[4];
 
-                p[x += 1] = DB.cDB.NewPar("Descrizione", elems[z].Descrizione);
-                p[x += 1] = DB.cDB.NewPar("Giorno", cGB.DateToOnlyDate(elems[z].Giorno));
-                p[x += 1] = DB.cDB.NewPar("IDGruppo", elems[z].IDGruppo);
-                p[x += 1] = DB.cDB.NewPar("Inserimento", cGB.DBNow());                
+                p[x += 1] = cGB.sDB.NewPar("Descrizione", elems[z].Descrizione);
+                p[x += 1] = cGB.sDB.NewPar("Giorno", cGB.DateToOnlyDate(elems[z].Giorno));
+                p[x += 1] = cGB.sDB.NewPar("IDGruppo", elems[z].IDGruppo);
+                p[x += 1] = cGB.sDB.NewPar("Inserimento", cGB.DBNow());
 
-                i += DB.cDB.EseguiSQLNoQuery(ref t, DB.cDB.LeggiQuery(cDB.Queries.Calendario_Inserisci), p);
+                i += cGB.sDB.EseguiSQLNoQuery(ref t, cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Inserisci), p);
             }
 
             if (i >= elems.Length)
@@ -111,10 +111,10 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[2];
 
-            p[x += 1] = DB.cDB.NewPar("Descrizione", Descrizione);
-            p[x += 1] = DB.cDB.NewPar("ID", StringIDToInt(ID));
+            p[x += 1] = cGB.sDB.NewPar("Descrizione", Descrizione);
+            p[x += 1] = cGB.sDB.NewPar("ID", StringIDToInt(ID));
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Calendario_Aggiorna), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Aggiorna), p);
 
             return i;
         }
@@ -125,10 +125,10 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[2];
 
-            p[x += 1] = DB.cDB.NewPar("Descrizione", Descrizione);
-            p[x += 1] = DB.cDB.NewPar("IDGruppo", IDGruppo);
+            p[x += 1] = cGB.sDB.NewPar("Descrizione", Descrizione);
+            p[x += 1] = cGB.sDB.NewPar("IDGruppo", IDGruppo);
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Calendario_AggiornaSerie), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_AggiornaSerie), p);
 
             return i;
         }
@@ -139,9 +139,9 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[1];
 
-            p[x += 1] = DB.cDB.NewPar("ID", StringIDToInt(ID_));
+            p[x += 1] = cGB.sDB.NewPar("ID", StringIDToInt(ID_));
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Calendario_Elimina), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Elimina), p);
 
             return i;
         }
@@ -152,9 +152,9 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[1];
 
-            p[x += 1] = DB.cDB.NewPar("IDGruppo", IDGruppo_);
+            p[x += 1] = cGB.sDB.NewPar("IDGruppo", IDGruppo_);
 
-            i = DB.cDB.EseguiSQLNoQuery(DB.cDB.LeggiQuery(cDB.Queries.Calendario_EliminaSerie), p);
+            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_EliminaSerie), p);
 
             return i;
         }
@@ -164,9 +164,9 @@ namespace RationesCurare7.DB.DataWrapper
             var x = -1;
             var p = new DbParameter[1];
 
-            p[x += 1] = DB.cDB.NewPar("ID", StringIDToInt(ID_));
+            p[x += 1] = cGB.sDB.NewPar("ID", StringIDToInt(ID_));
 
-            using (var dr = DB.cDB.EseguiSQLDataReader(DB.cDB.LeggiQuery(cDB.Queries.Calendario_Dettaglio), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Dettaglio), p))
             {
                 if (dr.HasRows)
                 {

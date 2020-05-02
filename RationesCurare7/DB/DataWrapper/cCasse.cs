@@ -14,20 +14,16 @@ namespace RationesCurare7.DB.DataWrapper
     {
         public bool Nascondi;
         public double Saldo = 0;
-        public string nome, nomenuovo, Valuta;
+        public string nome, nomenuovo;
         public byte[] imgName;
 
-        public static HashSet<string> CasseDefault = new HashSet<string>() { "cassaforte", "saldo", "avere", "dare", "salvadanaio", "portafogli" };
+        public cCasse() : this("", "", null, false) { }
 
-
-        public cCasse() : this("", "", "", null, false) { }
-
-        public cCasse(string nome_, string nomenuovo_, string Valuta_, byte[] imgName_, bool Nascondi_)
+        public cCasse(string nome_, string nomenuovo_, byte[] imgName_, bool Nascondi_)
         {
             Nascondi = Nascondi_;
             nomenuovo = nomenuovo_;
             nome = nome_;
-            Valuta = Valuta_;
             imgName = imgName_;
 
             if (!nome.Equals(""))
@@ -38,51 +34,52 @@ namespace RationesCurare7.DB.DataWrapper
 
         public System.Data.DataTable ListaCasse(string cassa_da_escludere)
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("Nome", cassa_da_escludere)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("Nome", cassa_da_escludere)
             };
 
-            return cDB.EseguiSQLDataTable(cDB.LeggiQuery(cDB.Queries.Casse_ListaEX), p);
+            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_ListaEX), p);
         }
 
-        public System.Data.DataTable ListaValute() =>
-            cDB.EseguiSQLDataTable(cDB.LeggiQuery(cDB.Queries.Casse_Valute));
-
-        public Dictionary<string, string> ListaCasseValute()
+        public HashSet<string> ListaCasseTree()
         {
-            var r = new Dictionary<string, string>();
+            var r = new HashSet<string>();
 
-            var p = new DbParameter[] {
-                cDB.NewPar("MostraTutte", 1)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("MostraTutte", 1)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p))
                 if (dr.HasRows)
                     while (dr.Read())
-                        r.Add(dr["nome"] as string, dr["Valuta"] as string);
+                        r.Add(dr["nome"] as string);
 
             return r;
         }
 
         public System.Data.DataTable ListaCasse() =>
-            cDB.EseguiSQLDataTable(cDB.LeggiQuery(cDB.Queries.Casse_Lista));
+            cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Lista));
 
         public System.Data.DataTable Ricerca()
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("MostraTutte", 1)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("MostraTutte", 1)
             };
 
-            return cDB.EseguiSQLDataTable(cDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p);
+            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Ricerca), p);
         }
 
         public int Elimina(string ID_)
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("nome", ID_)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("nome", ID_)
             };
 
-            return cDB.EseguiSQLNoQuery(cDB.LeggiQuery(cDB.Queries.Casse_Elimina), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Elimina), p);
         }
 
         public int Salva() =>
@@ -90,50 +87,50 @@ namespace RationesCurare7.DB.DataWrapper
 
         private int Inserisci()
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("nomenuovo", nomenuovo),
-                cDB.NewPar("Valuta", Valuta),
-                cDB.NewPar("imgName", imgName)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("nomenuovo", nomenuovo),
+                cGB.sDB.NewPar("imgName", imgName),
+                cGB.sDB.NewPar("Nascondi", Nascondi)
             };
 
-            return cDB.EseguiSQLNoQuery(cDB.LeggiQuery(cDB.Queries.Casse_Inserisci), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Inserisci), p);
         }
 
         private int Modifica()
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("nomenuovo", nomenuovo),
-                cDB.NewPar("Valuta", Valuta),
-                cDB.NewPar("imgName", imgName),
-                cDB.NewPar("nome", nome),
-                cDB.NewPar("Nascondi", Nascondi)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("nomenuovo", nomenuovo),
+                cGB.sDB.NewPar("imgName", imgName),
+                cGB.sDB.NewPar("nome", nome),
+                cGB.sDB.NewPar("Nascondi", Nascondi)
             };
 
-            return cDB.EseguiSQLNoQuery(cDB.LeggiQuery(cDB.Queries.Casse_Aggiorna), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Aggiorna), p);
         }
 
         public List<cCasse> CasseAggiuntive(bool MostraTutte)
         {
             var cc = new List<cCasse>();
 
-            var p = new DbParameter[] {
-                cDB.NewPar("MostraTutte", MostraTutte? 1 : 0)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("MostraTutte", MostraTutte? 1 : 0)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Ricerca), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
                         var n = dr["nome"] as string;
 
-                        if (!CasseDefault.Contains(n))
-                            cc.Add(new cCasse(
-                                n,
-                                n,
-                                dr["Valuta"] as string,
-                                dr["imgName"] as byte[],
-                                System.Convert.ToBoolean(dr["Nascondi"])
-                            ));
+                        cc.Add(new cCasse(
+                            n,
+                            n,
+                            dr["imgName"] as byte[],
+                            System.Convert.ToBoolean(dr["Nascondi"])
+                        ));
                     }
 
             return cc;
@@ -141,17 +138,17 @@ namespace RationesCurare7.DB.DataWrapper
 
         private void CaricaByID()
         {
-            var p = new DbParameter[] {
-                cDB.NewPar("nome", nome)
+            var p = new DbParameter[]
+            {
+                cGB.sDB.NewPar("nome", nome)
             };
 
-            using (var dr = cDB.EseguiSQLDataReader(cDB.LeggiQuery(cDB.Queries.Casse_Carica), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Carica), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
                         imgName = dr["imgName"] as byte[];
                         nome = dr["nome"] as string;
-                        Valuta = dr["Valuta"] as string;
                         Nascondi = System.Convert.ToBoolean(dr["Nascondi"]);
                         nomenuovo = nome;
                     }

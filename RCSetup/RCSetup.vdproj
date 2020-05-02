@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_158F37B4178D4140BC06AF63B4FAEF1F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1A04808F64ED47098307DA768BC3CB26"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -268,6 +274,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5E85D602333740818E2939854ABF3A40"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_61017161974E49599137BB6AEF6DBD17"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -532,6 +544,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D13605BED35544E3B0C9BF5048854246"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D1486080B73641F7A014675A20C53680"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -952,6 +970,26 @@
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Ricerca.sql"
             "TargetName" = "8:Calendario_Ricerca.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_158F37B4178D4140BC06AF63B4FAEF1F"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Dettaglio.sql"
+            "TargetName" = "8:DBInfo_Dettaglio.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1654,6 +1692,26 @@
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_AggiornaSerie.sql"
             "TargetName" = "8:Calendario_AggiornaSerie.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61017161974E49599137BB6AEF6DBD17"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Aggiorna.sql"
+            "TargetName" = "8:DBInfo_Aggiorna.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2574,6 +2632,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1486080B73641F7A014675A20C53680"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Inserisci.sql"
+            "TargetName" = "8:DBInfo_Inserisci.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D29C1558AFA9F2FF42D62337F134E071"
             {
             "AssemblyRegister" = "3:1"
@@ -3110,15 +3188,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RationesCurare7"
-        "ProductCode" = "8:{36ED52B3-3968-4D96-A76A-26B37256051B}"
-        "PackageCode" = "8:{D968FC05-A3F1-4B6A-977E-709C0CA1FF8E}"
+        "ProductCode" = "8:{F1F169D5-85F7-44CF-8AA5-DE96D089D246}"
+        "PackageCode" = "8:{F9F789BF-877F-4FD2-ADE2-22A2DBBED9E4}"
         "UpgradeCode" = "8:{BD521D0C-80D8-4377-B6EF-68783AA9C67C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:20.20.0501"
+        "ProductVersion" = "8:20.20.0502"
         "Manufacturer" = "8:[MAIONE MIKY]"
         "ARPHELPTELEPHONE" = "8:mikymaione@hotmail.it"
         "ARPHELPLINK" = "8:http://www.maionemiky.it"
@@ -3622,7 +3700,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED0138E7D2EF4A1D8688291CFB8751C8"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\obj\\Release\\RationesCurare7.exe"
+            "SourcePath" = "8:..\\RationesCurare7\\obj\\Debug\\RationesCurare7.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"

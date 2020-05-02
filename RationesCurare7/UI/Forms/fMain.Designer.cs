@@ -29,21 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("(F9) Cassaforte", 6, 6);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("(F12) Salvadanaio", 21, 21);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("(F4) Portafoglio", 19, 19);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("(F1) Dare", 9, 9);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("(F2) Avere", 2, 2);
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);            
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("(F5) Saldo", 20, 20);
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Movimenti Periodici", 17, 17);
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("(Alt +1) Casse", 5, 5, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
+            treeNode1,            
             treeNode7,
             treeNode8});
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("(F3) Cerca", 11, 11);
@@ -113,32 +103,7 @@
             treeNode1.ImageIndex = 13;
             treeNode1.Name = "nGestioneCasse";
             treeNode1.SelectedImageIndex = 13;
-            treeNode1.Text = "Gestione casse";
-            treeNode2.ImageIndex = 6;
-            treeNode2.Name = "nCassaforte";
-            treeNode2.SelectedImageIndex = 6;
-            treeNode2.Tag = "Cassaforte";
-            treeNode2.Text = "(F9) Cassaforte";
-            treeNode3.ImageIndex = 21;
-            treeNode3.Name = "nSalvadanaio";
-            treeNode3.SelectedImageIndex = 21;
-            treeNode3.Tag = "Salvadanaio";
-            treeNode3.Text = "(F12) Salvadanaio";
-            treeNode4.ImageIndex = 19;
-            treeNode4.Name = "nPortafoglio";
-            treeNode4.SelectedImageIndex = 19;
-            treeNode4.Tag = "Portafogli";
-            treeNode4.Text = "(F4) Portafoglio";
-            treeNode5.ImageIndex = 9;
-            treeNode5.Name = "nDare";
-            treeNode5.SelectedImageIndex = 9;
-            treeNode5.Tag = "Dare";
-            treeNode5.Text = "(F1) Dare";
-            treeNode6.ImageIndex = 2;
-            treeNode6.Name = "nAvere";
-            treeNode6.SelectedImageIndex = 2;
-            treeNode6.Tag = "Avere";
-            treeNode6.Text = "(F2) Avere";
+            treeNode1.Text = "Gestione casse";          
             treeNode7.ImageIndex = 20;
             treeNode7.Name = "nSaldo";
             treeNode7.SelectedImageIndex = 20;

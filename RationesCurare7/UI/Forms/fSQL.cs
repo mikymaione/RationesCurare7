@@ -29,14 +29,14 @@ namespace RationesCurare7.UI.Forms
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = bindingSource1;
 
-            bindingSource1.DataSource = DB.cDB.EseguiSQLDataTable(eSQL.Text, GetParamsForSQL());
+            bindingSource1.DataSource = cGB.sDB.EseguiSQLDataTable(eSQL.Text, GetParamsForSQL());
         }
 
         private System.Data.Common.DbParameter[] GetParamsForSQL()
         {
             using (var fSP = new fSQLParams(eSQL.Text))
                 if (fSP.Valori.Count == 0 || fSP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    return DB.cDB.NewPars(fSP.Valori);
+                    return cGB.sDB.NewPars(fSP.Valori);
 
             return null;
         }

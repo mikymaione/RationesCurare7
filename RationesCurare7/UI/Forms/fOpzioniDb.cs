@@ -6,11 +6,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Forms
@@ -25,10 +20,10 @@ namespace RationesCurare7.UI.Forms
 
         private void inipath()
         {
-            lLocazione.Text = cGB.UtenteConnesso.PathDB;
-            eUtente.Text = cGB.UtenteConnesso.Email;
-            ePsw.Text = cGB.UtenteConnesso.Psw;
-            cbSync.Checked = cGB.OpzioniProgramma.SincronizzaDB;
+            lLocazione.Text = cGB.DatiDBFisico.Path;
+            eUtente.Text = cGB.DatiUtente.Email;
+            ePsw.Text = cGB.DatiUtente.Psw;
+            cbSync.Checked = cGB.DatiUtente.SincronizzaDB;
         }
 
         private void lLocazione_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -58,7 +53,7 @@ namespace RationesCurare7.UI.Forms
         {
             try
             {
-                System.IO.File.Copy(cGB.UtenteConnesso.PathDB, cGB.PathDBBackup(), true);
+                System.IO.File.Copy(cGB.DatiDBFisico.Path, cGB.PathDBBackup(), true);
 
                 if (daTastiera)
                     this.Close();
@@ -73,16 +68,17 @@ namespace RationesCurare7.UI.Forms
 
         private void Recupera()
         {
-            if (cGB.MsgBox("Sicuro di voler effettuare il ripristino dalla copia di backup?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (cGB.MsgBox("Sicuro di voler effettuare il ripristino dalla copia di backup?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 try
                 {
                     cGB.RationesCurareMainForm.ChiudiTutteSchede();
 
-                    DB.cDB.ChiudiConnessione();
+                    cGB.sDB.Connessione.Close();
 
-                    System.IO.File.Copy(cGB.PathDBBackup(), cGB.UtenteConnesso.PathDB, true);
+                    System.IO.File.Copy(cGB.PathDBBackup(), cGB.DatiDBFisico.Path, true);
 
-                    DB.cDB.ApriConnessione();
+                    cGB.sDB.Connessione.Open();
+
                     cGB.RationesCurareMainForm.LoadAllCash();
 
                     cGB.MsgBox("Recupero effettuato!");
@@ -101,10 +97,9 @@ namespace RationesCurare7.UI.Forms
 
         private void Salva()
         {
-            cGB.OpzioniProgramma.SincronizzaDB = cbSync.Checked;
-            cGB.OpzioniProgramma.Salva();
+            cGB.DatiUtente.SincronizzaDB = cbSync.Checked;
 
-            if (cGB.OpzioniProgramma.FileSavedCorrectly)
+            if (cGB.DatiUtente.Aggiorna() > 0)
                 this.Close();
             else
                 MsgErroreSalvataggio();
@@ -122,10 +117,10 @@ namespace RationesCurare7.UI.Forms
 
             this.Enabled = false;
 
-            if (cGB.OpzioniProgramma.SincronizzaDB)
+            if (cGB.DatiUtente.SincronizzaDB)
             {
-                var mc = new GB.MikyCloud(cGB.UtenteConnesso);
-                mc.MandaDBSulSito(DB.cDB.UltimaModifica, true);
+                var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                mc.MandaDBSulSito(cGB.sDB.UltimaModifica, true);
             }
 
             bSync.Text = y;

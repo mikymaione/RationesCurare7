@@ -1,7 +1,6 @@
 update Casse set
 	nome = @nomenuovo,
-	imgName = @imgName,
-	Valuta = @Valuta,
+	imgName = @imgName,	
 	Nascondi = @Nascondi
 where
 	nome = @nome

@@ -22,6 +22,7 @@ namespace RationesCurare7.UI.Forms
         }
 
         private Controlli.cUtenteListElement[] eUtenti = null;
+        public int IDUtente;
 
         private int IDUtenteSelezionato
         {
@@ -49,7 +50,7 @@ namespace RationesCurare7.UI.Forms
         private void Carica()
         {
             var cisono = false;
-            var us = new DB.DataWrapper.cUtente();
+            var us = new DB.DataWrapper.cUtenti();
             var u = us.ListaUtenti();
 
             if ((u?.Count ?? 0) > 0)
@@ -61,10 +62,10 @@ namespace RationesCurare7.UI.Forms
                     eUtenti[i] = new Controlli.cUtenteListElement()
                     {
                         ID_ = u[i].ID,
-                        NomeUtente = u[i].nome,
-                        Psw = u[i].psw,
+                        NomeUtente = u[i].Nome,
+                        Psw = u[i].Psw,
                         Email = u[i].Email,
-                        PathDB = u[i].path,
+                        PathDB = u[i].Path,
                         TipoDB = u[i].TipoDB,
                         Dock = DockStyle.Top
                     };
@@ -163,7 +164,7 @@ namespace RationesCurare7.UI.Forms
             if (cGB.MsgBox("Nascondere l'utente?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (ChiediPsw(GetSelectedUserIndex()))
                 {
-                    var u = new DB.DataWrapper.cUtente();
+                    var u = new DB.DataWrapper.cUtenti();
                     u.Elimina(GetSelectedUserID());
 
                     Carica();
@@ -180,7 +181,7 @@ namespace RationesCurare7.UI.Forms
             if (System.IO.File.Exists(FileName))
             {
                 var Presente = false;
-                var u = new DB.DataWrapper.cUtente();
+                var u = new DB.DataWrapper.cUtenti();
                 u.CaricaByPath(FileName);
 
                 if (u.ID > -1)
@@ -194,11 +195,9 @@ namespace RationesCurare7.UI.Forms
 
                 if (!Presente)
                 {
-                    u.nome = System.IO.Path.GetFileNameWithoutExtension(FileName);
-                    u.path = FileName;
-                    u.Email = u.nome;
-                    u.psw = psw;
-                    u.UltimaModifica = DateTime.Now;
+                    u.Nome = System.IO.Path.GetFileNameWithoutExtension(FileName);
+                    u.Path = FileName;
+                    u.Email = u.Nome;
                     u.SetTipoDBByExtension(System.IO.Path.GetExtension(FileName));
 
                     using (var fd = new fDettaglioUtente(u))
@@ -229,13 +228,7 @@ namespace RationesCurare7.UI.Forms
                     {
                         if (ChiediPsw(i))
                         {
-                            cGB.UtenteConnesso.UserName = eUtenti[i].NomeUtente;
-                            cGB.UtenteConnesso.PathDB = eUtenti[i].PathDB;
-                            cGB.UtenteConnesso.ID = eUtenti[i].ID_;
-                            cGB.UtenteConnesso.Email = eUtenti[i].Email;
-                            cGB.UtenteConnesso.Psw = eUtenti[i].Psw;
-                            cGB.UtenteConnesso.TipoDB = eUtenti[i].TipoDB;
-
+                            IDUtente = eUtenti[i].ID_;
                             DialogResult = DialogResult.OK;
                         }
                     }

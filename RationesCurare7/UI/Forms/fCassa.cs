@@ -26,9 +26,8 @@ namespace RationesCurare7.UI.Forms
 
                 if (ID__ != "")
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, "", "", null, false);
+                    var c = new DB.DataWrapper.cCasse(ID__, "", null, false);
                     eNome.Text = c.nomenuovo;
-                    eValuta.SelectedValue = c.Valuta;
                     cbNascondi.Checked = c.Nascondi;
                     CaricaIMG(c.imgName);
                 }
@@ -38,16 +37,6 @@ namespace RationesCurare7.UI.Forms
         public fCassa()
         {
             InitializeComponent();
-            Carica();
-        }
-
-        private void Carica()
-        {
-            var c = new DB.DataWrapper.cCasse();
-
-            eValuta.DisplayMember = "Descrizione";
-            eValuta.ValueMember = "Valuta";
-            eValuta.DataSource = c.ListaValute();
         }
 
         private void bCercaImmagine_Click(object sender, EventArgs e)
@@ -156,7 +145,7 @@ namespace RationesCurare7.UI.Forms
                 }
                 else
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, eValuta.SelectedValue as string, ImageByte, cbNascondi.Checked);
+                    var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, ImageByte, cbNascondi.Checked);
 
                     if (c.Salva() <= 0)
                     {

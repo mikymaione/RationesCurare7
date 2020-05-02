@@ -1,12 +1,12 @@
 insert into utenti (
 	nome,
-	psw,
+	Psw,
 	path,
 	Email,	
 	TipoDB	
 ) values (
-	@nome,
-	@psw,
+	@nome,	
+	@Psw,
 	@path,
 	@Email,	
 	@TipoDB	
