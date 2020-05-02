@@ -264,7 +264,10 @@ namespace RationesCurare7
                 if (o is DateTime)
                     d = (DateTime)o;
                 else if (o is string)
-                    d = DateTime.ParseExact(o.ToString().Substring(0, 19), "yyyy-MM-dd hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                {
+                    var ds = o.ToString().Substring(0, 19);
+                    d = DateTime.ParseExact(ds, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                }
             }
             catch
             {
@@ -539,12 +542,12 @@ namespace RationesCurare7
             {
                 using (var e = new maionemikyWS.EmailSending())
                 {
-                    var yyyyMMddHHmmss = DatiUtente.UltimoAggiornamentoDB.ToString("yyyyMMddHHmmss");
+                    var yyyyMMddHHmmss = DatiUtente.UltimaModifica.ToString("yyyyMMddHHmmss");
                     var yyyyMMddHHmmss_WEB = e.VersioneDB(DatiUtente.Email, DatiUtente.Psw);
                     var comparazione = e.ComparaDBRC(yyyyMMddHHmmss, DatiUtente.Email, DatiUtente.Psw);
 
                     if (comparazione == maionemikyWS.Comparazione.Server)
-                        using (var fdbd = new UI.Forms.fDBDate(DatiUtente.UltimoAggiornamentoDB, yyyyMMddHHmmss_WEB))
+                        using (var fdbd = new UI.Forms.fDBDate(DatiUtente.UltimaModifica, yyyyMMddHHmmss_WEB))
                             if (fdbd.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
                             {
                                 sDB.Connessione.Close();
@@ -616,11 +619,11 @@ namespace RationesCurare7
 
         public static string DateToSQLite(DateTime d)
         {
-            //yyyy-MM-dd HH:mm:ss.fff
+            //yyyy-MM-dd HH:mm:ss
             var h = "";
 
             h += d.Year + "-" + (d.Month < 10 ? "0" : "") + d.Month + "-" + (d.Day < 10 ? "0" : "") + d.Day + " ";
-            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second + ".000";
+            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second;
 
             return h;
         }

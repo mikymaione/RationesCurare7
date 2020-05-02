@@ -40,7 +40,7 @@ namespace RationesCurare7.UI.Forms
         private TreeNode nCasse = null;
         private TreeNode bSaldo;
         private List<DB.DataWrapper.cCasse> CasseAggiuntive = null;
-        private string bSaldo_Text, bAvere_Text, bDare_Text, bCassaforte_Text, bPortafoglio_Text, bSalvadanaio_Text;
+        private string bSaldo_Text;
         private TreeNode LastSelectedNode = null;
 
         public fMain()
@@ -159,22 +159,6 @@ namespace RationesCurare7.UI.Forms
                             nCasse.Nodes.Insert(sette, n);
                             sette++;
                         }
-
-                foreach (TreeNode nodo in nCasse.Nodes)
-                    if (nodo.Index > 6 && nodo.Index < nCasse.Nodes.Count - 1)
-                    {
-                        var trovato = false;
-
-                        foreach (var caz in CasseAggiuntive)
-                            if (caz.nome.Equals(nodo.Tag))
-                            {
-                                trovato = true;
-                                break;
-                            }
-
-                        if (!trovato)
-                            nodo.Remove();
-                    }
             }
         }
 

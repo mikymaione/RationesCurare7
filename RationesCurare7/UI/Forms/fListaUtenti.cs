@@ -200,6 +200,8 @@ namespace RationesCurare7.UI.Forms
                     u.Email = u.Nome;
                     u.SetTipoDBByExtension(System.IO.Path.GetExtension(FileName));
 
+                    cGB.sDB = new DB.cDB(false, DB.cDB.DataBase.SQLite, FileName);
+
                     using (var fd = new fDettaglioUtente(u))
                         if (fd.ShowDialog() == DialogResult.OK)
                             Carica();

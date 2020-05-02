@@ -33,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0D85833EDE4D493286E383179A5BE653"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0DE4B0D2992F40A9991F3018FE1B44B0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -861,26 +855,6 @@
             "TargetName" = "8:Casse_Lista.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0D85833EDE4D493286E383179A5BE653"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\Casse_Immagini\\p_Salvadanaio.png"
-            "TargetName" = "8:p_Salvadanaio.png"
-            "Tag" = "8:"
-            "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3700,7 +3674,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED0138E7D2EF4A1D8688291CFB8751C8"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\obj\\Debug\\RationesCurare7.exe"
+            "SourcePath" = "8:..\\RationesCurare7\\obj\\Release\\RationesCurare7.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"

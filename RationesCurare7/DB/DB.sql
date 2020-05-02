@@ -10,7 +10,7 @@ CREATE TABLE Calendario (
 CREATE TABLE Casse (
 	Nome VARCHAR(20) PRIMARY KEY COLLATE NOCASE NOT NULL,
 	ImgName BLOB,
-	Nascondi boolean
+	Nascondi boolean	
 );
 
 CREATE TABLE MovimentiTempo (

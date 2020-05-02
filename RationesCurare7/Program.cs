@@ -101,12 +101,12 @@ namespace RationesCurare7
                         if (cGB.RestartMe)
                             goto Inizio;
 
-                        if (!cGB.IAmInDebug)
-                            if (cGB.DatiUtente.SincronizzaDB)
-                            {
-                                var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
-                                mc.MandaDBSulSito(cGB.sDB.UltimaModifica);
-                            }
+                        //if (!cGB.IAmInDebug)
+                        if (cGB.DatiUtente.SincronizzaDB)
+                        {
+                            var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                            mc.MandaDBSulSito(cGB.sDB.UltimaModifica);
+                        }
                     }
                 }
             }
