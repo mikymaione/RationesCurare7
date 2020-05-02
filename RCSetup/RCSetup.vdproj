@@ -297,6 +297,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
+        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6A223B7A17DD42FE8CFB8330DF8C0B53"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -322,6 +328,12 @@
         "Entry"
         {
         "MsmKey" = "8:_71B8B447A370472780CDCFD36F1C342A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_74F102C3177F40ADA600AC86FA3AE55C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -519,12 +531,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CA874C7F010848F5AA63BC8D9260CD2C"
-        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CC292AE138174649BD17FB3EF2B8719F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -706,7 +712,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CA874C7F010848F5AA63BC8D9260CD2C"
+        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1762,6 +1768,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_680AFFA5BD216BAF19FA72BA5E28FEA3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ILCalc, Version=20.18.4.11, Culture=neutral, PublicKeyToken=5c31270a473b7e3c, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_680AFFA5BD216BAF19FA72BA5E28FEA3"
+                    {
+                    "Name" = "8:ILCalc.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ILCalc.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A223B7A17DD42FE8CFB8330DF8C0B53"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Saldo.sql"
@@ -1848,6 +1885,26 @@
             "TargetName" = "8:Vampire-Knight.png"
             "Tag" = "8:"
             "Folder" = "8:_F183747EC03B4602A08EA10757E7C835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_74F102C3177F40ADA600AC86FA3AE55C"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\RC.rqd8"
+            "TargetName" = "8:RC.rqd8"
+            "Tag" = "8:"
+            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2515,37 +2572,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CA874C7F010848F5AA63BC8D9260CD2C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ILCalc, Version=20.18.4.11, Culture=neutral, PublicKeyToken=5c31270a473b7e3c, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_CA874C7F010848F5AA63BC8D9260CD2C"
-                    {
-                    "Name" = "8:ILCalc.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ILCalc.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC292AE138174649BD17FB3EF2B8719F"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Elimina.sql"
@@ -3092,7 +3118,7 @@
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_F14069F32EDC49F7B82CA03C17DB6EAF"
                     {
                     "Name" = "8:Casse_Immagini"
-                    "AlwaysCreate" = "11:FALSE"
+                    "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_DEA4D451920E4ED4B9EBEEE596EB2F70"
@@ -3162,15 +3188,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RationesCurare7"
-        "ProductCode" = "8:{F1F169D5-85F7-44CF-8AA5-DE96D089D246}"
-        "PackageCode" = "8:{F9F789BF-877F-4FD2-ADE2-22A2DBBED9E4}"
+        "ProductCode" = "8:{0366A8F0-A082-462F-A476-16D776C7936C}"
+        "PackageCode" = "8:{58769EA4-6C86-4FCA-B7D0-F655E3D86DC5}"
         "UpgradeCode" = "8:{BD521D0C-80D8-4377-B6EF-68783AA9C67C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:20.20.0502"
+        "ProductVersion" = "8:20.20.0503"
         "Manufacturer" = "8:[MAIONE MIKY]"
         "ARPHELPTELEPHONE" = "8:mikymaione@hotmail.it"
         "ARPHELPLINK" = "8:http://www.maionemiky.it"

@@ -25,7 +25,7 @@ namespace RationesCurare7
         public static Pen myPenBottom = new Pen(Color.FromArgb(160, 160, 160));
         public static Random random = new Random(DateTime.Now.Second * DateTime.Now.Millisecond + DateTime.Now.Hour + DateTime.Now.Minute);
         public static System.Windows.Forms.NotifyIcon MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-        internal static System.Globalization.CultureInfo valutaCorrente;
+        internal static System.Globalization.CultureInfo valutaCorrente = System.Windows.Forms.Application.CurrentCulture;
 
 
         public struct Time
@@ -165,9 +165,11 @@ namespace RationesCurare7
             }
         }
 
-        public static string PathFolderDB() => System.IO.Path.GetDirectoryName(DatiDBFisico.Path);
+        public static string PathFolderDB() =>
+            System.IO.Path.GetDirectoryName(DatiDBFisico.Path);
 
-        public static string PathDBBackup() => System.IO.Path.ChangeExtension(DatiDBFisico.Path, System.IO.Path.GetExtension(DatiDBFisico.Path) + "b");
+        public static string PathDBBackup() =>
+            System.IO.Path.ChangeExtension(DatiDBFisico.Path, System.IO.Path.GetExtension(DatiDBFisico.Path) + "b");
 
         public static bool StringInArray(string s, string[] a)
         {
@@ -636,7 +638,7 @@ namespace RationesCurare7
                 return DBNull.Value;
         }
 
-        public static string DoubleToMoneyStringValuta(double a)
+        public static void initCulture()
         {
             var cultures = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.SpecificCultures);
 
@@ -655,14 +657,13 @@ namespace RationesCurare7
                 {
                     //non disponibile
                 }
-
-            if (valutaCorrente == null)
-                return a.ToString("C");
-            else
-                return a.ToString("C", valutaCorrente);
         }
 
-        public static string DoubleToMoneyString(double d) => Math.Round(d, 2).ToString();
+        public static string DoubleToMoneyStringValuta(double d) =>
+            d.ToString("C");
+
+        public static string DoubleToMoneyString(double d) =>
+            Math.Round(d, 2).ToString();
 
         public static double DoubleToMoney(string sa)
         {

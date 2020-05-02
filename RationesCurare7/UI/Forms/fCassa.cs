@@ -82,7 +82,6 @@ namespace RationesCurare7.UI.Forms
                     if (System.IO.File.Exists(ImageFile))
                     {
                         ImageByte = imageToByteArray(ImageFile);
-                        //pbCassa.Image = Image.FromFile(ImageFile);
                         cGB.LoadImage_Try(ImageFile, ref pbCassa);
 
                         ImmagineOK = true;
@@ -97,7 +96,7 @@ namespace RationesCurare7.UI.Forms
 
         public byte[] imageToByteArray(string filename_)
         {
-            using (var fs = new System.IO.FileStream(filename_, System.IO.FileMode.Open))
+            using (var fs = new System.IO.FileStream(filename_, System.IO.FileMode.Open, System.IO.FileAccess.Read))
             {
                 var MyData = new byte[fs.Length];
                 fs.Read(MyData, 0, (int)fs.Length);
@@ -147,7 +146,7 @@ namespace RationesCurare7.UI.Forms
                 {
                     var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, ImageByte, cbNascondi.Checked);
 
-                    if (c.Salva() <= 0)
+                    if (c.Salva() < 1)
                     {
                         MsgErroreSalvataggio();
                     }
@@ -166,6 +165,7 @@ namespace RationesCurare7.UI.Forms
 
         private void AggiornaAlbero()
         {
+            cGB.RationesCurareMainForm.SvuotaAlberoCasse();
             cGB.RationesCurareMainForm.AggiungiCasseExtra();
             cGB.RationesCurareMainForm.LoadAllCash();
         }

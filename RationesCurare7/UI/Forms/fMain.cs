@@ -131,6 +131,14 @@ namespace RationesCurare7.UI.Forms
             cAlbero.Select();
         }
 
+        public void SvuotaAlberoCasse()
+        {
+            CasseAggiuntive = null;
+
+            for (var i = 2; i < cAlbero.Nodes[0].Nodes.Count; i++)
+                cAlbero.Nodes[0].Nodes[i].Remove();
+        }
+
         public void AggiungiCasseExtra()
         {
             var cas = new DB.DataWrapper.cCasse();

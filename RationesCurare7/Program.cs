@@ -94,6 +94,11 @@ namespace RationesCurare7
                     if (cGB.sDB.Connessione.State == System.Data.ConnectionState.Closed)
                         cGB.sDB.Connessione.Open();
 
+                    cGB.initCulture();
+                    Application.CurrentCulture = cGB.valutaCorrente;
+                    //System.Threading.Thread.CurrentThread.CurrentCulture = cGB.valutaCorrente;
+                    //System.Threading.Thread.CurrentThread.CurrentUICulture = cGB.valutaCorrente;
+
                     using (cGB.RationesCurareMainForm = new UI.Forms.fMain())
                     {
                         Application.Run(cGB.RationesCurareMainForm);
