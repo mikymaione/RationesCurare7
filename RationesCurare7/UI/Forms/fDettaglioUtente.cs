@@ -92,6 +92,12 @@ namespace RationesCurare7.UI.Forms
                     //not found
                 }
 
+                if (cGB.sDB == null)
+                {
+                    cGB.DatiDBFisico = new DB.DataWrapper.cUtenti(u.ID);
+                    cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite);
+                }
+
                 var dbU = new DB.DataWrapper.cDBInfo(u.Email);
 
                 ePsw.Text = dbU.Psw;
