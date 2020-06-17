@@ -96,6 +96,7 @@ namespace RationesCurare7
 
                     cGB.initCulture();
                     Application.CurrentCulture = cGB.valutaCorrente;
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.InstalledUICulture;
                     //System.Threading.Thread.CurrentThread.CurrentCulture = cGB.valutaCorrente;
                     //System.Threading.Thread.CurrentThread.CurrentUICulture = cGB.valutaCorrente;
 

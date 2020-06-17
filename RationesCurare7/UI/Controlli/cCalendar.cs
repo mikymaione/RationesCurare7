@@ -66,8 +66,8 @@ namespace RationesCurare7.UI.Controlli
             var n = 0;
             var inizioMese = new DateTime(CurDate.Year, CurDate.Month, 1);
             var giorno = inizioMese.DayOfWeek;
-            var m = CurDate.ToString("MMMM");
-            m = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(m);
+            var m = CurDate.ToString("MMMM", System.Threading.Thread.CurrentThread.CurrentUICulture);
+            m = System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.ToTitleCase(m);
 
             SelectedID = new List<string>();
 
