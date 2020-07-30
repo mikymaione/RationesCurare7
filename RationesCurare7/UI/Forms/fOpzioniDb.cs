@@ -119,8 +119,15 @@ namespace RationesCurare7.UI.Forms
 
             if (cGB.DatiUtente.SincronizzaDB)
             {
-                var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
-                mc.MandaDBSulSito(cGB.sDB.UltimaModifica, true);
+                if (cGB.sDB.UltimaModifica > DateTime.MinValue)
+                {
+                    var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                    mc.MandaDBSulSito(cGB.sDB.UltimaModifica, true);
+                }
+                else
+                {
+                    cGB.MsgBox("Non sono state apportate modifiche al DB locale, quindi non verrà sincronizzato!", MessageBoxIcon.Exclamation);
+                }
             }
 
             bSync.Text = y;

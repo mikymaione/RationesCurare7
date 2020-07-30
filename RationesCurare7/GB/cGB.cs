@@ -559,7 +559,12 @@ namespace RationesCurare7
             }
             catch (Exception ex)
             {
-                if (MsgBox("Errore: " + ex.Message + Environment.NewLine + "Riprovo?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                var erMsg = ex.Message;
+
+                if (erMsg.Length > 1500)
+                    erMsg = erMsg.Substring(0, 1500) + " [...]";
+
+                if (MsgBox($"Errore: {erMsg}.{Environment.NewLine}Riprovo?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     ok = ControllaDBSulServer();
             }
 

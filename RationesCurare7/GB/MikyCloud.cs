@@ -113,9 +113,9 @@ namespace RationesCurare7.GB
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                cGB.MsgBox("Non riesco a collegarmi al sito!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                cGB.MsgBox(ex.Message, System.Windows.Forms.MessageBoxIcon.Hand);
             }
 
             return ok;
@@ -123,53 +123,29 @@ namespace RationesCurare7.GB
 
         private bool MandaIlFile(string yyyyMMddHHmmss)
         {
-            //TODO: [M] GB.CompattaDB();
-            var okko = false;
-            var Zipped = false;
-            var s = MettiDBInTempPath(PathDB);
+            //TODO: [M] GB.CompattaDB();                        
+            var zs = ZippaDB(MettiDBInTempPath(PathDB));
 
-            try
+            if (UploadFile(yyyyMMddHHmmss, zs))
             {
-                var zs = ZippaDB(s);
-
-                if (!string.IsNullOrEmpty(zs))
-                    if (System.IO.File.Exists(zs))
+                using (var dez = new maionemikyWS.EmailSending())
+                    if (dez.DeZippaDBRC(Email + ".zip"))
                     {
-                        s = zs;
-                        Zipped = true;
+                        cGB.MsgI("Sincronizzazione completata!");
+
+                        return true;
+                    }
+                    else
+                    {
+                        cGB.MsgBox("Non sono riuscito a sincronizzare il DataBase!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        return false;
                     }
             }
-            catch
-            {
-                s = PathDB;
-            }
-
-            try
-            {
-                if (Zipped)
-                {
-                    okko = UploadFile(yyyyMMddHHmmss, s);
-
-                    if (okko)
-                        using (var dez = new maionemikyWS.EmailSending())
-                            okko = dez.DeZippaDBRC(Email + ".zip");
-                }
-                else
-                {
-                    okko = UploadFile(yyyyMMddHHmmss, s);
-                }
-            }
-            catch
-            {
-                okko = false;
-            }
-
-            if (okko)
-                cGB.MsgI("Sincronizzazione completata!");
             else
-                cGB.MsgBox("Non sono riuscito a sincronizzare il DataBase!", System.Windows.Forms.MessageBoxIcon.Exclamation);
-
-            return okko;
+            {
+                cGB.MsgBox("Non sono riuscito a inviare il DataBase!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                return false;
+            }
         }
 
         private bool UploadFile(string yyyyMMddHHmmss, string filename)
@@ -242,41 +218,25 @@ namespace RationesCurare7.GB
 
         private string ZippaDB(string p)
         {
-            var zp = "";
+            var zp = System.IO.Path.ChangeExtension(p, ".zip");
 
-            try
-            {
-                zp = System.IO.Path.ChangeExtension(p, ".zip");
+            var cart = System.IO.Path.GetDirectoryName(p);
+            var ext = System.IO.Path.GetExtension(p);
 
-                var cart = System.IO.Path.GetDirectoryName(p);
-                var ext = System.IO.Path.GetExtension(p);
+            ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = 850;
 
-                var z = new ICSharpCode.SharpZipLib.Zip.FastZip();
-                z.CreateZip(zp, cart, false, ext);
-            }
-            catch
-            {
-                zp = "";
-            }
+            var z = new ICSharpCode.SharpZipLib.Zip.FastZip();
+            z.CreateZip(zp, cart, false, ext);
 
             return zp;
         }
 
         private string MettiDBInTempPath(string s)
         {
-            var z = "";
+            var z = System.IO.Path.GetTempPath();
+            z = System.IO.Path.Combine(z, Email + System.IO.Path.GetExtension(s));
 
-            try
-            {
-                z = System.IO.Path.GetTempPath();
-                z = System.IO.Path.Combine(z, Email + System.IO.Path.GetExtension(s));
-
-                System.IO.File.Copy(s, z, true);
-            }
-            catch
-            {
-                z = "";
-            }
+            System.IO.File.Copy(s, z, true);
 
             return z;
         }
