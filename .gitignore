@@ -13,6 +13,8 @@
 *.userprefs
 
 # Build results
+RCWebMobile/App_Data
+
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
