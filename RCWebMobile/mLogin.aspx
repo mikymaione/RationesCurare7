@@ -20,7 +20,7 @@
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                background-color: #92C1DC;
+                background-color: #F4F7F9;
                 background-image: url('images/spaziatore_login.png');
                 background-repeat: repeat-y;
             }               
