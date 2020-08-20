@@ -85,7 +85,8 @@ namespace RCWebMobile
 
             try
             {
-                i = DateTime.ParseExact(o, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                i = DateTime.Parse(o);
+                // i = DateTime.ParseExact(o, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -104,9 +105,16 @@ namespace RCWebMobile
             else if (o is string)
             {
                 var x = o.ToString();
-                x = x.Substring(0, 19);
 
-                d = DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                if (x.Length == 10)
+                {
+                    d = DateTime.ParseExact(x, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    x = x.Substring(0, 19);
+                    d = DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                }
             }
 
             return d;
