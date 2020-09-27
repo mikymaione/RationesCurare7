@@ -175,9 +175,6 @@
   <data name="mail32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mail32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="saldo32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saldo32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="folder_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder_image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -241,6 +238,9 @@
   <data name="resultset_next" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\resultset_next.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="salvadanaio32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salvadanaio32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="folder_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder_database.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -259,11 +259,11 @@
   <data name="grafico32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grafico32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MacroAree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MacroAree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="world_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\world_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar_view_day" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendar_view_day.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cassaforte32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cassaforte32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,8 +298,8 @@
   <data name="rcHomeBig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rcHomeBig.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salvadanaio32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salvadanaio32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="saldo32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saldo32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Strumenti32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Strumenti32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -322,11 +322,14 @@
   <data name="PieChart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PieChart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MacroAree" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MacroAree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendar_view_day" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar_view_day.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="controllaAlert32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\controllaAlert32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="database_lightning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database_lightning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cash-register-icon32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cash-register-icon32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -343,7 +346,7 @@
   <data name="user50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user50.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="database_lightning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\database_lightning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="money" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

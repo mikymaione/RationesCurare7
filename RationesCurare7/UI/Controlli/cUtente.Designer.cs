@@ -28,16 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.bUtente = new System.Windows.Forms.LinkLabel();
+            this.lSaldo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bDisconnetti = new System.Windows.Forms.LinkLabel();
             this.iUtente = new System.Windows.Forms.PictureBox();
-            this.bUtente = new System.Windows.Forms.LinkLabel();
-            this.tOrologio = new System.Windows.Forms.Timer(this.components);
-            this.lOrario = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.iUtente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iUtente)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bUtente
+            // 
+            this.bUtente.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
+            this.bUtente.AutoSize = true;
+            this.bUtente.LinkColor = System.Drawing.SystemColors.ControlText;
+            this.bUtente.Location = new System.Drawing.Point(75, 5);
+            this.bUtente.Name = "bUtente";
+            this.bUtente.Size = new System.Drawing.Size(39, 13);
+            this.bUtente.TabIndex = 3;
+            this.bUtente.TabStop = true;
+            this.bUtente.Text = "Utente";
+            this.bUtente.VisitedLinkColor = System.Drawing.SystemColors.ControlText;
+            // 
+            // lSaldo
+            // 
+            this.lSaldo.AutoSize = true;
+            this.lSaldo.Location = new System.Drawing.Point(95, 50);
+            this.lSaldo.Name = "lSaldo";
+            this.lSaldo.Size = new System.Drawing.Size(22, 13);
+            this.lSaldo.TabIndex = 4;
+            this.lSaldo.Text = "0 €";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RationesCurare7.Properties.Resources.money;
+            this.pictureBox1.Location = new System.Drawing.Point(77, 48);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // bDisconnetti
             // 
@@ -65,59 +95,20 @@
             this.iUtente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iUtente.TabIndex = 0;
             this.iUtente.TabStop = false;
-
-            // 
-            // bUtente
-            // 
-            this.bUtente.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
-            this.bUtente.AutoSize = true;
-            this.bUtente.LinkColor = System.Drawing.SystemColors.ControlText;
-            this.bUtente.Location = new System.Drawing.Point(75, 5);
-            this.bUtente.Name = "bUtente";
-            this.bUtente.Size = new System.Drawing.Size(39, 13);
-            this.bUtente.TabIndex = 3;
-            this.bUtente.TabStop = true;
-            this.bUtente.Text = "Utente";
-            this.bUtente.VisitedLinkColor = System.Drawing.SystemColors.ControlText;
-
-            // 
-            // tOrologio
-            // 
-            this.tOrologio.Enabled = true;
-            this.tOrologio.Interval = 900;
-            this.tOrologio.Tick += new System.EventHandler(this.tOrologio_Tick);
-            // 
-            // lOrario
-            // 
-            this.lOrario.AutoSize = true;
-            this.lOrario.Location = new System.Drawing.Point(97, 50);
-            this.lOrario.Name = "lOrario";
-            this.lOrario.Size = new System.Drawing.Size(0, 13);
-            this.lOrario.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RationesCurare7.Properties.Resources.time;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 48);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // cUtente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lOrario);
+            this.Controls.Add(this.lSaldo);
             this.Controls.Add(this.bUtente);
             this.Controls.Add(this.bDisconnetti);
             this.Controls.Add(this.iUtente);
             this.Name = "cUtente";
             this.Size = new System.Drawing.Size(349, 70);
-            ((System.ComponentModel.ISupportInitialize)(this.iUtente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iUtente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +119,7 @@
         private System.Windows.Forms.PictureBox iUtente;
         private System.Windows.Forms.LinkLabel bDisconnetti;
         private System.Windows.Forms.LinkLabel bUtente;
-        private System.Windows.Forms.Timer tOrologio;
-        private System.Windows.Forms.Label lOrario;
+        public System.Windows.Forms.Label lSaldo;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

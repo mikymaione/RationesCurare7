@@ -18,7 +18,6 @@ namespace RationesCurare7.UI.Forms
         {
             NuovoMovimento,
             NuovoGiroconto,
-            Saldo,
             MacroAree,
             Cerca,
             Grafico,
@@ -38,9 +37,7 @@ namespace RationesCurare7.UI.Forms
         }
 
         private TreeNode nCasse = null;
-        private TreeNode bSaldo;
         private List<DB.DataWrapper.cCasse> CasseAggiuntive = null;
-        private string bSaldo_Text;
         private TreeNode LastSelectedNode = null;
 
         public fMain()
@@ -60,9 +57,6 @@ namespace RationesCurare7.UI.Forms
 
         private void Init()
         {
-            bSaldo = cAlbero.Nodes[0].Nodes[1];
-            bSaldo_Text = bSaldo.Text;
-
             foreach (TreeNode item in cAlbero.Nodes)
                 if (item.Name.Equals("nCasse"))
                 {
@@ -81,7 +75,9 @@ namespace RationesCurare7.UI.Forms
             if (FirstTimeResize)
             {
                 if (this.Height > 966)
+                {
                     cAlbero.ExpandAll();
+                }
                 else
                 {
                     cAlbero.Select();
@@ -113,8 +109,8 @@ namespace RationesCurare7.UI.Forms
         {
             var m = new DB.DataWrapper.cMovimenti();
 
-            bSaldo.Text = bSaldo_Text + ": " + cGB.DoubleToMoneyStringValuta(m.Saldo("Saldo"));
-            bSaldo.ForeColor = SaldoToColor(m.Saldo("Saldo"));
+            cUtente1.lSaldo.Text = cGB.DoubleToMoneyStringValuta(m.Saldo("Saldo"));
+            cUtente1.lSaldo.ForeColor = SaldoToColor(m.Saldo("Saldo"));
 
             if (CasseAggiuntive != null)
                 if (CasseAggiuntive.Count > 0)
@@ -134,9 +130,12 @@ namespace RationesCurare7.UI.Forms
         public void SvuotaAlberoCasse()
         {
             CasseAggiuntive = null;
+            var NotDelete = new List<string>(new string[] { "nGestioneCasse", "nMovimentiPeriodici" });
 
-            for (var i = 2; i < cAlbero.Nodes[0].Nodes.Count; i++)
-                cAlbero.Nodes[0].Nodes[i].Remove();
+            while (cAlbero.Nodes[0].Nodes.Count > NotDelete.Count)
+                for (var i = 0; i < cAlbero.Nodes[0].Nodes.Count; i++)
+                    if (!NotDelete.Contains(cAlbero.Nodes[0].Nodes[i].Name))
+                        cAlbero.Nodes[0].Nodes[i].Remove();
         }
 
         public void AggiungiCasseExtra()
@@ -146,8 +145,6 @@ namespace RationesCurare7.UI.Forms
 
             if (CasseAggiuntive != null)
             {
-                var sette = 1;
-
                 if (CasseAggiuntive.Count > 0)
                     foreach (var caz in CasseAggiuntive)
                         if (!nCasse.Nodes.ContainsKey(caz.nome))
@@ -164,8 +161,7 @@ namespace RationesCurare7.UI.Forms
                                 SelectedImageKey = caz.nome
                             };
 
-                            nCasse.Nodes.Insert(sette, n);
-                            sette++;
+                            nCasse.Nodes.Add(n);
                         }
             }
         }
@@ -294,18 +290,8 @@ namespace RationesCurare7.UI.Forms
 
         private void bCassaQualsiasi_Click(TreeNode s)
         {
-            var i = "";
-            var z = "Saldo";
-
-            try
-            {
-                z = s.Tag.ToString();
-                i = s.ImageKey;
-            }
-            catch
-            {
-                //cannot convert
-            }
+            var z = s.Tag.ToString();
+            var i = s.ImageKey;
 
             ShowCash(z, i);
         }
@@ -314,11 +300,7 @@ namespace RationesCurare7.UI.Forms
         {
             LastSelectedNode = cAlbero.SelectedNode;
 
-            if (a == eActions.Saldo)
-            {
-                ShowCash(bSaldo);
-            }
-            else if (a == eActions.NuovoMovimento)
+            if (a == eActions.NuovoMovimento)
             {
                 using (var sce = new fGiroconto()
                 {
@@ -696,9 +678,6 @@ namespace RationesCurare7.UI.Forms
                     case Keys.F3:
                         Action(eActions.Cerca);
                         break;
-                    case Keys.F5:
-                        Action(eActions.Saldo);
-                        break;
                     case Keys.F6:
                         Action(eActions.Calendario);
                         break;
@@ -748,8 +727,6 @@ namespace RationesCurare7.UI.Forms
                 Action(eActions.Novita);
             else if (s.Name.Equals("nOpzioniDB"))
                 Action(eActions.OpzioniDB);
-            else if (s.Name.Equals("nSaldo"))
-                Action(eActions.Saldo);
             else if (s.Name.Equals("nMacroAree"))
                 Action(eActions.MacroAree);
             else if (s.Tag != null) //casse extra

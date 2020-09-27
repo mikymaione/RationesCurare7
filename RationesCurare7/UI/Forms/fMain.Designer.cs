@@ -29,41 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);            
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("(F5) Saldo", 20, 20);
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Movimenti Periodici", 17, 17);
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("(Alt +1) Casse", 5, 5, new System.Windows.Forms.TreeNode[] {
-            treeNode1,            
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Gestione casse", 13, 13);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Movimenti Periodici", 17, 17);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("(Alt +1) Casse", 5, 5, new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("(F3) Cerca", 11, 11);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("(F10) Torta", 18, 18);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("(F11) Grafico", 12, 12);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Grafico a linee", 25, 25);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("(F6) Calendario", 4, 4);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("(F7) Calcolatrice", 3, 3);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Macro aree", 14, 14);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Controlla movimenti periodici", 8, 8);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Controlla promemoria", 7, 7);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("(Alt + 2) Strumenti", 23, 23, new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5,
+            treeNode6,
             treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("(F3) Cerca", 11, 11);
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("(F10) Torta", 18, 18);
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("(F11) Grafico", 12, 12);
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Grafico a linee", 25, 25);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("(F6) Calendario", 4, 4);
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("(F7) Calcolatrice", 3, 3);
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Macro aree", 14, 14);
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Controlla movimenti periodici", 8, 8);
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Controlla promemoria", 7, 7);
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("(Alt + 2) Strumenti", 23, 23, new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9,
             treeNode10,
             treeNode11,
-            treeNode12,
-            treeNode13,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("(F8) Opzioni DB", 10, 10);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Cosa ne pensi?", 15, 15);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Novità", 22, 22);
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("About", 0, 0);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("(Alt + 3) Opzioni", 16, 16, new System.Windows.Forms.TreeNode[] {
             treeNode14,
             treeNode15,
             treeNode16,
-            treeNode17,
-            treeNode18});
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("(F8) Opzioni DB", 10, 10);
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Cosa ne pensi?", 15, 15);
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Novità", 22, 22);
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("About", 0, 0);
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("(Alt + 3) Opzioni", 16, 16, new System.Windows.Forms.TreeNode[] {
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23});
+            treeNode17});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.pLeft = new System.Windows.Forms.Panel();
             this.cAlbero = new System.Windows.Forms.TreeView();
@@ -103,84 +101,79 @@
             treeNode1.ImageIndex = 13;
             treeNode1.Name = "nGestioneCasse";
             treeNode1.SelectedImageIndex = 13;
-            treeNode1.Text = "Gestione casse";          
-            treeNode7.ImageIndex = 20;
-            treeNode7.Name = "nSaldo";
-            treeNode7.SelectedImageIndex = 20;
-            treeNode7.Tag = "Saldo";
-            treeNode7.Text = "(F5) Saldo";
-            treeNode8.ImageIndex = 17;
-            treeNode8.Name = "nMovimentiPeriodici";
-            treeNode8.SelectedImageIndex = 17;
-            treeNode8.Text = "Movimenti Periodici";
-            treeNode9.ImageIndex = 5;
-            treeNode9.Name = "nCasse";
-            treeNode9.SelectedImageIndex = 5;
-            treeNode9.Text = "(Alt +1) Casse";
-            treeNode10.ImageIndex = 11;
-            treeNode10.Name = "nCerca";
-            treeNode10.SelectedImageIndex = 11;
-            treeNode10.Text = "(F3) Cerca";
-            treeNode11.ImageIndex = 18;
-            treeNode11.Name = "nTorta";
-            treeNode11.SelectedImageIndex = 18;
-            treeNode11.Text = "(F10) Torta";
-            treeNode12.ImageIndex = 12;
-            treeNode12.Name = "nGrafico";
-            treeNode12.SelectedImageIndex = 12;
-            treeNode12.Text = "(F11) Grafico";
-            treeNode13.ImageIndex = 25;
-            treeNode13.Name = "nGraficoSpline";
-            treeNode13.SelectedImageIndex = 25;
-            treeNode13.Text = "Grafico a linee";
-            treeNode14.ImageIndex = 4;
-            treeNode14.Name = "nCalendario";
-            treeNode14.SelectedImageIndex = 4;
-            treeNode14.Text = "(F6) Calendario";
-            treeNode15.ImageIndex = 3;
-            treeNode15.Name = "nCalcolatrice";
-            treeNode15.SelectedImageIndex = 3;
-            treeNode15.Text = "(F7) Calcolatrice";
-            treeNode16.ImageIndex = 14;
-            treeNode16.Name = "nMacroAree";
-            treeNode16.SelectedImageIndex = 14;
-            treeNode16.Text = "Macro aree";
-            treeNode17.ImageIndex = 8;
-            treeNode17.Name = "nControllaMovimentiPeriodici";
-            treeNode17.SelectedImageIndex = 8;
-            treeNode17.Text = "Controlla movimenti periodici";
-            treeNode18.ImageIndex = 7;
-            treeNode18.Name = "nControllaPromemoria";
-            treeNode18.SelectedImageIndex = 7;
-            treeNode18.Text = "Controlla promemoria";
-            treeNode19.ImageIndex = 23;
-            treeNode19.Name = "nStrumenti";
-            treeNode19.SelectedImageIndex = 23;
-            treeNode19.Text = "(Alt + 2) Strumenti";
-            treeNode20.ImageIndex = 10;
-            treeNode20.Name = "nOpzioniDB";
-            treeNode20.SelectedImageIndex = 10;
-            treeNode20.Text = "(F8) Opzioni DB";
-            treeNode21.ImageIndex = 15;
-            treeNode21.Name = "nCosaNePensi";
-            treeNode21.SelectedImageIndex = 15;
-            treeNode21.Text = "Cosa ne pensi?";
-            treeNode22.ImageIndex = 22;
-            treeNode22.Name = "nNovita";
-            treeNode22.SelectedImageIndex = 22;
-            treeNode22.Text = "Novità";
-            treeNode23.ImageIndex = 0;
-            treeNode23.Name = "nAbout";
-            treeNode23.SelectedImageIndex = 0;
-            treeNode23.Text = "About";
-            treeNode24.ImageIndex = 16;
-            treeNode24.Name = "nOpzioni";
-            treeNode24.SelectedImageIndex = 16;
-            treeNode24.Text = "(Alt + 3) Opzioni";
+            treeNode1.Text = "Gestione casse";
+            treeNode2.ImageIndex = 17;
+            treeNode2.Name = "nMovimentiPeriodici";
+            treeNode2.SelectedImageIndex = 17;
+            treeNode2.Text = "Movimenti Periodici";
+            treeNode3.ImageIndex = 5;
+            treeNode3.Name = "nCasse";
+            treeNode3.SelectedImageIndex = 5;
+            treeNode3.Text = "(Alt +1) Casse";
+            treeNode4.ImageIndex = 11;
+            treeNode4.Name = "nCerca";
+            treeNode4.SelectedImageIndex = 11;
+            treeNode4.Text = "(F3) Cerca";
+            treeNode5.ImageIndex = 18;
+            treeNode5.Name = "nTorta";
+            treeNode5.SelectedImageIndex = 18;
+            treeNode5.Text = "(F10) Torta";
+            treeNode6.ImageIndex = 12;
+            treeNode6.Name = "nGrafico";
+            treeNode6.SelectedImageIndex = 12;
+            treeNode6.Text = "(F11) Grafico";
+            treeNode7.ImageIndex = 25;
+            treeNode7.Name = "nGraficoSpline";
+            treeNode7.SelectedImageIndex = 25;
+            treeNode7.Text = "Grafico a linee";
+            treeNode8.ImageIndex = 4;
+            treeNode8.Name = "nCalendario";
+            treeNode8.SelectedImageIndex = 4;
+            treeNode8.Text = "(F6) Calendario";
+            treeNode9.ImageIndex = 3;
+            treeNode9.Name = "nCalcolatrice";
+            treeNode9.SelectedImageIndex = 3;
+            treeNode9.Text = "(F7) Calcolatrice";
+            treeNode10.ImageIndex = 14;
+            treeNode10.Name = "nMacroAree";
+            treeNode10.SelectedImageIndex = 14;
+            treeNode10.Text = "Macro aree";
+            treeNode11.ImageIndex = 8;
+            treeNode11.Name = "nControllaMovimentiPeriodici";
+            treeNode11.SelectedImageIndex = 8;
+            treeNode11.Text = "Controlla movimenti periodici";
+            treeNode12.ImageIndex = 7;
+            treeNode12.Name = "nControllaPromemoria";
+            treeNode12.SelectedImageIndex = 7;
+            treeNode12.Text = "Controlla promemoria";
+            treeNode13.ImageIndex = 23;
+            treeNode13.Name = "nStrumenti";
+            treeNode13.SelectedImageIndex = 23;
+            treeNode13.Text = "(Alt + 2) Strumenti";
+            treeNode14.ImageIndex = 10;
+            treeNode14.Name = "nOpzioniDB";
+            treeNode14.SelectedImageIndex = 10;
+            treeNode14.Text = "(F8) Opzioni DB";
+            treeNode15.ImageIndex = 15;
+            treeNode15.Name = "nCosaNePensi";
+            treeNode15.SelectedImageIndex = 15;
+            treeNode15.Text = "Cosa ne pensi?";
+            treeNode16.ImageIndex = 22;
+            treeNode16.Name = "nNovita";
+            treeNode16.SelectedImageIndex = 22;
+            treeNode16.Text = "Novità";
+            treeNode17.ImageIndex = 0;
+            treeNode17.Name = "nAbout";
+            treeNode17.SelectedImageIndex = 0;
+            treeNode17.Text = "About";
+            treeNode18.ImageIndex = 16;
+            treeNode18.Name = "nOpzioni";
+            treeNode18.SelectedImageIndex = 16;
+            treeNode18.Text = "(Alt + 3) Opzioni";
             this.cAlbero.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode19,
-            treeNode24});
+            treeNode3,
+            treeNode13,
+            treeNode18});
             this.cAlbero.SelectedImageIndex = 0;
             this.cAlbero.Size = new System.Drawing.Size(300, 591);
             this.cAlbero.TabIndex = 7;

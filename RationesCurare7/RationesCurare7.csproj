@@ -876,6 +876,7 @@
     <None Include="Resources\world_add.png" />
     <None Include="Resources\page_white_database.png" />
     <None Include="Resources\database_lightning.png" />
+    <None Include="Resources\money.png" />
     <Content Include="SQLITE DLL\SQLite.Interop.dll" />
     <Content Include="SQLITE DLL\System.Data.SQLite.dll" />
     <Content Include="SQLITE DLL\System.Windows.Forms.DataVisualization.dll" />
