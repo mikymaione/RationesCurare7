@@ -94,6 +94,8 @@ namespace RationesCurare7.UI.Controlli
 
                     try
                     {
+                        var ultimoSoldi = 0D;
+
                         if (data_reader.HasRows)
                             while (data_reader.Read())
                             {
@@ -124,8 +126,8 @@ namespace RationesCurare7.UI.Controlli
                                             {
                                                 var data_point_vuoto_no_dati_su_db = new System.Windows.Forms.DataVisualization.Charting.DataPoint()
                                                 {
-                                                    YValues = DoubleToDataPointDouble(0D),
-                                                    ToolTip = ToEuroWithDate(0D, differenza_date[u]),
+                                                    YValues = DoubleToDataPointDouble(ultimoSoldi),
+                                                    ToolTip = ToEuroWithDate(ultimoSoldi, differenza_date[u]),
                                                     AxisLabel = differenza_date[u],
                                                     Color = Color.Green
                                                 };
@@ -138,6 +140,7 @@ namespace RationesCurare7.UI.Controlli
                                     }
 
                                 serie_nuova.Points.Insert(NumCorre, data_point_attuale);
+                                ultimoSoldi = soldi;
                             } //fine lettura DB                       
 
                         this.gbGrafico.Text = "Grafico dei movimenti - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);

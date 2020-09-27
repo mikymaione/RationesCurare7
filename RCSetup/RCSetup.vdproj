@@ -664,43 +664,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7DBAFBD9F025B2B814197046444B0E00"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_911DE9EECD9BED546535C7C0ABF86807"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_148F6D9F5822B0A171AD65462B3BC029"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7A9E9DD003ADE11CB7DCB74CF22CC778"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E46F1CBFD88405F70C9084F3F8C0B70F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_56108103035D675E35B73E6B135FA008"
+        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -712,7 +676,43 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_680AFFA5BD216BAF19FA72BA5E28FEA3"
+        "OwnerKey" = "8:_56108103035D675E35B73E6B135FA008"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E46F1CBFD88405F70C9084F3F8C0B70F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7A9E9DD003ADE11CB7DCB74CF22CC778"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_148F6D9F5822B0A171AD65462B3BC029"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_911DE9EECD9BED546535C7C0ABF86807"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7DBAFBD9F025B2B814197046444B0E00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_ED0138E7D2EF4A1D8688291CFB8751C8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -3148,15 +3148,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RationesCurare7"
-        "ProductCode" = "8:{BB6DBAD0-8387-4785-B73F-E856E75E0426}"
-        "PackageCode" = "8:{DE636D32-B231-48EE-9A0C-2769BEB5FDAF}"
+        "ProductCode" = "8:{94DB617F-1A90-4BBE-ADB6-D9DCCF178C34}"
+        "PackageCode" = "8:{AF39987B-C80C-4C09-8DF6-ED30F2080A01}"
         "UpgradeCode" = "8:{BD521D0C-80D8-4377-B6EF-68783AA9C67C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:20.20.0730"
+        "ProductVersion" = "8:20.20.0927"
         "Manufacturer" = "8:[MAIONE MIKY]"
         "ARPHELPTELEPHONE" = "8:mikymaione@hotmail.it"
         "ARPHELPLINK" = "8:http://www.maionemiky.it"
