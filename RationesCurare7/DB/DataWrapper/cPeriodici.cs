@@ -214,11 +214,10 @@ namespace RationesCurare7.DB.DataWrapper
                 new DataColumn("MacroArea", typeof(string)),
                 new DataColumn("Scadenza", typeof(DateTime)),
                 new DataColumn("soldi", typeof(double)),
-                new DataColumn("GiornoDelMese_H", typeof(int)),
                 new DataColumn("Periodo_H", typeof(string))
             };
 
-            return cGB.sDB.EseguiSQLDataTable((DB.cDB.Queries.Periodici_Ricerca), null, colonne);
+            return cGB.sDB.EseguiSQLDataTable((cDB.Queries.Periodici_Ricerca), null, colonne);
         }
 
         public List<cPeriodici> RicercaScadenzeEntroOggi()

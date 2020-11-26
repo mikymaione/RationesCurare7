@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -103,8 +104,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 37);
-            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(34, 37);
+            this.bindingNavigatorCountItem.Text = "di {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorMoveFirstItem
@@ -322,11 +323,14 @@
             // GiornoDelMese
             // 
             this.GiornoDelMese.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.GiornoDelMese.DataPropertyName = "GiornoDelMese_H";
+            this.GiornoDelMese.DataPropertyName = "GiornoDelMese";
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.GiornoDelMese.DefaultCellStyle = dataGridViewCellStyle4;
             this.GiornoDelMese.HeaderText = "Giorno del mese";
             this.GiornoDelMese.Name = "GiornoDelMese";
             this.GiornoDelMese.ReadOnly = true;
-            this.GiornoDelMese.Width = 60;
+            this.GiornoDelMese.Width = 80;
             // 
             // TipoGiorniMese
             // 
@@ -335,7 +339,7 @@
             this.TipoGiorniMese.HeaderText = "Periodo";
             this.TipoGiorniMese.Name = "TipoGiorniMese";
             this.TipoGiorniMese.ReadOnly = true;
-            this.TipoGiorniMese.Width = 60;
+            this.TipoGiorniMese.Width = 90;
             // 
             // cMovimentiPeriodici
             // 
