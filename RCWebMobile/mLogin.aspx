@@ -3,35 +3,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head runat="server">
-        <title>RC Web - Login</title>
-        
-        <link rel="shortcut icon" type="image/ico" href="http://www.maionemiky.it/favicon.ico">
-        <meta name="viewport" content="user-scalable=no, width=device-width">
-        
-        <style type="text/css">
-            html
-            {
-                height: 100%;
-            }
-        
-            body
-            {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                background-color: #F4F7F9;
-                background-image: url('images/spaziatore_login.png');
-                background-repeat: repeat-y;
-            }               
-        </style>    
-    </head>
+<head runat="server">
+    <title>RC Web - Login</title>
 
-    <body>
-        <form id="form1" runat="server" defaultbutton="bEntra">
+    <link rel="shortcut icon" type="image/ico" href="http://www.maionemiky.it/favicon.ico">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F7F9;
+            background-image: url('images/spaziatore_login.png');
+            background-repeat: repeat-y;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server" defaultbutton="bEntra">
         <div>
-            <table style="width: 350px; background-image: url('images/nuvoletta.png'); background-repeat: no-repeat;
-                background-position: right top">
+            <table style="width: 350px;">
                 <tr>
                     <td>
                         <img src="images/logo.png" />
@@ -41,9 +38,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-
-                    </td>
+                    <td></td>
                     <td>
                         <table>
                             <tr>
@@ -53,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:TextBox ID="ePsw" runat="server" placeholder ="Password" />
+                                    <asp:TextBox ID="ePsw" runat="server" placeholder="Password" />
                                 </td>
                             </tr>
                             <tr>
@@ -67,13 +62,11 @@
                                     <asp:Label ID="lErrore" runat="server" ForeColor="Red" />
                                 </td>
                             </tr>
-                        </table>
-                        <br />
-                        <br />
+                        </table>                        
                     </td>
                 </tr>
             </table>
         </div>
-        </form>
-    </body>
+    </form>
+</body>
 </html>

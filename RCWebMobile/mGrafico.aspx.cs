@@ -21,14 +21,10 @@ namespace RCWebMobile
                 //not setted		
             }
 
-            if (w > 1280)
-                w = Request.Browser.ScreenPixelsWidth;
-            else if (w <= 0)
+            if (w <= 0)
                 w = Request.Browser.ScreenPixelsWidth;
 
-            if (h > 768)
-                h = Request.Browser.ScreenPixelsHeight;
-            else if (h <= 0)
+            if (h <= 0)
                 h = Request.Browser.ScreenPixelsHeight;
 
             w -= 10;
@@ -44,7 +40,7 @@ namespace RCWebMobile
 
                 FindFor(t == "Y" || t == "M" ? t : "");
             }
-            catch 
+            catch
             {
                 //no type
             }
