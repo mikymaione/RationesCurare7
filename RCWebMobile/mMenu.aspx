@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="RC Web" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mMenu.aspx.cs" Inherits="RCWebMobile.mMenu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AllowSorting="False" AutoGenerateColumns="False"
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
         CellPadding="4" ForeColor="#333333" GridLines="Vertical" ShowFooter="True" Width="100%"         
-        OnRowDataBound="GridView1_RowDataBound" >
+        OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
+            <asp:CommandField ButtonType="Button" SelectText="Dettaglio" ShowSelectButton="True" />
             <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
             <asp:TemplateField HeaderText="Saldo" ItemStyle-Wrap="false" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
@@ -14,6 +15,10 @@
                 <FooterTemplate>
                     <asp:Label ID="lblTotal" runat="server" />
                 </FooterTemplate>
+
+                <FooterStyle HorizontalAlign="Right" Wrap="False"></FooterStyle>
+
+                <ItemStyle HorizontalAlign="Right" Wrap="False"></ItemStyle>
             </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#999999" />

@@ -1,8 +1,7 @@
 ﻿select
-	*
+	Nome
 from Casse
 where
-	Nascondi <> 1 and
-	Nome not in ('Cassaforte', 'Saldo', 'Avere', 'Dare', 'Salvadanaio', 'Portafogli')
+	Nascondi <> 1	
 order by
 	Nome

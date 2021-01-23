@@ -39,6 +39,14 @@ namespace RCWebMobile
             }
         }
 
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            var dt = GridView1.DataSource as System.Data.DataTable;
+            var r = dt.Rows[e.NewSelectedIndex];
+            var nome = r.ItemArray[0];
+
+            Response.Redirect("mSaldo.aspx?T=" + nome);
+        }
 
     }
 }
