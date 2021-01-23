@@ -38,17 +38,17 @@
                 <asp:Table ID="myTable" runat="server" Width="100%" Height="46px" BackImageUrl="~/images/menuBorder.png" HorizontalAlign="Left">
                     <asp:TableRow>
                         <asp:TableCell>
-                            <a id="a1" runat="server" href='mMenu.aspx'>
+                            <a id="aMenu" runat="server" href='mMenu.aspx'>
                                 <img src="images/RC16.png" title="Home" />
                             </a>
                         </asp:TableCell>                
                         <asp:TableCell>
-                            <a id="a8" runat="server" href='mGrafico.aspx?T=Y'>
+                            <a id="aGrafico" runat="server" href='mGrafico.aspx?T=Y'>
                                 <img src="images/grafico55.png" title="Saldo" />
                             </a>
                         </asp:TableCell>
                         <asp:TableCell>
-                            <a id="a9" runat="server" href='mLogin.aspx?C=L'>
+                            <a id="aLogout" runat="server" href='mLogin.aspx?C=L'>
                                 <img src="images/logout.png" title="Log-out" />
                             </a>
                         </asp:TableCell>

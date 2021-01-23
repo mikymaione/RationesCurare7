@@ -15,9 +15,9 @@ namespace RCWebMobile
             var p = this.Page.ToString() + this.Page.ClientQueryString;
 
             if (p == "ASP.mmenu_aspx")
-                AApplyStyle(ref a1);
+                AApplyStyle(ref aMenu);
             if (p.IndexOf("ASP.mgrafico_aspx") > -1)
-                AApplyStyle(ref a8);
+                AApplyStyle(ref aGrafico);
         }
 
         private void AApplyStyle(ref System.Web.UI.HtmlControls.HtmlAnchor a)

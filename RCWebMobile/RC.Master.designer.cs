@@ -40,31 +40,31 @@ namespace RCWebMobile {
         protected global::System.Web.UI.WebControls.Table myTable;
         
         /// <summary>
-        /// Controllo a1.
+        /// Controllo aMenu.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor a1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aMenu;
         
         /// <summary>
-        /// Controllo a8.
+        /// Controllo aGrafico.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor a8;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aGrafico;
         
         /// <summary>
-        /// Controllo a9.
+        /// Controllo aLogout.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor a9;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aLogout;
         
         /// <summary>
         /// Controllo ContentPlaceHolder1.
