@@ -35,7 +35,7 @@
             <div>
                 <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True" />
 
-                <asp:Table ID="myTable" runat="server" Width="100%" Height="46px" BackImageUrl="~/images/menuBorder.png">
+                <asp:Table ID="myTable" runat="server" Width="100%" Height="46px" BackImageUrl="~/images/menuBorder.png" HorizontalAlign="Left">
                     <asp:TableRow>
                         <asp:TableCell>
                             <a id="a1" runat="server" href='mMenu.aspx'>
