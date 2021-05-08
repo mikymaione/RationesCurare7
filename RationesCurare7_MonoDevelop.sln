@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationesCurare7", "RationesCurare7\RationesCurare7.csproj", "{AB80992E-E81F-45E6-8EDA-666693BE6856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILCalc", "ILCalc\ILCalc.csproj", "{7C413C2E-73BA-40E2-9D01-68796471FE62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C413C2E-73BA-40E2-9D01-68796471FE62}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C413C2E-73BA-40E2-9D01-68796471FE62}.Debug|x86.Build.0 = Debug|Any CPU
+		{7C413C2E-73BA-40E2-9D01-68796471FE62}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C413C2E-73BA-40E2-9D01-68796471FE62}.Release|x86.Build.0 = Release|Any CPU
+		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Debug|x86.ActiveCfg = Debug|x86
+		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Debug|x86.Build.0 = Debug|x86
+		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Release|x86.ActiveCfg = Release|x86
+		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		description = Gestione piccola contabilità
+		version = 20.21.0508
+	EndGlobalSection
+EndGlobal
