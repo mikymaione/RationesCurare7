@@ -20,24 +20,12 @@ namespace RationesCurare7.UI.Controlli
         public cNovita()
         {
             InitializeComponent();
-            CaricaHtm();
-        }
-
-        private void CaricaHtm()
-        {
-            var z = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);            
-            z = System.IO.Path.Combine(z, "Novita.htm");
-
-            webBrowser1.Navigate(z);
-        }
+            
+			richTextBox1.LoadFile("Novita.rtf");
+        }		       
 
         private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            webBrowser1.Width = this.Width - 1;
-            webBrowser1.Height = this.Height - 1;
-            webBrowser1.Top = 1;
-            webBrowser1.Left = 1;
-
+        {         
             DisegnaBordo(eLatoBordo.H, e.Graphics);
         }
 
