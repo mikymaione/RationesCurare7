@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProjectGuid>{ABA66FD8-2E84-4187-8779-D26D61CBC11B}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="Linux">
+          <Builder targetFile="RationesCurare7_Linux.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="RationesCurare7\RationesCurare7.csproj" />
+              <SolutionItemReference path="ILCalc\ILCalc.csproj" />
+            </ChildEntries>
+            <RootEntry path="RationesCurare7_MonoDevelop.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

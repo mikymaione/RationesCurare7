@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationesCurare7", "Rationes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILCalc", "ILCalc\ILCalc.csproj", "{7C413C2E-73BA-40E2-9D01-68796471FE62}"
 EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Pacchetti", "Pacchetti.mdproj", "{ABA66FD8-2E84-4187-8779-D26D61CBC11B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,8 @@ Global
 		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Debug|x86.Build.0 = Debug|x86
 		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Release|x86.ActiveCfg = Release|x86
 		{AB80992E-E81F-45E6-8EDA-666693BE6856}.Release|x86.Build.0 = Release|x86
+		{ABA66FD8-2E84-4187-8779-D26D61CBC11B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABA66FD8-2E84-4187-8779-D26D61CBC11B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		description = Gestione piccola contabilità
