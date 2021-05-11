@@ -16,5 +16,6 @@
         </Package>
       </Packages>
     </Packages>
+    <ReleaseVersion>20.21.0511</ReleaseVersion>
   </PropertyGroup>
 </Project>
