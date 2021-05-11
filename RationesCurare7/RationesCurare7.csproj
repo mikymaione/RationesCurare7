@@ -33,7 +33,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <ReleaseVersion>20.21.0508</ReleaseVersion>
+    <ReleaseVersion>20.21.0511</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>rc.ico</ApplicationIcon>
@@ -46,7 +46,6 @@
     <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>DEBUG</DefineConstants>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
@@ -621,6 +620,9 @@
     <Compile Include="UI\Forms\fSQLParams.Designer.cs">
       <DependentUpon>fSQLParams.cs</DependentUpon>
     </Compile>
+    <None Include="Novita.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ingranaggio32.png" />
@@ -978,9 +980,6 @@
     <None Include="Resources\gear_16.png" />
     <None Include="Resources\strumenti.png" />
     <None Include="Resources\cashg16.png" />
-    <Content Include="Novita.rtf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ILCalc\ILCalc.csproj">

@@ -43,8 +43,7 @@
             this.bUtente.AutoSize = true;
             this.bUtente.LinkColor = System.Drawing.SystemColors.ControlText;
             this.bUtente.Location = new System.Drawing.Point(75, 5);
-            this.bUtente.Name = "bUtente";
-            this.bUtente.Size = new System.Drawing.Size(39, 13);
+            this.bUtente.Name = "bUtente";            
             this.bUtente.TabIndex = 3;
             this.bUtente.TabStop = true;
             this.bUtente.Text = "Utente";
@@ -54,8 +53,7 @@
             // 
             this.lSaldo.AutoSize = true;
             this.lSaldo.Location = new System.Drawing.Point(95, 50);
-            this.lSaldo.Name = "lSaldo";
-            this.lSaldo.Size = new System.Drawing.Size(22, 13);
+            this.lSaldo.Name = "lSaldo";            
             this.lSaldo.TabIndex = 4;
             this.lSaldo.Text = "0 €";
             // 
@@ -71,17 +69,14 @@
             // 
             // bDisconnetti
             // 
-            this.bDisconnetti.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
-            this.bDisconnetti.Image = global::RationesCurare7.Properties.Resources.user_log_out16;
-            this.bDisconnetti.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.bDisconnetti.AutoSize = true;
+            this.bDisconnetti.ActiveLinkColor = System.Drawing.SystemColors.ControlText;            
             this.bDisconnetti.LinkColor = System.Drawing.SystemColors.ControlText;
             this.bDisconnetti.Location = new System.Drawing.Point(75, 23);
-            this.bDisconnetti.Name = "bDisconnetti";
-            this.bDisconnetti.Size = new System.Drawing.Size(79, 20);
+            this.bDisconnetti.Name = "bDisconnetti";            
             this.bDisconnetti.TabIndex = 2;
             this.bDisconnetti.TabStop = true;
-            this.bDisconnetti.Text = "Disconnetti";
-            this.bDisconnetti.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bDisconnetti.Text = "Disconnetti";            
             this.bDisconnetti.VisitedLinkColor = System.Drawing.SystemColors.ControlText;
             this.bDisconnetti.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.bDisconnetti_LinkClicked);
             // 

@@ -34,7 +34,11 @@ namespace RationesCurare7.UI.Controlli
                 Setted = true
             };
 
-            richTextBox1.LoadFile("Licenza.rtf");
+			var ep = Application.ExecutablePath;
+			ep = System.IO.Path.GetDirectoryName(ep);
+			ep = System.IO.Path.Combine(ep, "Licenza.rtf");
+
+            richTextBox1.LoadFile(ep);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

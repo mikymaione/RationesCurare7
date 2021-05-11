@@ -62,8 +62,7 @@
             // 
             this.bNuovo.Image = global::RationesCurare7.Properties.Resources.Add32;
             this.bNuovo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bNuovo.Name = "bNuovo";
-            this.bNuovo.Size = new System.Drawing.Size(70, 35);
+            this.bNuovo.Name = "bNuovo";            
             this.bNuovo.Text = "(F1) Nuovo";
             this.bNuovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bNuovo.Click += new System.EventHandler(this.bNuovo_Click);
@@ -72,8 +71,7 @@
             // 
             this.bNuovoDaWeb.Image = global::RationesCurare7.Properties.Resources.world_add;
             this.bNuovoDaWeb.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bNuovoDaWeb.Name = "bNuovoDaWeb";
-            this.bNuovoDaWeb.Size = new System.Drawing.Size(113, 35);
+            this.bNuovoDaWeb.Name = "bNuovoDaWeb";            
             this.bNuovoDaWeb.Text = "(F7) Nuovo da Web";
             this.bNuovoDaWeb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bNuovoDaWeb.Click += new System.EventHandler(this.bNuovoDaWeb_Click);
@@ -82,8 +80,7 @@
             // 
             this.bModifica.Image = global::RationesCurare7.Properties.Resources.edit32;
             this.bModifica.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bModifica.Name = "bModifica";
-            this.bModifica.Size = new System.Drawing.Size(81, 35);
+            this.bModifica.Name = "bModifica";            
             this.bModifica.Text = "(F2) Modifica";
             this.bModifica.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bModifica.Click += new System.EventHandler(this.bModifica_Click);
@@ -102,8 +99,7 @@
             // 
             this.bCerca.Image = global::RationesCurare7.Properties.Resources.find32;
             this.bCerca.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bCerca.Name = "bCerca";
-            this.bCerca.Size = new System.Drawing.Size(64, 35);
+            this.bCerca.Name = "bCerca";            
             this.bCerca.Text = "(F3) Cerca";
             this.bCerca.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bCerca.Click += new System.EventHandler(this.bCerca_Click);
@@ -142,9 +138,9 @@
             // 
             // fListaUtenti
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 442);
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(640, 480);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);

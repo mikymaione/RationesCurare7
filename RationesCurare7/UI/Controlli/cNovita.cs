@@ -21,7 +21,11 @@ namespace RationesCurare7.UI.Controlli
         {
             InitializeComponent();
             
-			richTextBox1.LoadFile("Novita.rtf");
+			var ep = Application.ExecutablePath;
+			ep = System.IO.Path.GetDirectoryName(ep);
+			ep = System.IO.Path.Combine(ep, "Novita.rtf");
+
+			richTextBox1.LoadFile(ep);
         }		       
 
         private void panel1_Paint(object sender, PaintEventArgs e)
