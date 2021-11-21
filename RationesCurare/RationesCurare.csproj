@@ -45,6 +45,9 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.3.11, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.3\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -86,6 +89,7 @@
     <Content Include="DB\DBW\Movimenti_GraficoTorta.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Ricerca.sql" />
+    <Content Include="EmailSending.asmx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="mLogin.aspx" />
@@ -97,6 +101,10 @@
     <Compile Include="cSession.cs" />
     <Compile Include="DB\cDB.cs" />
     <Compile Include="DB\DataWrapper\cCasse.cs" />
+    <Compile Include="EmailSending.asmx.cs">
+      <DependentUpon>EmailSending.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GB.cs" />
     <Compile Include="GB\cGB.cs" />
     <Compile Include="Global.asax.cs">

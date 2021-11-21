@@ -10,6 +10,7 @@ using System.Web.Services;
 
 namespace maionemiky
 {
+
     [WebService(Namespace = "http://www.maionemiky.it/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.None)]
     [System.ComponentModel.ToolboxItem(false)]
