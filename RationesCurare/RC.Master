@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="RC.master.cs" Inherits="RationesCurare.RC" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/F79E10.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu Mono'>
+
+    <meta charset="UTF-8">
+
+    <meta name="date" content="2021-11-21" scheme="YYYY-MM-DD">
+    <meta name="author" content="Maione Michele">
+    <meta name="description" content="Maione Michele’s personal website">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <h1>RationesCurare</h1>
+
+    <form id="form1" runat="server">        
+        <nav>
+            <a id="nav_mMenu" href="mMenu.aspx">Saldo</a> |		    
+            <a id="nav_mSaldo" href="mSaldo.aspx">Movimenti</a> |		    
+		    <a id="nav_mGrafico" href="mGrafico.aspx">Grafico</a> |
+		    <a id="nav_contacts" href="contacts.aspx">Logout</a>
+        </nav>
+        <hr>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </form>
+
+    <hr>
+    <ruby>© 2006-2021, [MAIONE MIKY]</ruby>
+</body>
+</html>
