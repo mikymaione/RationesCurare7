@@ -1,11 +1,26 @@
 ﻿using System;
 using System.Web;
+using System.Web.SessionState;
 
 namespace RationesCurare
 {
-    public static class GB
+    public class GB
     {
-        public static cSession CurrentSession = null;
+        private GB()
+        {
+            // singleton pattern
+        }
+
+        public static GB Instance { get; protected set; } = new GB();
+
+        public cSession getCurrentSession(HttpSessionState session)
+        {
+            return (cSession)session["CurrentSession"];
+        }
+        public void setCurrentSession(HttpSessionState session, cSession _cSession)
+        {
+            session["CurrentSession"] = _cSession;
+        }
 
         public static bool SetCookie(HttpResponse Response, string[] cookies, string[] values)
         {

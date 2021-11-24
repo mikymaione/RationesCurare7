@@ -53,6 +53,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>sqlite lib\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,6 +93,7 @@
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="mGrafico.aspx" />
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
     <Content Include="mSaldo.aspx" />
@@ -106,9 +108,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GB.cs" />
-    <Compile Include="GB\cGB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="mGrafico.aspx.cs">
+      <DependentUpon>mGrafico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mGrafico.aspx.designer.cs">
+      <DependentUpon>mGrafico.aspx</DependentUpon>
     </Compile>
     <Compile Include="mLogin.aspx.cs">
       <DependentUpon>mLogin.aspx</DependentUpon>

@@ -87,21 +87,21 @@ namespace RationesCurare
 
                         if (psw.Equals(psw_, StringComparison.OrdinalIgnoreCase))
                         {
-                            GB.CurrentSession = new cSession(Session);
-                            GB.CurrentSession.LoggedIN = true;
-                            GB.CurrentSession.UserName = nome;
+                            GB.Instance.setCurrentSession(Session, new cSession());
+                            GB.Instance.getCurrentSession(Session).LoggedIN = true;
+                            GB.Instance.getCurrentSession(Session).UserName = nome;
 
                             if (System.IO.File.Exists(f + ".rqd8"))
                             {
-                                GB.CurrentSession.ProviderName = "System.Data.SQLite";
-                                GB.CurrentSession.PathDB = f + ".rqd8";
-                                GB.CurrentSession.TipoDB = RationesCurare7.DB.cDB.DataBase.SQLite;
+                                GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.SQLite";
+                                GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
+                                GB.Instance.getCurrentSession(Session).TipoDB = RationesCurare7.DB.cDB.DataBase.SQLite;
                             }
                             else if (System.IO.File.Exists(f + ".rqd"))
                             {
-                                GB.CurrentSession.ProviderName = "System.Data.OleDb";
-                                GB.CurrentSession.PathDB = f + ".rqd";
-                                GB.CurrentSession.TipoDB = RationesCurare7.DB.cDB.DataBase.Access;
+                                GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.OleDb";
+                                GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd";
+                                GB.Instance.getCurrentSession(Session).TipoDB = RationesCurare7.DB.cDB.DataBase.Access;
                             }
 
                             if (cbMemorizza.Checked)
@@ -136,7 +136,12 @@ namespace RationesCurare
             var n = new string[] { "AutoLogin_UserName", "AutoLogin_UserPassword", "AutoLogin" };
             var c = new string[] { "", "", "FALSE" };
 
+            eUtente.Text = "";
+            ePsw.Text = "";
+            cbMemorizza.Checked = false;
+
             GB.SetCookie(Response, n, c);
+            GB.Instance.setCurrentSession(Session, null);
         }
 
         protected void bEntra_Click(object sender, EventArgs e)

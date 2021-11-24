@@ -380,6 +380,16 @@ namespace RationesCurare7.DB
 
             return z;
         }
+        public static string DateToSQLite(DateTime d)
+        {
+            //yyyy-MM-dd HH:mm:ss.fff
+            string h = "";
+
+            h += d.Year + "-" + (d.Month < 10 ? "0" : "") + d.Month + "-" + (d.Day < 10 ? "0" : "") + d.Day + " ";
+            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second + ".000";
+
+            return h;
+        }
 
         public DbParameter NewPar(string Nome, object Valore)
         {
@@ -391,7 +401,7 @@ namespace RationesCurare7.DB
                     o = new System.Data.OleDb.OleDbParameter(Nome, DbType.DateTime);
                 else if (DataBaseAttuale == DataBase.SQLite)
                 {
-                    Valore = cGB.DateToSQLite((DateTime)Valore);
+                    Valore = DateToSQLite((DateTime)Valore);
                     //Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
                     o = new System.Data.SQLite.SQLiteParameter(Nome, DbType.String);
                 }

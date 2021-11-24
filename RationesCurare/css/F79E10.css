@@ -44,6 +44,6 @@ a:active, a:hover {
 }
 
 .img-max-size {
-	max-width: 100%;
-	height: auto;
+	max-width: 100% !important;
+	height: auto !important;
 }

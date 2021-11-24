@@ -20,19 +20,19 @@
 </head>
 <body>
     <h1>RationesCurare</h1>
-    <hr>
+    <hr/>
     <h2>Login</h2>
 
     <form id="form1" runat="server">
         <table>
             <tr>
                 <td>
-                    <asp:TextBox ID="eUtente" runat="server" placeholder="Utente" />
+                    <asp:TextBox ID="eUtente" runat="server" placeholder="Utente" TextMode="Email" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="ePsw" runat="server" placeholder="Password" />
+                    <asp:TextBox ID="ePsw" runat="server" placeholder="Password" TextMode="Password" />
                 </td>
             </tr>
             <tr>
@@ -49,7 +49,7 @@
         </table>
     </form>
 
-    <hr>
+    <hr/>
     <ruby>© 2006-2021, [MAIONE MIKY]</ruby>
 </body>
 </html>

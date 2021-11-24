@@ -47,9 +47,9 @@ namespace RationesCurare
             Title = "RC Web - " + Tipo;
             Form.DefaultButton = bCerca.UniqueID;
 
-            if (GB.CurrentSession != null)
+            if (GB.Instance.getCurrentSession(Session) != null)
             {
-                using (var d = new cDB(GB.CurrentSession.TipoDB, GB.CurrentSession.PathDB))
+                using (var d = new cDB(GB.Instance.getCurrentSession(Session).TipoDB, GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var m = MapPath("DB");
                     m = System.IO.Path.Combine(m, "DBW");

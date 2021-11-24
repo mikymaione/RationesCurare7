@@ -12,11 +12,11 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (GB.CurrentSession != null)
+            if (GB.Instance.getCurrentSession(Session) != null)
             {
-                Title = "RC Web - " + GB.CurrentSession.UserName;
+                Title = "RC Web - " + GB.Instance.getCurrentSession(Session).UserName;
 
-                using (var d = new cDB(GB.CurrentSession.TipoDB, GB.CurrentSession.PathDB))
+                using (var d = new cDB(GB.Instance.getCurrentSession(Session).TipoDB, GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var q = "select Tipo, sum(soldi) as Saldo from Movimenti group by Tipo order by Tipo";
 
