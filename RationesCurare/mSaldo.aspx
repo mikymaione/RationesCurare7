@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>RationesCurare - Movimenti</title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
     <style>
         input {
             box-sizing: border-box;

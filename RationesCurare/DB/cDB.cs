@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
-using System.Text.RegularExpressions;
+using System.Data.SQLite;
 
 namespace RationesCurare7.DB
 {
     public class cDB : IDisposable
     {
-        //TODO: [M] Inserire sul DB controparte, linkedID
 
-        public enum DataBase
+        public cDB(string path_db)
         {
-            Access,
-            SQLite
-        }
-
-        public cDB(DataBase db_, string path_db)
-        {
-            ApriConnessione(db_, path_db);
+            ApriConnessione(path_db);
         }
 
         public enum Queries
@@ -122,103 +115,152 @@ namespace RationesCurare7.DB
         };
 
         private DbConnection Connessione;
-        private DataBase DataBaseAttuale = DataBase.Access;
         public DateTime UltimaModifica = DateTime.MinValue;
 
         private static string QueriesToString(Queries q)
         {
-            var s = "";
+            return ConvertQueriesToString(q) + ".sql";
+        }
 
-            if (q == Queries.Aggiornamenti)
-                s = "Aggiornamenti";
-            else if (q == Queries.Movimenti_Inserisci)
-                s = "Movimenti_Inserisci";
-            else if (q == Queries.Movimenti_Aggiorna)
-                s = "Movimenti_Aggiorna";
-            else if (q == Queries.Movimenti_AggiornaMacroAree)
-                s = "Movimenti_AggiornaMacroAree";
-            else if (q == Queries.Movimenti_Ricerca)
-                s = "Movimenti_Ricerca";
-            else if (q == Queries.Movimenti_GetMacroAree_E_Descrizioni)
-                s = "Movimenti_GetMacroAree_E_Descrizioni";
-            else if (q == Queries.Movimenti_Saldo)
-                s = "Movimenti_Saldo";
-            else if (q == Queries.Movimenti_Dettaglio)
-                s = "Movimenti_Dettaglio";
-            else if (q == Queries.Movimenti_Elimina)
-                s = "Movimenti_Elimina";
-            else if (q == Queries.Movimenti_AutoCompleteSource)
-                s = "Movimenti_AutoCompleteSource";
-            else if (q == Queries.Movimenti_AutoCompleteSourceMA)
-                s = "Movimenti_AutoCompleteSourceMA";
-            else if (q == Queries.Movimenti_MovimentiPerCassa)
-                s = "Movimenti_MovimentiPerCassa";
-            else if (q == Queries.Movimenti_GraficoTorta)
-                s = "Movimenti_GraficoTorta";
-            else if (q == Queries.Movimenti_GraficoAnnuale)
-                s = "Movimenti_GraficoAnnuale";
-            else if (q == Queries.Movimenti_GraficoMensile)
-                s = "Movimenti_GraficoMensile";
-            else if (q == Queries.Movimenti_GraficoSaldo)
-                s = "Movimenti_GraficoSaldo";
-            else if (q == Queries.Movimenti_GraficoTortaSaldo)
-                s = "Movimenti_GraficoTortaSaldo";
-            else if (q == Queries.Movimenti_Data)
-                s = "Movimenti_Data";
-            else if (q == Queries.Casse_Ricerca)
-                s = "Casse_Ricerca";
-            else if (q == Queries.Casse_Lista)
-                s = "Casse_Lista";
-            else if (q == Queries.Casse_ListaEX)
-                s = "Casse_ListaEX";
-            else if (q == Queries.Casse_Inserisci)
-                s = "Casse_Inserisci";
-            else if (q == Queries.Casse_Aggiorna)
-                s = "Casse_Aggiorna";
-            else if (q == Queries.Casse_Carica)
-                s = "Casse_Carica";
-            else if (q == Queries.Casse_Elimina)
-                s = "Casse_Elimina";
-            else if (q == Queries.Periodici_Dettaglio)
-                s = "Periodici_Dettaglio";
-            else if (q == Queries.Periodici_Ricerca)
-                s = "Periodici_Ricerca";
-            else if (q == Queries.Periodici_Scadenza)
-                s = "Periodici_Scadenza";
-            else if (q == Queries.Periodici_Elimina)
-                s = "Periodici_Elimina";
-            else if (q == Queries.Periodici_Inserisci)
-                s = "Periodici_Inserisci";
-            else if (q == Queries.Periodici_Aggiorna)
-                s = "Periodici_Aggiorna";
-            else if (q == Queries.Utenti_Lista)
-                s = "Utenti_Lista";
-            else if (q == Queries.Utenti_Inserisci)
-                s = "Utenti_Inserisci";
-            else if (q == Queries.Utenti_Aggiorna)
-                s = "Utenti_Aggiorna";
-            else if (q == Queries.Utenti_Elimina)
-                s = "Utenti_Elimina";
-            else if (q == Queries.Utenti_Dettaglio)
-                s = "Utenti_Dettaglio";
-            else if (q == Queries.Utenti_ByPath)
-                s = "Utenti_ByPath";
-            else if (q == Queries.Calendario_Ricerca)
-                s = "Calendario_Ricerca";
-            else if (q == Queries.Calendario_Inserisci)
-                s = "Calendario_Inserisci";
-            else if (q == Queries.Calendario_Aggiorna)
-                s = "Calendario_Aggiorna";
-            else if (q == Queries.Calendario_AggiornaSerie)
-                s = "Calendario_AggiornaSerie";
-            else if (q == Queries.Calendario_Elimina)
-                s = "Calendario_Elimina";
-            else if (q == Queries.Calendario_EliminaSerie)
-                s = "Calendario_EliminaSerie";
-            else if (q == Queries.Calendario_Dettaglio)
-                s = "Calendario_Dettaglio";
+        private static string ConvertQueriesToString(Queries q)
+        {
+            switch (q)
+            {
+                case Queries.Aggiornamenti:
+                    return "Aggiornamenti";
 
-            return s + ".sql";
+                case Queries.Movimenti_Inserisci:
+                    return "Movimenti_Inserisci";
+
+                case Queries.Movimenti_Aggiorna:
+                    return "Movimenti_Aggiorna";
+
+                case Queries.Movimenti_AggiornaMacroAree:
+                    return "Movimenti_AggiornaMacroAree";
+
+                case Queries.Movimenti_Ricerca:
+                    return "Movimenti_Ricerca";
+
+                case Queries.Movimenti_GetMacroAree_E_Descrizioni:
+                    return "Movimenti_GetMacroAree_E_Descrizioni";
+
+                case Queries.Movimenti_Saldo:
+                    return "Movimenti_Saldo";
+
+                case Queries.Movimenti_Dettaglio:
+                    return "Movimenti_Dettaglio";
+
+                case Queries.Movimenti_Elimina:
+                    return "Movimenti_Elimina";
+
+                case Queries.Movimenti_AutoCompleteSource:
+                    return "Movimenti_AutoCompleteSource";
+
+                case Queries.Movimenti_AutoCompleteSourceMA:
+                    return "Movimenti_AutoCompleteSourceMA";
+
+                case Queries.Movimenti_MovimentiPerCassa:
+                    return "Movimenti_MovimentiPerCassa";
+
+                case Queries.Movimenti_GraficoTorta:
+                    return "Movimenti_GraficoTorta";
+
+                case Queries.Movimenti_GraficoAnnuale:
+                    return "Movimenti_GraficoAnnuale";
+
+                case Queries.Movimenti_GraficoMensile:
+                    return "Movimenti_GraficoMensile";
+
+                case Queries.Movimenti_GraficoSaldo:
+                    return "Movimenti_GraficoSaldo";
+
+                case Queries.Movimenti_GraficoTortaSaldo:
+                    return "Movimenti_GraficoTortaSaldo";
+
+                case Queries.Movimenti_Data:
+                    return "Movimenti_Data";
+
+                case Queries.Casse_Ricerca:
+                    return "Casse_Ricerca";
+
+                case Queries.Casse_Lista:
+                    return "Casse_Lista";
+
+                case Queries.Casse_ListaEX:
+                    return "Casse_ListaEX";
+
+                case Queries.Casse_Inserisci:
+                    return "Casse_Inserisci";
+
+                case Queries.Casse_Aggiorna:
+                    return "Casse_Aggiorna";
+
+                case Queries.Casse_Carica:
+                    return "Casse_Carica";
+
+                case Queries.Casse_Elimina:
+                    return "Casse_Elimina";
+
+                case Queries.Periodici_Dettaglio:
+                    return "Periodici_Dettaglio";
+
+                case Queries.Periodici_Ricerca:
+                    return "Periodici_Ricerca";
+
+                case Queries.Periodici_Scadenza:
+                    return "Periodici_Scadenza";
+
+                case Queries.Periodici_Elimina:
+                    return "Periodici_Elimina";
+
+                case Queries.Periodici_Inserisci:
+                    return "Periodici_Inserisci";
+
+                case Queries.Periodici_Aggiorna:
+                    return "Periodici_Aggiorna";
+
+                case Queries.Utenti_Lista:
+                    return "Utenti_Lista";
+
+                case Queries.Utenti_Inserisci:
+                    return "Utenti_Inserisci";
+
+                case Queries.Utenti_Aggiorna:
+                    return "Utenti_Aggiorna";
+
+                case Queries.Utenti_Elimina:
+                    return "Utenti_Elimina";
+
+                case Queries.Utenti_Dettaglio:
+                    return "Utenti_Dettaglio";
+
+                case Queries.Utenti_ByPath:
+                    return "Utenti_ByPath";
+
+                case Queries.Calendario_Ricerca:
+                    return "Calendario_Ricerca";
+
+                case Queries.Calendario_Inserisci:
+                    return "Calendario_Inserisci";
+
+                case Queries.Calendario_Aggiorna:
+                    return "Calendario_Aggiorna";
+
+                case Queries.Calendario_AggiornaSerie:
+                    return "Calendario_AggiornaSerie";
+
+                case Queries.Calendario_Elimina:
+                    return "Calendario_Elimina";
+
+                case Queries.Calendario_EliminaSerie:
+                    return "Calendario_EliminaSerie";
+
+                case Queries.Calendario_Dettaglio:
+                    return "Calendario_Dettaglio";
+
+                default:
+                    throw new NotImplementedException($"Non esiste la query {q}");
+            }
         }
 
         public int EseguiSQLNoQuery(string sql)
@@ -228,22 +270,19 @@ namespace RationesCurare7.DB
 
         public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param)
         {
-            var i = -1;
             var cm = CreaCommandNoConnection(sql, param);
 
-            if ((Trans != null))
+            if (Trans != null)
                 cm.Transaction = Trans;
 
             try
             {
-                i = cm.ExecuteNonQuery();
+                return cm.ExecuteNonQuery();
             }
             catch
             {
-                i = -1;
+                return -1;
             }
-
-            return i;
         }
 
         public int EseguiSQLNoQuery(string sql, DbParameter[] param)
@@ -276,34 +315,20 @@ namespace RationesCurare7.DB
                 t.Columns.AddRange(colonne);
 
             if (MaxRows > -1)
-                if (DataBaseAttuale == DataBase.Access)
-                    sql = Regex.Replace(sql, "select", "select top " + MaxRows, RegexOptions.IgnoreCase);
-                else if (DataBaseAttuale == DataBase.SQLite)
-                    sql += " limit " + MaxRows;
+                sql += " limit " + MaxRows;
 
             using (var cm = CreaCommandNoConnection(sql, param))
-            {
-                if (DataBaseAttuale == DataBase.Access)
-                    using (var a = new System.Data.OleDb.OleDbDataAdapter((System.Data.OleDb.OleDbCommand)cm))
-                        a.Fill(t);
-                else if (DataBaseAttuale == DataBase.SQLite)
-                    using (var a = new System.Data.SQLite.SQLiteDataAdapter((System.Data.SQLite.SQLiteCommand)cm))
-                        a.Fill(t);
-            }
+            using (var a = new SQLiteDataAdapter((SQLiteCommand)cm))
+                a.Fill(t);
 
             return t;
         }
 
         private DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
         {
-            DbCommand cm = null;
+            var cm = new SQLiteCommand(sql, (SQLiteConnection)Connessione);
 
-            if (DataBaseAttuale == DataBase.Access)
-                cm = new System.Data.OleDb.OleDbCommand(sql, (System.Data.OleDb.OleDbConnection)Connessione);
-            else if (DataBaseAttuale == DataBase.SQLite)
-                cm = new System.Data.SQLite.SQLiteCommand(sql, (System.Data.SQLite.SQLiteConnection)Connessione);
-
-            if ((param != null))
+            if (param != null)
                 for (int x = 0; x <= param.Length - 1; x++)
                 {
                     if (param[x].DbType == DbType.Decimal)
@@ -335,7 +360,7 @@ namespace RationesCurare7.DB
 
             using (var cm = CreaCommandNoConnection(sql, param))
             {
-                if ((Trans != null))
+                if (Trans != null)
                     cm.Transaction = Trans;
 
                 dr = cm.ExecuteReader();
@@ -357,7 +382,7 @@ namespace RationesCurare7.DB
                     break;
                 }
 
-            if ((z == "") || (z == null))
+            if (z == "" || z == null)
             {
                 using (var sr = new System.IO.StreamReader(System.IO.Path.Combine(mappath, QueriesToString(q))))
                 {
@@ -367,13 +392,10 @@ namespace RationesCurare7.DB
                     sr.Close();
                 }
 
-                if (DataBaseAttuale == DataBase.SQLite)
-                {
-                    z = z.Replace("Datepart('d',", "strftime('%d',");
-                    z = z.Replace("Datepart('yyyy',", "strftime('%Y',");
-                    z = z.Replace("Format(m.data, 'yyyy')", "strftime('%Y',m.data)");
-                    z = z.Replace("Format(m.data, 'yyyy/mm')", "strftime('%Y/%m',m.data)");
-                }
+                z = z.Replace("Datepart('d',", "strftime('%d',");
+                z = z.Replace("Datepart('yyyy',", "strftime('%Y',");
+                z = z.Replace("Format(m.data, 'yyyy')", "strftime('%Y',m.data)");
+                z = z.Replace("Format(m.data, 'yyyy/mm')", "strftime('%Y/%m',m.data)");
 
                 QueriesGiaLette[iq].SQL = z;
             }
@@ -393,49 +415,31 @@ namespace RationesCurare7.DB
 
         public DbParameter NewPar(string Nome, object Valore)
         {
-            DbParameter o = null;
-
             if (Valore is DateTime)
             {
-                if (DataBaseAttuale == DataBase.Access)
-                    o = new System.Data.OleDb.OleDbParameter(Nome, DbType.DateTime);
-                else if (DataBaseAttuale == DataBase.SQLite)
-                {
-                    Valore = DateToSQLite((DateTime)Valore);
-                    //Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
-                    o = new System.Data.SQLite.SQLiteParameter(Nome, DbType.String);
-                }
+                Valore = DateToSQLite((DateTime)Valore);
 
+                var o = new SQLiteParameter(Nome, DbType.String);
                 o.Value = Valore;
+
+                return o;
             }
             else
             {
-                if (DataBaseAttuale == DataBase.Access)
-                    o = new System.Data.OleDb.OleDbParameter(Nome, Valore);
-                else if (DataBaseAttuale == DataBase.SQLite)
-                    o = new System.Data.SQLite.SQLiteParameter(Nome, Valore);
+                return new SQLiteParameter(Nome, Valore);
             }
-
-            return o;
         }
 
         public DbParameter NewPar(string Nome, object Valore, DbType tipo)
         {
-            DbParameter o = null;
-
-            if (DataBaseAttuale == DataBase.Access)
-                o = new System.Data.OleDb.OleDbParameter(Nome, tipo);
-            else if (DataBaseAttuale == DataBase.SQLite)
+            if (tipo == DbType.Date || tipo == DbType.DateTime)
             {
-                if (tipo == DbType.Date || tipo == DbType.DateTime)
-                {
-                    //"YYYY-MM-DD HH:MM:SS.SSS"
-                    Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
-                    tipo = DbType.String;
-                }
-
-                o = new System.Data.SQLite.SQLiteParameter(Nome, tipo);
+                //"YYYY-MM-DD HH:MM:SS.SSS"
+                Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                tipo = DbType.String;
             }
+
+            var o = new SQLiteParameter(Nome, tipo);
 
             o.Value = Valore;
 
@@ -455,31 +459,19 @@ namespace RationesCurare7.DB
             }
         }
 
-        public static string DammiStringaConnessione(DataBase db_, string path_db)
+        public static string DammiStringaConnessione(string path_db)
         {
-            var s = "";
-
-            if (db_ == DataBase.Access)
-                s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path_db + ";";
-            else if (db_ == DataBase.SQLite)
-                s = "Data Source=" + path_db;
-
-            return s;
+            return "Data Source=" + path_db;
         }
 
-        public void ApriConnessione(DataBase db_, string path_db, bool ForceClose = false)
+        public void ApriConnessione(string path_db, bool ForceClose = false)
         {
-            DataBaseAttuale = db_;
-            var s = DammiStringaConnessione(db_, path_db);
+            var s = DammiStringaConnessione(path_db);
 
             if (ForceClose)
                 ChiudiConnessione();
 
-            if (DataBaseAttuale == DataBase.Access)
-                Connessione = new System.Data.OleDb.OleDbConnection(s);
-            else if (DataBaseAttuale == DataBase.SQLite)
-                Connessione = new System.Data.SQLite.SQLiteConnection(s);
-
+            Connessione = new SQLiteConnection(s);
             Connessione.Open();
         }
 
@@ -502,7 +494,6 @@ namespace RationesCurare7.DB
         {
             ChiudiConnessione();
         }
-
 
     }
 }

@@ -30,7 +30,7 @@ namespace RationesCurare
         {
             if (Richiesta.Equals("L", StringComparison.OrdinalIgnoreCase))
             {
-                DeleteCookieLogin();
+                DeleteCookieLogin(true);
             }
             else
             {
@@ -75,7 +75,7 @@ namespace RationesCurare
             var p = MapPath("App_Data");
             var f = System.IO.Path.Combine(p, nome);
 
-            if (System.IO.File.Exists(f + ".rqd") || System.IO.File.Exists(f + ".rqd8"))
+            if (System.IO.File.Exists(f + ".rqd8"))
                 if (System.IO.File.Exists(f + ".psw"))
                     try
                     {
@@ -90,19 +90,8 @@ namespace RationesCurare
                             GB.Instance.setCurrentSession(Session, new cSession());
                             GB.Instance.getCurrentSession(Session).LoggedIN = true;
                             GB.Instance.getCurrentSession(Session).UserName = nome;
-
-                            if (System.IO.File.Exists(f + ".rqd8"))
-                            {
-                                GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.SQLite";
-                                GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
-                                GB.Instance.getCurrentSession(Session).TipoDB = RationesCurare7.DB.cDB.DataBase.SQLite;
-                            }
-                            else if (System.IO.File.Exists(f + ".rqd"))
-                            {
-                                GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.OleDb";
-                                GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd";
-                                GB.Instance.getCurrentSession(Session).TipoDB = RationesCurare7.DB.cDB.DataBase.Access;
-                            }
+                            GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.SQLite";
+                            GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
 
                             if (cbMemorizza.Checked)
                             {
@@ -113,7 +102,7 @@ namespace RationesCurare
                             }
                             else
                             {
-                                DeleteCookieLogin();
+                                DeleteCookieLogin(false);
                             }
 
                             ok = true;
@@ -131,7 +120,7 @@ namespace RationesCurare
                 lErrore.Text = "Credenziali d'accesso errate!";
         }
 
-        private void DeleteCookieLogin()
+        private void DeleteCookieLogin(bool clearSession)
         {
             var n = new string[] { "AutoLogin_UserName", "AutoLogin_UserPassword", "AutoLogin" };
             var c = new string[] { "", "", "FALSE" };
@@ -141,7 +130,9 @@ namespace RationesCurare
             cbMemorizza.Checked = false;
 
             GB.SetCookie(Response, n, c);
-            GB.Instance.setCurrentSession(Session, null);
+
+            if (clearSession)
+                GB.Instance.setCurrentSession(Session, null);
         }
 
         protected void bEntra_Click(object sender, EventArgs e)

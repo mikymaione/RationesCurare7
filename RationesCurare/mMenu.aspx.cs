@@ -14,9 +14,9 @@ namespace RationesCurare
         {
             if (GB.Instance.getCurrentSession(Session) != null)
             {
-                Title = "RC Web - " + GB.Instance.getCurrentSession(Session).UserName;
+                Title = "RationesCurare - " + GB.Instance.getCurrentSession(Session).UserName;
 
-                using (var d = new cDB(GB.Instance.getCurrentSession(Session).TipoDB, GB.Instance.getCurrentSession(Session).PathDB))
+                using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var q = "select Tipo, sum(soldi) as Saldo from Movimenti group by Tipo order by Tipo";
 

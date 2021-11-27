@@ -5,28 +5,13 @@ using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
-    public partial class mSaldo : System.Web.UI.Page
+    public partial class mSaldo : Page
     {
         private double grdTotal = 0;
 
-        private string Tipo
-        {
-            get
-            {
-                var t = "Saldo";
-
-                try
-                {
-                    t = Request.QueryString["T"];
-                }
-                catch
-                {
-                    //error                    
-                }
-
-                return t;
-            }
-        }
+        private string Tipo => Request.QueryString.HasKeys()
+                    ? Request.QueryString["T"]
+                    : "Saldo";
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -44,12 +29,12 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Title = "RC Web - " + Tipo;
+            Title = "RationesCurare - " + Tipo;
             Form.DefaultButton = bCerca.UniqueID;
 
             if (GB.Instance.getCurrentSession(Session) != null)
             {
-                using (var d = new cDB(GB.Instance.getCurrentSession(Session).TipoDB, GB.Instance.getCurrentSession(Session).PathDB))
+                using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var m = MapPath("DB");
                     m = System.IO.Path.Combine(m, "DBW");

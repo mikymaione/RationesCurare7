@@ -6,7 +6,7 @@ namespace RationesCurare
     public partial class mGrafico : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
             Chart1.Series[0]["DrawingStyle"] = "LightToDark";
 
             try
@@ -24,8 +24,8 @@ namespace RationesCurare
         private void FindFor(string T)
         {
             if (!"".Equals(T))
-            {                
-                using (var d = new cDB(GB.Instance.getCurrentSession(Session).TipoDB, GB.Instance.getCurrentSession(Session).PathDB))
+            {
+                using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     cDB.Queries q;
 
