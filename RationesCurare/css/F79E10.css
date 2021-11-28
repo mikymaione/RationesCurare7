@@ -1,21 +1,18 @@
 body {
-	max-width: 745px;
-	margin: auto;
-	
-	padding-top: 0px;
-	padding-bottom: 10px;
-	padding-right: 10px;	
-	padding-left: 10px;
-
-	overflow-x: hidden;
-	overflow-y: scroll;
-	
-	font-family: 'Ubuntu Mono';
+    max-width: 745px;
+    margin: auto;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Ubuntu Mono';
 }
 
 .giustificato {
-	text-align: justify;
-	text-justify: inter-character;
+    text-align: justify;
+    text-justify: inter-character;
 }
 
 figcaption, h2, h3, ruby {
@@ -23,7 +20,7 @@ figcaption, h2, h3, ruby {
 }
 
 .disab {
-	color: #464453;
+    color: #464453;
 }
 
 em, a:link, a:visited {
@@ -36,14 +33,14 @@ a:active, a:hover {
 }
 
 .not-active {
-	pointer-events: none;
-	cursor: default;
-	text-decoration: none;
-	color: black !important;
-	font-weight: bold;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black !important;
+    font-weight: bold;
 }
 
 .img-max-size {
-	max-width: 100% !important;
-	height: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
 }

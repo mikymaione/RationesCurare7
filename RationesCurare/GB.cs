@@ -11,6 +11,9 @@ namespace RationesCurare
             // singleton pattern
         }
 
+        public static string DBW =>
+           System.IO.Path.Combine(HttpContext.Current.Request.MapPath("DB"), "DBW");
+
         public static GB Instance { get; protected set; } = new GB();
 
         public cSession getCurrentSession(HttpSessionState session)
@@ -20,6 +23,14 @@ namespace RationesCurare
         public void setCurrentSession(HttpSessionState session, cSession _cSession)
         {
             session["CurrentSession"] = _cSession;
+        }
+
+        public static string getDBPathByName(string nome)
+        {
+            var p = HttpContext.Current.Request.MapPath("App_Data");
+            var f = System.IO.Path.Combine(p, nome);
+
+            return f + ".rqd8";
         }
 
         public static bool SetCookie(HttpResponse Response, string[] cookies, string[] values)
@@ -78,6 +89,14 @@ namespace RationesCurare
             return i;
         }
 
+        public static string ObjectToHTMLDouble(object o, double default_)
+        {
+            var d = ObjectToDouble(o, default_);
+            var s = d.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+            return s;
+        }
+
         public static double ObjectToDouble(object o, double default_)
         {
             var i = default_;
@@ -116,6 +135,13 @@ namespace RationesCurare
             var d = ObjectToDateTime(o);
 
             return d.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        public static string ObjectToDateTimeStringHTML(object o)
+        {
+            var d = ObjectToDateTime(o);
+
+            return d.ToString("yyyy-MM-ddTHH:mm");
         }
 
         public static DateTime ObjectToDateTime(object o)

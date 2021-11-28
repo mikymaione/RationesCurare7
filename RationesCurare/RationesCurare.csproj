@@ -84,11 +84,17 @@
     <Content Include="DB\DBW\Casse_Inserisci.sql" />
     <Content Include="DB\DBW\Casse_Lista.sql" />
     <Content Include="DB\DBW\Casse_Ricerca.sql" />
+    <Content Include="DB\DBW\Movimenti_Aggiorna.sql" />
+    <Content Include="DB\DBW\Movimenti_AutoCompleteSource.sql" />
+    <Content Include="DB\DBW\Movimenti_AutoCompleteSourceMA.sql" />
+    <Content Include="DB\DBW\Movimenti_Dettaglio.sql" />
+    <Content Include="DB\DBW\Movimenti_Elimina.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoAnnuale.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoMensile.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoTorta.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql" />
+    <Content Include="DB\DBW\Movimenti_Inserisci.sql" />
     <Content Include="DB\DBW\Movimenti_Ricerca.sql" />
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon.ico" />
@@ -96,13 +102,13 @@
     <Content Include="mGrafico.aspx" />
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
+    <Content Include="mMovimento.aspx" />
     <Content Include="mSaldo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cSession.cs" />
     <Compile Include="DB\cDB.cs" />
-    <Compile Include="DB\DataWrapper\cCasse.cs" />
     <Compile Include="EmailSending.asmx.cs">
       <DependentUpon>EmailSending.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -132,6 +138,13 @@
     <Compile Include="mMenu.aspx.designer.cs">
       <DependentUpon>mMenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="mMovimento.aspx.cs">
+      <DependentUpon>mMovimento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mMovimento.aspx.designer.cs">
+      <DependentUpon>mMovimento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mSaldo.aspx.cs">
       <DependentUpon>mSaldo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,7 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

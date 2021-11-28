@@ -854,7 +854,6 @@
     <Content Include="DB\DBW\Utenti_Lista.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Errori.txt" />
     <Content Include="rc.ico" />
     <Content Include="rcDB.ico" />
     <Content Include="rcDBBackup.ico" />

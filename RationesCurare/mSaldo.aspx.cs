@@ -7,6 +7,9 @@ namespace RationesCurare
 {
     public partial class mSaldo : Page
     {
+
+        public string SottoTitolo = "";
+
         private double grdTotal = 0;
 
         private string Tipo => Request.QueryString.HasKeys()
@@ -30,15 +33,14 @@ namespace RationesCurare
         protected void Page_Load(object sender, EventArgs e)
         {
             Title = "RationesCurare - " + Tipo;
+            SottoTitolo = Tipo;
+
             Form.DefaultButton = bCerca.UniqueID;
 
             if (GB.Instance.getCurrentSession(Session) != null)
             {
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    var m = MapPath("DB");
-                    m = System.IO.Path.Combine(m, "DBW");
-
                     var p = new System.Data.Common.DbParameter[] {
                        d.NewPar("tipo1", Tipo),
                        d.NewPar("tipo2", Tipo),
@@ -52,7 +54,7 @@ namespace RationesCurare
                        d.NewPar("DataA", GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20)))
                     };
 
-                    GridView1.DataSource = d.EseguiSQLDataTable(m, cDB.Queries.Movimenti_Ricerca, p, GB.ObjectToInt(eMax.Text, 50));
+                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, p, GB.ObjectToInt(eMax.Text, 50));
                     GridView1.DataBind();
                 }
             }

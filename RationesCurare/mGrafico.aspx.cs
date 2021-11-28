@@ -29,8 +29,6 @@ namespace RationesCurare
                 {
                     cDB.Queries q;
 
-                    var m = System.IO.Path.Combine(MapPath("DB"), "DBW");
-
                     switch (T)
                     {
                         case "Y":
@@ -47,7 +45,7 @@ namespace RationesCurare
                             break;
                     }
 
-                    Chart1.DataSource = d.EseguiSQLDataTable(m, q);
+                    Chart1.DataSource = d.EseguiSQLDataTable(q);
                     Chart1.DataBind();
                 }
             }

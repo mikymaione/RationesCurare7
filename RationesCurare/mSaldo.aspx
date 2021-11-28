@@ -1,15 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         input {
             box-sizing: border-box;
         }
+
+        .trLabel {
+            color: #F79E10;
+        }
+
+        .trGrid {
+            cursor: pointer;
+        }
+
+            .trGrid:hover {
+                color: black !important;
+                background-color: #F79E10 !important;
+            }
+
+                .trGrid:hover span {
+                    color: black;
+                }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Movimenti</h2>
+    <h2><%=SottoTitolo %></h2>
 
     <table width="100%">
         <thead>
@@ -98,7 +115,7 @@
 
     <hr />
 
-    <asp:GridView ID="GridView1" runat="server" GridLines="None" AllowSorting="False" AutoGenerateColumns="False" DataKeyNames="ID" Width="100%" AllowPaging="False" PageSize="50" ShowFooter="True"
+    <asp:GridView ID="GridView1" runat="server" GridLines="None" AllowSorting="False" AutoGenerateColumns="False" DataKeyNames="ID" Width="100%" AllowPaging="False" ShowFooter="True" RowStyle-CssClass="trGrid"
         OnRowDataBound="GridView1_RowDataBound">
 
         <AlternatingRowStyle BackColor="#f0f0f0" />
@@ -110,8 +127,10 @@
 
             <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true">
                 <ItemTemplate>
+                    <input type="hidden" value='<%# Eval("ID") %>' />
+
                     <div>
-                        <asp:Label runat="server" ForeColor="#F79E10" Text='<%# Eval("MacroArea") %>' />
+                        <asp:Label runat="server" Text='<%# Eval("MacroArea") %>' CssClass="trLabel" />
                     </div>
                     <div>
                         <small>
@@ -137,4 +156,28 @@
         </Columns>
 
     </asp:GridView>
+
+    <script>
+        function addRowHandlers() {
+            let table = document.getElementById("<%=GridView1.ClientID%>");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                let currentRow = table.rows[i];
+
+                let createClickHandler = function (row) {
+                    return function () {
+                        let cell = row.getElementsByTagName("td")[0];
+                        let hidden = cell.getElementsByTagName("input")[0];
+
+                        window.location.href = 'mMovimento.aspx?ID=' + hidden.value;
+                    };
+                };
+
+                currentRow.onclick = createClickHandler(currentRow);
+            }
+        }
+
+        addRowHandlers();
+    </script>
 </asp:Content>

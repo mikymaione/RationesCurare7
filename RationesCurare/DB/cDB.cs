@@ -292,9 +292,9 @@ namespace RationesCurare7.DB
             return EseguiSQLNoQuery(ref tr, sql, param);
         }
 
-        public DataTable EseguiSQLDataTable(string mappath, Queries q)
+        public DataTable EseguiSQLDataTable(Queries q)
         {
-            return EseguiSQLDataTable(mappath, q, null);
+            return EseguiSQLDataTable(q, null);
         }
 
         public DataTable EseguiSQLDataTable(string sql)
@@ -302,9 +302,9 @@ namespace RationesCurare7.DB
             return EseguiSQLDataTable(sql, null);
         }
 
-        public DataTable EseguiSQLDataTable(string mappath, Queries q, DbParameter[] param, int MaxRows = -1)
+        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, int MaxRows = -1)
         {
-            return EseguiSQLDataTable(LeggiQuery(mappath, q), param, null, MaxRows);
+            return EseguiSQLDataTable(LeggiQuery(q), param, null, MaxRows);
         }
 
         public DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null, int MaxRows = -1)
@@ -340,6 +340,16 @@ namespace RationesCurare7.DB
             return cm;
         }
 
+        public DbDataReader EseguiSQLDataReader(Queries q)
+        {
+            return EseguiSQLDataReader(LeggiQuery(q));
+        }
+
+        public DbDataReader EseguiSQLDataReader(Queries q, DbParameter[] param)
+        {
+            return EseguiSQLDataReader(LeggiQuery(q), param);
+        }
+
         public DbDataReader EseguiSQLDataReader(string sql)
         {
             DbTransaction tr = null;
@@ -369,7 +379,7 @@ namespace RationesCurare7.DB
             return dr;
         }
 
-        public string LeggiQuery(string mappath, Queries q)
+        public string LeggiQuery(Queries q)
         {
             var iq = -1;
             var z = "";
@@ -384,7 +394,7 @@ namespace RationesCurare7.DB
 
             if (z == "" || z == null)
             {
-                using (var sr = new System.IO.StreamReader(System.IO.Path.Combine(mappath, QueriesToString(q))))
+                using (var sr = new System.IO.StreamReader(System.IO.Path.Combine(RationesCurare.GB.DBW, QueriesToString(q))))
                 {
                     while (sr.Peek() != -1)
                         z += sr.ReadLine() + Environment.NewLine;
