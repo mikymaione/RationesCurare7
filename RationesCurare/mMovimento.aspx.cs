@@ -38,8 +38,11 @@ namespace RationesCurare
             }
 
             SottoTitolo = IDMovimento == -1
-                ? "Nuovo movimento"
-                : $"Movimento {IDMovimento}";
+                ? "Nuovo importo"
+                : $"Importo {IDMovimento}";
+
+            var master = (RC)Master;
+            master.nav_mMovimento.InnerHtml = SottoTitolo;
 
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {

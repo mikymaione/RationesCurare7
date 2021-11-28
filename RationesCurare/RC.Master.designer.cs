@@ -51,6 +51,15 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlAnchor nav_mSaldo;
 
         /// <summary>
+        /// Controllo nav_mMovimento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        public global::System.Web.UI.HtmlControls.HtmlAnchor nav_mMovimento;
+
+        /// <summary>
         /// Controllo nav_mGrafico.
         /// </summary>
         /// <remarks>

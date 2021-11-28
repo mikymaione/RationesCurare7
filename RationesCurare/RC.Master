@@ -25,7 +25,8 @@
     <form id="form1" runat="server">
         <nav>
             <a runat="server" id="nav_mMenu" href="mMenu.aspx">Saldo</a> |		    
-            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">Movimenti</a> |		    
+            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">Importi</a> |		    
+            <a runat="server" id="nav_mMovimento" href="mMovimento.aspx">Inserisci importo</a> |		                
 		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">Grafico</a> |
 		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">Logout</a>
         </nav>

@@ -24,6 +24,7 @@ namespace RationesCurare
             var navs = new HtmlAnchor[] {
                 nav_mMenu,
                 nav_mSaldo,
+                nav_mMovimento,
                 nav_mGrafico,
                 nav_mLogout
             };
@@ -33,5 +34,6 @@ namespace RationesCurare
                     ? "not-active"
                     : "";
         }
+
     }
 }
