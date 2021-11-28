@@ -16,12 +16,23 @@ namespace RationesCurare
                     ? Request.QueryString["T"]
                     : "Saldo";
 
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            var dt = GridView1.DataSource as System.Data.DataTable;
+            var r = dt.Rows[e.NewSelectedIndex];
+            var nome = r.ItemArray[0];
+
+            Response.Redirect("mMovimento.aspx?ID=" + nome);
+        }
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 var rowTotal = Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "soldi"));
-                grdTotal = grdTotal + rowTotal;
+                grdTotal += rowTotal;
+
+                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {

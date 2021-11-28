@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -116,6 +116,7 @@
     <hr />
 
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AllowSorting="False" AutoGenerateColumns="False" DataKeyNames="ID" Width="100%" AllowPaging="False" ShowFooter="True" RowStyle-CssClass="trGrid"
+        OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
         OnRowDataBound="GridView1_RowDataBound">
 
         <AlternatingRowStyle BackColor="#f0f0f0" />
@@ -127,8 +128,6 @@
 
             <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true">
                 <ItemTemplate>
-                    <input type="hidden" value='<%# Eval("ID") %>' />
-
                     <div>
                         <asp:Label runat="server" Text='<%# Eval("MacroArea") %>' CssClass="trLabel" />
                     </div>
@@ -156,28 +155,4 @@
         </Columns>
 
     </asp:GridView>
-
-    <script>
-        function addRowHandlers() {
-            let table = document.getElementById("<%=GridView1.ClientID%>");
-            let rows = table.getElementsByTagName("tr");
-
-            for (let i = 0; i < rows.length; i++) {
-                let currentRow = table.rows[i];
-
-                let createClickHandler = function (row) {
-                    return function () {
-                        let cell = row.getElementsByTagName("td")[0];
-                        let hidden = cell.getElementsByTagName("input")[0];
-
-                        window.location.href = 'mMovimento.aspx?ID=' + hidden.value;
-                    };
-                };
-
-                currentRow.onclick = createClickHandler(currentRow);
-            }
-        }
-
-        addRowHandlers();
-    </script>
 </asp:Content>

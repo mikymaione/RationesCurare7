@@ -31,7 +31,9 @@ namespace RationesCurare
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 var rowTotal = Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "Saldo"));
-                grdTotal = grdTotal + rowTotal;
+                grdTotal += rowTotal;
+
+                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {
