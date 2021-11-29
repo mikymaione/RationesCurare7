@@ -7,6 +7,8 @@ namespace RationesCurare
     public partial class RC : MasterPage
     {
 
+        private string CurrentPage => Page.AppRelativeVirtualPath.Replace("~/", "").Replace(".aspx", "");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (GB.Instance.getCurrentSession(Session) == null)
@@ -19,12 +21,11 @@ namespace RationesCurare
 
         private void DisableNavs()
         {
-            var me = "nav_" + Page.AppRelativeVirtualPath.Replace("~/", "").Replace(".aspx", "");
+            var me = "nav_" + CurrentPage;
 
             var navs = new HtmlAnchor[] {
                 nav_mMenu,
                 nav_mSaldo,
-                nav_mMovimento,
                 nav_mGrafico,
                 nav_mLogout
             };

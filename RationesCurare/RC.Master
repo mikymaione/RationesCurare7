@@ -8,6 +8,7 @@
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/F79E10.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu Mono'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
 
@@ -18,22 +19,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <style>
+        .myBtn {
+            position: fixed;
+            bottom: 20px;
+            z-index: 99;
+            font-family: 'Material Icons';
+            font-size: 24px;
+            border: none;
+            outline: none;
+            background-color: #464453;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+            .myBtn:hover {
+                background-color: #F79E10;
+            }
+    </style>
 </head>
 <body>
     <h1>RationesCurare</h1>
 
     <form id="form1" runat="server">
         <nav>
-            <a runat="server" id="nav_mMenu" href="mMenu.aspx">Saldo</a> |		    
-            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">Importi</a> |		    
-            <a runat="server" id="nav_mMovimento" href="mMovimento.aspx">Inserisci importo</a> |		                
+            <a runat="server" id="nav_mMenu" href="mMenu.aspx">Saldo</a> |
+            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">Importi</a> |           
 		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">Grafico</a> |
 		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">Logout</a>
         </nav>
-        <hr>
+        <hr>        
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </form>
+
+    <button class="myBtn" title="Nuovo importo" type="button" onclick="location.href='mMovimento.aspx?ID=-1'"></button>
 
     <hr>
     <ruby>© 2006-2021, [MAIONE MIKY]</ruby>

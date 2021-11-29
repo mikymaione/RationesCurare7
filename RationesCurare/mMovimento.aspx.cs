@@ -33,7 +33,7 @@ namespace RationesCurare
                 }
                 catch
                 {
-                    // no tipo
+                    // no tipo                   
                 }
             }
 
@@ -41,15 +41,14 @@ namespace RationesCurare
                 ? "Nuovo importo"
                 : $"Importo {IDMovimento}";
 
-            var master = (RC)Master;
-            master.nav_mMovimento.InnerHtml = SottoTitolo;
-
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
                 var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
                 idCassa.DataSource = casse;
                 idCassa.DataBind();
-                idCassa.SelectedValue = Tipo;
+
+                if (Tipo != null)
+                    idCassa.SelectedValue = Tipo;
 
                 idGiroconto.DataSource = casse;
                 idGiroconto.DataBind();
