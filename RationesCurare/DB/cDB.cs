@@ -263,6 +263,11 @@ namespace RationesCurare7.DB
             }
         }
 
+        public int EseguiSQLNoQuery(Queries q, DbParameter[] param)
+        {
+            return EseguiSQLNoQuery(LeggiQuery(q), param);
+        }
+
         public int EseguiSQLNoQuery(string sql)
         {
             return EseguiSQLNoQuery(sql, null);
@@ -445,7 +450,7 @@ namespace RationesCurare7.DB
             if (tipo == DbType.Date || tipo == DbType.DateTime)
             {
                 //"YYYY-MM-DD HH:MM:SS.SSS"
-                Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss");
                 tipo = DbType.String;
             }
 

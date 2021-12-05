@@ -30,21 +30,22 @@
 
     <div>
         <label for="idNome">Nome</label>
-        <input id="idNome" runat="server" maxlength="255">
+        <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required>
     </div>
     <div>
         <label for="idSoldi">Importo</label>
-        <input id="idSoldi" runat="server" type="number" step="0.01" maxlength="11">
+        <input id="idSoldi" runat="server" type="number" step="0.01" maxlength="11" required>
     </div>
     <div>
         <label for="idData">Data</label>
-        <input id="idData" runat="server" type="datetime-local">
+        <input id="idData" runat="server" type="datetime-local" required>
     </div>
     <div>
         <script>
             function selectMacroArea() {
                 let des = document.getElementById('<%=idDescrizione.ClientID%>').value;
                 let userName = '<%=userName%>';
+
                 PageMethods.getMacroAreaByDescrizione(userName, des, selectMacroArea_OnSuccess);
             }
 
@@ -54,7 +55,7 @@
         </script>
 
         <label for="idDescrizione">Descrizione</label>
-        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()">
+        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required>
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -68,7 +69,7 @@
     </div>
     <div>
         <label for="idMacroarea">Macroarea</label>
-        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree">
+        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required>
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())
@@ -91,6 +92,25 @@
         </asp:DropDownList>
     </div>
 
-    <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
+    <div>
+        <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
 
+        <script>
+            function confirmDelete() {
+                let result = confirm("Vuoi eliminare questo elemento?");
+
+                if (result) {
+                    let movID = <%=IDMovimento%>;
+                    location.href = 'mMovimento.aspx?DEL=' + movID;
+                }
+            }
+        </script>
+
+        <asp:Button ID="bElimina" runat="server" Text="Elimina" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />        
+    </div>
+    <div>
+        <em>
+            <asp:Label ID="lErrore" runat="server" />
+        </em>
+    </div>
 </asp:Content>

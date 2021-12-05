@@ -73,13 +73,13 @@ namespace RationesCurare
             return c;
         }
 
-        public static int ObjectToInt(object o, int default_)
+        public static int ObjectToInt(string o, int default_)
         {
             var i = default_;
 
             try
             {
-                i = Convert.ToInt32(o);
+                i = int.Parse(o);
             }
             catch
             {
@@ -87,6 +87,11 @@ namespace RationesCurare
             }
 
             return i;
+        }
+
+        public static double HTMLDoubleToDouble(string o)
+        {
+            return double.Parse(o.Replace(".", ","));
         }
 
         public static string ObjectToHTMLDouble(object o, double default_)
@@ -142,6 +147,11 @@ namespace RationesCurare
             var d = ObjectToDateTime(o);
 
             return d.ToString("yyyy-MM-ddTHH:mm");
+        }
+
+        public static DateTime StringHTMLToDateTime(string o)
+        {
+            return DateTime.ParseExact(o, "yyyy-MM-ddTHH:mm", null);
         }
 
         public static DateTime ObjectToDateTime(object o)

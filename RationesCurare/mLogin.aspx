@@ -43,7 +43,9 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Label ID="lErrore" runat="server" ForeColor="Red" />
+                    <em>
+                        <asp:Label ID="lErrore" runat="server" />
+                    </em>                    
                 </td>
             </tr>
         </table>

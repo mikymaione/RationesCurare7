@@ -4,7 +4,6 @@
     {
         public bool LoggedIN = false;
         public string UserName;
-        public string PathDB;
-        public string ProviderName;
+        public string PathDB;        
     }
 }

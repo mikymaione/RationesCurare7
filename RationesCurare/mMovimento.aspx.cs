@@ -7,7 +7,7 @@ namespace RationesCurare
     public partial class mMovimento : System.Web.UI.Page
     {
 
-        private int IDMovimento = -1;
+        protected int IDMovimento = -1;
         private string Tipo = "";
 
         public string SottoTitolo = "";
@@ -71,6 +71,35 @@ namespace RationesCurare
                                 idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
                             }
                 }
+                else
+                {
+                    idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
+                }
+            }
+        }
+
+        protected void bSalva_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                {
+                    var param = new System.Data.Common.DbParameter[] {
+                        db.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                        db.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
+                        db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                        db.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
+                        db.NewPar("data", GB.StringHTMLToDateTime(idData.Value), System.Data.DbType.DateTime),
+                        db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    };
+
+                    var r = db.EseguiSQLNoQuery(IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param);
+                    lErrore.Text = $"{r} elementi salvati!";
+                }
+            }
+            catch (Exception ex)
+            {
+                lErrore.Text = $"Errore: {ex.Message}";
             }
         }
 
@@ -115,11 +144,26 @@ namespace RationesCurare
             return descrizioni;
         }
 
-        protected void bSalva_Click(object sender, EventArgs e)
+        protected void bElimina_Click(object sender, EventArgs e)
         {
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
+                var param = new System.Data.Common.DbParameter[] {
+                    db.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                };
 
+                var r = db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
+                lErrore.Text = $"{r} elementi eliminati!";
+
+                idNome.Disabled = true;
+                idDescrizione.Disabled = true;
+                idMacroarea.Disabled = true;
+                idSoldi.Disabled = true;
+                idData.Disabled = true;
+                idCassa.Enabled = false;
+                idGiroconto.Enabled = false;
+                bSalva.Enabled = false;
+                bElimina.Enabled = false;
             }
         }
 

@@ -89,8 +89,7 @@ namespace RationesCurare
                         {
                             GB.Instance.setCurrentSession(Session, new cSession());
                             GB.Instance.getCurrentSession(Session).LoggedIN = true;
-                            GB.Instance.getCurrentSession(Session).UserName = nome;
-                            GB.Instance.getCurrentSession(Session).ProviderName = "System.Data.SQLite";
+                            GB.Instance.getCurrentSession(Session).UserName = nome;                            
                             GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
 
                             if (cbMemorizza.Checked)
