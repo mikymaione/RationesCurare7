@@ -89,6 +89,22 @@ namespace RationesCurare
             return i;
         }
 
+        public static int ObjectToInt(object o, int default_)
+        {
+            var i = default_;
+
+            try
+            {
+                i = (int)o;
+            }
+            catch
+            {
+                //error
+            }
+
+            return i;
+        }
+
         public static double HTMLDoubleToDouble(string o)
         {
             return double.Parse(o.Replace(".", ","));

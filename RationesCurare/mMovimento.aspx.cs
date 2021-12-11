@@ -78,24 +78,65 @@ namespace RationesCurare
             }
         }
 
+        private int SalvaMovimento()
+        {
+            var soldi = GB.HTMLDoubleToDouble(idSoldi.Value);
+            var data = GB.StringHTMLToDateTime(idData.Value);
+
+            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+            {
+                var tran = db.BeginTransaction();
+
+                var param1 = new System.Data.Common.DbParameter[] {
+                    db.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                    db.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
+                    db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    db.NewPar("soldi", soldi, System.Data.DbType.Double),
+                    db.NewPar("data", data, System.Data.DbType.DateTime),
+                    db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                };
+
+                var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
+
+                // con giroconto
+                if (IDMovimento == -1 && idGiroconto.SelectedIndex > 0)
+                {
+                    var param2 = new System.Data.Common.DbParameter[] {
+                        db.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                        db.NewPar("tipo", idGiroconto.SelectedValue, System.Data.DbType.String),
+                        db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                        db.NewPar("soldi", -soldi, System.Data.DbType.Double),
+                        db.NewPar("data", data, System.Data.DbType.DateTime),
+                        db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    };
+
+                    var m2 = db.EseguiSQLNoQuery(ref tran, cDB.Queries.Movimenti_Inserisci, param2);
+
+                    if (m1 + m2 == 2)
+                    {
+                        tran.Commit();
+                        return 2;
+                    }
+                    else
+                    {
+                        tran.Rollback();
+                        return 0;
+                    }
+                }
+                else
+                {
+                    tran.Commit();
+                    return m1;
+                }
+            }
+        }
+
         protected void bSalva_Click(object sender, EventArgs e)
         {
             try
             {
-                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-                {
-                    var param = new System.Data.Common.DbParameter[] {
-                        db.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                        db.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
-                        db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                        db.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
-                        db.NewPar("data", GB.StringHTMLToDateTime(idData.Value), System.Data.DbType.DateTime),
-                        db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
-                    };
-
-                    var r = db.EseguiSQLNoQuery(IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param);
-                    lErrore.Text = $"{r} elementi salvati!";
-                }
+                lErrore.Text = $"{SalvaMovimento()} elementi salvati!";
+                DisableUI();
             }
             catch (Exception ex)
             {
@@ -144,6 +185,19 @@ namespace RationesCurare
             return descrizioni;
         }
 
+        private void DisableUI()
+        {
+            idNome.Disabled = true;
+            idDescrizione.Disabled = true;
+            idMacroarea.Disabled = true;
+            idSoldi.Disabled = true;
+            idData.Disabled = true;
+            idCassa.Enabled = false;
+            idGiroconto.Enabled = false;
+            bSalva.Enabled = false;
+            bElimina.Enabled = false;
+        }
+
         protected void bElimina_Click(object sender, EventArgs e)
         {
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
@@ -155,15 +209,7 @@ namespace RationesCurare
                 var r = db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
                 lErrore.Text = $"{r} elementi eliminati!";
 
-                idNome.Disabled = true;
-                idDescrizione.Disabled = true;
-                idMacroarea.Disabled = true;
-                idSoldi.Disabled = true;
-                idData.Disabled = true;
-                idCassa.Enabled = false;
-                idGiroconto.Enabled = false;
-                bSalva.Enabled = false;
-                bElimina.Enabled = false;
+                DisableUI();
             }
         }
 

@@ -263,9 +263,19 @@ namespace RationesCurare7.DB
             }
         }
 
+        public DbTransaction BeginTransaction() =>
+            Connessione.BeginTransaction();
+
         public int EseguiSQLNoQuery(Queries q, DbParameter[] param)
         {
-            return EseguiSQLNoQuery(LeggiQuery(q), param);
+            DbTransaction tr = null;
+
+            return EseguiSQLNoQuery(ref tr, q, param);
+        }
+
+        public int EseguiSQLNoQuery(ref DbTransaction Trans, Queries q, DbParameter[] param)
+        {
+            return EseguiSQLNoQuery(ref Trans, LeggiQuery(q), param);
         }
 
         public int EseguiSQLNoQuery(string sql)
