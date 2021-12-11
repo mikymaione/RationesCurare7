@@ -25,7 +25,8 @@ namespace RationesCurare
 
             var navs = new HtmlAnchor[] {
                 nav_mMenu,
-                nav_mSaldo,
+                nav_mCasse,
+                nav_mSaldo,                
                 nav_mGrafico,
                 nav_mLogout
             };

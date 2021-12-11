@@ -41,41 +41,42 @@ namespace RationesCurare
                 ? "Nuovo importo"
                 : $"Importo {IDMovimento}";
 
-            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-            {
-                var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
-                idCassa.DataSource = casse;
-                idCassa.DataBind();
-
-                if (Tipo != null)
-                    idCassa.SelectedValue = Tipo;
-
-                idGiroconto.DataSource = casse;
-                idGiroconto.DataBind();
-
-                if (IDMovimento > -1)
+            if (!Page.IsPostBack)
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    var par = new System.Data.Common.DbParameter[] {
+                    var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
+                    idCassa.DataSource = casse;
+                    idCassa.DataBind();
+
+                    if (Tipo != null)
+                        idCassa.SelectedValue = Tipo;
+
+                    idGiroconto.DataSource = casse;
+                    idGiroconto.DataBind();
+
+                    if (IDMovimento > -1)
+                    {
+                        var par = new System.Data.Common.DbParameter[] {
                         cDB.NewPar("ID", IDMovimento)
                     };
 
-                    using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Dettaglio, par))
-                        if (dr.HasRows)
-                            while (dr.Read())
-                            {
-                                idNome.Value = dr["Nome"] as string;
-                                idDescrizione.Value = dr["Descrizione"] as string;
-                                idMacroarea.Value = dr["Macroarea"] as string;
-                                idCassa.SelectedValue = dr["Tipo"] as string;
-                                idSoldi.Value = GB.ObjectToHTMLDouble(dr["Soldi"], 0);
-                                idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
-                            }
+                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Dettaglio, par))
+                            if (dr.HasRows)
+                                while (dr.Read())
+                                {
+                                    idNome.Value = dr["Nome"] as string;
+                                    idDescrizione.Value = dr["Descrizione"] as string;
+                                    idMacroarea.Value = dr["Macroarea"] as string;
+                                    idCassa.SelectedValue = dr["Tipo"] as string;
+                                    idSoldi.Value = GB.ObjectToHTMLDouble(dr["Soldi"], 0);
+                                    idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
+                                }
+                    }
+                    else
+                    {
+                        idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
+                    }
                 }
-                else
-                {
-                    idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
-                }
-            }
         }
 
         private int SalvaMovimento()
@@ -88,12 +89,12 @@ namespace RationesCurare
                 var tran = db.BeginTransaction();
 
                 var param1 = new System.Data.Common.DbParameter[] {
-                    db.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                    db.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
-                    db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                    db.NewPar("soldi", soldi, System.Data.DbType.Double),
-                    db.NewPar("data", data, System.Data.DbType.DateTime),
-                    db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
+                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
+                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
                 };
 
                 var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
@@ -102,12 +103,12 @@ namespace RationesCurare
                 if (IDMovimento == -1 && idGiroconto.SelectedIndex > 0)
                 {
                     var param2 = new System.Data.Common.DbParameter[] {
-                        db.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                        db.NewPar("tipo", idGiroconto.SelectedValue, System.Data.DbType.String),
-                        db.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                        db.NewPar("soldi", -soldi, System.Data.DbType.Double),
-                        db.NewPar("data", data, System.Data.DbType.DateTime),
-                        db.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                        cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                        cDB.NewPar("tipo", idGiroconto.SelectedValue, System.Data.DbType.String),
+                        cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                        cDB.NewPar("soldi", -soldi, System.Data.DbType.Double),
+                        cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                        cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
                     };
 
                     var m2 = db.EseguiSQLNoQuery(ref tran, cDB.Queries.Movimenti_Inserisci, param2);
@@ -203,7 +204,7 @@ namespace RationesCurare
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
                 var param = new System.Data.Common.DbParameter[] {
-                    db.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
 
                 var r = db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);

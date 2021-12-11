@@ -106,14 +106,7 @@ namespace RationesCurare7.DB
             if (Trans != null)
                 cm.Transaction = Trans;
 
-            try
-            {
-                return cm.ExecuteNonQuery();
-            }
-            catch
-            {
-                return -1;
-            }
+            return cm.ExecuteNonQuery();
         }
 
         public int EseguiSQLNoQuery(string sql, DbParameter[] param)
@@ -260,20 +253,23 @@ namespace RationesCurare7.DB
             }
         }
 
-        public DbParameter NewPar(string Nome, object Valore, DbType tipo)
+        public static DbParameter NewPar(string Nome, object Valore, DbType tipo)
         {
             if (tipo == DbType.Date || tipo == DbType.DateTime)
             {
-                //"YYYY-MM-DD HH:MM:SS.SSS"
-                Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss");
-                tipo = DbType.String;
+                //"YYYY-MM-DD HH:MM:SS.SSS"                
+                return new SQLiteParameter(Nome, DbType.String)
+                {
+                    Value = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss")
+                };
             }
-
-            var o = new SQLiteParameter(Nome, tipo);
-
-            o.Value = Valore;
-
-            return o;
+            else
+            {
+                return new SQLiteParameter(Nome, tipo)
+                {
+                    Value = Valore
+                };
+            }
         }
 
         public void ChiudiConnessione()

@@ -73,6 +73,22 @@ namespace RationesCurare
             return c;
         }
 
+        public static bool ObjectToBool(object o)
+        {
+            var i = false;
+
+            try
+            {
+                i = (bool)o;
+            }
+            catch
+            {
+                //error
+            }
+
+            return i;
+        }
+
         public static int ObjectToInt(string o, int default_)
         {
             var i = default_;

@@ -10,8 +10,6 @@ namespace RationesCurare
 
         public string SottoTitolo = "";
 
-        private double grdTotal = 0;
-
         private string Tipo => Request.QueryString.HasKeys()
                     ? Request.QueryString["T"]
                     : "Saldo";
@@ -29,9 +27,6 @@ namespace RationesCurare
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                var rowTotal = Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "soldi"));
-                grdTotal += rowTotal;
-
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
@@ -70,13 +65,11 @@ namespace RationesCurare
             Form.DefaultButton = bCerca.UniqueID;
 
             if (GB.Instance.getCurrentSession(Session) != null)
-            {
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, ParametriRicerca(), GB.ObjectToInt(eMax.Text, 50));
                     GridView1.DataBind();
                 }
-            }
         }
 
         protected void bResetta_Click(object sender, EventArgs e)

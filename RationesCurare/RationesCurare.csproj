@@ -102,6 +102,8 @@
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="mCassa.aspx" />
+    <Content Include="mCasse.aspx" />
     <Content Include="mGrafico.aspx" />
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
@@ -119,6 +121,20 @@
     <Compile Include="GB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="mCassa.aspx.cs">
+      <DependentUpon>mCassa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mCassa.aspx.designer.cs">
+      <DependentUpon>mCassa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mCasse.aspx.cs">
+      <DependentUpon>mCasse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mCasse.aspx.designer.cs">
+      <DependentUpon>mCasse.aspx</DependentUpon>
     </Compile>
     <Compile Include="mGrafico.aspx.cs">
       <DependentUpon>mGrafico.aspx</DependentUpon>
