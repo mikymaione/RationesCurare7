@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
@@ -20,6 +21,7 @@ namespace RationesCurare7.DB
             Movimenti_Aggiorna,
             Movimenti_AggiornaMacroAree,
             Movimenti_Ricerca,
+            Movimenti_RicercaSaldo,
             Movimenti_Saldo,
             Movimenti_Dettaglio,
             Movimenti_Elimina,
@@ -33,6 +35,7 @@ namespace RationesCurare7.DB
             Movimenti_GraficoSaldo,
             Movimenti_GraficoTortaSaldo,
             Movimenti_Data,
+            Movimenti_SaldoPerCassa,
             Casse_Ricerca,
             Casse_Elimina,
             Casse_Lista,
@@ -61,58 +64,7 @@ namespace RationesCurare7.DB
             Calendario_Dettaglio
         }
 
-        private struct sQueriesGiaLette
-        {
-            public Queries Query;
-            public string SQL;
-        }
-
-        private static sQueriesGiaLette[] QueriesGiaLette = {
-            new sQueriesGiaLette(){Query=Queries.Aggiornamenti},
-            new sQueriesGiaLette(){Query=Queries.Casse_Aggiorna},
-            new sQueriesGiaLette(){Query=Queries.Casse_Carica},
-            new sQueriesGiaLette(){Query=Queries.Casse_Elimina},
-            new sQueriesGiaLette(){Query=Queries.Casse_Inserisci},
-            new sQueriesGiaLette(){Query=Queries.Casse_Lista},
-            new sQueriesGiaLette(){Query=Queries.Casse_ListaEX},
-            new sQueriesGiaLette(){Query=Queries.Casse_Ricerca},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GetMacroAree_E_Descrizioni},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Aggiorna},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_AggiornaMacroAree},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_AutoCompleteSource},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_AutoCompleteSourceMA},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Dettaglio},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Elimina},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Inserisci},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_MovimentiPerCassa},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Ricerca},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Saldo},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_Data},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Dettaglio},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Ricerca},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Scadenza},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Elimina},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Inserisci},
-            new sQueriesGiaLette(){Query=Queries.Periodici_Aggiorna},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GraficoTorta},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GraficoAnnuale},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GraficoMensile},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GraficoSaldo},
-            new sQueriesGiaLette(){Query=Queries.Movimenti_GraficoTortaSaldo},
-            new sQueriesGiaLette(){Query=Queries.Utenti_Lista},
-            new sQueriesGiaLette(){Query=Queries.Utenti_Inserisci},
-            new sQueriesGiaLette(){Query=Queries.Utenti_Elimina},
-            new sQueriesGiaLette(){Query=Queries.Utenti_Dettaglio},
-            new sQueriesGiaLette(){Query=Queries.Utenti_ByPath},
-            new sQueriesGiaLette(){Query=Queries.Utenti_Aggiorna},
-            new sQueriesGiaLette(){Query=Queries.Calendario_Ricerca},
-            new sQueriesGiaLette(){Query=Queries.Calendario_Inserisci},
-            new sQueriesGiaLette(){Query=Queries.Calendario_Aggiorna},
-            new sQueriesGiaLette(){Query=Queries.Calendario_AggiornaSerie},
-            new sQueriesGiaLette(){Query=Queries.Calendario_Elimina},
-            new sQueriesGiaLette(){Query=Queries.Calendario_EliminaSerie},
-            new sQueriesGiaLette(){Query=Queries.Calendario_Dettaglio}
-        };
+        private static Dictionary<Queries, string> QueriesGiaLette = new Dictionary<Queries, string>();
 
         private DbConnection Connessione;
         public DateTime UltimaModifica = DateTime.MinValue;
@@ -124,143 +76,7 @@ namespace RationesCurare7.DB
 
         private static string ConvertQueriesToString(Queries q)
         {
-            switch (q)
-            {
-                case Queries.Aggiornamenti:
-                    return "Aggiornamenti";
-
-                case Queries.Movimenti_Inserisci:
-                    return "Movimenti_Inserisci";
-
-                case Queries.Movimenti_Aggiorna:
-                    return "Movimenti_Aggiorna";
-
-                case Queries.Movimenti_AggiornaMacroAree:
-                    return "Movimenti_AggiornaMacroAree";
-
-                case Queries.Movimenti_Ricerca:
-                    return "Movimenti_Ricerca";
-
-                case Queries.Movimenti_GetMacroAree_E_Descrizioni:
-                    return "Movimenti_GetMacroAree_E_Descrizioni";
-
-                case Queries.Movimenti_Saldo:
-                    return "Movimenti_Saldo";
-
-                case Queries.Movimenti_Dettaglio:
-                    return "Movimenti_Dettaglio";
-
-                case Queries.Movimenti_Elimina:
-                    return "Movimenti_Elimina";
-
-                case Queries.Movimenti_AutoCompleteSource:
-                    return "Movimenti_AutoCompleteSource";
-
-                case Queries.Movimenti_AutoCompleteSourceMA:
-                    return "Movimenti_AutoCompleteSourceMA";
-
-                case Queries.Movimenti_MovimentiPerCassa:
-                    return "Movimenti_MovimentiPerCassa";
-
-                case Queries.Movimenti_GraficoTorta:
-                    return "Movimenti_GraficoTorta";
-
-                case Queries.Movimenti_GraficoAnnuale:
-                    return "Movimenti_GraficoAnnuale";
-
-                case Queries.Movimenti_GraficoMensile:
-                    return "Movimenti_GraficoMensile";
-
-                case Queries.Movimenti_GraficoSaldo:
-                    return "Movimenti_GraficoSaldo";
-
-                case Queries.Movimenti_GraficoTortaSaldo:
-                    return "Movimenti_GraficoTortaSaldo";
-
-                case Queries.Movimenti_Data:
-                    return "Movimenti_Data";
-
-                case Queries.Casse_Ricerca:
-                    return "Casse_Ricerca";
-
-                case Queries.Casse_Lista:
-                    return "Casse_Lista";
-
-                case Queries.Casse_ListaEX:
-                    return "Casse_ListaEX";
-
-                case Queries.Casse_Inserisci:
-                    return "Casse_Inserisci";
-
-                case Queries.Casse_Aggiorna:
-                    return "Casse_Aggiorna";
-
-                case Queries.Casse_Carica:
-                    return "Casse_Carica";
-
-                case Queries.Casse_Elimina:
-                    return "Casse_Elimina";
-
-                case Queries.Periodici_Dettaglio:
-                    return "Periodici_Dettaglio";
-
-                case Queries.Periodici_Ricerca:
-                    return "Periodici_Ricerca";
-
-                case Queries.Periodici_Scadenza:
-                    return "Periodici_Scadenza";
-
-                case Queries.Periodici_Elimina:
-                    return "Periodici_Elimina";
-
-                case Queries.Periodici_Inserisci:
-                    return "Periodici_Inserisci";
-
-                case Queries.Periodici_Aggiorna:
-                    return "Periodici_Aggiorna";
-
-                case Queries.Utenti_Lista:
-                    return "Utenti_Lista";
-
-                case Queries.Utenti_Inserisci:
-                    return "Utenti_Inserisci";
-
-                case Queries.Utenti_Aggiorna:
-                    return "Utenti_Aggiorna";
-
-                case Queries.Utenti_Elimina:
-                    return "Utenti_Elimina";
-
-                case Queries.Utenti_Dettaglio:
-                    return "Utenti_Dettaglio";
-
-                case Queries.Utenti_ByPath:
-                    return "Utenti_ByPath";
-
-                case Queries.Calendario_Ricerca:
-                    return "Calendario_Ricerca";
-
-                case Queries.Calendario_Inserisci:
-                    return "Calendario_Inserisci";
-
-                case Queries.Calendario_Aggiorna:
-                    return "Calendario_Aggiorna";
-
-                case Queries.Calendario_AggiornaSerie:
-                    return "Calendario_AggiornaSerie";
-
-                case Queries.Calendario_Elimina:
-                    return "Calendario_Elimina";
-
-                case Queries.Calendario_EliminaSerie:
-                    return "Calendario_EliminaSerie";
-
-                case Queries.Calendario_Dettaglio:
-                    return "Calendario_Dettaglio";
-
-                default:
-                    throw new NotImplementedException($"Non esiste la query {q}");
-            }
+            return q.ToString();
         }
 
         public DbTransaction BeginTransaction() =>
@@ -396,19 +212,10 @@ namespace RationesCurare7.DB
 
         public string LeggiQuery(Queries q)
         {
-            var iq = -1;
-            var z = "";
-
-            for (int i = 0; i < QueriesGiaLette.Length; i++)
-                if (QueriesGiaLette[i].Query == q)
-                {
-                    iq = i;
-                    z = QueriesGiaLette[i].SQL;
-                    break;
-                }
-
-            if (z == "" || z == null)
+            if (!QueriesGiaLette.ContainsKey(q))
             {
+                var z = "";
+
                 using (var sr = new System.IO.StreamReader(System.IO.Path.Combine(RationesCurare.GB.DBW, QueriesToString(q))))
                 {
                     while (sr.Peek() != -1)
@@ -422,10 +229,10 @@ namespace RationesCurare7.DB
                 z = z.Replace("Format(m.data, 'yyyy')", "strftime('%Y',m.data)");
                 z = z.Replace("Format(m.data, 'yyyy/mm')", "strftime('%Y/%m',m.data)");
 
-                QueriesGiaLette[iq].SQL = z;
+                QueriesGiaLette.Add(q, z);
             }
 
-            return z;
+            return QueriesGiaLette[q];
         }
         public static string DateToSQLite(DateTime d)
         {
@@ -438,16 +245,14 @@ namespace RationesCurare7.DB
             return h;
         }
 
-        public DbParameter NewPar(string Nome, object Valore)
+        public static DbParameter NewPar(string Nome, object Valore)
         {
-            if (Valore is DateTime)
+            if (Valore is DateTime time)
             {
-                Valore = DateToSQLite((DateTime)Valore);
-
-                var o = new SQLiteParameter(Nome, DbType.String);
-                o.Value = Valore;
-
-                return o;
+                return new SQLiteParameter(Nome, DbType.String)
+                {
+                    Value = DateToSQLite(time)
+                };
             }
             else
             {

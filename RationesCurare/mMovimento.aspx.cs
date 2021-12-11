@@ -56,7 +56,7 @@ namespace RationesCurare
                 if (IDMovimento > -1)
                 {
                     var par = new System.Data.Common.DbParameter[] {
-                        db.NewPar("ID", IDMovimento)
+                        cDB.NewPar("ID", IDMovimento)
                     };
 
                     using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Dettaglio, par))

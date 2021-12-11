@@ -36,10 +36,31 @@ namespace RationesCurare
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {
-                var lbl = (Label)e.Row.FindControl("lblTotal");
-                lbl.Text = grdTotal.ToString("c");
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_RicercaSaldo, ParametriRicerca()))
+                    if (dr.HasRows)
+                    {
+                        var lbl = (Label)e.Row.FindControl("lblTotal");
+
+                        while (dr.Read())
+                            lbl.Text = GB.ObjectToDouble(dr["Saldo"], 0).ToString("c");
+                    }
             }
         }
+
+        private System.Data.Common.DbParameter[] ParametriRicerca() =>
+            new System.Data.Common.DbParameter[] {
+                cDB.NewPar("tipo1", Tipo),
+                cDB.NewPar("tipo2", Tipo),
+                cDB.NewPar("descrizione", "%" + eDescrizione.Text + "%"),
+                cDB.NewPar("MacroArea", "%" + eMacroarea.Text +"%"),
+                cDB.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
+                cDB.NewPar("bData", bData.Checked ? 1 : 0),
+                cDB.NewPar("SoldiDa", GB.ObjectToDouble(eSoldiDa.Text, 0)),
+                cDB.NewPar("SoldiA", GB.ObjectToDouble(eSoldiA.Text, 0)),
+                cDB.NewPar("DataDa", GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1))),
+                cDB.NewPar("DataA", GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20)))
+            };
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,20 +73,7 @@ namespace RationesCurare
             {
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    var p = new System.Data.Common.DbParameter[] {
-                       d.NewPar("tipo1", Tipo),
-                       d.NewPar("tipo2", Tipo),
-                       d.NewPar("descrizione", "%" + eDescrizione.Text + "%"),
-                       d.NewPar("MacroArea", "%" + eMacroarea.Text +"%"),
-                       d.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
-                       d.NewPar("bData", bData.Checked ? 1 : 0),
-                       d.NewPar("SoldiDa", GB.ObjectToDouble(eSoldiDa.Text, 0)),
-                       d.NewPar("SoldiA", GB.ObjectToDouble(eSoldiA.Text, 0)),
-                       d.NewPar("DataDa", GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1))),
-                       d.NewPar("DataA", GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20)))
-                    };
-
-                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, p, GB.ObjectToInt(eMax.Text, 50));
+                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, ParametriRicerca(), GB.ObjectToInt(eMax.Text, 50));
                     GridView1.DataBind();
                 }
             }

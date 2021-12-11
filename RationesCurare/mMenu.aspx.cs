@@ -8,8 +8,6 @@ namespace RationesCurare
     public partial class mMenu : Page
     {
 
-        private double grdTotal = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (GB.Instance.getCurrentSession(Session) != null)
@@ -18,9 +16,7 @@ namespace RationesCurare
 
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    var q = "select Tipo, sum(soldi) as Saldo from Movimenti group by Tipo order by Tipo";
-
-                    GridView1.DataSource = d.EseguiSQLDataTable(q);
+                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_SaldoPerCassa);
                     GridView1.DataBind();
                 }
             }
@@ -30,15 +26,19 @@ namespace RationesCurare
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                var rowTotal = Convert.ToDouble(DataBinder.Eval(e.Row.DataItem, "Saldo"));
-                grdTotal += rowTotal;
-
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {
-                var lbl = (Label)e.Row.FindControl("lblTotal");
-                lbl.Text = grdTotal.ToString("c");
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Saldo))
+                    if (dr.HasRows)
+                    {
+                        var lbl = (Label)e.Row.FindControl("lblTotal");
+
+                        while (dr.Read())
+                            lbl.Text = GB.ObjectToDouble(dr["Saldo"], 0).ToString("c");
+                    }
             }
         }
 

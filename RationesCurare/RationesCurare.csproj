@@ -89,6 +89,7 @@
     <Content Include="DB\DBW\Movimenti_AutoCompleteSourceMA.sql" />
     <Content Include="DB\DBW\Movimenti_Dettaglio.sql" />
     <Content Include="DB\DBW\Movimenti_Elimina.sql" />
+    <Content Include="DB\DBW\Movimenti_GetMacroAree_E_Descrizioni.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoAnnuale.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoMensile.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoSaldo.sql" />
@@ -96,6 +97,8 @@
     <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Inserisci.sql" />
     <Content Include="DB\DBW\Movimenti_Ricerca.sql" />
+    <Content Include="DB\DBW\Movimenti_Saldo.sql" />
+    <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
