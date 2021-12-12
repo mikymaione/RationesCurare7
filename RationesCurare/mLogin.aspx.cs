@@ -47,8 +47,8 @@ namespace RationesCurare
 
             if (auto.Equals("TRUE", StringComparison.OrdinalIgnoreCase))
             {
-                cbMemorizza.Checked = true;
-                Login(nome, psw);
+                cbMemorizza.Value = "1";
+                Login_(nome, psw);
             }
         }
 
@@ -57,21 +57,11 @@ namespace RationesCurare
             var nome = eUtente.Text;
             var psw = ePsw.Text;
 
-            Login(nome, psw);
+            Login_(nome, psw);
         }
 
-        private void Login(string nome, string psw)
+        private bool ControllaCredenziali(string nome, string psw)
         {
-            if (nome != null)
-                if (nome.Length > 2)
-                    if (psw != null)
-                        Login_(nome, psw);
-        }
-
-        private void Login_(string nome, string psw)
-        {
-            var ok = false;
-            var psw_ = "";
             var p = MapPath("App_Data");
             var f = System.IO.Path.Combine(p, nome);
 
@@ -81,33 +71,10 @@ namespace RationesCurare
                     {
                         using (var sr = new System.IO.StreamReader(f + ".psw"))
                         {
-                            psw_ = sr.ReadLine();
-                            sr.Close();
-                        }
+                            var psw_ = sr.ReadLine();
 
-                        if (psw.Equals(psw_, StringComparison.OrdinalIgnoreCase))
-                        {
-                            GB.Instance.setCurrentSession(Session, new cSession());
-                            GB.Instance.getCurrentSession(Session).LoggedIN = true;
-                            GB.Instance.getCurrentSession(Session).UserName = nome;                            
-                            GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
-
-                            if (cbMemorizza.Checked)
-                            {
-                                var n = new string[] { "AutoLogin_UserName", "AutoLogin_UserPassword", "AutoLogin" };
-                                var c = new string[] { nome, psw, "TRUE" };
-
-                                GB.SetCookie(Response, n, c);
-                            }
-                            else
-                            {
-                                DeleteCookieLogin(false);
-                            }
-
-                            ok = true;
-                            lErrore.Text = "";
-
-                            Response.Redirect("mMenu.aspx");
+                            if (psw.Equals(psw_, StringComparison.OrdinalIgnoreCase))
+                                return true;
                         }
                     }
                     catch
@@ -115,8 +82,41 @@ namespace RationesCurare
                         //cannot access file
                     }
 
-            if (!ok)
+            return false;
+        }
+
+        private void Login_(string nome, string psw)
+        {
+            if (nome != null && nome.Length > 4
+                && psw != null && psw.Length > 1
+                && ControllaCredenziali(nome, psw))
+            {
+                var p = MapPath("App_Data");
+                var f = System.IO.Path.Combine(p, nome);
+
+                GB.Instance.setCurrentSession(Session, new cSession());
+                GB.Instance.getCurrentSession(Session).LoggedIN = true;
+                GB.Instance.getCurrentSession(Session).UserName = nome;
+                GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
+
+                if ("1".Equals(cbMemorizza.Value))
+                {
+                    var n = new string[] { "AutoLogin_UserName", "AutoLogin_UserPassword", "AutoLogin" };
+                    var c = new string[] { nome, psw, "TRUE" };
+
+                    GB.SetCookie(Response, n, c);
+                }
+                else
+                {
+                    DeleteCookieLogin(false);
+                }
+
+                Response.Redirect("mMenu.aspx");
+            }
+            else
+            {
                 lErrore.Text = "Credenziali d'accesso errate!";
+            }
         }
 
         private void DeleteCookieLogin(bool clearSession)
@@ -126,7 +126,7 @@ namespace RationesCurare
 
             eUtente.Text = "";
             ePsw.Text = "";
-            cbMemorizza.Checked = false;
+            cbMemorizza.Value = "0";
 
             GB.SetCookie(Response, n, c);
 
@@ -137,6 +137,46 @@ namespace RationesCurare
         protected void bEntra_Click(object sender, EventArgs e)
         {
             DoLogin();
+        }
+
+        protected void bRegistrati_Click(object sender, EventArgs e)
+        {
+            var nome = eUtente.Text;
+            var psw = ePsw.Text;
+
+
+            if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
+            {
+                var p = MapPath("App_Data");
+                var f = System.IO.Path.Combine(p, nome);
+
+                if (System.IO.File.Exists(f + ".rqd8") || System.IO.File.Exists(f + ".psw"))
+                {
+                    lErrore.Text = "Utente già esistente!";
+                }
+                else
+                {
+                    var standard = System.IO.Path.Combine(p, "standard.rqd8");
+
+                    try
+                    {
+                        System.IO.File.Copy(standard, f + ".rqd8");
+
+                        using (var sw = new System.IO.StreamWriter(f + ".psw"))
+                            sw.WriteLine(psw);
+
+                        DoLogin();
+                    }
+                    catch (Exception ex)
+                    {
+                        lErrore.Text = ex.Message;
+                    }
+                }
+            }
+            else
+            {
+                lErrore.Text = "Email o password non valide!";
+            }
         }
 
     }

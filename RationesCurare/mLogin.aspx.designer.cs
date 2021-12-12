@@ -48,7 +48,7 @@ namespace RationesCurare
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbMemorizza;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cbMemorizza;
 
         /// <summary>
         /// Controllo bEntra.
@@ -58,6 +58,15 @@ namespace RationesCurare
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bEntra;
+
+        /// <summary>
+        /// Controllo bRegistrati.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bRegistrati;
 
         /// <summary>
         /// Controllo lErrore.
