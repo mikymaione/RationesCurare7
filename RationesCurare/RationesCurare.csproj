@@ -97,6 +97,7 @@
     <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Inserisci.sql" />
     <Content Include="DB\DBW\Movimenti_Ricerca.sql" />
+    <Content Include="DB\DBW\Movimenti_RicercaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
     <Content Include="EmailSending.asmx" />
