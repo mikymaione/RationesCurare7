@@ -117,7 +117,6 @@
         private System.Windows.Forms.Button bCerca;
         private System.Windows.Forms.GroupBox gbGrafico;
         private System.Windows.Forms.DataVisualization.Charting.Chart grafico;
-        private System.Windows.Forms.DataVisualization.Charting.ChartArea grafico_area;
         private System.Windows.Forms.Button bStampa;
     }
 }

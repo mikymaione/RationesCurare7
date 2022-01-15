@@ -5,20 +5,22 @@
 <html>
 <head runat="server">
 
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="rc.ico">
     <link rel="stylesheet" type="text/css" href="css/F79E10.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu Mono'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2021-11-21" scheme="YYYY-MM-DD">
+    <meta name="date" content="2022-01-15" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
-    <meta name="description" content="Maione Michele’s personal website">
+    <meta name="description" content="RationesCurare">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    
+    <title>RationesCurare</title>
 
     <style>
         .myBtn {
@@ -60,7 +62,7 @@
 		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">Grafico</a> |
 		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">Logout</a>
         </nav>
-        <hr>        
+        <hr>
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </form>
@@ -68,6 +70,6 @@
     <button class="myBtn" title="Nuovo importo" type="button" onclick="location.href='mMovimento.aspx?ID=-1'"></button>
 
     <hr>
-    <ruby>© 2006-2021, [MAIONE MIKY]</ruby>
+    <ruby>© 2006-2022, [MAIONE MIKY]</ruby>
 </body>
 </html>
