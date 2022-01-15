@@ -29,16 +29,16 @@
     <script>
         function resoconto() {
             let idSoldi = document.getElementById('<%=idSoldi.ClientID%>');
-            let movi_soldi = parseFloat(idSoldi.value);
+            let movi_soldi = idSoldi.value.length == 0 ? 0 : parseFloat(idSoldi.value);
             let giro_soldi = (-1 * movi_soldi);
 
             let lMovimento1 = document.getElementById('lMovimento1');
             let lMovimento2 = document.getElementById('lMovimento2');
-            
+
             let idCassa = document.getElementById('<%=idCassa.ClientID%>');
             let idGiroconto = document.getElementById('<%=idGiroconto.ClientID%>');
-            
-            lMovimento1.innerText = (movi_soldi < 0 ? '' : '+' ) + movi_soldi + ': ' + idCassa.value;
+
+            lMovimento1.innerText = (movi_soldi < 0 ? '' : '+') + movi_soldi + ': ' + idCassa.value;
 
             if (idGiroconto.selectedIndex > 0) {
                 lMovimento2.innerText = (giro_soldi < 0 ? '' : '+') + giro_soldi + ': ' + idGiroconto.value;
@@ -86,9 +86,9 @@
                 {
             %>
             <option value="<%=de%>">
-            <% 
-                }
-            %>
+                <% 
+                    }
+                %>
         </datalist>
     </div>
     <div>
@@ -100,9 +100,9 @@
                 {
             %>
             <option value="<%=ma%>">
-            <% 
-                }
-            %>
+                <% 
+                    }
+                %>
         </datalist>
     </div>
     <div>
@@ -116,13 +116,13 @@
         </asp:DropDownList>
     </div>
 
-    <h3>Resoconto</h3>    
+    <h3>Resoconto</h3>
     <div>
-        <label ID="lMovimento1"></label>        
-    </div>    
+        <label id="lMovimento1"></label>
+    </div>
     <div>
-        <label ID="lMovimento2"></label>        
-    </div>    
+        <label id="lMovimento2"></label>
+    </div>
 
     <div>
         <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
@@ -138,7 +138,7 @@
             }
         </script>
 
-        <asp:Button ID="bElimina" runat="server" Text="Elimina" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />        
+        <asp:Button ID="bElimina" runat="server" Text="Elimina" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />
     </div>
     <div>
         <em>
@@ -149,4 +149,6 @@
     <script>
         resoconto();
     </script>
+
+    <br />
 </asp:Content>

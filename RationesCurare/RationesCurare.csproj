@@ -101,7 +101,6 @@
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
     <Content Include="EmailSending.asmx" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
@@ -110,6 +109,7 @@
     <Content Include="mMenu.aspx" />
     <Content Include="mMovimento.aspx" />
     <Content Include="mSaldo.aspx" />
+    <Content Include="rc.ico" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

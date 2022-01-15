@@ -141,20 +141,21 @@ namespace RationesCurare7.DB
 
         private string DammiStringaConnessione(string path_db = "")
         {
-            var s = "";
-            var p = "";
+            var p = path_db == ""
+                ? cGB.DatiDBFisico.Path
+                : path_db;
 
-            if (path_db == "")
-                p = cGB.DatiDBFisico.Path;
-            else
-                p = path_db;
+            switch (DataBaseAttuale)
+            {
+                case DataBase.Access:
+                    return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + p + ";";
 
-            if (DataBaseAttuale == DataBase.Access)
-                s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + p + ";";
-            else if (DataBaseAttuale == DataBase.SQLite)
-                s = "Version=3;Data Source=" + p + ";";
+                case DataBase.SQLite:
+                    return "Version=3;Data Source=" + p + ";";
 
-            return s;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         public void AggiornaDataDB()
@@ -163,56 +164,58 @@ namespace RationesCurare7.DB
             {
                 const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
-                var cm = CreaCommandNoConnection(sql, new DbParameter[]
-                {
+                var pars = new DbParameter[] {
                     NewPar("UltimaModifica", UltimaModifica)
-                });
+                };
 
-                try
+                using (var cm = CreaCommandNoConnection(sql, pars))
                 {
-                    var r = cm.ExecuteNonQuery();
+                    try
+                    {
+                        var r = cm.ExecuteNonQuery();
 
-                    if (r < 1)
-                        throw new Exception("Can not update last modification date on user DB!");
-                }
-                catch (Exception ex)
-                {
-                    //non aggiornata
-                    cGB.MsgBox(ex);
+                        if (r < 1)
+                            throw new Exception("Can not update last modification date on user DB!");
+                    }
+                    catch (Exception ex)
+                    {
+                        //non aggiornata
+                        cGB.MsgBox(ex);
+                    }
                 }
             }
         }
 
         public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param, bool AggiornaDataDiUltimaModifica = true)
         {
-            var i = -1;
-            var cm = CreaCommandNoConnection(sql, param);
-
-            if ((Trans != null))
-                cm.Transaction = Trans;
-
-            try
+            using (var cm = CreaCommandNoConnection(sql, param))
             {
-                i = cm.ExecuteNonQuery();
+                if (Trans != null)
+                    cm.Transaction = Trans;
 
-                if (i > 0 && AggiornaDataDiUltimaModifica && DeveAggiornareData)
+                try
                 {
-                    UltimaModifica = cGB.DBNow();
-                    AggiornaDataDB();
+                    var i = cm.ExecuteNonQuery();
 
-                    if (DBUtentiAggiornati.ContainsKey(cGB.DatiUtente.Email))
-                        DBUtentiAggiornati[cGB.DatiUtente.Email] = UltimaModifica;
-                    else
-                        DBUtentiAggiornati.Add(cGB.DatiUtente.Email, UltimaModifica);
+                    if (i > 0 && AggiornaDataDiUltimaModifica && DeveAggiornareData)
+                    {
+                        UltimaModifica = cGB.DBNow();
+                        AggiornaDataDB();
+
+                        if (DBUtentiAggiornati.ContainsKey(cGB.DatiUtente.Email))
+                            DBUtentiAggiornati[cGB.DatiUtente.Email] = UltimaModifica;
+                        else
+                            DBUtentiAggiornati.Add(cGB.DatiUtente.Email, UltimaModifica);
+                    }
+
+                    return i;
+                }
+                catch //(Exception ex)
+                {
+                    return -1;
+                    //cGB.MsgBox(ex);
                 }
             }
-            catch //(Exception ex)
-            {
-                i = -1;
-                //cGB.MsgBox(ex);
-            }
-
-            return i;
         }
 
         public int EseguiSQLNoQuery(string sql)

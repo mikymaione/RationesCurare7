@@ -9,8 +9,11 @@ namespace RationesCurare7.DB
     public class cDB : IDisposable
     {
 
+        private string dateFile;
+
         public cDB(string path_db)
         {
+            dateFile = System.IO.Path.ChangeExtension(path_db, ".date");
             ApriConnessione(path_db);
         }
 
@@ -99,21 +102,38 @@ namespace RationesCurare7.DB
             return EseguiSQLNoQuery(sql, null);
         }
 
-        public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param)
-        {
-            var cm = CreaCommandNoConnection(sql, param);
-
-            if (Trans != null)
-                cm.Transaction = Trans;
-
-            return cm.ExecuteNonQuery();
-        }
-
         public int EseguiSQLNoQuery(string sql, DbParameter[] param)
         {
             DbTransaction tr = null;
 
             return EseguiSQLNoQuery(ref tr, sql, param);
+        }
+
+        public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param)
+        {
+            using (var cm = CreaCommandNoConnection(sql, param))
+            {
+                if (Trans != null)
+                    cm.Transaction = Trans;
+
+                var i = cm.ExecuteNonQuery();
+
+                if (i > 0)
+                {
+                    UltimaModifica = DBNow();
+                    AggiornaDataDB();
+                    AggiornaDataFile();
+                }
+
+                return i;
+            }
+        }
+
+        public static DateTime DBNow()
+        {
+            var d = DateTime.Now;
+
+            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
         }
 
         public DataTable EseguiSQLDataTable(Queries q)
@@ -301,18 +321,27 @@ namespace RationesCurare7.DB
             Connessione.Open();
         }
 
+        private void AggiornaDataFile()
+        {
+            var ora = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+            using (var sw = new System.IO.StreamWriter(dateFile, false))
+                sw.WriteLine(ora);
+        }
         private void AggiornaDataDB()
         {
-            var sql = "update utenti set UltimaModifica = @UltimaModifica";
-            var cm = CreaCommandNoConnection(sql, new DbParameter[] { NewPar("UltimaModifica", UltimaModifica) });
+            const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
-            try
+            var pars = new DbParameter[] {
+                NewPar("UltimaModifica", UltimaModifica)
+            };
+
+            using (var cm = CreaCommandNoConnection(sql, pars))
             {
-                cm.ExecuteNonQuery();
-            }
-            catch
-            {
-                //non aggiornata
+                var r = cm.ExecuteNonQuery();
+
+                if (r < 1)
+                    throw new Exception("Can not update last modification date on user DB!");
             }
         }
 
