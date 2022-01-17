@@ -502,6 +502,22 @@ namespace RationesCurare7.DB
             return paras;
         }
 
+        public void SQLiteVacuum()
+        {
+            switch (DataBaseAttuale)
+            {
+                case DataBase.SQLite:
+                    using (var command = Connessione.CreateCommand())
+                    {
+                        command.CommandText = "vacuum;";
+                        command.ExecuteNonQuery();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
     }
 }

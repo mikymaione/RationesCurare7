@@ -21,7 +21,7 @@ namespace RationesCurare7
 
             if (cGB.ControllaGiaInEsecuzione_SeContinuare())
             {
-                Inizio:
+            Inizio:
                 cGB.DoTheAutoUpdate();
 
                 try
@@ -110,6 +110,8 @@ namespace RationesCurare7
                         //if (!cGB.IAmInDebug)
                         if (cGB.DatiUtente.SincronizzaDB)
                         {
+                            cGB.sDB.SQLiteVacuum();
+
                             var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
                             mc.MandaDBSulSito(cGB.sDB.UltimaModifica);
                         }

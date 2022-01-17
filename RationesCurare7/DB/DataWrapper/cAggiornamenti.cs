@@ -15,7 +15,7 @@ namespace RationesCurare7.DB.DataWrapper
 
         public int EseguiUpdate()
         {
-            if ("".Equals(cGB.DatiUtente.Email))
+            if ("".Equals(cGB.DatiUtente?.Email ?? ""))
                 return EseguiUpdateSistema();
             else
                 return EseguiUpdateUtente(); //utente
@@ -57,7 +57,7 @@ namespace RationesCurare7.DB.DataWrapper
         private int EseguiUpdateSistema()
         {
             var i = 0;
-            var sql = cGB.sDB.LeggiQuery(cDB.Queries.Aggiornamenti);
+            var sql = cGB.sPC.LeggiQuery(cDB.Queries.Aggiornamenti);
             var queries = sql.Split(new char[] { ';' });
             var UltimaDataQ = DateTime.MinValue;
             var UltimaDataU = DateTime.MinValue;
@@ -65,7 +65,7 @@ namespace RationesCurare7.DB.DataWrapper
 
             ultimoAggiornamento();
 
-            foreach (var ulti in cGB.sDB.UltimaDataAggiornamentiUtenti)
+            foreach (var ulti in cGB.sPC.UltimaDataAggiornamentiUtenti)
                 if (ulti.Value > UltimaDataU)
                     UltimaDataU = ulti.Value;
 
@@ -80,7 +80,7 @@ namespace RationesCurare7.DB.DataWrapper
                 }
 
                 if (UltimaDataQ.CompareTo(UltimaDataU) > 0)
-                    i += cGB.sDB.EseguiSQLNoQuery(ref trans, queries[n], null, false);
+                    i += cGB.sPC.EseguiSQLNoQuery(ref trans, queries[n], null, false);
             }
 
             return i;

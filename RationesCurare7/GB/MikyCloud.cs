@@ -39,7 +39,7 @@ namespace RationesCurare7.GB
         {
             var ok = false;
 
-            if ((cGB.sDB.UltimaModifica > DateTime.MinValue) || Force)
+            if (cGB.sDB.UltimaModifica > DateTime.MinValue || Force)
             {
                 using (var e = new maionemikyWS.EmailSending())
                 {
