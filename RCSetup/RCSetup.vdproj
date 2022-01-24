@@ -27,43 +27,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_02F2205E32DF422A94D71AF49B4F7894"
+        "MsmKey" = "8:_01C26742EDA44943AEF5C50386C9CCEA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_04316957E5774098A6325EB661AF3367"
+        "MsmKey" = "8:_070C5B2517C14A4D861A6876790157E6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_083B562B4D07477592F22C16BDF6A9BA"
+        "MsmKey" = "8:_0B4EF16D3D83481A9D6E3FD33179699D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0DE4B0D2992F40A9991F3018FE1B44B0"
+        "MsmKey" = "8:_1151CE051FB64A90BF3E07D5E1A4E546"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1450C61979574B159D33C11DC8324ECC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_14D0A422803342AAAFB6464930B0E346"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_158F37B4178D4140BC06AF63B4FAEF1F"
+        "MsmKey" = "8:_18FB520571534514A1020F6485FDA840"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,31 +63,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1D44CA8B6C2847B29B6BFD504D706620"
+        "MsmKey" = "8:_1B0746EE1FA046548669BA5D3437AA6B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1E348C2F69474FD5A1E019D647F156BB"
+        "MsmKey" = "8:_1DE30D1776FC47E2B12DD50846BC6799"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1E38043C7DEF4D61B6521AACD6039AE4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1F001B9C844A41DA883DC51D44304C63"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2258655DD5DC4F829E5B05ED6E6D8FF4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -129,13 +105,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2A357841B0F74CCEB6457C646B1B6CFF"
+        "MsmKey" = "8:_29887EF10F45436DB4731C240A392040"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2A845BF844724318B5AE563A7CCBADC2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2B914F01FB5E4B89A343C34602EAAD32"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BBE80FD0D6D457FB145FD9D5A044086"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -153,7 +141,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2FB2C7D1E0404A89BC8AB52EEB86D56A"
+        "MsmKey" = "8:_306A070B0B894AE4877C4B5993598231"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_31DB61A6A8F14A54B47447A234C5B8B5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -171,7 +165,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_35FA4BB4A1C7438D8340E5180A1ACFAB"
+        "MsmKey" = "8:_35778BF6D2A04A358B767BE86F8E63E2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -183,25 +177,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3BDFBE32C91B46AAA8753F223D115E0C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3BEBE8DEB2924260A0404B714E160AFB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3DEF907DDE7743F0B89FDBAC763A22DB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3FC573B888494203B83557996C9B77CC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40BE1A76A7EF461585BEF3776D0493A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -219,13 +207,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4400157E5D284F738DECC7A31A5743BC"
+        "MsmKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4436364E468B4665BAF8C4B4DC17444D"
+        "MsmKey" = "8:_46EAC9EFFB6D4769AD43C5795AA60A85"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -237,25 +225,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_502252661693410E955BD1A6B7D9A5CA"
+        "MsmKey" = "8:_4C997FBA9AD44DAD881A327CEA9EBD5A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_506E0F9C70B2416C99EEBB9162F6553B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_55CEE0050CD24EAE82A55D0B4D023A6D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_563E58FC58104E538997C250ACE20F85"
+        "MsmKey" = "8:_4E3C484D75594672BE0C9E30EAA25DE0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -267,7 +243,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_595C6A209469480CB1FE0DE4C44F3628"
+        "MsmKey" = "8:_5AAE64DEBF9C4964BF68DE2A438F4A27"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -291,43 +267,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5E683DC4F2B8488EB18EF77AA014E159"
+        "MsmKey" = "8:_5CC94460F513490483CEBF00ECAAF218"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5E85D602333740818E2939854ABF3A40"
+        "MsmKey" = "8:_5F3AB72EFD80442599B32B748DDAAE86"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_61017161974E49599137BB6AEF6DBD17"
+        "MsmKey" = "8:_5F921453BD0340279A1C2104D88D5943"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_61F6F86F181846149C8D194FBC4DB554"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_63958267C6974EC79925C7DC410239E0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_65A9055BF5C742458E8D2600E02F2182"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6A223B7A17DD42FE8CFB8330DF8C0B53"
+        "MsmKey" = "8:_694A8A86C84A4E569CDA5F5CC125ABEC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -339,13 +297,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6B0CC34AC9E34483837A6E8838D3674F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6E1E7707FFBE44FDAA911C86855FE90E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7073387A70AB48A1B161B06CD035A8B0"
+        "MsmKey" = "8:_6FD342CEA2BF41D38460A3FA6E1E7D3F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_70F700C02E5C4194B66B9923D15AA5FD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -369,12 +339,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7935750C17F24821B2303E7686C84BCF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7C4D03AB5AAF415D9FC81CDAE7DC2F62"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -382,18 +346,6 @@
         "Entry"
         {
         "MsmKey" = "8:_7E1D78F4FC5F444C9437A804860A7177"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E1E635664FD4D52B4F9D9FA2140DB18"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EADCCD53B8343D3991890F8E9CF32D0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -411,7 +363,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_887502E0E0B5499C893B90BF2744BB18"
+        "MsmKey" = "8:_819FC0A081264D819F48DF5CE23D7AE9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89CF93A707CC4732A705961128114C6A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -429,7 +387,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8D0EF75D208F4FAB85C118636B88A2B3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8E1761A8DAD84400927887D98D517A95"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8FBD69A2F1734AF7B0F50F77D3356AAE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -441,7 +411,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_93C96B7177E34F70B8572A8EE4026522"
+        "MsmKey" = "8:_91644550C31143B4888A3E9CFB6259DD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_944CD94F321D48B798CF165E949A7D5F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -465,12 +441,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9DC02BE652B9483CBC44B64E878D4212"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9ED5A00137264D2EB6249B36E65763DF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -489,19 +459,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A402F716AD754BB48E356C3A37897637"
+        "MsmKey" = "8:_A3C83422B6A84E1B9AD69995FD91CDAE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A7B33DC506DB4288A29CC4376BE681F8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A8232A02AF0A424EB05C557811DDE1A3"
+        "MsmKey" = "8:_A803A0ED7FB3482CAB0D914413CD1A20"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -513,13 +477,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AEDA8A04F990493A8391B4029AA2B64A"
+        "MsmKey" = "8:_AE975FDD88064A5D8592DF5280591036"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B590CCB2982B41ECA67F3088969EBB54"
+        "MsmKey" = "8:_AF3579581D3543F09EEC269000F216EF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B32F171723C043068143A7813CA8CCDA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B99394618A454B498FD84A6EC948C086"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -531,19 +507,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BF35F97840CB44BDA7992FBD9B02F5B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C14B440A5CF441B39351D44B3DA8930F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C9DFD388B9CE496EB803C633C10ABEB2"
+        "MsmKey" = "8:_C3A2B9C0A68841E6AF98385A0E4CCBC7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CC292AE138174649BD17FB3EF2B8719F"
+        "MsmKey" = "8:_C8E5246316F542B3BCB2AA875CA9313B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB956D631B4E487DA1B924173D1300E4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -561,12 +549,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D1486080B73641F7A014675A20C53680"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D168A476BD6FF45E0D09213B81739EE0"
         "OwnerKey" = "8:_43999CE692B04B7F934DFD1E4B74A803"
         "MsmSig" = "8:_UNDEFINED"
@@ -579,19 +561,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D2C5EA4B696B4EADBAFF7CE1B356D141"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D59C18527FA6414A9EA89768ED377723"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D63265EDB4CC484F9F0EDCDCF816DFA9"
+        "MsmKey" = "8:_D39B335EFC38422C800ECB8F0931DD00"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -603,43 +573,61 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D998DF386C0B4024974890379B6864C5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D9E3342A427A49299937BBF9CA97C6A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DB6C2AD41C014A90A8FC2F40798CDAB0"
+        "MsmKey" = "8:_DEF5EDBC20724BDCADA167C9B36940C2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DDD42F780AF74BFBB78C865607B7A6F1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E006AB6B8FF8414C801C437D5D586E46"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E260516DBB5F41F5A4C766B58AE67E2B"
+        "MsmKey" = "8:_E2A53E3378B942CDADCAD4D683D618B0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E3749298477642E783E5767655130C65"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3A67AADC9434E9E9071C5E3EA4CA70C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3AE856270584F6AB3775C07BF1E7826"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E7E057809BE346E7B9C60357DE490611"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA0222CA30E6462286A4FC2C02E09E71"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EB03CB369C024AB2B14882437D09FBC8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EB63FCA214AD4D6795BA5FFD41E04EFE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -652,6 +640,24 @@
         "Entry"
         {
         "MsmKey" = "8:_F22B8A7C7C574448A9FB170773E80261"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5D368591710454DA8EBC9CA8F20A328"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5DB9A8800A749E39E36786B5BC0A7EB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FF030EB6862542F1A7FC6030438E05AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -852,10 +858,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02F2205E32DF422A94D71AF49B4F7894"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_01C26742EDA44943AEF5C50386C9CCEA"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSplineAnnuale.sql"
-            "TargetName" = "8:Movimenti_GraficoSplineAnnuale.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSaldoSpline.sql"
+            "TargetName" = "8:Movimenti_GraficoSaldoSpline.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -872,47 +878,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04316957E5774098A6325EB661AF3367"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Dettaglio.sql"
-            "TargetName" = "8:Calendario_Dettaglio.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_083B562B4D07477592F22C16BDF6A9BA"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Lista.sql"
-            "TargetName" = "8:Casse_Lista.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0DE4B0D2992F40A9991F3018FE1B44B0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_070C5B2517C14A4D861A6876790157E6"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_RicercaAccess.sql"
             "TargetName" = "8:Periodici_RicercaAccess.sql"
@@ -932,50 +898,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1450C61979574B159D33C11DC8324ECC"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Aggiorna.sql"
-            "TargetName" = "8:Periodici_Aggiorna.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_14D0A422803342AAAFB6464930B0E346"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Ricerca.sql"
-            "TargetName" = "8:Calendario_Ricerca.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_158F37B4178D4140BC06AF63B4FAEF1F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0B4EF16D3D83481A9D6E3FD33179699D"
             {
             "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Dettaglio.sql"
             "TargetName" = "8:DBInfo_Dettaglio.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1151CE051FB64A90BF3E07D5E1A4E546"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Dettaglio.sql"
+            "TargetName" = "8:Movimenti_Dettaglio.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18FB520571534514A1020F6485FDA840"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_AggiornaSerie.sql"
+            "TargetName" = "8:Calendario_AggiornaSerie.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1012,10 +978,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1D44CA8B6C2847B29B6BFD504D706620"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1B0746EE1FA046548669BA5D3437AA6B"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Ricerca.sql"
-            "TargetName" = "8:Movimenti_Ricerca.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_MovimentiPerCassa.sql"
+            "TargetName" = "8:Movimenti_MovimentiPerCassa.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1032,12 +998,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E348C2F69474FD5A1E019D647F156BB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DE30D1776FC47E2B12DD50846BC6799"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Lista.sql"
-            "TargetName" = "8:Utenti_Lista.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\Novita.rtf"
+            "TargetName" = "8:Novita.rtf"
             "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1058,46 +1024,6 @@
             "TargetName" = "8:p_Mediolanum.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F001B9C844A41DA883DC51D44304C63"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSaldoSpline.sql"
-            "TargetName" = "8:Movimenti_GraficoSaldoSpline.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2258655DD5DC4F829E5B05ED6E6D8FF4"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Dettaglio.sql"
-            "TargetName" = "8:Utenti_Dettaglio.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1214,10 +1140,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A357841B0F74CCEB6457C646B1B6CFF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_29887EF10F45436DB4731C240A392040"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AggiornaMacroAree.sql"
-            "TargetName" = "8:Movimenti_AggiornaMacroAree.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Ricerca.sql"
+            "TargetName" = "8:Periodici_Ricerca.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A845BF844724318B5AE563A7CCBADC2"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Elimina.sql"
+            "TargetName" = "8:Movimenti_Elimina.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1240,6 +1186,26 @@
             "TargetName" = "8:standard.rqd8"
             "Tag" = "8:"
             "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BBE80FD0D6D457FB145FD9D5A044086"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Ricerca.sql"
+            "TargetName" = "8:Calendario_Ricerca.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1294,10 +1260,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2FB2C7D1E0404A89BC8AB52EEB86D56A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_306A070B0B894AE4877C4B5993598231"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Elimina.sql"
-            "TargetName" = "8:Periodici_Elimina.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Valute.sql"
+            "TargetName" = "8:Casse_Valute.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_31DB61A6A8F14A54B47447A234C5B8B5"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Inserisci.sql"
+            "TargetName" = "8:DBInfo_Inserisci.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1354,10 +1340,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35FA4BB4A1C7438D8340E5180A1ACFAB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35778BF6D2A04A358B767BE86F8E63E2"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Ricerca.sql"
-            "TargetName" = "8:Casse_Ricerca.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Aggiorna.sql"
+            "TargetName" = "8:Periodici_Aggiorna.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1394,12 +1380,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3BEBE8DEB2924260A0404B714E160AFB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3BDFBE32C91B46AAA8753F223D115E0C"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\Utenti\\Zetsuen-No-Tempest.png"
-            "TargetName" = "8:Zetsuen-No-Tempest.png"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Aggiorna.sql"
+            "TargetName" = "8:DBInfo_Aggiorna.sql"
             "Tag" = "8:"
-            "Folder" = "8:_F183747EC03B4602A08EA10757E7C835"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1414,12 +1400,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3DEF907DDE7743F0B89FDBAC763A22DB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3BEBE8DEB2924260A0404B714E160AFB"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Carica.sql"
-            "TargetName" = "8:Casse_Carica.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\Utenti\\Zetsuen-No-Tempest.png"
+            "TargetName" = "8:Zetsuen-No-Tempest.png"
             "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Folder" = "8:_F183747EC03B4602A08EA10757E7C835"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1454,52 +1440,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_40BE1A76A7EF461585BEF3776D0493A1"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoTortaSaldo.sql"
-            "TargetName" = "8:Movimenti_GraficoTortaSaldo.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_424DAACDD0CC41A48D8BC277537BA6E1"
             {
             "SourcePath" = "8:..\\RationesCurare7\\SQLITE DLL\\SQLite.Interop.dll"
             "TargetName" = "8:SQLite.Interop.dll"
             "Tag" = "8:"
             "Folder" = "8:_64776668337C44DCB44A7B46859DDBB1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4400157E5D284F738DECC7A31A5743BC"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Aggiorna.sql"
-            "TargetName" = "8:Casse_Aggiorna.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1545,6 +1491,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46EAC9EFFB6D4769AD43C5795AA60A85"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\AggiornamentiDBUtente.sql"
+            "TargetName" = "8:AggiornamentiDBUtente.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47EEBC407DC0465AA1991AB2FD49A0AA"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Casse_Immagini\\p_Intesa.png"
@@ -1565,10 +1531,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_502252661693410E955BD1A6B7D9A5CA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C997FBA9AD44DAD881A327CEA9EBD5A"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Elimina.sql"
-            "TargetName" = "8:Calendario_Elimina.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Ricerca.sql"
+            "TargetName" = "8:Movimenti_Ricerca.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1585,50 +1551,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_506E0F9C70B2416C99EEBB9162F6553B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4E3C484D75594672BE0C9E30EAA25DE0"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Inserisci.sql"
-            "TargetName" = "8:Movimenti_Inserisci.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55CEE0050CD24EAE82A55D0B4D023A6D"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Data.sql"
-            "TargetName" = "8:Movimenti_Data.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_563E58FC58104E538997C250ACE20F85"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Inserisci.sql"
-            "TargetName" = "8:Utenti_Inserisci.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GetMacroAree_E_Descrizioni.sql"
+            "TargetName" = "8:Movimenti_GetMacroAree_E_Descrizioni.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1665,10 +1591,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_595C6A209469480CB1FE0DE4C44F3628"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5AAE64DEBF9C4964BF68DE2A438F4A27"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Aggiorna.sql"
-            "TargetName" = "8:Calendario_Aggiorna.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Elimina.sql"
+            "TargetName" = "8:Casse_Elimina.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1747,10 +1673,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E683DC4F2B8488EB18EF77AA014E159"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5CC94460F513490483CEBF00ECAAF218"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_MovimentiPerCassa.sql"
-            "TargetName" = "8:Movimenti_MovimentiPerCassa.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Scadenza.sql"
+            "TargetName" = "8:Periodici_Scadenza.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1767,10 +1693,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E85D602333740818E2939854ABF3A40"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F3AB72EFD80442599B32B748DDAAE86"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_AggiornaSerie.sql"
-            "TargetName" = "8:Calendario_AggiornaSerie.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_ListaEX.sql"
+            "TargetName" = "8:Casse_ListaEX.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1787,10 +1713,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61017161974E49599137BB6AEF6DBD17"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F921453BD0340279A1C2104D88D5943"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Aggiorna.sql"
-            "TargetName" = "8:DBInfo_Aggiorna.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_EliminaSerie.sql"
+            "TargetName" = "8:Calendario_EliminaSerie.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1807,70 +1733,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61F6F86F181846149C8D194FBC4DB554"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_694A8A86C84A4E569CDA5F5CC125ABEC"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoMensile.sql"
-            "TargetName" = "8:Movimenti_GraficoMensile.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63958267C6974EC79925C7DC410239E0"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoAnnuale.sql"
-            "TargetName" = "8:Movimenti_GraficoAnnuale.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_65A9055BF5C742458E8D2600E02F2182"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AutoCompleteSource.sql"
-            "TargetName" = "8:Movimenti_AutoCompleteSource.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A223B7A17DD42FE8CFB8330DF8C0B53"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Saldo.sql"
-            "TargetName" = "8:Movimenti_Saldo.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Inserisci.sql"
+            "TargetName" = "8:Calendario_Inserisci.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -1907,6 +1773,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B0CC34AC9E34483837A6E8838D3674F"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoAnnuale.sql"
+            "TargetName" = "8:Movimenti_GraficoAnnuale.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E1E7707FFBE44FDAA911C86855FE90E"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Utenti\\Sword-Art-Online.png"
@@ -1927,10 +1813,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7073387A70AB48A1B161B06CD035A8B0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FD342CEA2BF41D38460A3FA6E1E7D3F"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GetMacroAree_E_Descrizioni.sql"
-            "TargetName" = "8:Movimenti_GetMacroAree_E_Descrizioni.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Elimina.sql"
+            "TargetName" = "8:Periodici_Elimina.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70F700C02E5C4194B66B9923D15AA5FD"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoMensile.sql"
+            "TargetName" = "8:Movimenti_GraficoMensile.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2007,26 +1913,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7935750C17F24821B2303E7686C84BCF"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Ricerca.sql"
-            "TargetName" = "8:Periodici_Ricerca.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C4D03AB5AAF415D9FC81CDAE7DC2F62"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Casse_Immagini\\p_Visa.png"
@@ -2053,46 +1939,6 @@
             "TargetName" = "8:p_MasterCard.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E1E635664FD4D52B4F9D9FA2140DB18"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_ListaEX.sql"
-            "TargetName" = "8:Casse_ListaEX.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7EADCCD53B8343D3991890F8E9CF32D0"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Scadenza.sql"
-            "TargetName" = "8:Periodici_Scadenza.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2147,10 +1993,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_887502E0E0B5499C893B90BF2744BB18"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_819FC0A081264D819F48DF5CE23D7AE9"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Dettaglio.sql"
-            "TargetName" = "8:Movimenti_Dettaglio.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Lista.sql"
+            "TargetName" = "8:Casse_Lista.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89CF93A707CC4732A705961128114C6A"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Aggiorna.sql"
+            "TargetName" = "8:Utenti_Aggiorna.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2207,12 +2073,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D0EF75D208F4FAB85C118636B88A2B3"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Aggiorna.sql"
+            "TargetName" = "8:Casse_Aggiorna.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E1761A8DAD84400927887D98D517A95"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Utenti\\Amnesia-anime.png"
             "TargetName" = "8:Amnesia-anime.png"
             "Tag" = "8:"
             "Folder" = "8:_F183747EC03B4602A08EA10757E7C835"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8FBD69A2F1734AF7B0F50F77D3356AAE"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoTortaSaldo.sql"
+            "TargetName" = "8:Movimenti_GraficoTortaSaldo.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2247,10 +2153,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93C96B7177E34F70B8572A8EE4026522"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_91644550C31143B4888A3E9CFB6259DD"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Aggiorna.sql"
-            "TargetName" = "8:Movimenti_Aggiorna.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Aggiornamenti.sql"
+            "TargetName" = "8:Aggiornamenti.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_944CD94F321D48B798CF165E949A7D5F"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Inserisci.sql"
+            "TargetName" = "8:Casse_Inserisci.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2327,26 +2253,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9DC02BE652B9483CBC44B64E878D4212"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Aggiornamenti.sql"
-            "TargetName" = "8:Aggiornamenti.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9ED5A00137264D2EB6249B36E65763DF"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Utenti\\Bleach-anime.png"
@@ -2398,10 +2304,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A402F716AD754BB48E356C3A37897637"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A3C83422B6A84E1B9AD69995FD91CDAE"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_ByPath.sql"
-            "TargetName" = "8:Utenti_ByPath.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Dettaglio.sql"
+            "TargetName" = "8:Utenti_Dettaglio.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2418,30 +2324,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7B33DC506DB4288A29CC4376BE681F8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A803A0ED7FB3482CAB0D914413CD1A20"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Dettaglio.sql"
-            "TargetName" = "8:Periodici_Dettaglio.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A8232A02AF0A424EB05C557811DDE1A3"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\AggiornamentiDBUtente.sql"
-            "TargetName" = "8:AggiornamentiDBUtente.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Elimina.sql"
+            "TargetName" = "8:Utenti_Elimina.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2478,10 +2364,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AEDA8A04F990493A8391B4029AA2B64A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE975FDD88064A5D8592DF5280591036"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Valute.sql"
-            "TargetName" = "8:Casse_Valute.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Aggiorna.sql"
+            "TargetName" = "8:Calendario_Aggiorna.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2498,10 +2384,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B590CCB2982B41ECA67F3088969EBB54"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF3579581D3543F09EEC269000F216EF"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Aggiorna.sql"
-            "TargetName" = "8:Utenti_Aggiorna.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Ricerca.sql"
+            "TargetName" = "8:Casse_Ricerca.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B32F171723C043068143A7813CA8CCDA"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AutoCompleteSource.sql"
+            "TargetName" = "8:Movimenti_AutoCompleteSource.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B99394618A454B498FD84A6EC948C086"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Inserisci.sql"
+            "TargetName" = "8:Periodici_Inserisci.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2538,6 +2464,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF35F97840CB44BDA7992FBD9B02F5B1"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AutoCompleteSourceMA.sql"
+            "TargetName" = "8:Movimenti_AutoCompleteSourceMA.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C14B440A5CF441B39351D44B3DA8930F"
             {
             "SourcePath" = "8:..\\RationesCurare7\\Casse_Immagini\\p_Bancomat.png"
@@ -2558,10 +2504,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C9DFD388B9CE496EB803C633C10ABEB2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3A2B9C0A68841E6AF98385A0E4CCBC7"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoTorta.sql"
-            "TargetName" = "8:Movimenti_GraficoTorta.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_ByPath.sql"
+            "TargetName" = "8:Utenti_ByPath.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2578,10 +2524,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC292AE138174649BD17FB3EF2B8719F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C8E5246316F542B3BCB2AA875CA9313B"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Elimina.sql"
-            "TargetName" = "8:Utenti_Elimina.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSaldo.sql"
+            "TargetName" = "8:Movimenti_GraficoSaldo.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB956D631B4E487DA1B924173D1300E4"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoTorta.sql"
+            "TargetName" = "8:Movimenti_GraficoTorta.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2624,26 +2590,6 @@
             "TargetName" = "8:portafogli.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1486080B73641F7A014675A20C53680"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\DBInfo_Inserisci.sql"
-            "TargetName" = "8:DBInfo_Inserisci.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2720,50 +2666,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2C5EA4B696B4EADBAFF7CE1B356D141"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D39B335EFC38422C800ECB8F0931DD00"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Elimina.sql"
-            "TargetName" = "8:Casse_Elimina.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D59C18527FA6414A9EA89768ED377723"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Inserisci.sql"
-            "TargetName" = "8:Periodici_Inserisci.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D63265EDB4CC484F9F0EDCDCF816DFA9"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AutoCompleteSourceMA.sql"
-            "TargetName" = "8:Movimenti_AutoCompleteSourceMA.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Carica.sql"
+            "TargetName" = "8:Casse_Carica.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2800,26 +2706,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D998DF386C0B4024974890379B6864C5"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Casse_Inserisci.sql"
-            "TargetName" = "8:Casse_Inserisci.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D9E3342A427A49299937BBF9CA97C6A1"
             {
             "SourcePath" = "8:..\\RationesCurare7\\rcDBBackup.ico"
@@ -2840,10 +2726,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB6C2AD41C014A90A8FC2F40798CDAB0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DEF5EDBC20724BDCADA167C9B36940C2"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Elimina.sql"
-            "TargetName" = "8:Movimenti_Elimina.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Inserisci.sql"
+            "TargetName" = "8:Utenti_Inserisci.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2860,50 +2746,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDD42F780AF74BFBB78C865607B7A6F1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E2A53E3378B942CDADCAD4D683D618B0"
             {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSaldo.sql"
-            "TargetName" = "8:Movimenti_GraficoSaldo.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E006AB6B8FF8414C801C437D5D586E46"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_EliminaSerie.sql"
-            "TargetName" = "8:Calendario_EliminaSerie.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E260516DBB5F41F5A4C766B58AE67E2B"
-            {
-            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Inserisci.sql"
-            "TargetName" = "8:Calendario_Inserisci.sql"
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Periodici_Dettaglio.sql"
+            "TargetName" = "8:Periodici_Dettaglio.sql"
             "Tag" = "8:"
             "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
@@ -2926,6 +2772,126 @@
             "TargetName" = "8:P_ING.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3A67AADC9434E9E9071C5E3EA4CA70C"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Elimina.sql"
+            "TargetName" = "8:Calendario_Elimina.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3AE856270584F6AB3775C07BF1E7826"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Aggiorna.sql"
+            "TargetName" = "8:Movimenti_Aggiorna.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7E057809BE346E7B9C60357DE490611"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Data.sql"
+            "TargetName" = "8:Movimenti_Data.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA0222CA30E6462286A4FC2C02E09E71"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Saldo.sql"
+            "TargetName" = "8:Movimenti_Saldo.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EB03CB369C024AB2B14882437D09FBC8"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Utenti_Lista.sql"
+            "TargetName" = "8:Utenti_Lista.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EB63FCA214AD4D6795BA5FFD41E04EFE"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Calendario_Dettaglio.sql"
+            "TargetName" = "8:Calendario_Dettaglio.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2977,6 +2943,66 @@
             "TargetName" = "8:p_PosteItaliane.png"
             "Tag" = "8:"
             "Folder" = "8:_F14069F32EDC49F7B82CA03C17DB6EAF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5D368591710454DA8EBC9CA8F20A328"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_AggiornaMacroAree.sql"
+            "TargetName" = "8:Movimenti_AggiornaMacroAree.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5DB9A8800A749E39E36786B5BC0A7EB"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_Inserisci.sql"
+            "TargetName" = "8:Movimenti_Inserisci.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FF030EB6862542F1A7FC6030438E05AD"
+            {
+            "SourcePath" = "8:..\\RationesCurare7\\DB\\DBW\\Movimenti_GraficoSplineAnnuale.sql"
+            "TargetName" = "8:Movimenti_GraficoSplineAnnuale.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_CB42A74D1EA046AFB67A27C3330DE65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3205,15 +3231,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RationesCurare7"
-        "ProductCode" = "8:{A4AAD4F6-CC9B-4FC5-8307-2F877AE09959}"
-        "PackageCode" = "8:{2C4130BB-A1AC-4344-A3E6-8934425519B6}"
+        "ProductCode" = "8:{757FD757-0F29-4E02-8728-88768BF17B7F}"
+        "PackageCode" = "8:{B1E5A2AB-8889-4A22-8801-CC62780CA954}"
         "UpgradeCode" = "8:{BD521D0C-80D8-4377-B6EF-68783AA9C67C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:20.22.0124"
+        "ProductVersion" = "8:20.22.0125"
         "Manufacturer" = "8:[MAIONE MIKY]"
         "ARPHELPTELEPHONE" = "8:mikymaione@hotmail.it"
         "ARPHELPLINK" = "8:http://www.maionemiky.it"
