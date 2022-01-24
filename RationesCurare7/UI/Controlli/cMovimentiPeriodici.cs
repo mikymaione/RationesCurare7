@@ -5,8 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -29,7 +32,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void LoadData()
         {
-            var p = new DB.DataWrapper.cPeriodici();
+            var p = new cPeriodici();
             bindingSource1.DataSource = p.Ricerca();
         }
 
@@ -51,7 +54,7 @@ namespace RationesCurare7.UI.Controlli
 
                 if (i > -1)
                 {
-                    var m = new DB.DataWrapper.cPeriodici();
+                    var m = new cPeriodici();
                     m.Elimina(i);
 
                     LoadData();
@@ -61,7 +64,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Modifica(bool Nuovo)
         {
-            using (var fi = new Forms.fInserimentoPeriodico(CashName))
+            using (var fi = new fInserimentoPeriodico(CashName))
             {
                 if (!Nuovo)
                     fi.ID_ = SelectedID;

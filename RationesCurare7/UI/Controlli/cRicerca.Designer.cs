@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cRicerca
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -307,27 +310,27 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox eDescrizione;
-        private System.Windows.Forms.CheckBox cbAttivaDescrizione;
-        private System.Windows.Forms.Button bCerca;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox cbAttivaCassa;
-        private System.Windows.Forms.ComboBox cbCassa;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox cbAttivaImporto;        
-        private System.Windows.Forms.Label label4;
-        private RationesCurare7.UI.Controlli.cMathEdit eSoldiDa;
-        private RationesCurare7.UI.Controlli.cMathEdit eSoldiA;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbAttivaData;
-        private System.Windows.Forms.DateTimePicker eDataA;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker eDataDa;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox eMacroArea;
-        private System.Windows.Forms.CheckBox cbAttivaMacroArea;
+        private GroupBox groupBox4;
+        private TextBox eDescrizione;
+        private CheckBox cbAttivaDescrizione;
+        private Button bCerca;
+        private GroupBox groupBox3;
+        private CheckBox cbAttivaCassa;
+        private ComboBox cbCassa;
+        private GroupBox groupBox2;
+        private CheckBox cbAttivaImporto;        
+        private Label label4;
+        private cMathEdit eSoldiDa;
+        private cMathEdit eSoldiA;
+        private Label label3;
+        private GroupBox groupBox1;
+        private CheckBox cbAttivaData;
+        private DateTimePicker eDataA;
+        private Label label2;
+        private DateTimePicker eDataDa;
+        private Label label1;
+        private GroupBox groupBox5;
+        private TextBox eMacroArea;
+        private CheckBox cbAttivaMacroArea;
     }
 }

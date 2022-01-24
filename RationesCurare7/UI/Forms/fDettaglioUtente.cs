@@ -5,8 +5,14 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.IO;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using RationesCurare7.DB;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -20,7 +26,7 @@ namespace RationesCurare7.UI.Forms
         {
             set
             {
-                DB.DataWrapper.cUtenti u = new DB.DataWrapper.cUtenti();
+                cUtenti u = new cUtenti();
                 u.CaricaByPath(value);
                 ID__ = u.ID;
 
@@ -32,10 +38,10 @@ namespace RationesCurare7.UI.Forms
                 {
                     bScegliDB.Enabled = false;
 
-                    eNome.Text = System.IO.Path.GetFileNameWithoutExtension(value);
+                    eNome.Text = Path.GetFileNameWithoutExtension(value);
 
-                    ePathDB.Text = System.IO.Path.GetDirectoryName(value);
-                    CaricaImg(System.IO.Path.ChangeExtension(value, ".jpg"));
+                    ePathDB.Text = Path.GetDirectoryName(value);
+                    CaricaImg(Path.ChangeExtension(value, ".jpg"));
                 }
             }
         }
@@ -60,14 +66,14 @@ namespace RationesCurare7.UI.Forms
             ImgPath = cGB.LoadImage_Casuale_Try(ref pbImmagine);
         }
 
-        public fDettaglioUtente(DB.DataWrapper.cUtenti default_) : this()
+        public fDettaglioUtente(cUtenti default_) : this()
         {
             LoadControls(default_, true);
         }
 
         private void CaricaValute()
         {
-            var c = new DB.DataWrapper.cValute();
+            var c = new cValute();
 
             eValuta.DisplayMember = "Descrizione";
             eValuta.ValueMember = "Valuta";
@@ -75,7 +81,7 @@ namespace RationesCurare7.UI.Forms
             eValuta.SelectedIndex = -1;
         }
 
-        private void LoadControls(DB.DataWrapper.cUtenti u, bool forza = false)
+        private void LoadControls(cUtenti u, bool forza = false)
         {
             if (forza || u.ID > -1)
             {
@@ -85,7 +91,7 @@ namespace RationesCurare7.UI.Forms
 
                 try
                 {
-                    p = System.IO.Path.GetDirectoryName(u.Path);
+                    p = Path.GetDirectoryName(u.Path);
                 }
                 catch
                 {
@@ -94,11 +100,11 @@ namespace RationesCurare7.UI.Forms
 
                 if (cGB.sDB == null)
                 {
-                    cGB.DatiDBFisico = new DB.DataWrapper.cUtenti(u.ID);
-                    cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite);
+                    cGB.DatiDBFisico = new cUtenti(u.ID);
+                    cGB.sDB = new cDB(true, cDB.DataBase.SQLite);
                 }
 
-                var dbU = new DB.DataWrapper.cDBInfo(u.Email);
+                var dbU = new cDBInfo(u.Email);
 
                 ePsw.Text = dbU.Psw;
                 eNome.Text = dbU.Nome;
@@ -111,7 +117,7 @@ namespace RationesCurare7.UI.Forms
                 if (jem == null || jem.Equals(""))
                     jem = eNome.Text;
 
-                CaricaImg(System.IO.Path.Combine(ePathDB.Text, jem + ".jpg"));
+                CaricaImg(Path.Combine(ePathDB.Text, jem + ".jpg"));
             }
         }
 
@@ -119,32 +125,32 @@ namespace RationesCurare7.UI.Forms
         {
             if (ID_ > -1)
             {
-                var u = new DB.DataWrapper.cUtenti(ID_);
+                var u = new cUtenti(ID_);
                 LoadControls(u);
             }
         }
 
         private bool Controlla()
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(eEmail.Text, "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$"))
+            if (!Regex.IsMatch(eEmail.Text, "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$"))
             {
                 cGB.MsgBox("Campo email non corretto!", MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(eEmail.Text, "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$"))
+            if (!Regex.IsMatch(eEmail.Text, "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$"))
             {
                 cGB.MsgBox("Campo nome non corretto!", MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            if (!System.IO.Directory.Exists(this.ePathDB.Text))
+            if (!Directory.Exists(ePathDB.Text))
             {
                 cGB.MsgBox("Selezionare una cartella di salvataggio per il DB!", MessageBoxIcon.Exclamation);
                 return false;
             }
 
-            if (!System.IO.File.Exists(ImgPath))
+            if (!File.Exists(ImgPath))
             {
                 cGB.MsgBox("Selezionare un'immagine per l'utente!", MessageBoxIcon.Exclamation);
                 return false;
@@ -158,7 +164,7 @@ namespace RationesCurare7.UI.Forms
 
             if (ID__ <= -1)
             {
-                var u = new DB.DataWrapper.cUtenti();
+                var u = new cUtenti();
                 var us = u.ListaUtenti();
 
                 if (us != null)
@@ -184,20 +190,20 @@ namespace RationesCurare7.UI.Forms
             using (var s = new FolderBrowserDialog())
                 if (s.ShowDialog() == DialogResult.OK)
                 {
-                    if (!System.IO.Directory.Exists(s.SelectedPath))
+                    if (!Directory.Exists(s.SelectedPath))
                         try
                         {
-                            System.IO.Directory.CreateDirectory(s.SelectedPath);
+                            Directory.CreateDirectory(s.SelectedPath);
                         }
                         catch (Exception ex)
                         {
                             cGB.MsgBox("Errore! : " + ex.Message, MessageBoxIcon.Error);
                         }
 
-                    if (System.IO.Directory.Exists(s.SelectedPath))
+                    if (Directory.Exists(s.SelectedPath))
                     {
-                        this.ePathDB.Text = s.SelectedPath;
-                        this.bApriPathDB.Enabled = true;
+                        ePathDB.Text = s.SelectedPath;
+                        bApriPathDB.Enabled = true;
                     }
                 }
         }
@@ -207,7 +213,7 @@ namespace RationesCurare7.UI.Forms
             try
             {
                 //this.pbImmagine.Image = Image.FromFile(z);
-                cGB.LoadImage(z, ref this.pbImmagine);
+                cGB.LoadImage(z, ref pbImmagine);
 
                 ImgPath = z;
             }
@@ -228,13 +234,13 @@ namespace RationesCurare7.UI.Forms
             var erro = false;
             var a = "";
 
-            if (cGB.MsgBox("Tutto corretto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (cGB.MsgBox("Tutto corretto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (Controlla())
                 {
-                    var dbda = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                    dbda = System.IO.Path.Combine(dbda, "standard.rqd8");
+                    var dbda = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                    dbda = Path.Combine(dbda, "standard.rqd8");
 
-                    a = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text + ".rqd8");
+                    a = Path.Combine(ePathDB.Text, eEmail.Text + ".rqd8");
 
                     if (RecuperaDB.Equals(""))
                     {
@@ -242,11 +248,11 @@ namespace RationesCurare7.UI.Forms
                         if (ID__ <= -1)
                             try
                             {
-                                if (!System.IO.Directory.Exists(this.ePathDB.Text))
-                                    System.IO.Directory.CreateDirectory(this.ePathDB.Text);
+                                if (!Directory.Exists(ePathDB.Text))
+                                    Directory.CreateDirectory(ePathDB.Text);
 
-                                if (!System.IO.File.Exists(a))
-                                    System.IO.File.Copy(dbda, a, false);
+                                if (!File.Exists(a))
+                                    File.Copy(dbda, a, false);
                             }
                             catch (Exception ex)
                             {
@@ -259,11 +265,11 @@ namespace RationesCurare7.UI.Forms
                         // recupero DB
                         try
                         {
-                            if (!System.IO.Directory.Exists(this.ePathDB.Text))
-                                System.IO.Directory.CreateDirectory(this.ePathDB.Text);
+                            if (!Directory.Exists(ePathDB.Text))
+                                Directory.CreateDirectory(ePathDB.Text);
 
-                            if (!System.IO.File.Exists(a))
-                                System.IO.File.Copy(RecuperaDB, a, false);
+                            if (!File.Exists(a))
+                                File.Copy(RecuperaDB, a, false);
                         }
                         catch (Exception ex)
                         {
@@ -275,10 +281,10 @@ namespace RationesCurare7.UI.Forms
                     //copia img
                     try
                     {
-                        var t = System.IO.Path.GetExtension(ImgPath);
-                        var imga = System.IO.Path.Combine(this.ePathDB.Text, this.eEmail.Text);
+                        var t = Path.GetExtension(ImgPath);
+                        var imga = Path.Combine(ePathDB.Text, eEmail.Text);
 
-                        System.IO.File.Copy(ImgPath, System.IO.Path.ChangeExtension(imga + t, ".jpg"), true);
+                        File.Copy(ImgPath, Path.ChangeExtension(imga + t, ".jpg"), true);
                     }
                     catch //(Exception ex)
                     {
@@ -288,9 +294,9 @@ namespace RationesCurare7.UI.Forms
 
                     if (!erro)
                     {
-                        cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite, a);
+                        cGB.sDB = new cDB(true, cDB.DataBase.SQLite, a);
 
-                        var x = new DB.DataWrapper.cUtenti(ID_)
+                        var x = new cUtenti(ID_)
                         {
                             Nome = eNome.Text,
                             Psw = ePsw.Text,
@@ -299,7 +305,7 @@ namespace RationesCurare7.UI.Forms
                             TipoDB = "S"
                         };
 
-                        var u = new DB.DataWrapper.cDBInfo(eEmail.Text)
+                        var u = new cDBInfo(eEmail.Text)
                         {
                             Nome = eNome.Text,
                             Psw = ePsw.Text,
@@ -309,7 +315,7 @@ namespace RationesCurare7.UI.Forms
                         };
 
                         if (x.Salva() > 0 && (u.DatiCaricati && u.Aggiorna() > 0 || u.Inserisci() > 0))
-                            this.DialogResult = DialogResult.OK;
+                            DialogResult = DialogResult.OK;
                         else
                             MsgErroreSalvataggio();
                     }
@@ -319,7 +325,7 @@ namespace RationesCurare7.UI.Forms
         private void eNome_Leave(object sender, EventArgs e)
         {
             var arr = eNome.Text.ToCharArray();
-            arr = Array.FindAll(arr, (c => (char.IsLetterOrDigit(c) || char.IsNumber(c) || c == '_' || c == ' ')));
+            arr = Array.FindAll(arr, c => char.IsLetterOrDigit(c) || char.IsNumber(c) || c == '_' || c == ' ');
             eNome.Text = new string(arr);
         }
 
@@ -330,18 +336,18 @@ namespace RationesCurare7.UI.Forms
 
         private void pbImmagineClick()
         {
-            var j = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            j = System.IO.Path.Combine(j, "Utenti");
+            var j = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            j = Path.Combine(j, "Utenti");
 
-            using (var op = new OpenFileDialog()
+            using (var op = new OpenFileDialog
             {
                 Title = "Selezionare un immagine per l'utente",
                 Multiselect = false,
                 Filter = "Immagini|*.jpg;*.png",
                 InitialDirectory = j
             })
-                if (op.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    if (System.IO.File.Exists(op.FileName))
+                if (op.ShowDialog() == DialogResult.OK)
+                    if (File.Exists(op.FileName))
                         CaricaImg(op.FileName);
         }
 

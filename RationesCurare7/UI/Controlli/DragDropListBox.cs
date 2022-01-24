@@ -5,6 +5,7 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -24,10 +25,9 @@ namespace RationesCurare7.UI.Controlli
         private Rectangle _dragOriginBox = Rectangle.Empty;
         private VisualCue _visualCue;
         private int[] _selectionSave = new int[0];
-        private bool _restoringSelection = false;
+        private bool _restoringSelection;
 
         public DragDropListBox()
-            : base()
         {
             AllowDrop = true;
             _visualCue = new VisualCue(this);
@@ -233,7 +233,7 @@ namespace RationesCurare7.UI.Controlli
             Sorted = sortedSave;
 
             // Notify the target (this control).
-            DroppedEventArgs e = new DroppedEventArgs()
+            DroppedEventArgs e = new DroppedEventArgs
             {
                 Operation = operation,
                 Source = src,
@@ -245,7 +245,7 @@ namespace RationesCurare7.UI.Controlli
             // Notify the source (the other control).
             if (operation != DropOperation.Reorder)
             {
-                e = new DroppedEventArgs()
+                e = new DroppedEventArgs
                 {
                     Operation = operation == DropOperation.MoveToHere ? DropOperation.MoveFromHere : DropOperation.CopyFromHere,
                     Source = src,
@@ -296,14 +296,14 @@ namespace RationesCurare7.UI.Controlli
             int clickedItemIndex = IndexFromPoint(e.Location);
             if (clickedItemIndex >= 0 && MouseButtons == MouseButtons.Left &&
                 (_isDragDropCopySource || _isDragDropMoveSource || _allowReorder) &&
-                (GetSelected(clickedItemIndex) || Control.ModifierKeys == Keys.Shift))
+                (GetSelected(clickedItemIndex) || ModifierKeys == Keys.Shift))
             {
 
                 RestoreSelection(clickedItemIndex);
 
                 // Remember start position of possible drag operation.
                 Size dragSize = SystemInformation.DragSize; // Size that the mouse must move before a drag operation starts.
-                _dragOriginBox = new Rectangle(new Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize);
+                _dragOriginBox = new Rectangle(new Point(e.X - dragSize.Width / 2, e.Y - dragSize.Height / 2), dragSize);
             }
         }
 
@@ -343,7 +343,7 @@ namespace RationesCurare7.UI.Controlli
         {
             // Restore the selection, unless modifier keys are pressed, which indicates that the user is currently editing the selection.
             // The item the user clickes at must have been selected before the click (_selectionSave stores the state before the click).
-            if (SelectionMode == SelectionMode.MultiExtended && Control.ModifierKeys == Keys.None && Array.IndexOf(_selectionSave, clickedItemIndex) >= 0)
+            if (SelectionMode == SelectionMode.MultiExtended && ModifierKeys == Keys.None && Array.IndexOf(_selectionSave, clickedItemIndex) >= 0)
             {
                 _restoringSelection = true; // Disable saving the selection while it is restored. (SetSelected raises the SelectedIndexChanged
                 // event, where we call SaveSelection.)
@@ -397,7 +397,7 @@ namespace RationesCurare7.UI.Controlli
             }
 
             int index = IndexFromPoint(0, y); // The x-coordinate doesn't make any difference.
-            if (index == ListBox.NoMatches)
+            if (index == NoMatches)
             { // Not hovering over an item
                 return Items.Count;  // Append to the end of the list.
             }
@@ -435,7 +435,7 @@ namespace RationesCurare7.UI.Controlli
             { // The stuff being draged is compatible.
                 if (src == this)
                 { // Drag-and-drop happens within this control.
-                    if (_allowReorder && !this.Sorted)
+                    if (_allowReorder && !Sorted)
                     {
                         effect = DragDropEffects.Move;
                     }

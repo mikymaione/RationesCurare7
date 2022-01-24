@@ -5,11 +5,14 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -22,7 +25,7 @@ namespace RationesCurare7.UI.Controlli
             MesePrecedente
         }
 
-        private List<DB.DataWrapper.cCalendario> CalendarioDB = null;
+        private List<DB.DataWrapper.cCalendario> CalendarioDB;
         public DateTime CurDate = DateTime.Now;
         public DateTime SelectedDate = DateTime.Now;
         public List<string> SelectedID = new List<string>();
@@ -45,7 +48,7 @@ namespace RationesCurare7.UI.Controlli
 
         public void GotoDate_Choose()
         {
-            using (var fds = new Forms.fDateSelector())
+            using (var fds = new fDateSelector())
                 if (fds.ShowDialog() == DialogResult.OK)
                     GotoDate(fds.ChoosedDate);
         }
@@ -66,8 +69,8 @@ namespace RationesCurare7.UI.Controlli
             var n = 0;
             var inizioMese = new DateTime(CurDate.Year, CurDate.Month, 1);
             var giorno = inizioMese.DayOfWeek;
-            var m = CurDate.ToString("MMMM", System.Threading.Thread.CurrentThread.CurrentUICulture);
-            m = System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.ToTitleCase(m);
+            var m = CurDate.ToString("MMMM", Thread.CurrentThread.CurrentUICulture);
+            m = Thread.CurrentThread.CurrentUICulture.TextInfo.ToTitleCase(m);
 
             SelectedID = new List<string>();
 
@@ -98,7 +101,7 @@ namespace RationesCurare7.UI.Controlli
 
         private bool SameDay(DateTime a, DateTime b)
         {
-            return (a.Year == b.Year && a.Month == b.Month && a.Day == b.Day);
+            return a.Year == b.Year && a.Month == b.Month && a.Day == b.Day;
         }
 
         private List<DB.DataWrapper.cCalendario> GetInfoFromDB(DateTime d)
@@ -136,7 +139,7 @@ namespace RationesCurare7.UI.Controlli
 
                     var cal = GetInfoFromDB(c);
 
-                    h = (IsHoliday ? "● " + Holy : "");
+                    h = IsHoliday ? "● " + Holy : "";
 
                     if (cal.Count > 0)
                     {
@@ -163,26 +166,22 @@ namespace RationesCurare7.UI.Controlli
                         if (h != "")
                             h += Environment.NewLine;
 
-                    ((cCalendarItem)fp.Controls[i]).lTesto.Text = (h + db);
+                    ((cCalendarItem)fp.Controls[i]).lTesto.Text = h + db;
                     ((cCalendarItem)fp.Controls[i]).MyDate = c;
 
                     ((cCalendarItem)fp.Controls[i]).BackCalendarColor =
-                        (c.Month == CurDate.Month ?
-                            (IsHoliday ?
+                        c.Month == CurDate.Month ?
+                            IsHoliday ?
                                 Color.FromArgb(244, 194, 194) :
-                                Color.FromArgb(242, 242, 242)
-                            ) :
-                            (IsHoliday ?
+                                Color.FromArgb(242, 242, 242) :
+                            IsHoliday ?
                                 Color.FromArgb(219, 169, 169) :
-                                Color.LightGray
-                            )
-                        );
+                                Color.LightGray;
 
                     ((cCalendarItem)fp.Controls[i]).BackColor =
-                        ((c.Year == DateTime.Now.Year) && (c.Month == DateTime.Now.Month) && (c.Day == DateTime.Now.Day) ?
+                        c.Year == DateTime.Now.Year && c.Month == DateTime.Now.Month && c.Day == DateTime.Now.Day ?
                             Color.Lime :
-                            Color.White
-                        );
+                            Color.White;
 
                     if (SelectedDate == ((cCalendarItem)fp.Controls[i]).MyDate)
                         ((cCalendarItem)fp.Controls[i]).OnClickEvent();
@@ -192,12 +191,12 @@ namespace RationesCurare7.UI.Controlli
 
         public void SizeAll()
         {
-            this.Visible = false;
+            Visible = false;
 
-            var w = this.Width / 7;
-            var h = (this.Height - pDays.Height - pMonth.Height) / 6;
+            var w = Width / 7;
+            var h = (Height - pDays.Height - pMonth.Height) / 6;
 
-            foreach (Panel p in this.Controls)
+            foreach (Panel p in Controls)
             {
                 if (!p.Tag.Equals("0"))
                     p.Height = h;
@@ -207,7 +206,7 @@ namespace RationesCurare7.UI.Controlli
                         d.Width = w;
             }
 
-            this.Visible = true;
+            Visible = true;
         }
 
         private void cCalendar_SizeChanged(object sender, EventArgs e)
@@ -236,7 +235,7 @@ namespace RationesCurare7.UI.Controlli
             SelectedDate = sender.MyDate;
 
             //clear all
-            foreach (Panel p in this.Controls)
+            foreach (Panel p in Controls)
                 foreach (Control d in p.Controls)
                     if (d is cCalendarItem)
                         if (sender.Name != d.Name)

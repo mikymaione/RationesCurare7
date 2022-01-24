@@ -5,8 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Windows.Forms;
+using RationesCurare7.maionemikyWS;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -18,7 +20,7 @@ namespace RationesCurare7.UI.Controlli
 
             AutoFocus = eOggetto;
 
-            LatoDaDisegnare = new sLatoBordo()
+            LatoDaDisegnare = new sLatoBordo
             {
                 Setted = true
             };
@@ -50,13 +52,13 @@ namespace RationesCurare7.UI.Controlli
                 var ok = false;
                 var r = "";
 
-                this.Enabled = false;
+                Enabled = false;
 
                 try
                 {
                     var t = cGB.DatiUtente.Nome + " [" + cGB.DatiUtente.Email + "] :" + Environment.NewLine + eTesto.Text;
 
-                    using (var e = new maionemikyWS.EmailSending())
+                    using (var e = new EmailSending())
                         r = e.MandaMail(eOggetto.Text + " [" + cbGiudizio.Text + "]", t, "mikymaione@hotmail.it");
 
                     ok = r.Equals("OK", StringComparison.OrdinalIgnoreCase);
@@ -66,7 +68,7 @@ namespace RationesCurare7.UI.Controlli
                     cGB.MsgBox(ex.Message, MessageBoxIcon.Error);
                 }
 
-                this.Enabled = true;
+                Enabled = true;
 
                 if (ok)
                 {

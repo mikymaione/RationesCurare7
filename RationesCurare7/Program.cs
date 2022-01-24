@@ -5,8 +5,17 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
+using RationesCurare7.DB;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.GB;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7
 {
@@ -27,7 +36,7 @@ namespace RationesCurare7
                 try
                 {
                     cGB.RestartMe = false;
-                    cGB.sPC = new DB.cDB(false, DB.cDB.DataBase.SQLite, cGB.PathDBUtenti);
+                    cGB.sPC = new cDB(false, cDB.DataBase.SQLite, cGB.PathDBUtenti);
                 }
                 catch (Exception ex)
                 {
@@ -35,15 +44,15 @@ namespace RationesCurare7
                 }
 
                 var CaricaQuestoIDUtente = -1;
-                if (cGB.Parametri != null && !cGB.Parametri.Equals("") && System.IO.File.Exists(cGB.Parametri)) //se fai doppio click su un file
+                if (cGB.Parametri != null && !cGB.Parametri.Equals("") && File.Exists(cGB.Parametri)) //se fai doppio click su un file
                 {
-                    var u = new DB.DataWrapper.cUtenti();
+                    var u = new cUtenti();
                     u.CaricaByPath(cGB.Parametri);
 
                     CaricaQuestoIDUtente = u.ID;
 
                     if (u.ID < 0)
-                        using (var du = new UI.Forms.fDettaglioUtente())
+                        using (var du = new fDettaglioUtente())
                         {
                             du.DBPath = cGB.Parametri;
                             du.ShowDialog();
@@ -53,23 +62,23 @@ namespace RationesCurare7
                 var ok = false;
                 if (CaricaQuestoIDUtente > -1)
                 {
-                    var u = new DB.DataWrapper.cUtenti(CaricaQuestoIDUtente);
+                    var u = new cUtenti(CaricaQuestoIDUtente);
 
                     if (u.ID > -1)
                     {
-                        var ute = new DB.DataWrapper.cDBInfo(u.Email);
+                        var ute = new cDBInfo(u.Email);
 
-                        using (var psw = new UI.Forms.fPsw(ute.Email, ute.Psw))
-                            ok = (psw.ShowDialog() == DialogResult.OK);
+                        using (var psw = new fPsw(ute.Email, ute.Psw))
+                            ok = psw.ShowDialog() == DialogResult.OK;
                     }
                 }
                 else
                 {
                     try
                     {
-                        using (var fus = new UI.Forms.fListaUtenti())
+                        using (var fus = new fListaUtenti())
                         {
-                            ok = (fus.ShowDialog() == DialogResult.OK);
+                            ok = fus.ShowDialog() == DialogResult.OK;
 
                             if (ok)
                                 CaricaQuestoIDUtente = fus.IDUtente;
@@ -83,24 +92,24 @@ namespace RationesCurare7
 
                 if (ok)
                 {
-                    cGB.DatiDBFisico = new DB.DataWrapper.cUtenti(CaricaQuestoIDUtente);
+                    cGB.DatiDBFisico = new cUtenti(CaricaQuestoIDUtente);
 
-                    cGB.sDB = new DB.cDB(true, DB.cDB.DataBase.SQLite);
+                    cGB.sDB = new cDB(true, cDB.DataBase.SQLite);
 
-                    cGB.DatiUtente = new DB.DataWrapper.cDBInfo(cGB.DatiDBFisico.Email);
+                    cGB.DatiUtente = new cDBInfo(cGB.DatiDBFisico.Email);
 
                     cGB.ControllaDBSulServer();
 
-                    if (cGB.sDB.Connessione.State == System.Data.ConnectionState.Closed)
+                    if (cGB.sDB.Connessione.State == ConnectionState.Closed)
                         cGB.sDB.Connessione.Open();
 
                     cGB.initCulture();
                     Application.CurrentCulture = cGB.valutaCorrente;
-                    System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.InstalledUICulture;
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
                     //System.Threading.Thread.CurrentThread.CurrentCulture = cGB.valutaCorrente;
                     //System.Threading.Thread.CurrentThread.CurrentUICulture = cGB.valutaCorrente;
 
-                    using (cGB.RationesCurareMainForm = new UI.Forms.fMain())
+                    using (cGB.RationesCurareMainForm = new fMain())
                     {
                         Application.Run(cGB.RationesCurareMainForm);
 
@@ -112,7 +121,7 @@ namespace RationesCurare7
                         {
                             cGB.sDB.SQLiteVacuum();
 
-                            var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                            var mc = new MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
                             mc.MandaDBSulSito(cGB.sDB.UltimaModifica);
                         }
                     }

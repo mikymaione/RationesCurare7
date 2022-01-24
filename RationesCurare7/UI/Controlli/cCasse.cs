@@ -5,9 +5,12 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Data;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -71,7 +74,7 @@ namespace RationesCurare7.UI.Controlli
 
         private int NumeroMovimentiContenuti(string nome)
         {
-            var m = new DB.DataWrapper.cMovimenti();
+            var m = new cMovimenti();
 
             return m.NumeroMovimentiPerCassa(nome);
         }
@@ -106,7 +109,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Dettaglio(bool Nuovo)
         {
-            using (var fi = new Forms.fCassa())
+            using (var fi = new fCassa())
             {
                 if (!Nuovo)
                     fi.ID_ = SelectedID;

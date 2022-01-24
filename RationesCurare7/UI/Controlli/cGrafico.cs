@@ -5,10 +5,13 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -35,7 +38,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Inita()
         {
-            var m = new DB.DataWrapper.cMovimenti();
+            var m = new cMovimenti();
             m.IntervalloDate(out MinDate, out MaxDate);
 
             eDescrizione.AutoCompleteCustomSource = m.TutteLeDescrizioni();
@@ -52,27 +55,29 @@ namespace RationesCurare7.UI.Controlli
             Cerca();
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.Series CreaSerie()
+        private Series CreaSerie()
         {
-            var s = new System.Windows.Forms.DataVisualization.Charting.Series();
-            s.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-            s["DrawingStyle"] = ColoreBarra;
+            var s = new Series
+            {
+                ChartType = SeriesChartType.Column,
+                ["DrawingStyle"] = ColoreBarra
+            };
 
             return s;
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.DataPoint CreaDataPoint(string LaData, double yuo, Color positivo, Color negativo)
+        private DataPoint CreaDataPoint(string LaData, double yuo, Color positivo, Color negativo)
         {
-            return new System.Windows.Forms.DataVisualization.Charting.DataPoint()
+            return new DataPoint
             {
                 AxisLabel = LaData,
                 YValues = DoubleToDataPointDouble(yuo),
                 ToolTip = ToEuroWithDate(yuo, LaData),
-                Color = (yuo < 0 ? negativo : positivo)
+                Color = yuo < 0 ? negativo : positivo
             };
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.DataPoint CreaDataPoint(string LaData, double yuo)
+        private DataPoint CreaDataPoint(string LaData, double yuo)
         {
             return CreaDataPoint(LaData, yuo, Color.Green, Color.Red);
         }
@@ -84,17 +89,20 @@ namespace RationesCurare7.UI.Controlli
             Titolo += Environment.NewLine + "Saldo: " + cGB.DoubleToMoneyStringValuta(Totale);
         }
 
-        public void Cerca()
+        private void Cerca()
         {
-            this.Enabled = false;
+            Enabled = false;
             var ancheFuturi = cbPrevisti.Checked;
 
             try
             {
-                var mov = new DB.DataWrapper.cMovimenti()
+                var DataDa = cGB.DateTo00000(eDa.Value);
+                var DataA = cGB.DateTo235959(eA.Value);
+
+                var mov = new cMovimenti
                 {
-                    DataDa = cGB.DateTo00000(eDa.Value),
-                    DataA = cGB.DateTo235959(eA.Value),
+                    DataDa = DataDa,
+                    DataA = DataA,
                     descrizione = cGB.QQ(eDescrizione.Text),
                     MacroArea = cGB.QQ(eMacroArea.Text)
                 };
@@ -109,7 +117,7 @@ namespace RationesCurare7.UI.Controlli
                     var DataPrec = default(DateTime);
                     var DataAct = default(DateTime);
                     var DateUsate = new List<string>();
-                    var tipo_intervallo = (cbPeriodicita.SelectedIndex == 1 ? eTipoData.Anno : eTipoData.Mese);
+                    var tipo_intervallo = cbPeriodicita.SelectedIndex == 1 ? eTipoData.Anno : eTipoData.Mese;
 
                     try
                     {
@@ -134,7 +142,7 @@ namespace RationesCurare7.UI.Controlli
                                         for (var u = 0; u < (differenza_date?.Length ?? 0); u++)
                                             if (differenza_date[u] != LaData)
                                             {
-                                                var data_point_vuoto_no_dati_su_db = new System.Windows.Forms.DataVisualization.Charting.DataPoint()
+                                                var data_point_vuoto_no_dati_su_db = new DataPoint
                                                 {
                                                     YValues = DoubleToDataPointDouble(0D),
                                                     ToolTip = ToEuroWithDate(0D, differenza_date[u]),
@@ -154,11 +162,11 @@ namespace RationesCurare7.UI.Controlli
 
                         if (ancheFuturi)
                         {
-                            var daAggiungere = false;
                             var val = 0d;
-                            var LaDataPeriodica = "";
-                            var per = new DB.DataWrapper.cPeriodici();
-                            var movimenti = per.RicercaScadenzeCalcolate(eDa.Value, eA.Value);
+                            bool daAggiungere;
+                            string LaDataPeriodica;
+                            var per = new cPeriodici();
+                            var movimenti = per.RicercaScadenzeCalcolate(DataDa, DataA);
 
                             for (var i = 0; i < movimenti.Count; i++)
                             {
@@ -199,11 +207,11 @@ namespace RationesCurare7.UI.Controlli
                             }
 
                             Totale = 0;
-                            for (var v = 0; v < serie_nuova.Points.Count; v++)
-                                Totale += serie_nuova.Points[v].YValues[0];
+                            foreach (var t in serie_nuova.Points)
+                                Totale += t.YValues[0];
                         } //fine movimenti futuri
 
-                        this.gbGrafico.Text = "Grafico dei movimenti - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
+                        gbGrafico.Text = "Grafico dei movimenti - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
                         serie_nuova.Name = "Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
                         grafico.Series.Add(serie_nuova);
                     }
@@ -216,7 +224,7 @@ namespace RationesCurare7.UI.Controlli
             finally
             {
                 SettaTitolo();
-                this.Enabled = true;
+                Enabled = true;
 
                 foreach (var area in grafico.ChartAreas)
                     area.RecalculateAxesScale();
@@ -227,7 +235,7 @@ namespace RationesCurare7.UI.Controlli
         {
             var span = s2 - s1;
             var zeroTime = new DateTime(1, 1, 1);
-            var m = (intervallo == eTipoData.Mese ? (zeroTime + span).Month - 1 : (zeroTime + span).Year - 1);
+            var m = intervallo == eTipoData.Mese ? (zeroTime + span).Month - 1 : (zeroTime + span).Year - 1;
 
             return m;
         }
@@ -262,12 +270,12 @@ namespace RationesCurare7.UI.Controlli
             return new DateTime(y, m, 1);
         }
 
-        private double[] DoubleToDataPointDouble(double d)
+        private static double[] DoubleToDataPointDouble(double d)
         {
-            return new double[1] { d };
+            return new[] { d };
         }
 
-        private string ToEuroWithDate(double d, string AnnoMese)
+        private static string ToEuroWithDate(double d, string AnnoMese)
         {
             return AnnoMese + " " + cGB.DoubleToMoneyStringValuta(d);
         }

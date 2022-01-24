@@ -5,16 +5,18 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ILCalc;
 
 namespace RationesCurare7.UI.Controlli
 {
     public partial class cMathEdit : UserControl
     {
-        public bool Modificato = false;
-        private double Saldo = 0;
+        public bool Modificato;
+        private double Saldo;
 
         public double setSaldo
         {
@@ -41,19 +43,19 @@ namespace RationesCurare7.UI.Controlli
         {
             get
             {
-                return this.bOpenCalc.Visible;
+                return bOpenCalc.Visible;
             }
             set
             {
-                this.bOpenCalc.Visible = value;
+                bOpenCalc.Visible = value;
 
                 if (value)
                 {
-                    this.eMathTextBox.Width = this.Width - 24;
+                    eMathTextBox.Width = Width - 24;
                 }
                 else
                 {
-                    this.eMathTextBox.Width = this.Width;
+                    eMathTextBox.Width = Width;
                 }
             }
         }
@@ -92,7 +94,7 @@ namespace RationesCurare7.UI.Controlli
         {
             using (var calc = new fCalc())
             {
-                var p = this.PointToScreen(new Point());
+                var p = PointToScreen(new Point());
                 p.Y += 30;
 
                 calc.Location = p;
@@ -171,7 +173,7 @@ namespace RationesCurare7.UI.Controlli
 
         public void Clear()
         {
-            this.eMathTextBox.Text = "";
+            eMathTextBox.Text = "";
         }
 
         public void DoCalc()
@@ -181,7 +183,7 @@ namespace RationesCurare7.UI.Controlli
 
             try
             {
-                var calc = new ILCalc.CalcContext<double>();
+                var calc = new CalcContext<double>();
                 Value = calc.Evaluate(z);
             }
             catch

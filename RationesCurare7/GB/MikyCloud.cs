@@ -5,7 +5,12 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.IO;
+using System.Windows.Forms;
+using ICSharpCode.SharpZipLib.Zip;
+using RationesCurare7.maionemikyWS;
 
 namespace RationesCurare7.GB
 {
@@ -13,7 +18,7 @@ namespace RationesCurare7.GB
     {
 
         private string PathDB, Email, Psw;
-        private maionemikyWS.CredenzialiDiAccessoRC Credenziali;
+        private CredenzialiDiAccessoRC Credenziali;
 
 
         public MikyCloud(string PathDB, string Email, string Psw)
@@ -22,7 +27,7 @@ namespace RationesCurare7.GB
             this.Email = Email;
             this.Psw = Psw;
 
-            this.Credenziali = new maionemikyWS.CredenzialiDiAccessoRC()
+            Credenziali = new CredenzialiDiAccessoRC
             {
                 Utente = Email,
                 Psw = Psw
@@ -41,12 +46,12 @@ namespace RationesCurare7.GB
 
             if (cGB.sDB.UltimaModifica > DateTime.MinValue || Force)
             {
-                using (var e = new maionemikyWS.EmailSending())
+                using (var e = new EmailSending())
                 {
                     var comparazione = e.ComparaDBRC(yyyyMMddHHmmss, Email, Psw);
 
-                    if (comparazione == maionemikyWS.Comparazione.Server)
-                        if (cGB.MsgBox("Il database sul server è più aggiornato di quello locale; Vuoi sovrascrivere quello sul server?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
+                    if (comparazione == Comparazione.Server)
+                        if (cGB.MsgBox("Il database sul server è più aggiornato di quello locale; Vuoi sovrascrivere quello sul server?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                             return false;
                 }
 
@@ -56,7 +61,7 @@ namespace RationesCurare7.GB
                     ok = MandaDBSulSito__(yyyyMMddHHmmss);
 
                     if (!ok)
-                        if (cGB.MsgBox("Riprovo?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
+                        if (cGB.MsgBox("Riprovo?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                             break;
                 }
             }
@@ -73,15 +78,15 @@ namespace RationesCurare7.GB
 
             try
             {
-                using (var c = new maionemikyWS.EmailSending())
+                using (var c = new EmailSending())
                 {
                     //NON FATE I CAZZONI ! IO IL SITO LO PAGO E IL SERVIZIO LO OFFRO GRATUITAMENTE
                     var resu = c.ControllaCredenzialiRC(Credenziali);
 
                     switch (resu)
                     {
-                        case maionemikyWS.CredenzialiRisultato.Assente:
-                            if (cGB.MsgBox("Il nome utente non è presente nell'archivio! Vuoi crearlo?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        case CredenzialiRisultato.Assente:
+                            if (cGB.MsgBox("Il nome utente non è presente nell'archivio! Vuoi crearlo?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 if (c.CreaDBPerRC(Credenziali))
                                 {
                                     var tyy = "Adesso puoi accedere ai tuoi dati direttamente dal cellulare da questa pagina http://www.maionemiky.it/mLogin.aspx con le seguenti credenziali:";
@@ -94,28 +99,28 @@ namespace RationesCurare7.GB
                                 }
                                 else
                                 {
-                                    cGB.MsgBox("Non sono riuscito a creare il nuovo utente! Riprovare!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                                    cGB.MsgBox("Non sono riuscito a creare il nuovo utente! Riprovare!", MessageBoxIcon.Exclamation);
                                     return false;
                                 }
                             break;
 
-                        case maionemikyWS.CredenzialiRisultato.Errore:
-                            cGB.MsgBox("Non riesco a collegarmi al sito!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        case CredenzialiRisultato.Errore:
+                            cGB.MsgBox("Non riesco a collegarmi al sito!", MessageBoxIcon.Exclamation);
                             break;
 
-                        case maionemikyWS.CredenzialiRisultato.TuttoOK:
+                        case CredenzialiRisultato.TuttoOK:
                             ok = MandaIlFile(yyyyMMddHHmmss);
                             break;
 
-                        case maionemikyWS.CredenzialiRisultato.Presente_PasswordErrata:
-                            cGB.MsgBox("Nome utente o password non validi!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        case CredenzialiRisultato.Presente_PasswordErrata:
+                            cGB.MsgBox("Nome utente o password non validi!", MessageBoxIcon.Exclamation);
                             break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                cGB.MsgBox(ex.Message, System.Windows.Forms.MessageBoxIcon.Hand);
+                cGB.MsgBox(ex.Message, MessageBoxIcon.Hand);
             }
 
             return ok;
@@ -128,7 +133,7 @@ namespace RationesCurare7.GB
 
             if (UploadFile(yyyyMMddHHmmss, zs))
             {
-                using (var dez = new maionemikyWS.EmailSending())
+                using (var dez = new EmailSending())
                     if (dez.DeZippaDBRC(Email + ".zip"))
                     {
                         cGB.MsgI("Sincronizzazione completata!");
@@ -137,15 +142,13 @@ namespace RationesCurare7.GB
                     }
                     else
                     {
-                        cGB.MsgBox("Non sono riuscito a sincronizzare il DataBase!", System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        cGB.MsgBox("Non sono riuscito a sincronizzare il DataBase!", MessageBoxIcon.Exclamation);
                         return false;
                     }
             }
-            else
-            {
-                cGB.MsgBox("Non sono riuscito a inviare il DataBase!", System.Windows.Forms.MessageBoxIcon.Exclamation);
-                return false;
-            }
+
+            cGB.MsgBox("Non sono riuscito a inviare il DataBase!", MessageBoxIcon.Exclamation);
+            return false;
         }
 
         private bool UploadFile(string yyyyMMddHHmmss, string filename)
@@ -154,17 +157,17 @@ namespace RationesCurare7.GB
 
             try
             {
-                var strFile = System.IO.Path.GetFileName(filename);
+                var strFile = Path.GetFileName(filename);
 
-                using (var srv = new maionemikyWS.EmailSending())
+                using (var srv = new EmailSending())
                 {
-                    var fInfo = new System.IO.FileInfo(filename);
+                    var fInfo = new FileInfo(filename);
                     var numBytes = fInfo.Length;
 
                     try
                     {
-                        using (var fStream = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read))
-                        using (var br = new System.IO.BinaryReader(fStream))
+                        using (var fStream = new FileStream(filename, FileMode.Open, FileAccess.Read))
+                        using (var br = new BinaryReader(fStream))
                         {
                             var data = br.ReadBytes(Convert.ToInt32(numBytes));
 
@@ -178,25 +181,25 @@ namespace RationesCurare7.GB
                             {
                                 switch (R.CredenzialiRisultato_)
                                 {
-                                    case maionemikyWS.CredenzialiRisultato.TuttoOK:
+                                    case CredenzialiRisultato.TuttoOK:
                                         return true;
-                                    case maionemikyWS.CredenzialiRisultato.FileInviato:
+                                    case CredenzialiRisultato.FileInviato:
                                         return true;
-                                    case maionemikyWS.CredenzialiRisultato.Presente_PasswordErrata:
+                                    case CredenzialiRisultato.Presente_PasswordErrata:
                                         throw new Exception("Password errata!");
-                                    case maionemikyWS.CredenzialiRisultato.Assente:
+                                    case CredenzialiRisultato.Assente:
                                         throw new Exception("DB assente!");
-                                    case maionemikyWS.CredenzialiRisultato.Errore:
+                                    case CredenzialiRisultato.Errore:
                                         throw new Exception("Errore!");
-                                    case maionemikyWS.CredenzialiRisultato.ProgrammaNonAutorizzato:
+                                    case CredenzialiRisultato.ProgrammaNonAutorizzato:
                                         throw new Exception("Programma non autorizzato!");
-                                    case maionemikyWS.CredenzialiRisultato.DBSulServerEPiuRecente:
+                                    case CredenzialiRisultato.DBSulServerEPiuRecente:
                                         throw new Exception("DB sul server è più recente!");
                                 }
                             }
                             catch (Exception exv1)
                             {
-                                cGB.MsgBox(exv1.Message, System.Windows.Forms.MessageBoxIcon.Error);
+                                cGB.MsgBox(exv1.Message, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -218,14 +221,14 @@ namespace RationesCurare7.GB
 
         private string ZippaDB(string p)
         {
-            var zp = System.IO.Path.ChangeExtension(p, ".zip");
+            var zp = Path.ChangeExtension(p, ".zip");
 
-            var cart = System.IO.Path.GetDirectoryName(p);
-            var ext = System.IO.Path.GetExtension(p);
+            var cart = Path.GetDirectoryName(p);
+            var ext = Path.GetExtension(p);
 
-            ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = 850;
+            ZipConstants.DefaultCodePage = 850;
 
-            var z = new ICSharpCode.SharpZipLib.Zip.FastZip();
+            var z = new FastZip();
             z.CreateZip(zp, cart, false, ext);
 
             return zp;
@@ -233,10 +236,10 @@ namespace RationesCurare7.GB
 
         private string MettiDBInTempPath(string s)
         {
-            var z = System.IO.Path.GetTempPath();
-            z = System.IO.Path.Combine(z, Email + System.IO.Path.GetExtension(s));
+            var z = Path.GetTempPath();
+            z = Path.Combine(z, Email + Path.GetExtension(s));
 
-            System.IO.File.Copy(s, z, true);
+            File.Copy(s, z, true);
 
             return z;
         }

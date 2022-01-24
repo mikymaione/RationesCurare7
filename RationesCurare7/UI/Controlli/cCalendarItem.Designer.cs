@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cCalendarItem
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -87,9 +90,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Label lTesto;
-        public System.Windows.Forms.Label lGiorno;
+        private Panel panel1;
+        public Label lTesto;
+        public Label lGiorno;
 
     }
 }

@@ -5,7 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.Data.Common;
+using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -25,17 +28,17 @@ namespace RationesCurare7.UI.Forms
 
         private void bEsegui_Click(object sender, EventArgs e)
         {
-            dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = bindingSource1;
 
             bindingSource1.DataSource = cGB.sDB.EseguiSQLDataTable(eSQL.Text, GetParamsForSQL());
         }
 
-        private System.Data.Common.DbParameter[] GetParamsForSQL()
+        private DbParameter[] GetParamsForSQL()
         {
             using (var fSP = new fSQLParams(eSQL.Text))
-                if (fSP.Valori.Count == 0 || fSP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (fSP.Valori.Count == 0 || fSP.ShowDialog() == DialogResult.OK)
                     return cGB.sDB.NewPars(fSP.Valori);
 
             return null;

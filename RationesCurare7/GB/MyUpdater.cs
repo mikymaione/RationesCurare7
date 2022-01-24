@@ -5,8 +5,14 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace RationesCurare7
 {
@@ -21,7 +27,7 @@ namespace RationesCurare7
 
         private static VersioneInfo MioV;
         private static string Mio;
-        private static string PathFileVersioni = System.IO.Path.Combine(Application.UserAppDataPath, "versioni.txt");
+        private static string PathFileVersioni = Path.Combine(Application.UserAppDataPath, "versioni.txt");
 
         public static DateTime _Versione;
 
@@ -29,12 +35,12 @@ namespace RationesCurare7
         private static bool DeZippaEdEsegui(string s)
         {
             var resu = false;
-            var k = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(s), Application.ProductName);
+            var k = Path.Combine(Path.GetDirectoryName(s), Application.ProductName);
 
             try
             {
-                if (System.IO.Directory.Exists(k))
-                    System.IO.Directory.Delete(k, true);
+                if (Directory.Exists(k))
+                    Directory.Delete(k, true);
             }
             catch
             {
@@ -44,22 +50,22 @@ namespace RationesCurare7
             {
                 try
                 {
-                    var z = new ICSharpCode.SharpZipLib.Zip.FastZip();
+                    var z = new FastZip();
                     z.ExtractZip(s, k, "");
 
-                    var exex = System.IO.Directory.GetFiles(k, "*.exe", System.IO.SearchOption.AllDirectories);
-                    var msi = System.IO.Directory.GetFiles(k, "*.msi", System.IO.SearchOption.AllDirectories);
+                    var exex = Directory.GetFiles(k, "*.exe", SearchOption.AllDirectories);
+                    var msi = Directory.GetFiles(k, "*.msi", SearchOption.AllDirectories);
                     var trov = false;
                     var il_setup = "";
 
                     //setup.exe
                     if (!trov)
                     {
-                        var maxExex = (exex == null ? 0 : exex.Length);
+                        var maxExex = exex?.Length ?? 0;
 
                         for (var j = 0; j < maxExex; j++)
                         {
-                            var nj = System.IO.Path.GetFileName(exex[j]);
+                            var nj = Path.GetFileName(exex[j]);
 
                             if (nj.Equals("setup.exe", StringComparison.OrdinalIgnoreCase))
                             {
@@ -78,12 +84,12 @@ namespace RationesCurare7
                             trov = true;
                         }
 
-                    if (trov && System.IO.File.Exists(il_setup))
+                    if (trov && File.Exists(il_setup))
                         if (cGB.MsgBox($"Vuoi installare la nuova versione di {Application.ProductName}?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, true) == DialogResult.Yes)
                         {
                             cGB.MsgI("Il programma verrà aggiornato alla nuova versione!");
 
-                            System.Diagnostics.Process.Start(il_setup);
+                            Process.Start(il_setup);
                             Environment.Exit(0);
 
                             resu = true;
@@ -104,10 +110,10 @@ namespace RationesCurare7
 
         private static bool DownloadFileFromInternet(string http_, string path_salvataggio)
         {
-            if (System.IO.File.Exists(path_salvataggio))
+            if (File.Exists(path_salvataggio))
                 try
                 {
-                    System.IO.File.Delete(path_salvataggio);
+                    File.Delete(path_salvataggio);
                 }
                 catch
                 {
@@ -116,7 +122,7 @@ namespace RationesCurare7
 
             try
             {
-                using (var c = new System.Net.WebClient())
+                using (var c = new WebClient())
                     c.DownloadFile(http_, path_salvataggio);
 
                 return true;
@@ -142,7 +148,7 @@ namespace RationesCurare7
             Mio = Application.ProductName + ".exe";
             _Versione = Versione_;
 
-            cGB.CreaIcona($"Aggiornamenti automatici");
+            cGB.CreaIcona("Aggiornamenti automatici");
 
             if (MostraPopup)
                 cGB.MsgI("Collegamento al sito");
@@ -156,12 +162,12 @@ namespace RationesCurare7
 
                 if (ControllaVersione(PathFileVersioni, MostraPopup))
                 {
-                    var MioV_NomeZip = System.IO.Path.Combine(Application.UserAppDataPath, MioV.NomeZip);
+                    var MioV_NomeZip = Path.Combine(Application.UserAppDataPath, MioV.NomeZip);
 
-                    if (System.IO.File.Exists(PathFileVersioni))
+                    if (File.Exists(PathFileVersioni))
                         try
                         {
-                            System.IO.File.Delete(PathFileVersioni);
+                            File.Delete(PathFileVersioni);
                         }
                         catch
                         {
@@ -170,10 +176,10 @@ namespace RationesCurare7
 
                     try
                     {
-                        if (System.IO.File.Exists(MioV_NomeZip))
+                        if (File.Exists(MioV_NomeZip))
                             try
                             {
-                                System.IO.File.Delete(MioV_NomeZip);
+                                File.Delete(MioV_NomeZip);
                             }
                             catch
                             {
@@ -193,7 +199,7 @@ namespace RationesCurare7
                             cGB.MsgI("Download della nuova versione in corso... attendere!");
                             DownloadFileFromInternet("http://www.maionemiky.it/public/programmi/" + MioV.NomeZip, MioV_NomeZip);
 
-                            if (System.IO.File.Exists(MioV_NomeZip))
+                            if (File.Exists(MioV_NomeZip))
                             {
                                 cGB.MsgI("Il setup del programma è stato scaricato!");
 
@@ -236,7 +242,7 @@ namespace RationesCurare7
 
             try
             {
-                c.Versione = DateTime.ParseExact(d, "dd/MM/yy", System.Globalization.CultureInfo.InvariantCulture);
+                c.Versione = DateTime.ParseExact(d, "dd/MM/yy", CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -252,8 +258,8 @@ namespace RationesCurare7
 
             try
             {
-                if (System.IO.File.Exists(p))
-                    using (var f = new System.IO.StreamReader(p))
+                if (File.Exists(p))
+                    using (var f = new StreamReader(p))
                     {
                         while (!f.EndOfStream)
                         {

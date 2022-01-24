@@ -5,12 +5,8 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Forms
@@ -31,8 +27,8 @@ namespace RationesCurare7.UI.Forms
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            Tipo = (rbSingolo.Checked ? eTipo.Singolo : eTipo.Serie);
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            Tipo = rbSingolo.Checked ? eTipo.Singolo : eTipo.Serie;
+            DialogResult = DialogResult.OK;
         }
 
 

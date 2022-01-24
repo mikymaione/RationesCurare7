@@ -5,8 +5,15 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.Data;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.GB;
+using RationesCurare7.Properties;
+using RationesCurare7.UI.Forms;
+using RationesCurare7.UI.Stampe;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -14,17 +21,17 @@ namespace RationesCurare7.UI.Controlli
     {
 
         private string Query = "select * from movimenti"; //default
-        private double CurSaldo = 0;
+        private double CurSaldo;
         private string CashName = "Saldo";
-        private GB.cFiltriRicerca FiltriAttuali = new GB.cFiltriRicerca();
-        private System.Data.DataTable UltimaRicerca = null;
+        private cFiltriRicerca FiltriAttuali = new cFiltriRicerca();
+        private DataTable UltimaRicerca;
 
 
         public cSaldo() : this("Saldo") { }
 
-        public cSaldo(string CashName_) : this(CashName_, new GB.cFiltriRicerca()) { }
+        public cSaldo(string CashName_) : this(CashName_, new cFiltriRicerca()) { }
 
-        public cSaldo(string CashName_, GB.cFiltriRicerca f)
+        public cSaldo(string CashName_, cFiltriRicerca f)
         {
             InitializeComponent();
 
@@ -45,14 +52,14 @@ namespace RationesCurare7.UI.Controlli
             LoadData(ReloadCashInTreeView, FiltriAttuali);
         }
 
-        private void LoadData(bool ReloadCashInTreeView, GB.cFiltriRicerca f)
+        private void LoadData(bool ReloadCashInTreeView, cFiltriRicerca f)
         {
-            var ImSaldo = (CashName == "Saldo");
-            var cc = (f.bCassa ? f.Cassa : CashName);
+            var ImSaldo = CashName == "Saldo";
+            var cc = f.bCassa ? f.Cassa : CashName;
 
             FiltriAttuali = f;
 
-            var m = new DB.DataWrapper.cMovimenti()
+            var m = new cMovimenti
             {
                 tipo = cc,
                 descrizione = cGB.QQ(f.Descrizione, f.bDescrizione),
@@ -75,9 +82,9 @@ namespace RationesCurare7.UI.Controlli
             if (R != 0)
             {
                 if (CurSaldo > 0)
-                    iSaldo.Image = Properties.Resources.arrowGreen;
+                    iSaldo.Image = Resources.arrowGreen;
                 else if (CurSaldo < 0)
-                    iSaldo.Image = Properties.Resources.arrowRed;
+                    iSaldo.Image = Resources.arrowRed;
             }
 
             bNuovo.Enabled = !ImSaldo;
@@ -100,11 +107,11 @@ namespace RationesCurare7.UI.Controlli
 
         private void bGiroconto_Click(object sender, EventArgs e)
         {
-            using (var g = new Forms.fGiroconto(CashName))
+            using (var g = new fGiroconto(CashName))
                 if (g.ShowDialog() == DialogResult.OK)
-                    using (var fi = new Forms.fInserimento())
+                    using (var fi = new fInserimento())
                     {
-                        fi.Modalita = Forms.fInserimento.eModalita.Giroconto;
+                        fi.Modalita = fInserimento.eModalita.Giroconto;
                         fi.TipoGiroconto = g.CassaSelezionata;
                         fi.Tipo = CashName;
                         fi.Saldo = CurSaldo;
@@ -118,7 +125,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void bPeriodico_Click(object sender, EventArgs e)
         {
-            using (var fi = new Forms.fInserimentoPeriodico(CashName))
+            using (var fi = new fInserimentoPeriodico(CashName))
                 fi.ShowDialog();
 
             dataGridView1.Focus();
@@ -132,7 +139,7 @@ namespace RationesCurare7.UI.Controlli
 
                 if (i > -1)
                 {
-                    var m = new DB.DataWrapper.cMovimenti();
+                    var m = new cMovimenti();
                     m.Elimina(i);
 
                     LoadData(true);
@@ -144,7 +151,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void bSQL_Click(object sender, EventArgs e)
         {
-            using (var f = new Forms.fSQL(Query))
+            using (var f = new fSQL(Query))
                 f.ShowDialog();
         }
 
@@ -168,7 +175,7 @@ namespace RationesCurare7.UI.Controlli
         private void Stampa()
         {
             if (StampaAbilitata && UltimaRicerca != null)
-                using (var s = new UI.Stampe.fStampa(UltimaRicerca))
+                using (var s = new fStampa(UltimaRicerca))
                     s.ShowDialog();
 
             dataGridView1.Focus();
@@ -176,7 +183,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Modifica(bool Nuovo)
         {
-            using (var fi = new Forms.fInserimento())
+            using (var fi = new fInserimento())
             {
                 if (!Nuovo)
                     fi.ID_ = SelectedID;

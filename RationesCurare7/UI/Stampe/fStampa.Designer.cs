@@ -1,11 +1,15 @@
-﻿namespace RationesCurare7.UI.Stampe
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+
+namespace RationesCurare7.UI.Stampe
 {
     partial class fStampa
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -96,9 +100,9 @@
 
         #if __MonoCS__
         #else
-        private Microsoft.Reporting.WinForms.ReportViewer ReportViewer1;
+        private ReportViewer ReportViewer1;
         #endif
-        private System.Windows.Forms.BindingSource movimentiBindingSource;
+        private BindingSource movimentiBindingSource;
         private dsDB dsDB;
 
     }

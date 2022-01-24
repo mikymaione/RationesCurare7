@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cCalendar
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -850,7 +853,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel fl4;
+        private Panel fl4;
         private cCalendarItem cCalendarItem4;
         private cCalendarItem cCalendarItem9;
         private cCalendarItem cCalendarItem10;
@@ -858,7 +861,7 @@
         private cCalendarItem cCalendarItem12;
         private cCalendarItem cCalendarItem13;
         private cCalendarItem cCalendarItem14;
-        private System.Windows.Forms.Panel fl1;
+        private Panel fl1;
         private cCalendarItem cCalendarItem15;
         private cCalendarItem cCalendarItem16;
         private cCalendarItem cCalendarItem17;
@@ -866,7 +869,7 @@
         private cCalendarItem cCalendarItem19;
         private cCalendarItem cCalendarItem20;
         private cCalendarItem cCalendarItem21;
-        private System.Windows.Forms.Panel fl0;
+        private Panel fl0;
         private cCalendarItem cCalendarItem22;
         private cCalendarItem cCalendarItem23;
         private cCalendarItem cCalendarItem24;
@@ -874,7 +877,7 @@
         private cCalendarItem cCalendarItem26;
         private cCalendarItem cCalendarItem27;
         private cCalendarItem cCalendarItem28;
-        private System.Windows.Forms.Panel fl3;
+        private Panel fl3;
         private cCalendarItem cCalendarItem29;
         private cCalendarItem cCalendarItem30;
         private cCalendarItem cCalendarItem31;
@@ -882,7 +885,7 @@
         private cCalendarItem cCalendarItem33;
         private cCalendarItem cCalendarItem34;
         private cCalendarItem cCalendarItem35;
-        private System.Windows.Forms.Panel fl2;
+        private Panel fl2;
         private cCalendarItem cCalendarItem36;
         private cCalendarItem cCalendarItem37;
         private cCalendarItem cCalendarItem38;
@@ -890,17 +893,17 @@
         private cCalendarItem cCalendarItem40;
         private cCalendarItem cCalendarItem41;
         private cCalendarItem cCalendarItem42;
-        private System.Windows.Forms.Panel pDays;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lTitle;
-        private System.Windows.Forms.Panel pMonth;
-        private System.Windows.Forms.Label lMese;
-        private System.Windows.Forms.Panel fl5;
+        private Panel pDays;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Label lTitle;
+        private Panel pMonth;
+        private Label lMese;
+        private Panel fl5;
         private cCalendarItem cCalendarItem1;
         private cCalendarItem cCalendarItem2;
         private cCalendarItem cCalendarItem3;

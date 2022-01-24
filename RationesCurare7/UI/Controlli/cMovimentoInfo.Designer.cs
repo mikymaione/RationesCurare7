@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cMovimentoInfo
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -109,11 +112,11 @@
         }
 
         #endregion
-        public System.Windows.Forms.Label eCassa;
-        public System.Windows.Forms.Label eMacroArea;
-        public System.Windows.Forms.Label eDescrizione;
-        public System.Windows.Forms.Label eData;
-        public System.Windows.Forms.Label eSoldi;
-        public System.Windows.Forms.Label eNome;
+        public Label eCassa;
+        public Label eMacroArea;
+        public Label eDescrizione;
+        public Label eData;
+        public Label eSoldi;
+        public Label eNome;
     }
 }

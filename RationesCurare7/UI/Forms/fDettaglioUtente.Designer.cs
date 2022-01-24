@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fDettaglioUtente
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -238,21 +241,21 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox eNome;
-        private System.Windows.Forms.TextBox ePathDB;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button bOk;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pbImmagine;
-        private System.Windows.Forms.Button bScegliDB;
-        private System.Windows.Forms.TextBox ePsw;
-        private System.Windows.Forms.TextBox eEmail;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button bApriPathDB;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox eValuta;
+        private TextBox eNome;
+        private TextBox ePathDB;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Button bOk;
+        private Label label5;
+        private PictureBox pbImmagine;
+        private Button bScegliDB;
+        private TextBox ePsw;
+        private TextBox eEmail;
+        private ToolTip toolTip1;
+        private Button bApriPathDB;
+        private Label label6;
+        private ComboBox eValuta;
     }
 }

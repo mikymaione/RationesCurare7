@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cParamEdit
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -65,7 +68,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox eValore;
-        private System.Windows.Forms.Label lNome;
+        private TextBox eValore;
+        private Label lNome;
     }
 }

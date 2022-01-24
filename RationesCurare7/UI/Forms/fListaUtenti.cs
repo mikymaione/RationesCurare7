@@ -5,8 +5,13 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.IO;
 using System.Windows.Forms;
+using RationesCurare7.DB;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.UI.Controlli;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -21,7 +26,7 @@ namespace RationesCurare7.UI.Forms
             Su, Giu
         }
 
-        private Controlli.cUtenteListElement[] eUtenti = null;
+        private cUtenteListElement[] eUtenti;
         public int IDUtente;
 
         private int IDUtenteSelezionato
@@ -50,16 +55,16 @@ namespace RationesCurare7.UI.Forms
         private void Carica()
         {
             var cisono = false;
-            var us = new DB.DataWrapper.cUtenti();
+            var us = new cUtenti();
             var u = us.ListaUtenti();
 
             if ((u?.Count ?? 0) > 0)
             {
-                eUtenti = new Controlli.cUtenteListElement[u.Count];
+                eUtenti = new cUtenteListElement[u.Count];
 
                 for (var i = 0; i < eUtenti.Length; i++)
                 {
-                    eUtenti[i] = new Controlli.cUtenteListElement()
+                    eUtenti[i] = new cUtenteListElement
                     {
                         ID_ = u[i].ID,
                         NomeUtente = u[i].Nome,
@@ -70,8 +75,8 @@ namespace RationesCurare7.UI.Forms
                         Dock = DockStyle.Top
                     };
 
-                    eUtenti[i].ClickEvent += new Controlli.cUtenteListElement.ClickEventHandler(fListaUtenti_ClickEvent);
-                    eUtenti[i].DoubleClickEvent += new Controlli.cUtenteListElement.DoubleClickEventHandler(fListaUtenti_DoubleClickEvent);
+                    eUtenti[i].ClickEvent += fListaUtenti_ClickEvent;
+                    eUtenti[i].DoubleClickEvent += fListaUtenti_DoubleClickEvent;
                 }
 
                 Array.Reverse(eUtenti);
@@ -99,7 +104,7 @@ namespace RationesCurare7.UI.Forms
             for (var i = 0; i < (eUtenti?.Length ?? 0); i++)
                 eUtenti[i].DeselectMe();
 
-            ((Controlli.cUtenteListElement)sender).Click_(true);
+            ((cUtenteListElement)sender).Click_(true);
         }
 
         private void bOk_Click(object sender, EventArgs e)
@@ -164,7 +169,7 @@ namespace RationesCurare7.UI.Forms
             if (cGB.MsgBox("Nascondere l'utente?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (ChiediPsw(GetSelectedUserIndex()))
                 {
-                    var u = new DB.DataWrapper.cUtenti();
+                    var u = new cUtenti();
                     u.Elimina(GetSelectedUserID());
 
                     Carica();
@@ -178,10 +183,10 @@ namespace RationesCurare7.UI.Forms
 
         private void AggiungiQuestoDBAllaLista(string FileName, string psw)
         {
-            if (System.IO.File.Exists(FileName))
+            if (File.Exists(FileName))
             {
                 var Presente = false;
-                var u = new DB.DataWrapper.cUtenti();
+                var u = new cUtenti();
                 u.CaricaByPath(FileName);
 
                 if (u.ID > -1)
@@ -195,12 +200,12 @@ namespace RationesCurare7.UI.Forms
 
                 if (!Presente)
                 {
-                    u.Nome = System.IO.Path.GetFileNameWithoutExtension(FileName);
+                    u.Nome = Path.GetFileNameWithoutExtension(FileName);
                     u.Path = FileName;
                     u.Email = u.Nome;
-                    u.SetTipoDBByExtension(System.IO.Path.GetExtension(FileName));
+                    u.SetTipoDBByExtension(Path.GetExtension(FileName));
 
-                    cGB.sDB = new DB.cDB(false, DB.cDB.DataBase.SQLite, FileName);
+                    cGB.sDB = new cDB(false, cDB.DataBase.SQLite, FileName);
 
                     using (var fd = new fDettaglioUtente(u))
                         if (fd.ShowDialog() == DialogResult.OK)
@@ -211,7 +216,7 @@ namespace RationesCurare7.UI.Forms
 
         private void Cerca()
         {
-            using (var op = new OpenFileDialog()
+            using (var op = new OpenFileDialog
             {
                 Title = "Selezionare un database da aggiungere",
                 Multiselect = false,
@@ -226,7 +231,7 @@ namespace RationesCurare7.UI.Forms
             for (var i = 0; i < (eUtenti?.Length ?? 0); i++)
                 if (eUtenti[i].ImClicked)
                 {
-                    if (System.IO.File.Exists(eUtenti[i].PathDB))
+                    if (File.Exists(eUtenti[i].PathDB))
                     {
                         if (ChiediPsw(i))
                         {
@@ -251,7 +256,7 @@ namespace RationesCurare7.UI.Forms
             {
                 p.Email = eUtenti[i].Email;
                 p.PswC = eUtenti[i].Psw;
-                ok = (p.ShowDialog() == DialogResult.OK);
+                ok = p.ShowDialog() == DialogResult.OK;
             }
 
             return ok;
@@ -303,12 +308,12 @@ namespace RationesCurare7.UI.Forms
             }
         }
 
-        private void flowLayoutPanel1_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void flowLayoutPanel1_MouseWheel(object sender, MouseEventArgs e)
         {
             MouseWheel_(e.Delta);
         }
 
-        void fListaUtenti_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        void fListaUtenti_MouseWheel(object sender, MouseEventArgs e)
         {
             MouseWheel_(e.Delta);
         }

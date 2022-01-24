@@ -1,11 +1,15 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using RationesCurare7.UI.Controlli;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fMain
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -311,16 +315,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pLeft;
-        private UI.Controlli.cUtente cUtente1;
-        public System.Windows.Forms.TabControl tcSchede;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem chiudiToolStripMenuItem;
-        private System.Windows.Forms.ImageList ilTabs;
-        private System.Windows.Forms.TreeView cAlbero;
-        private System.Windows.Forms.ImageList ilAlbero;
-        private System.Windows.Forms.Panel pQuickInserimento;
-        private System.Windows.Forms.Button bNuovoGiroconto;
-        private System.Windows.Forms.Button bNuovoMovimento;
+        private Panel pLeft;
+        private cUtente cUtente1;
+        public TabControl tcSchede;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem chiudiToolStripMenuItem;
+        private ImageList ilTabs;
+        private TreeView cAlbero;
+        private ImageList ilAlbero;
+        private Panel pQuickInserimento;
+        private Button bNuovoGiroconto;
+        private Button bNuovoMovimento;
     }
 }

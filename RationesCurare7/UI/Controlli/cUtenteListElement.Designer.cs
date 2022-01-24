@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cUtenteListElement
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -130,12 +133,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pUtente;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lPathDB;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lNomeUtente;
+        private Panel panel1;
+        private PictureBox pUtente;
+        private Panel panel2;
+        private Label lPathDB;
+        private Panel panel3;
+        private Label lNomeUtente;
 
     }
 }

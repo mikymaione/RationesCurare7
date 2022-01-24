@@ -5,7 +5,9 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -13,7 +15,7 @@ namespace RationesCurare7.UI.Controlli
     public partial class fCalc : Form
     {
 
-        private double Saldo = 0;
+        private double Saldo;
 
         public double setSaldo
         {
@@ -38,7 +40,7 @@ namespace RationesCurare7.UI.Controlli
         public fCalc()
         {
             InitializeComponent();
-            this.bEurom.Text = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
+            bEurom.Text = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
         }
 
         private void bAdd_Click(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace RationesCurare7.UI.Controlli
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
 
                 case Keys.Enter:

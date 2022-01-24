@@ -5,7 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -32,14 +35,14 @@ namespace RationesCurare7.UI.Controlli
         {
             get
             {
-                return (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+                return LicenseManager.UsageMode == LicenseUsageMode.Designtime;
             }
         }
 
         public cMyUserControl()
         {
-            this.Load += new EventHandler(cMyUserControl_Load);
-            this.Paint += new PaintEventHandler(cMyUserControl_Paint);
+            Load += cMyUserControl_Load;
+            Paint += cMyUserControl_Paint;
         }
 
         public void ChiudiScheda()
@@ -58,7 +61,7 @@ namespace RationesCurare7.UI.Controlli
         {
             try
             {
-                this.ParentForm.AcceptButton = AcceptButton;
+                ParentForm.AcceptButton = AcceptButton;
             }
             catch
             {
@@ -67,7 +70,7 @@ namespace RationesCurare7.UI.Controlli
 
             try
             {
-                AutoFocus.Focus();
+                AutoFocus?.Focus();
             }
             catch
             {
@@ -75,12 +78,12 @@ namespace RationesCurare7.UI.Controlli
             }
         }
 
-        protected void DisegnaBordo(eLatoBordo b, System.Drawing.Graphics g)
+        protected void DisegnaBordo(eLatoBordo b, Graphics g)
         {
-            DisegnaBordo(b, g, this.Width, 40);
+            DisegnaBordo(b, g, Width, 40);
         }
 
-        protected void DisegnaBordo(eLatoBordo b, System.Drawing.Graphics g, Control sender)
+        protected void DisegnaBordo(eLatoBordo b, Graphics g, Control sender)
         {
             var h = sender.Height - 1;
             var w = sender.Width;
@@ -88,7 +91,7 @@ namespace RationesCurare7.UI.Controlli
             DisegnaBordo(b, g, w, h);
         }
 
-        private void DisegnaBordo(eLatoBordo b, System.Drawing.Graphics g, int w, int h)
+        private void DisegnaBordo(eLatoBordo b, Graphics g, int w, int h)
         {
             var H = false;
             var W = false;
@@ -106,10 +109,10 @@ namespace RationesCurare7.UI.Controlli
             }
 
             if (H)
-                g.DrawLine(cGB.myPenLeft, new System.Drawing.Point(0, 0), new System.Drawing.Point(0, h));
+                g.DrawLine(cGB.myPenLeft, new Point(0, 0), new Point(0, h));
 
             if (W)
-                g.DrawLine(cGB.myPenBottom, new System.Drawing.Point(0, h), new System.Drawing.Point(w, h));
+                g.DrawLine(cGB.myPenBottom, new Point(0, h), new Point(w, h));
         }
 
         private void cMyUserControl_Paint(object sender, PaintEventArgs e)
@@ -127,7 +130,7 @@ namespace RationesCurare7.UI.Controlli
 
         protected bool MsgElimina(string addText = "")
         {
-            return (cGB.MsgBox("Sicuro di voler eliminare " + addText + "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+            return cGB.MsgBox("Sicuro di voler eliminare " + addText + "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
 

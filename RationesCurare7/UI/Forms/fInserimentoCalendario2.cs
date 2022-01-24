@@ -5,13 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.GB;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -49,22 +47,22 @@ namespace RationesCurare7.UI.Forms
             cbRipetiOgni.ValueMember = "ID";
             cbRipetiOgni.DisplayMember = "Valore";
             cbRipetiOgni.Items.AddRange(
-                new GB.cComboItem[] {
-                    new GB.cComboItem("X","Mai"), //0
-                    new GB.cComboItem("D","Ogni giorno"), //1
-                    new GB.cComboItem("W","Ogni settimana"), //2
-                    new GB.cComboItem("M","Ogni mese"), //3
-                    new GB.cComboItem("Y","Ogni anno") //4
+                new[] {
+                    new cComboItem("X","Mai"), //0
+                    new cComboItem("D","Ogni giorno"), //1
+                    new cComboItem("W","Ogni settimana"), //2
+                    new cComboItem("M","Ogni mese"), //3
+                    new cComboItem("Y","Ogni anno") //4
                 }
             );
 
             cbTermina.ValueMember = "ID";
             cbTermina.DisplayMember = "Valore";
             cbTermina.Items.AddRange(
-                new GB.cComboItem[] {
-                    new GB.cComboItem("X","Mai"), //0                   
-                    new GB.cComboItem("D","Data"), //1
-                    new GB.cComboItem("N","Numero occorrenze") //2
+                new[] {
+                    new cComboItem("X","Mai"), //0                   
+                    new cComboItem("D","Data"), //1
+                    new cComboItem("N","Numero occorrenze") //2
                 }
             );
         }
@@ -157,14 +155,14 @@ namespace RationesCurare7.UI.Forms
                         }
                 }
 
-            DB.DataWrapper.cCalendario[] e = new DB.DataWrapper.cCalendario[Num];
+            cCalendario[] e = new cCalendario[Num];
 
             if (Num > 1)
                 g = Guid.NewGuid().ToString();
 
             for (int i = 0; i < Num; i++)
             {
-                e[i] = new DB.DataWrapper.cCalendario()
+                e[i] = new cCalendario
                 {
                     ID = ID_,
                     Descrizione = eDescrizione.Text,
@@ -182,12 +180,12 @@ namespace RationesCurare7.UI.Forms
                     gg = gg.AddYears(ripe);
             }
 
-            DB.DataWrapper.cCalendario mm = new DB.DataWrapper.cCalendario();
+            cCalendario mm = new cCalendario();
 
             if (mm.Inserisci(e) <= 0)
                 MsgErroreSalvataggio();
             else
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                DialogResult = DialogResult.OK;
         }
 
         private void cbRipetiOgni_SelectedIndexChanged(object sender, EventArgs e)

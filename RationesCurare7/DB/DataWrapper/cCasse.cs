@@ -5,8 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
+using System;
 using System.Collections.Generic;
-using System.Data.Common;
+using System.Data;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -32,21 +34,21 @@ namespace RationesCurare7.DB.DataWrapper
         }
 
 
-        public System.Data.DataTable ListaCasse(string cassa_da_escludere)
+        public DataTable ListaCasse(string cassa_da_escludere)
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("Nome", cassa_da_escludere)
             };
 
-            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_ListaEX), p);
+            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(cDB.Queries.Casse_ListaEX), p);
         }
 
         public HashSet<string> ListaCasseTree()
         {
             var r = new HashSet<string>();
 
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("MostraTutte", 1)
             };
@@ -59,27 +61,27 @@ namespace RationesCurare7.DB.DataWrapper
             return r;
         }
 
-        public System.Data.DataTable ListaCasse() =>
-            cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Lista));
+        public DataTable ListaCasse() =>
+            cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Lista));
 
-        public System.Data.DataTable Ricerca()
+        public DataTable Ricerca()
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("MostraTutte", 1)
             };
 
-            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Ricerca), p);
+            return cGB.sDB.EseguiSQLDataTable(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p);
         }
 
         public int Elimina(string ID_)
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("nome", ID_)
             };
 
-            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Elimina), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Elimina), p);
         }
 
         public int Salva() =>
@@ -87,19 +89,19 @@ namespace RationesCurare7.DB.DataWrapper
 
         private int Inserisci()
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("nomenuovo", nomenuovo),
                 cGB.sDB.NewPar("imgName", imgName),
                 cGB.sDB.NewPar("Nascondi", Nascondi)
             };
 
-            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Inserisci), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Inserisci), p);
         }
 
         private int Modifica()
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("nomenuovo", nomenuovo),
                 cGB.sDB.NewPar("imgName", imgName),
@@ -107,19 +109,19 @@ namespace RationesCurare7.DB.DataWrapper
                 cGB.sDB.NewPar("Nascondi", Nascondi)
             };
 
-            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Aggiorna), p);
+            return cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Aggiorna), p);
         }
 
         public List<cCasse> CasseAggiuntive(bool MostraTutte)
         {
             var cc = new List<cCasse>();
 
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("MostraTutte", MostraTutte? 1 : 0)
             };
 
-            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Ricerca), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Ricerca), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
@@ -129,7 +131,7 @@ namespace RationesCurare7.DB.DataWrapper
                             n,
                             n,
                             dr["imgName"] as byte[],
-                            System.Convert.ToBoolean(dr["Nascondi"])
+                            Convert.ToBoolean(dr["Nascondi"])
                         ));
                     }
 
@@ -138,18 +140,18 @@ namespace RationesCurare7.DB.DataWrapper
 
         private void CaricaByID()
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("nome", nome)
             };
 
-            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(DB.cDB.Queries.Casse_Carica), p))
+            using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Casse_Carica), p))
                 if (dr.HasRows)
                     while (dr.Read())
                     {
                         imgName = dr["imgName"] as byte[];
                         nome = dr["nome"] as string;
-                        Nascondi = System.Convert.ToBoolean(dr["Nascondi"]);
+                        Nascondi = Convert.ToBoolean(dr["Nascondi"]);
                         nomenuovo = nome;
                     }
         }

@@ -1,11 +1,15 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using RationesCurare7.UI.Controlli;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fInserimento
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -230,20 +234,20 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox eNome;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox eDescrizione;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button bSalva;
-        public UI.Controlli.cMathEdit eSoldi;
-        public Controlli.cDateControl eData;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox eMacroArea;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lCassaGiroconto;
-        private System.Windows.Forms.Label lCassa;
+        public TextBox eNome;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        public TextBox eDescrizione;
+        private Label label4;
+        private Button bSalva;
+        public cMathEdit eSoldi;
+        public cDateControl eData;
+        private Label label5;
+        public TextBox eMacroArea;
+        private Label label6;
+        private Panel panel1;
+        private Label lCassaGiroconto;
+        private Label lCassa;
     }
 }

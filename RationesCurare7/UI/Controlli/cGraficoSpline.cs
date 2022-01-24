@@ -5,10 +5,13 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -36,27 +39,27 @@ namespace RationesCurare7.UI.Controlli
             Cerca();
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.Series CreaSerie()
+        private Series CreaSerie()
         {
-            var s = new System.Windows.Forms.DataVisualization.Charting.Series();
-            s.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            var s = new Series();
+            s.ChartType = SeriesChartType.Line;
             s["DrawingStyle"] = ColoreBarra;
 
             return s;
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.DataPoint CreaDataPoint(string LaData, double yuo, Color positivo, Color negativo)
+        private DataPoint CreaDataPoint(string LaData, double yuo, Color positivo, Color negativo)
         {
-            return new System.Windows.Forms.DataVisualization.Charting.DataPoint()
+            return new DataPoint
             {
                 AxisLabel = LaData,
                 YValues = DoubleToDataPointDouble(yuo),
                 ToolTip = ToEuroWithDate(yuo, LaData),
-                Color = (yuo < 0 ? negativo : positivo)
+                Color = yuo < 0 ? negativo : positivo
             };
         }
 
-        private System.Windows.Forms.DataVisualization.Charting.DataPoint CreaDataPoint(string LaData, double yuo)
+        private DataPoint CreaDataPoint(string LaData, double yuo)
         {
             return CreaDataPoint(LaData, yuo, Color.Green, Color.Red);
         }
@@ -74,11 +77,11 @@ namespace RationesCurare7.UI.Controlli
 
         public void Cerca()
         {
-            this.Enabled = false;
+            Enabled = false;
 
             try
             {
-                var mov = new DB.DataWrapper.cMovimenti();
+                var mov = new cMovimenti();
 
                 Totale = mov.RicercaGraficoSaldo(false);
                 grafico.Series.Clear();
@@ -124,7 +127,7 @@ namespace RationesCurare7.UI.Controlli
                                         for (var u = 0; u < (differenza_date?.Length ?? 0); u++)
                                             if (differenza_date[u] != LaData)
                                             {
-                                                var data_point_vuoto_no_dati_su_db = new System.Windows.Forms.DataVisualization.Charting.DataPoint()
+                                                var data_point_vuoto_no_dati_su_db = new DataPoint
                                                 {
                                                     YValues = DoubleToDataPointDouble(ultimoSoldi),
                                                     ToolTip = ToEuroWithDate(ultimoSoldi, differenza_date[u]),
@@ -143,7 +146,7 @@ namespace RationesCurare7.UI.Controlli
                                 ultimoSoldi = soldi;
                             } //fine lettura DB                       
 
-                        this.gbGrafico.Text = "Grafico dei movimenti - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
+                        gbGrafico.Text = "Grafico dei movimenti - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
                         serie_nuova.Name = "Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
                         grafico.Series.Add(serie_nuova);
                     }
@@ -156,7 +159,7 @@ namespace RationesCurare7.UI.Controlli
             finally
             {
                 SettaTitolo();
-                this.Enabled = true;
+                Enabled = true;
 
                 foreach (var area in grafico.ChartAreas)
                     area.RecalculateAxesScale();

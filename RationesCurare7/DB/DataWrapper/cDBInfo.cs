@@ -5,8 +5,8 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Data.Common;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -27,7 +27,7 @@ namespace RationesCurare7.DB.DataWrapper
         public int Aggiorna() =>
             cGB.sDB.EseguiSQLNoQuery(
                 cDB.Queries.DBInfo_Aggiorna,
-                new DbParameter[]
+                new[]
                 {
                     cGB.sDB.NewPar("Nome", Nome),
                     cGB.sDB.NewPar("Psw", Psw),
@@ -43,7 +43,7 @@ namespace RationesCurare7.DB.DataWrapper
         public int Inserisci() =>
             cGB.sDB.EseguiSQLNoQuery(
                 cDB.Queries.DBInfo_Inserisci,
-                new DbParameter[]
+                new[]
                 {
                     cGB.sDB.NewPar("Nome", Nome),
                     cGB.sDB.NewPar("Psw", Psw),
@@ -58,7 +58,7 @@ namespace RationesCurare7.DB.DataWrapper
 
         private bool CaricaByID(string Email_)
         {
-            var p = new DbParameter[]
+            var p = new[]
             {
                 cGB.sDB.NewPar("Email", Email_)
             };

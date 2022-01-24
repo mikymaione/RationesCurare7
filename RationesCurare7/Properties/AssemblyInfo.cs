@@ -5,8 +5,8 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("[MAIONE MIKY]")]
 [assembly: AssemblyProduct("RationesCurare7")]
-[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2021")]
+[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2022")]
 [assembly: AssemblyTrademark("[MAIONE MIKY]")]
 [assembly: AssemblyCulture("")]
 
@@ -39,5 +39,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.21.05.11")]
-[assembly: AssemblyFileVersion("20.21.05.11")]
+[assembly: AssemblyVersion("20.22.01.24")]
+[assembly: AssemblyFileVersion("20.22.01.24")]

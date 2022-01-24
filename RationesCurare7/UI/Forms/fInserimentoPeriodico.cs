@@ -5,8 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -23,7 +25,7 @@ namespace RationesCurare7.UI.Forms
 
                 if (ID__ > -1)
                 {
-                    var m = new DB.DataWrapper.cPeriodici(ID__);
+                    var m = new cPeriodici(ID__);
 
                     ID__ = m.ID;
                     cbCassa.SelectedValue = m.tipo;
@@ -33,7 +35,7 @@ namespace RationesCurare7.UI.Forms
                     eSoldi.Value = m.soldi;
                     eNumGiorni.Value = m.NumeroGiorni;
                     cbPeriodicita.SelectedIndex = m.Periodicita_cComboItems_Index(m.TipoGiorniMese);
-                    eData.Value_ = (m.TipoGiorniMese == 'G' ? m.PartendoDalGiorno : m.GiornoDelMese);
+                    eData.Value_ = m.TipoGiorniMese == 'G' ? m.PartendoDalGiorno : m.GiornoDelMese;
                     eScadenza.Value_ = m.Scadenza;
                     eScadenza.Checked = m.Scadenza > eData.Value_;
 
@@ -52,9 +54,9 @@ namespace RationesCurare7.UI.Forms
             {
                 Tipo = Tipo_;
 
-                var p = new DB.DataWrapper.cPeriodici();
-                var m = new DB.DataWrapper.cMovimenti();
-                var c = new DB.DataWrapper.cCasse();
+                var p = new cPeriodici();
+                var m = new cMovimenti();
+                var c = new cCasse();
 
                 cbCassa.ValueMember = "Nome";
                 cbCassa.DisplayMember = "Nome";
@@ -97,7 +99,7 @@ namespace RationesCurare7.UI.Forms
                 }
                 else
                 {
-                    var m = new DB.DataWrapper.cPeriodici();
+                    var m = new cPeriodici();
 
                     m.ID = ID__;
                     m.tipo = cbCassa.Text;
@@ -126,7 +128,7 @@ namespace RationesCurare7.UI.Forms
 
         private void AbilitaPeriodicita()
         {
-            eNumGiorni.Enabled = (cbPeriodicita.SelectedIndex == 0);
+            eNumGiorni.Enabled = cbPeriodicita.SelectedIndex == 0;
         }
 
         private void cbPeriodicita_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,9 +146,9 @@ namespace RationesCurare7.UI.Forms
 
         private void eDescrizione_Leave(object sender, EventArgs e)
         {
-            if ((eMacroArea.Text == "") || (eMacroArea.Text == null))
+            if (eMacroArea.Text == "" || eMacroArea.Text == null)
             {
-                var m = new DB.DataWrapper.cMovimenti();
+                var m = new cMovimenti();
                 var a = m.MacroAree_e_Descrizioni();
 
                 foreach (var i in a)

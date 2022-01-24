@@ -5,9 +5,9 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -35,8 +35,8 @@ namespace RationesCurare7.DB.DataWrapper
 
         private int Aggiorna() =>
             cGB.sPC.EseguiSQLNoQuery(
-                cGB.sPC.LeggiQuery(DB.cDB.Queries.Utenti_Aggiorna),
-                new DbParameter[] {
+                cGB.sPC.LeggiQuery(cDB.Queries.Utenti_Aggiorna),
+                new[] {
                     cGB.sPC.NewPar("Nome", Nome),
                     cGB.sPC.NewPar("Psw", Psw),
                     cGB.sPC.NewPar("Path", Path),
@@ -48,8 +48,8 @@ namespace RationesCurare7.DB.DataWrapper
 
         private int Inserisci() =>
             cGB.sPC.EseguiSQLNoQuery(
-                cGB.sPC.LeggiQuery(DB.cDB.Queries.Utenti_Inserisci),
-                new DbParameter[] {
+                cGB.sPC.LeggiQuery(cDB.Queries.Utenti_Inserisci),
+                new[] {
                     cGB.sPC.NewPar("Nome", Nome),
                     cGB.sPC.NewPar("Psw", Psw),
                     cGB.sPC.NewPar("Path", Path),
@@ -60,8 +60,8 @@ namespace RationesCurare7.DB.DataWrapper
 
         public int Elimina(int ID__) =>
             cGB.sPC.EseguiSQLNoQuery(
-                cGB.sPC.LeggiQuery(DB.cDB.Queries.Utenti_Elimina),
-                new DbParameter[]
+                cGB.sPC.LeggiQuery(cDB.Queries.Utenti_Elimina),
+                new[]
                 {
                     cGB.sPC.NewPar("ID", ID__)
                 }
@@ -71,10 +71,10 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var cc = new List<cUtenti>();
 
-            using (var dr = cGB.sPC.EseguiSQLDataReader(cGB.sPC.LeggiQuery(DB.cDB.Queries.Utenti_Lista)))
+            using (var dr = cGB.sPC.EseguiSQLDataReader(cGB.sPC.LeggiQuery(cDB.Queries.Utenti_Lista)))
                 if (dr.HasRows)
                     while (dr.Read())
-                        cc.Add(new cUtenti()
+                        cc.Add(new cUtenti
                         {
                             ID = cGB.ObjectToInt(dr["ID"], -1),
                             Nome = Convert.ToString(dr["Nome"]),
@@ -95,9 +95,9 @@ namespace RationesCurare7.DB.DataWrapper
 
         private void CaricaBy(int ID__, string path_)
         {
-            var q = cGB.sPC.LeggiQuery(ID__ == -1 ? DB.cDB.Queries.Utenti_ByPath : DB.cDB.Queries.Utenti_Dettaglio);
+            var q = cGB.sPC.LeggiQuery(ID__ == -1 ? cDB.Queries.Utenti_ByPath : cDB.Queries.Utenti_Dettaglio);
 
-            var p = new DbParameter[]
+            var p = new[]
             {
                 ID__ == -1 ? cGB.sPC.NewPar("path", path_) : cGB.sPC.NewPar("ID", ID__)
             };

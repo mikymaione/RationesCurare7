@@ -5,17 +5,19 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
-using System;
+
 using System.Collections.Generic;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.UI.Controlli;
 
 namespace RationesCurare7.UI.Forms
 {
     public partial class fPromemoriaPeriodici : fMyForm
     {
 
-        private List<DB.DataWrapper.cPeriodici> mov_periodici = null;
+        private List<cPeriodici> mov_periodici;
 
-        public List<DB.DataWrapper.cPeriodici> Movimenti
+        public List<cPeriodici> Movimenti
         {
             set
             {
@@ -35,11 +37,11 @@ namespace RationesCurare7.UI.Forms
                 if (mov_periodici.Count > 0)
                 {
                     int i = -1;
-                    var ctrls = new Controlli.cMovimentoInfo[mov_periodici.Count];
+                    var ctrls = new cMovimentoInfo[mov_periodici.Count];
 
                     foreach (var pi in mov_periodici)
                     {
-                        var inz = new Controlli.cMovimentoInfo();
+                        var inz = new cMovimentoInfo();
                         inz.eData.Text += pi.GiornoDelMese.ToShortDateString();
                         inz.eCassa.Text += pi.tipo;
                         inz.eDescrizione.Text += pi.descrizione;

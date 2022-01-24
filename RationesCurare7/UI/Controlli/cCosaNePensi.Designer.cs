@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cCosaNePensi
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -155,14 +158,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox eOggetto;
-        private System.Windows.Forms.TextBox eTesto;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button bInvia;
-        private System.Windows.Forms.ComboBox cbGiudizio;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
+        private TextBox eOggetto;
+        private TextBox eTesto;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Button bInvia;
+        private ComboBox cbGiudizio;
+        private PictureBox pictureBox1;
+        private Label label4;
     }
 }

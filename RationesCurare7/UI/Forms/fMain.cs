@@ -5,10 +5,19 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.GB;
+using RationesCurare7.Properties;
+using RationesCurare7.UI.Controlli;
+using cCalendario = RationesCurare7.UI.Controlli.cCalendario;
+using cCasse = RationesCurare7.DB.DataWrapper.cCasse;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -36,9 +45,9 @@ namespace RationesCurare7.UI.Forms
             ControllaPromemoria
         }
 
-        private TreeNode nCasse = null;
-        private List<DB.DataWrapper.cCasse> CasseAggiuntive = null;
-        private TreeNode LastSelectedNode = null;
+        private TreeNode nCasse;
+        private List<cCasse> CasseAggiuntive;
+        private TreeNode LastSelectedNode;
 
         public fMain()
         {
@@ -46,7 +55,7 @@ namespace RationesCurare7.UI.Forms
 
             if (!cGB.DesignTime)
             {
-                this.Text = "RationesCurare7 - " + cGB.CopyrightHolder;
+                Text = "RationesCurare7 - " + cGB.CopyrightHolder;
 
                 Init();
                 Action(eActions.ControllaPromemoria);
@@ -74,7 +83,7 @@ namespace RationesCurare7.UI.Forms
         {
             if (FirstTimeResize)
             {
-                if (this.Height > 966)
+                if (Height > 966)
                 {
                     cAlbero.ExpandAll();
                 }
@@ -107,7 +116,7 @@ namespace RationesCurare7.UI.Forms
 
         public void LoadAllCash()
         {
-            var m = new DB.DataWrapper.cMovimenti();
+            var m = new cMovimenti();
 
             cUtente1.lSaldo.Text = cGB.DoubleToMoneyStringValuta(m.Saldo("Saldo"));
             cUtente1.lSaldo.ForeColor = SaldoToColor(m.Saldo("Saldo"));
@@ -130,7 +139,7 @@ namespace RationesCurare7.UI.Forms
         public void SvuotaAlberoCasse()
         {
             CasseAggiuntive = null;
-            var NotDelete = new List<string>(new string[] { "nGestioneCasse", "nMovimentiPeriodici" });
+            var NotDelete = new List<string>(new[] { "nGestioneCasse", "nMovimentiPeriodici" });
 
             while (cAlbero.Nodes[0].Nodes.Count > NotDelete.Count)
                 for (var i = 0; i < cAlbero.Nodes[0].Nodes.Count; i++)
@@ -140,7 +149,7 @@ namespace RationesCurare7.UI.Forms
 
         public void AggiungiCasseExtra()
         {
-            var cas = new DB.DataWrapper.cCasse();
+            var cas = new cCasse();
             CasseAggiuntive = cas.CasseAggiuntive(false);
 
             if (CasseAggiuntive != null)
@@ -170,12 +179,12 @@ namespace RationesCurare7.UI.Forms
         {
             try
             {
-                return Image.FromStream(new System.IO.MemoryStream(img));
+                return Image.FromStream(new MemoryStream(img));
             }
             catch
             {
                 //no img
-                return Properties.Resources.saldo32;
+                return Resources.saldo32;
             }
         }
 
@@ -207,7 +216,7 @@ namespace RationesCurare7.UI.Forms
             try
             {
                 var s = Activator.CreateInstance(null, NomeClasse);
-                var z = s.Unwrap() as Controlli.cMyUserControl;
+                var z = s.Unwrap() as cMyUserControl;
 
                 AddNewTab(z, Title, i);
             }
@@ -215,10 +224,10 @@ namespace RationesCurare7.UI.Forms
             {
                 cGB.MsgBox($"Errore durante la creazione della finestra del grafico: {ex.Message}", MessageBoxIcon.Error);
 
-                if (cGB.MsgBox($"Vuoi provare ad installare la libreria Microsoft Chart (potrebbe risolvere il problema)?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (cGB.MsgBox("Vuoi provare ad installare la libreria Microsoft Chart (potrebbe risolvere il problema)?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     try
                     {
-                        System.Diagnostics.Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=14422");
+                        Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=14422");
                     }
                     catch (Exception ex2)
                     {
@@ -253,13 +262,13 @@ namespace RationesCurare7.UI.Forms
 
         public void ShowCerca(string cassa)
         {
-            var s = new Controlli.cRicerca(cassa);
-            AddNewTab(s, "Ricerca", Properties.Resources.find32);
+            var s = new cRicerca(cassa);
+            AddNewTab(s, "Ricerca", Resources.find32);
         }
 
-        public void ShowCash(string titolo, Image i, GB.cFiltriRicerca filtri)
+        public void ShowCash(string titolo, Image i, cFiltriRicerca filtri)
         {
-            var s = new Controlli.cSaldo(titolo, filtri);
+            var s = new cSaldo(titolo, filtri);
             AddNewTab(s, titolo, i);
         }
 
@@ -285,7 +294,7 @@ namespace RationesCurare7.UI.Forms
 
         private void ShowCash(string titolo, Image i)
         {
-            ShowCash(titolo, i, new GB.cFiltriRicerca());
+            ShowCash(titolo, i, new cFiltriRicerca());
         }
 
         private void bCassaQualsiasi_Click(TreeNode s)
@@ -302,15 +311,15 @@ namespace RationesCurare7.UI.Forms
 
             if (a == eActions.NuovoMovimento)
             {
-                using (var sce = new fGiroconto()
+                using (var sce = new fGiroconto
                 {
                     Titolo = "Scegli la cassa in cui vuoi inserire"
                 })
                     if (sce.ShowDialog() == DialogResult.OK)
                     {
-                        var mov = new DB.DataWrapper.cMovimenti();
+                        var mov = new cMovimenti();
 
-                        using (var fi = new fInserimento()
+                        using (var fi = new fInserimento
                         {
                             Tipo = sce.CassaSelezionata,
                             Saldo = mov.Saldo(sce.CassaSelezionata)
@@ -321,7 +330,7 @@ namespace RationesCurare7.UI.Forms
             }
             else if (a == eActions.NuovoGiroconto)
             {
-                using (var sce = new fGiroconto()
+                using (var sce = new fGiroconto
                 {
                     Titolo = "Scegli la cassa in cui vuoi inserire"
                 })
@@ -329,9 +338,9 @@ namespace RationesCurare7.UI.Forms
                         using (var g = new fGiroconto(sce.CassaSelezionata))
                             if (g.ShowDialog() == DialogResult.OK)
                             {
-                                var mov = new DB.DataWrapper.cMovimenti();
+                                var mov = new cMovimenti();
 
-                                using (var fi = new fInserimento()
+                                using (var fi = new fInserimento
                                 {
                                     Modalita = fInserimento.eModalita.Giroconto,
                                     TipoGiroconto = g.CassaSelezionata,
@@ -344,13 +353,13 @@ namespace RationesCurare7.UI.Forms
             }
             else if (a == eActions.Calendario)
             {
-                var c = new Controlli.cCalendario();
-                AddNewTab(c, "Calendario", Properties.Resources.calendario32);
+                var c = new cCalendario();
+                AddNewTab(c, "Calendario", Resources.calendario32);
             }
             else if (a == eActions.MacroAree)
             {
-                var c = new Controlli.cMacroAree();
-                AddNewTab(c, "Macro aree", Properties.Resources.MacroAree);
+                var c = new cMacroAree();
+                AddNewTab(c, "Macro aree", Resources.MacroAree);
             }
             else if (a == eActions.OpzioniDB)
             {
@@ -359,7 +368,7 @@ namespace RationesCurare7.UI.Forms
             }
             else if (a == eActions.Calcolatrice)
             {
-                var d = new Controlli.fCalc()
+                var d = new fCalc
                 {
                     StartPosition = FormStartPosition.CenterScreen,
                     TopMost = true,
@@ -385,7 +394,7 @@ namespace RationesCurare7.UI.Forms
             }
             else if (a == eActions.ControllaPeriodiciSoloAlert)
             {
-                var c = new DB.DataWrapper.cPeriodici();
+                var c = new cPeriodici();
                 var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi_plus_X_Giorni(5);
 
                 if (mov_periodici_entro_oggi != null)
@@ -398,40 +407,40 @@ namespace RationesCurare7.UI.Forms
 
                             switch (pi.TipoGiornoMese)
                             {
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.G:
+                                case cPeriodici.ePeriodicita.G:
                                     if (pi.PartendoDalGiorno.Year < 1900)
                                         dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
                                     else
                                         dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.M:
+                                case cPeriodici.ePeriodicita.M:
                                     MeseDaAggiungere = 1;
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.B:
+                                case cPeriodici.ePeriodicita.B:
                                     MeseDaAggiungere = 2;
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.T:
+                                case cPeriodici.ePeriodicita.T:
                                     MeseDaAggiungere = 3;
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.Q:
+                                case cPeriodici.ePeriodicita.Q:
                                     MeseDaAggiungere = 4;
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.S:
+                                case cPeriodici.ePeriodicita.S:
                                     MeseDaAggiungere = 6;
                                     break;
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.A:
+                                case cPeriodici.ePeriodicita.A:
                                     MeseDaAggiungere = 12;
                                     break;
                             }
 
                             switch (pi.TipoGiornoMese)
                             {
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.M:
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.B:
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.T:
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.Q:
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.S:
-                                case DB.DataWrapper.cPeriodici.ePeriodicita.A:
+                                case cPeriodici.ePeriodicita.M:
+                                case cPeriodici.ePeriodicita.B:
+                                case cPeriodici.ePeriodicita.T:
+                                case cPeriodici.ePeriodicita.Q:
+                                case cPeriodici.ePeriodicita.S:
+                                case cPeriodici.ePeriodicita.A:
                                     dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere));
                                     break;
                             }
@@ -441,14 +450,14 @@ namespace RationesCurare7.UI.Forms
 
                         mov_periodici_entro_oggi.Sort();
 
-                        using (var f = new fPromemoriaPeriodici() { Movimenti = mov_periodici_entro_oggi })
+                        using (var f = new fPromemoriaPeriodici { Movimenti = mov_periodici_entro_oggi })
                             f.ShowDialog();
                     }
             }
             else if (a == eActions.ControllaPeriodici)
             {
                 var CiSono = false;
-                var c = new DB.DataWrapper.cPeriodici();
+                var c = new cPeriodici();
                 var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi();
 
                 if (mov_periodici_entro_oggi != null)
@@ -459,7 +468,7 @@ namespace RationesCurare7.UI.Forms
                 {
                     var QualcosaInserito = false;
 
-                    if (cGB.MsgBox("Ci sono dei movimenti periodici da inserire, vuoi visualizzarli ora?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    if (cGB.MsgBox("Ci sono dei movimenti periodici da inserire, vuoi visualizzarli ora?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         foreach (var pi in mov_periodici_entro_oggi)
                             using (var inz = new fInserimento())
@@ -469,47 +478,47 @@ namespace RationesCurare7.UI.Forms
 
                                 switch (pi.TipoGiornoMese)
                                 {
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.G:
+                                    case cPeriodici.ePeriodicita.G:
                                         if (pi.PartendoDalGiorno.Year < 1900)
                                             dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
                                         else
                                             dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.M:
+                                    case cPeriodici.ePeriodicita.M:
                                         MeseDaAggiungere_ = 1;
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.B:
+                                    case cPeriodici.ePeriodicita.B:
                                         MeseDaAggiungere_ = 2;
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.T:
+                                    case cPeriodici.ePeriodicita.T:
                                         MeseDaAggiungere_ = 3;
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.Q:
+                                    case cPeriodici.ePeriodicita.Q:
                                         MeseDaAggiungere_ = 4;
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.S:
+                                    case cPeriodici.ePeriodicita.S:
                                         MeseDaAggiungere_ = 6;
                                         break;
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.A:
+                                    case cPeriodici.ePeriodicita.A:
                                         MeseDaAggiungere_ = 12;
                                         break;
                                 }
 
                                 switch (pi.TipoGiornoMese)
                                 {
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.M:
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.B:
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.T:
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.Q:
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.S:
-                                    case DB.DataWrapper.cPeriodici.ePeriodicita.A:
+                                    case cPeriodici.ePeriodicita.M:
+                                    case cPeriodici.ePeriodicita.B:
+                                    case cPeriodici.ePeriodicita.T:
+                                    case cPeriodici.ePeriodicita.Q:
+                                    case cPeriodici.ePeriodicita.S:
+                                    case cPeriodici.ePeriodicita.A:
                                         dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere_));
                                         break;
                                 }
 
                                 inz.Tipo = pi.tipo;
                                 inz.eDescrizione.Text = pi.descrizione;
-                                inz.eMacroArea.Text = ((pi.MacroArea == null || pi.MacroArea == "") ? inz.GetMacroArea4Descrizione(pi.descrizione) : pi.MacroArea);
+                                inz.eMacroArea.Text = pi.MacroArea == null || pi.MacroArea == "" ? inz.GetMacroArea4Descrizione(pi.descrizione) : pi.MacroArea;
                                 inz.eNome.Text = pi.nome;
                                 inz.eSoldi.Value = pi.soldi;
 
@@ -543,45 +552,45 @@ namespace RationesCurare7.UI.Forms
             }
             else if (a == eActions.GraficoSpline)
             {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoSpline", "Grafico a linee", Properties.Resources.grafico32);
+                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoSpline", "Grafico a linee", Resources.grafico32);
             }
             else if (a == eActions.Grafico)
             {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGrafico", "Grafico", Properties.Resources.grafico32);
+                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGrafico", "Grafico", Resources.grafico32);
             }
             else if (a == eActions.Torta)
             {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoTorta", "Torta", Properties.Resources.PieChart);
+                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoTorta", "Torta", Resources.PieChart);
             }
             else if (a == eActions.MovimentiPeriodici)
             {
-                var c = new Controlli.cMovimentiPeriodici();
-                AddNewTab(c, "Movimenti periodici", Properties.Resources.perdioci32);
+                var c = new cMovimentiPeriodici();
+                AddNewTab(c, "Movimenti periodici", Resources.perdioci32);
             }
             else if (a == eActions.Casse)
             {
                 var c = new Controlli.cCasse();
-                AddNewTab(c, "Casse", Properties.Resources.ingranaggio32);
+                AddNewTab(c, "Casse", Resources.ingranaggio32);
             }
             else if (a == eActions.Novita)
             {
-                var c = new Controlli.cNovita();
-                AddNewTab(c, "Novità", Properties.Resources.star32);
+                var c = new cNovita();
+                AddNewTab(c, "Novità", Resources.star32);
             }
             else if (a == eActions.Cerca)
             {
-                var c = new Controlli.cRicerca();
-                AddNewTab(c, "Ricerca", Properties.Resources.find32);
+                var c = new cRicerca();
+                AddNewTab(c, "Ricerca", Resources.find32);
             }
             else if (a == eActions.About)
             {
-                var c = new Controlli.cAbout();
-                AddNewTab(c, "About", Properties.Resources.about32);
+                var c = new cAbout();
+                AddNewTab(c, "About", Resources.about32);
             }
             else if (a == eActions.CosaNePensi)
             {
-                var c = new Controlli.cCosaNePensi();
-                AddNewTab(c, "Cosa ne pensi?", Properties.Resources.mail32);
+                var c = new cCosaNePensi();
+                AddNewTab(c, "Cosa ne pensi?", Resources.mail32);
             }
 
             cAlbero.SelectedNode = LastSelectedNode;
@@ -621,7 +630,7 @@ namespace RationesCurare7.UI.Forms
                 tcSchede.TabPages.Remove(t);
             }
 
-            pQuickInserimento.Visible = (tcSchede.TabPages.Count < 1);
+            pQuickInserimento.Visible = tcSchede.TabPages.Count < 1;
 
             cAlbero.Select();
             cAlbero.SelectedNode = LastSelectedNode;

@@ -5,10 +5,17 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Data.OleDb;
+using System.Data.SQLite;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.DB
 {
@@ -105,24 +112,24 @@ namespace RationesCurare7.DB
             try
             {
                 if (DataBaseAttuale == DataBase.Access)
-                    Connessione = new System.Data.OleDb.OleDbConnection(s);
+                    Connessione = new OleDbConnection(s);
                 else if (DataBaseAttuale == DataBase.SQLite)
 #if __MonoCS__
                     Connessione = new Mono.Data.Sqlite.SqliteConnection(s);
 #else
-                    Connessione = new System.Data.SQLite.SQLiteConnection(s);
+                    Connessione = new SQLiteConnection(s);
 #endif
 
                 Connessione.Open();
             }
             catch (Exception ex)
             {
-                cGB.MsgBox("Non riesco a connettermi al DB (" + ex.Message + ")", System.Windows.Forms.MessageBoxIcon.Error);
+                cGB.MsgBox("Non riesco a connettermi al DB (" + ex.Message + ")", MessageBoxIcon.Error);
             }
 
             try
             {
-                var ca = new DataWrapper.cAggiornamenti();
+                var ca = new cAggiornamenti();
                 ca.EseguiUpdate();
             }
             catch
@@ -158,13 +165,13 @@ namespace RationesCurare7.DB
             }
         }
 
-        public void AggiornaDataDB()
+        private void AggiornaDataDB()
         {
             if (DeveAggiornareData)
             {
                 const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
-                var pars = new DbParameter[] {
+                var pars = new[] {
                     NewPar("UltimaModifica", UltimaModifica)
                 };
 
@@ -272,14 +279,14 @@ namespace RationesCurare7.DB
             using (var cm = CreaCommandNoConnection(sql, param))
             {
                 if (DataBaseAttuale == DataBase.Access)
-                    using (var a = new System.Data.OleDb.OleDbDataAdapter((System.Data.OleDb.OleDbCommand)cm))
+                    using (var a = new OleDbDataAdapter((OleDbCommand)cm))
                         a.Fill(t);
                 else if (DataBaseAttuale == DataBase.SQLite)
 #if __MonoCS__
                     using (var a = new Mono.Data.Sqlite.SqliteDataAdapter((Mono.Data.Sqlite.SqliteCommand)cm))
                         a.Fill(t);
 #else
-                    using (var a = new System.Data.SQLite.SQLiteDataAdapter((System.Data.SQLite.SQLiteCommand)cm))
+                    using (var a = new SQLiteDataAdapter((SQLiteCommand)cm))
                         a.Fill(t);
 #endif
             }
@@ -292,12 +299,12 @@ namespace RationesCurare7.DB
             DbCommand cm = null;
 
             if (DataBaseAttuale == DataBase.Access)
-                cm = new System.Data.OleDb.OleDbCommand(sql, (System.Data.OleDb.OleDbConnection)Connessione);
+                cm = new OleDbCommand(sql, (OleDbConnection)Connessione);
             else if (DataBaseAttuale == DataBase.SQLite)
 #if __MonoCS__
                 cm = new Mono.Data.Sqlite.SqliteCommand(sql, (Mono.Data.Sqlite.SqliteConnection)Connessione);
 #else
-                cm = new System.Data.SQLite.SQLiteCommand(sql, (System.Data.SQLite.SQLiteConnection)Connessione);
+                cm = new SQLiteCommand(sql, (SQLiteConnection)Connessione);
 #endif
 
             if (param != null)
@@ -357,13 +364,12 @@ namespace RationesCurare7.DB
             if (!QueriesGiaLette.ContainsKey(q))
             {
                 var z = "";
-                var path_to_sql = "";
-                path_to_sql = System.Windows.Forms.Application.StartupPath;
-                path_to_sql = System.IO.Path.Combine(path_to_sql, "DB");
-                path_to_sql = System.IO.Path.Combine(path_to_sql, "DBW");
-                path_to_sql = System.IO.Path.Combine(path_to_sql, QueriesToString(q));
+                var path_to_sql = Application.StartupPath;
+                path_to_sql = Path.Combine(path_to_sql, "DB");
+                path_to_sql = Path.Combine(path_to_sql, "DBW");
+                path_to_sql = Path.Combine(path_to_sql, QueriesToString(q));
 
-                using (var sr = new System.IO.StreamReader(path_to_sql))
+                using (var sr = new StreamReader(path_to_sql))
                 {
                     while (sr.Peek() != -1)
                         z += sr.ReadLine() + Environment.NewLine;
@@ -397,10 +403,8 @@ namespace RationesCurare7.DB
 
                 return D;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public DbParameter NewPar(string Nome, object Valore)
@@ -409,42 +413,50 @@ namespace RationesCurare7.DB
 
             if (Valore is DateTime)
             {
-                if (DataBaseAttuale == DataBase.Access)
-                    o = new System.Data.OleDb.OleDbParameter(Nome, DbType.DateTime);
-                else if (DataBaseAttuale == DataBase.SQLite)
+                switch (DataBaseAttuale)
                 {
-                    Valore = cGB.DateToSQLite((DateTime)Valore);
-                    //Valore = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                    case DataBase.Access:
+                        o = new OleDbParameter(Nome, DbType.DateTime);
+                        break;
+                    case DataBase.SQLite:
+                        Valore = cGB.DateToSQLite((DateTime)Valore);
 #if __MonoCS__
-                    o = new Mono.Data.Sqlite.SqliteParameter(Nome, DbType.String);
+                        o = new Mono.Data.Sqlite.SqliteParameter(Nome, DbType.String);
 #else
-                    o = new System.Data.SQLite.SQLiteParameter(Nome, DbType.String);
+                        o = new SQLiteParameter(Nome, DbType.String);
 #endif
+                        break;
                 }
 
                 o.Value = Valore;
             }
             else
             {
-                if (DataBaseAttuale == DataBase.Access)
-                    o = new System.Data.OleDb.OleDbParameter(Nome, Valore);
-                else if (DataBaseAttuale == DataBase.SQLite)
+                switch (DataBaseAttuale)
+                {
+                    case DataBase.Access:
+                        o = new OleDbParameter(Nome, Valore);
+                        break;
+                    case DataBase.SQLite:
 #if __MonoCS__
-                    o = new Mono.Data.Sqlite.SqliteParameter(Nome, Valore);
+                        o = new Mono.Data.Sqlite.SqliteParameter(Nome, Valore);
 #else
-                    o = new System.Data.SQLite.SQLiteParameter(Nome, Valore);
+                        o = new SQLiteParameter(Nome, Valore);
 #endif
+                        break;
+                }
             }
 
             return o;
         }
 
+        /* bugged
         public DbParameter NewPar(string Nome, object Valore, DbType tipo)
         {
             DbParameter o = null;
 
             if (DataBaseAttuale == DataBase.Access)
-                o = new System.Data.OleDb.OleDbParameter(Nome, tipo);
+                o = new OleDbParameter(Nome, tipo);
             else if (DataBaseAttuale == DataBase.SQLite)
             {
                 if (tipo == DbType.Date || tipo == DbType.DateTime)
@@ -457,7 +469,7 @@ namespace RationesCurare7.DB
 #if __MonoCS__
                 o = new Mono.Data.Sqlite.SqliteParameter(Nome, tipo);
 #else
-                o = new System.Data.SQLite.SQLiteParameter(Nome, tipo);
+                o = new SQLiteParameter(Nome, tipo);
 #endif
             }
 
@@ -465,6 +477,7 @@ namespace RationesCurare7.DB
 
             return o;
         }
+        */
 
         public DbTransaction CreaTransazione()
         {
@@ -495,7 +508,7 @@ namespace RationesCurare7.DB
             var paras = new HashSet<string>();
             var rxPattern = @"\@\w+";
 
-            foreach (System.Text.RegularExpressions.Match item in System.Text.RegularExpressions.Regex.Matches(query_, rxPattern))
+            foreach (Match item in Regex.Matches(query_, rxPattern))
                 if (!paras.Contains(item.Value))
                     paras.Add(item.Value);
 
@@ -512,9 +525,6 @@ namespace RationesCurare7.DB
                         command.CommandText = "vacuum;";
                         command.ExecuteNonQuery();
                     }
-                    break;
-
-                default:
                     break;
             }
         }

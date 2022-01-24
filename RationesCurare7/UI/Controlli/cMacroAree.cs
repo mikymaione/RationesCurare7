@@ -5,19 +5,17 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Controlli
 {
     public partial class cMacroAree : cMyUserControl
     {
-        private int TotCount = 0;
+        private int TotCount;
 
         public cMacroAree()
         {
@@ -32,8 +30,8 @@ namespace RationesCurare7.UI.Controlli
         private void Carica()
         {
             string ulMA = "";
-            DB.DataWrapper.cMovimenti mov = new DB.DataWrapper.cMovimenti();
-            List<DB.DataWrapper.cMovimenti.sMacroArea_e_Descrizione> z = mov.MacroAree_e_Descrizioni();
+            cMovimenti mov = new cMovimenti();
+            List<cMovimenti.sMacroArea_e_Descrizione> z = mov.MacroAree_e_Descrizioni();
             List<string> desc = mov.TutteLeDescrizioni_Array(false);
 
             gNoCat.ClearItems();
@@ -53,7 +51,7 @@ namespace RationesCurare7.UI.Controlli
 
                     for (int i = 0; i < z.Count; i++)
                     {
-                        if ((!ulMA.Equals(z[i].MacroArea, StringComparison.OrdinalIgnoreCase)) || (i == z.Count - 1))
+                        if (!ulMA.Equals(z[i].MacroArea, StringComparison.OrdinalIgnoreCase) || i == z.Count - 1)
                         {
                             if (g > -1)
                                 if (e > -1)
@@ -85,7 +83,7 @@ namespace RationesCurare7.UI.Controlli
 
         private cGroupList NewG(string Testo)
         {
-            cGroupList g = new cGroupList()
+            cGroupList g = new cGroupList
             {
                 Text = Testo,
                 Width = 200,
@@ -141,14 +139,14 @@ namespace RationesCurare7.UI.Controlli
 
         private void bSalva_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            Enabled = false;
             Application.DoEvents();
 
-            List<DB.DataWrapper.cMovimenti.sMacroArea_e_Descrizione> m = new List<DB.DataWrapper.cMovimenti.sMacroArea_e_Descrizione>();
+            List<cMovimenti.sMacroArea_e_Descrizione> m = new List<cMovimenti.sMacroArea_e_Descrizione>();
 
             foreach (cGroupList i in pArea.Controls)
                 for (int x = 0; x < i.Count; x++)
-                    m.Add(new DB.DataWrapper.cMovimenti.sMacroArea_e_Descrizione()
+                    m.Add(new cMovimenti.sMacroArea_e_Descrizione
                     {
                         MacroArea = i.Text,
                         Descrizione = i.Items[x].ToString()
@@ -156,13 +154,13 @@ namespace RationesCurare7.UI.Controlli
 
             if (m.Count > -1)
             {
-                DB.DataWrapper.cMovimenti mov = new DB.DataWrapper.cMovimenti();
+                cMovimenti mov = new cMovimenti();
                 int j = mov.AggiornaMacroAree(m);
 
                 cGB.MsgBox("Aggiornati " + j + " elementi!");
             }
 
-            this.Enabled = true;
+            Enabled = true;
         }
 
 

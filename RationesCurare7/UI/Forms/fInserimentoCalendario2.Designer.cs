@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fInserimentoCalendario2
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -235,20 +238,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox eDescrizione;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbRipetiOgni;
-        private System.Windows.Forms.Label lRipetiOgniN;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbTermina;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker eTerminaData;
-        private System.Windows.Forms.Button bSalva;
-        private System.Windows.Forms.TextBox eData;
-        private System.Windows.Forms.NumericUpDown eRipetiOgniN;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown eNumeroOccorrenze;
+        private Label label1;
+        private Label label2;
+        private TextBox eDescrizione;
+        private Label label3;
+        private ComboBox cbRipetiOgni;
+        private Label lRipetiOgniN;
+        private Label label5;
+        private ComboBox cbTermina;
+        private Label label7;
+        private DateTimePicker eTerminaData;
+        private Button bSalva;
+        private TextBox eData;
+        private NumericUpDown eRipetiOgniN;
+        private Label label4;
+        private NumericUpDown eNumeroOccorrenze;
     }
 }

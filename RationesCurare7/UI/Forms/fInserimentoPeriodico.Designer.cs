@@ -1,11 +1,15 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using RationesCurare7.UI.Controlli;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fInserimentoPeriodico
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -285,25 +289,25 @@
 
         #endregion
 
-        private Controlli.cDateControl eData;
-        private System.Windows.Forms.Button bSalva;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox eDescrizione;
-        private System.Windows.Forms.Label lTipo;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox eNome;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbPeriodicita;
-        private System.Windows.Forms.NumericUpDown eNumGiorni;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbCassa;
-        private Controlli.cMathEdit eSoldi;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox eMacroArea;
-        private Controlli.cDateControl eScadenza;
-        private System.Windows.Forms.Label label9;
+        private cDateControl eData;
+        private Button bSalva;
+        private Label label4;
+        private TextBox eDescrizione;
+        private Label lTipo;
+        private Label label2;
+        private Label label1;
+        private TextBox eNome;
+        private Label label5;
+        private ComboBox cbPeriodicita;
+        private NumericUpDown eNumGiorni;
+        private Label label6;
+        private Label label7;
+        private Label label3;
+        private ComboBox cbCassa;
+        private cMathEdit eSoldi;
+        private Label label8;
+        private TextBox eMacroArea;
+        private cDateControl eScadenza;
+        private Label label9;
     }
 }

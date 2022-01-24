@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cCalendario
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -198,17 +201,17 @@
         #endregion
 
         public cCalendar cCalendar1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton bNuovo;
-        private System.Windows.Forms.ToolStripButton bElimina;
-        private System.Windows.Forms.ToolStripButton bMesePrecedente;
-        private System.Windows.Forms.ToolStripButton bMeseSuccessivo;
-        private System.Windows.Forms.ToolStripButton bVaiAdOggi;
-        private System.Windows.Forms.ToolStripButton bVaiA;
-        private System.Windows.Forms.ToolStripButton bModifica;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private Panel panel1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton bNuovo;
+        private ToolStripButton bElimina;
+        private ToolStripButton bMesePrecedente;
+        private ToolStripButton bMeseSuccessivo;
+        private ToolStripButton bVaiAdOggi;
+        private ToolStripButton bVaiA;
+        private ToolStripButton bModifica;
+        private PictureBox pictureBox1;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }

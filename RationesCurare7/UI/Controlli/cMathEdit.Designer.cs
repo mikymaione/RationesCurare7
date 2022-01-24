@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cMathEdit
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -71,7 +74,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox eMathTextBox;
-        private System.Windows.Forms.Button bOpenCalc;
+        private TextBox eMathTextBox;
+        private Button bOpenCalc;
     }
 }

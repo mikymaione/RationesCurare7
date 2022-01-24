@@ -5,27 +5,41 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Reflection;
+using System.Threading;
+using System.Windows.Forms;
+using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Win32;
+using RationesCurare7.DB;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.maionemikyWS;
+using RationesCurare7.Properties;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7
 {
     public static class cGB
     {
-        public static DB.cDB sDB, sPC;
+        public static cDB sDB, sPC;
 
-        public static DB.DataWrapper.cUtenti DatiDBFisico;
-        public static DB.DataWrapper.cDBInfo DatiUtente;
+        public static cUtenti DatiDBFisico;
+        public static cDBInfo DatiUtente;
 
         public static bool AggiornamentiDisponibili = false;
         public static bool RestartMe = false;
-        public static UI.Forms.fMain RationesCurareMainForm;
+        public static fMain RationesCurareMainForm;
         public static Pen myPenLeft = new Pen(Color.FromArgb(137, 140, 149));
         public static Pen myPenBottom = new Pen(Color.FromArgb(160, 160, 160));
         public static Random random = new Random(DateTime.Now.Second * DateTime.Now.Millisecond + DateTime.Now.Hour + DateTime.Now.Minute);
-        public static System.Windows.Forms.NotifyIcon MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-        internal static System.Globalization.CultureInfo valutaCorrente = System.Windows.Forms.Application.CurrentCulture;
+        public static NotifyIcon MyNotifyIcon = new NotifyIcon();
+        internal static CultureInfo valutaCorrente = Application.CurrentCulture;
 
 
         public struct Time
@@ -40,7 +54,7 @@ namespace RationesCurare7
             {
                 try
                 {
-                    return System.Diagnostics.Process.GetCurrentProcess().ProcessName.Equals("RationesCurare7.vshost", StringComparison.OrdinalIgnoreCase);
+                    return Process.GetCurrentProcess().ProcessName.Equals("RationesCurare7.vshost", StringComparison.OrdinalIgnoreCase);
                 }
                 catch
                 {
@@ -50,7 +64,7 @@ namespace RationesCurare7
         }
 
         public static bool DesignTime =>
-            (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+            LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 
         public static string PathDBUtenti
         {
@@ -58,44 +72,42 @@ namespace RationesCurare7
             {
                 const string RCDBName = "RC.rqd8";
 
-                var z = System.IO.Path.Combine(PathDBUtenti_Cartella, RCDBName);
+                var z = Path.Combine(PathDBUtenti_Cartella, RCDBName);
 
-                if (System.IO.File.Exists(z))
+                if (File.Exists(z))
                 {
                     return z;
                 }
-                else
-                {
-                    var j = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                    j = System.IO.Path.Combine(j, RCDBName);
 
-                    var p = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                    p = System.IO.Path.Combine(p, @"[MAIONE MIKY]\RationesCurare7\");
+                var j = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                j = Path.Combine(j, RCDBName);
 
-                    if (!System.IO.Directory.Exists(p))
-                        try
-                        {
-                            System.IO.Directory.CreateDirectory(p);
-                        }
-                        catch
-                        {
-                            //cannot create
-                        }
+                var p = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                p = Path.Combine(p, @"[MAIONE MIKY]\RationesCurare7\");
 
-                    p = System.IO.Path.Combine(p, RCDBName);
+                if (!Directory.Exists(p))
+                    try
+                    {
+                        Directory.CreateDirectory(p);
+                    }
+                    catch
+                    {
+                        //cannot create
+                    }
 
-                    if (!System.IO.File.Exists(p))
-                        try
-                        {
-                            System.IO.File.Copy(j, p, false);
-                        }
-                        catch
-                        {
-                            //cannot copy
-                        }
+                p = Path.Combine(p, RCDBName);
 
-                    z = p;
-                }
+                if (!File.Exists(p))
+                    try
+                    {
+                        File.Copy(j, p, false);
+                    }
+                    catch
+                    {
+                        //cannot copy
+                    }
+
+                z = p;
 
                 return z;
             }
@@ -106,7 +118,7 @@ namespace RationesCurare7
             get
             {
                 var p = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                p = System.IO.Path.Combine(p, @"[MAIONE MIKY]\RationesCurare_Six\1.0.0.0\");
+                p = Path.Combine(p, @"[MAIONE MIKY]\RationesCurare_Six\1.0.0.0\");
 
                 return p;
             }
@@ -123,7 +135,7 @@ namespace RationesCurare7
                     var p = Environment.GetCommandLineArgs();
 
                     for (var i = 0; i < (p?.Length ?? 0); i++)
-                        if (System.IO.Path.GetExtension(p[i]).Equals(".rqd") || System.IO.Path.GetExtension(p[i]).Equals(".rqd8"))
+                        if (Path.GetExtension(p[i]).Equals(".rqd") || Path.GetExtension(p[i]).Equals(".rqd8"))
                         {
                             z = p[i];
                             break;
@@ -142,7 +154,7 @@ namespace RationesCurare7
         {
             get
             {
-                var s = System.Windows.Forms.Application.ProductVersion;
+                var s = Application.ProductVersion;
                 s = s.Replace(".", "");
 
                 //0123 45 67
@@ -161,15 +173,15 @@ namespace RationesCurare7
             {
                 var attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 
-                return ((attributes?.Length ?? 0) == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright);
+                return (attributes?.Length ?? 0) == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
 
         public static string PathFolderDB() =>
-            System.IO.Path.GetDirectoryName(DatiDBFisico.Path);
+            Path.GetDirectoryName(DatiDBFisico.Path);
 
         public static string PathDBBackup() =>
-            System.IO.Path.ChangeExtension(DatiDBFisico.Path, System.IO.Path.GetExtension(DatiDBFisico.Path) + "b");
+            Path.ChangeExtension(DatiDBFisico.Path, Path.GetExtension(DatiDBFisico.Path) + "b");
 
         public static bool StringInArray(string s, string[] a)
         {
@@ -218,7 +230,7 @@ namespace RationesCurare7
             return t;
         }
 
-        public static string TimeToString(DateTime t) => TimeToString(new Time()
+        public static string TimeToString(DateTime t) => TimeToString(new Time
         {
             Ora = t.Hour,
             Minuto = t.Minute
@@ -239,20 +251,20 @@ namespace RationesCurare7
 
             m += t.Minuto;
 
-            return (h + "." + m);
+            return h + "." + m;
         }
 
-        public static System.Windows.Forms.DialogResult MsgBox(Exception s) =>
-            MsgBox(s.Message, System.Windows.Forms.MessageBoxIcon.Exclamation);
+        public static DialogResult MsgBox(Exception s) =>
+            MsgBox(s.Message, MessageBoxIcon.Exclamation);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s) =>
-            MsgBox(s, System.Windows.Forms.MessageBoxIcon.Information);
+        public static DialogResult MsgBox(string s) =>
+            MsgBox(s, MessageBoxIcon.Information);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxIcon ico) =>
-            MsgBox(s, System.Windows.Forms.MessageBoxButtons.OK, ico);
+        public static DialogResult MsgBox(string s, MessageBoxIcon ico) =>
+            MsgBox(s, MessageBoxButtons.OK, ico);
 
-        public static System.Windows.Forms.DialogResult MsgBox(string s, System.Windows.Forms.MessageBoxButtons but, System.Windows.Forms.MessageBoxIcon ico, bool TopMost = false) =>
-            System.Windows.Forms.MessageBox.Show(new System.Windows.Forms.Form() { TopMost = true }, s, "RationesCurare7", but, ico);
+        public static DialogResult MsgBox(string s, MessageBoxButtons but, MessageBoxIcon ico, bool TopMost = false) =>
+            MessageBox.Show(new Form { TopMost = true }, s, "RationesCurare7", but, ico);
 
         public static DateTime ObjectToDateTime(object o, DateTime defa, int addDays) =>
             ObjectToDateTime(o, defa).AddDays(addDays);
@@ -268,7 +280,7 @@ namespace RationesCurare7
                 else if (o is string)
                 {
                     var ds = o.ToString().Substring(0, 19);
-                    d = DateTime.ParseExact(ds, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    d = DateTime.ParseExact(ds, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
                 }
             }
             catch
@@ -338,7 +350,7 @@ namespace RationesCurare7
             return i;
         }
 
-        public static string QQ(string s, bool active) => (active ? "%" + s + "%" : "%%");
+        public static string QQ(string s, bool active) => active ? "%" + s + "%" : "%%";
 
         public static string QQ(string s) => QQ(s, true);
 
@@ -381,19 +393,17 @@ namespace RationesCurare7
             var m = data.Month;
             var d = data.Day;
 
-            return (
-                (m == 1 & d == 1) ||
-                (m == 1 & d == 6) ||
-                (m == 4 & d == 25) ||
-                (m == 5 & d == 1) ||
-                (m == 6 & d == 2) ||
-                (m == 8 & d == 15) ||
-                (m == 11 & d == 1) ||
-                (m == 12 & d == 8) ||
-                (m == 12 & d == 25) ||
-                (m == 12 & d == 26) ||
-                (data.Equals(EasterDate(y).AddDays(1)))
-            );
+            return m == 1 & d == 1 ||
+                   m == 1 & d == 6 ||
+                   m == 4 & d == 25 ||
+                   m == 5 & d == 1 ||
+                   m == 6 & d == 2 ||
+                   m == 8 & d == 15 ||
+                   m == 11 & d == 1 ||
+                   m == 12 & d == 8 ||
+                   m == 12 & d == 25 ||
+                   m == 12 & d == 26 ||
+                   data.Equals(EasterDate(y).AddDays(1));
         }
 
         private static DateTime EasterDate(int year = 0)
@@ -415,13 +425,13 @@ namespace RationesCurare7
             {
                 G = year % 19;
                 C = year / 100;
-                H = ((C - (C / 4) - ((8 * C + 13) / 25) + (19 * G) + 15) % 30);
-                i = H - ((H / 28) * (1 - (H / 28) * (29 / (H + 1)) * ((21 - G) / 11)));
-                j = ((year + (year / 4) + i + 2 - C + (C / 4)) % 7);
+                H = (C - C / 4 - (8 * C + 13) / 25 + 19 * G + 15) % 30;
+                i = H - H / 28 * (1 - H / 28 * (29 / (H + 1)) * ((21 - G) / 11));
+                j = (year + year / 4 + i + 2 - C + C / 4) % 7;
                 L = i - j;
 
-                m = 3 + ((L + 40) / 44);
-                d = L + 28 - (31 * (m / 4));
+                m = 3 + (L + 40) / 44;
+                d = L + 28 - 31 * (m / 4);
                 dt = new DateTime(year, m, d);
             }
 
@@ -432,9 +442,9 @@ namespace RationesCurare7
         {
             try
             {
-                using (var e = new maionemikyWS.EmailSending())
+                using (var e = new EmailSending())
                     e.AggiornaUtente(
-                        new maionemikyWS.UtenteProgramma()
+                        new UtenteProgramma
                         {
                             Programma = "RationesCurare7",
                             Utente = DatiDBFisico.Nome,
@@ -448,13 +458,13 @@ namespace RationesCurare7
             }
         }
 
-        public static void StartExplorer(string z) => System.Diagnostics.Process.Start("explorer.exe", z);
+        public static void StartExplorer(string z) => Process.Start("explorer.exe", z);
 
         public static void CreaIcona(string titolo)
         {
-            MyNotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            MyNotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
             MyNotifyIcon.BalloonTipTitle = titolo;
-            MyNotifyIcon.Icon = Properties.Resources.rc;
+            MyNotifyIcon.Icon = Resources.rc;
         }
 
         public static void MsgI(string testo, int durata = 5000)
@@ -465,11 +475,11 @@ namespace RationesCurare7
             MyNotifyIcon.ShowBalloonTip(durata);
         }
 
-        public static bool ScaricaUltimoDBDalWeb(maionemikyWS.EmailSending e, string yyyyMMddHHmmss, string PathDB, string email_, string psw, bool CreaNuovo)
+        public static bool ScaricaUltimoDBDalWeb(EmailSending e, string yyyyMMddHHmmss, string PathDB, string email_, string psw, bool CreaNuovo)
         {
             var ok = false;
-            var db_path = System.IO.Path.GetDirectoryName(PathDB);
-            var zip_path = System.IO.Path.Combine(db_path, email_ + ".zip");
+            var db_path = Path.GetDirectoryName(PathDB);
+            var zip_path = Path.Combine(db_path, email_ + ".zip");
 
             try
             {
@@ -477,47 +487,47 @@ namespace RationesCurare7
 
                 if ((db_bytes?.Length ?? 0) > 0)
                 {
-                    System.IO.File.WriteAllBytes(zip_path, db_bytes);
+                    File.WriteAllBytes(zip_path, db_bytes);
 
-                    if (System.IO.File.Exists(zip_path))
+                    if (File.Exists(zip_path))
                     {
-                        var guid = System.IO.Path.Combine(db_path, Guid.NewGuid().ToString());
+                        var guid = Path.Combine(db_path, Guid.NewGuid().ToString());
 
                         try
                         {
                             if (!CreaNuovo)
-                                System.IO.File.Move(PathDB, guid);
+                                File.Move(PathDB, guid);
 
                             try
                             {
-                                var zip = new ICSharpCode.SharpZipLib.Zip.ZipFile(zip_path);
+                                var zip = new ZipFile(zip_path);
 
-                                foreach (ICSharpCode.SharpZipLib.Zip.ZipEntry zipEntry in zip)
+                                foreach (ZipEntry zipEntry in zip)
                                 {
                                     if (!zipEntry.IsFile)
                                         continue; // Ignore directories
 
-                                    var entryFileName = System.IO.Path.GetFileName(zipEntry.Name);
+                                    var entryFileName = Path.GetFileName(zipEntry.Name);
                                     var buffer = new byte[4096]; // 4K is optimum
                                     var zipStream = zip.GetInputStream(zipEntry);
 
                                     // Manipulate the output filename here as desired.
-                                    var fullZipToPath = System.IO.Path.Combine(db_path, entryFileName);
+                                    var fullZipToPath = Path.Combine(db_path, entryFileName);
 
-                                    using (var streamWriter = System.IO.File.Create(fullZipToPath))
+                                    using (var streamWriter = File.Create(fullZipToPath))
                                         Copy(zipStream, streamWriter, buffer);
                                 }
 
                                 zip.Close();
 
-                                System.IO.File.Delete(guid);
-                                System.IO.File.Delete(zip_path);
+                                File.Delete(guid);
+                                File.Delete(zip_path);
 
                                 ok = true;
                             }
                             catch (Exception ex4)
                             {
-                                System.IO.File.Move(guid, PathDB);
+                                File.Move(guid, PathDB);
                                 MsgBox(ex4);
                             }
                         }
@@ -542,15 +552,15 @@ namespace RationesCurare7
 
             try
             {
-                using (var e = new maionemikyWS.EmailSending())
+                using (var e = new EmailSending())
                 {
                     var yyyyMMddHHmmss = DatiUtente.UltimaModifica.ToString("yyyyMMddHHmmss");
                     var yyyyMMddHHmmss_WEB = e.VersioneDB(DatiUtente.Email, DatiUtente.Psw);
                     var comparazione = e.ComparaDBRC(yyyyMMddHHmmss, DatiUtente.Email, DatiUtente.Psw);
 
-                    if (comparazione == maionemikyWS.Comparazione.Server)
-                        using (var fdbd = new UI.Forms.fDBDate(DatiUtente.UltimaModifica, yyyyMMddHHmmss_WEB))
-                            if (fdbd.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                    if (comparazione == Comparazione.Server)
+                        using (var fdbd = new fDBDate(DatiUtente.UltimaModifica, yyyyMMddHHmmss_WEB))
+                            if (fdbd.ShowDialog() == DialogResult.Yes)
                             {
                                 sDB.Connessione.Close();
                                 ok = ScaricaUltimoDBDalWeb(e, yyyyMMddHHmmss, DatiDBFisico.Path, DatiUtente.Email, DatiUtente.Psw, false);
@@ -564,7 +574,7 @@ namespace RationesCurare7
                 if (erMsg.Length > 1500)
                     erMsg = erMsg.Substring(0, 1500) + " [...]";
 
-                if (MsgBox($"Errore: {erMsg}.{Environment.NewLine}Riprovo?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (MsgBox($"Errore: {erMsg}.{Environment.NewLine}Riprovo?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     ok = ControllaDBSulServer();
             }
 
@@ -577,7 +587,7 @@ namespace RationesCurare7
         /// <param name="source">The stream to source data from.</param>
         /// <param name="destination">The stream to write data to.</param>
         /// <param name="buffer">The buffer to use during copying.</param>
-        public static void Copy(System.IO.Stream source, System.IO.Stream destination, byte[] buffer)
+        public static void Copy(Stream source, Stream destination, byte[] buffer)
         {
             if (source == null)
                 throw new ArgumentNullException();
@@ -610,7 +620,7 @@ namespace RationesCurare7
             }
         }
 
-        public static void DoTheAutoUpdate() => new System.Threading.Thread(DoTheAutoUpdate_t).Start();
+        public static void DoTheAutoUpdate() => new Thread(DoTheAutoUpdate_t).Start();
 
         private static void DoTheAutoUpdate_t()
         {
@@ -639,18 +649,17 @@ namespace RationesCurare7
         {
             if (d.Date > DateTime.MinValue)
                 return d;
-            else
-                return DBNull.Value;
+            return DBNull.Value;
         }
 
         public static void initCulture()
         {
-            var cultures = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.SpecificCultures);
+            var cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
 
             foreach (var cultura in cultures)
                 try
                 {
-                    var ri = new System.Globalization.RegionInfo(cultura.Name);
+                    var ri = new RegionInfo(cultura.Name);
 
                     if (DatiUtente.Valuta.Equals(ri.ISOCurrencySymbol, StringComparison.InvariantCultureIgnoreCase))
                     {
@@ -693,17 +702,17 @@ namespace RationesCurare7
 
         public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
 
-        public static bool StringIsNullorEmpty(string s) => ("".Equals(s ?? ""));
+        public static bool StringIsNullorEmpty(string s) => "".Equals(s ?? "");
 
-        public static string NullStringToEmpty(string s) => (s ?? "");
+        public static string NullStringToEmpty(string s) => s ?? "";
 
         public static DateTime DateTo00000(DateTime d) => new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
 
         public static DateTime DateTo235959(DateTime d) => new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
 
-        public static bool DateSonoUgualiPer_YYYYMMDD(DateTime a, DateTime b) => (a.Year == b.Year) && (a.Month == b.Month) && (a.Day == b.Day);
+        public static bool DateSonoUgualiPer_YYYYMMDD(DateTime a, DateTime b) => a.Year == b.Year && a.Month == b.Month && a.Day == b.Day;
 
-        public static void EliminaRC6() => new System.Threading.Thread(EliminaRC6_t).Start();
+        public static void EliminaRC6() => new Thread(EliminaRC6_t).Start();
 
         private static void EliminaRC6_t()
         {
@@ -712,19 +721,19 @@ namespace RationesCurare7
             try
             {
                 var UninstallPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-                var r = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(UninstallPath);
+                var r = Registry.LocalMachine.OpenSubKey(UninstallPath);
                 var s = r.GetSubKeyNames();
 
                 for (var i = 0; i < (s?.Length ?? 0); i++)
                     try
                     {
-                        if (Microsoft.Win32.Registry.LocalMachine.OpenSubKey(UninstallPath + s[i]).GetValue("DisplayName").ToString().Equals(program, StringComparison.OrdinalIgnoreCase))
+                        if (Registry.LocalMachine.OpenSubKey(UninstallPath + s[i]).GetValue("DisplayName").ToString().Equals(program, StringComparison.OrdinalIgnoreCase))
                         {
                             var u = "";
 
                             try
                             {
-                                u = (string)Microsoft.Win32.Registry.LocalMachine.OpenSubKey(UninstallPath + s[i]).GetValue("UninstallString");
+                                u = (string)Registry.LocalMachine.OpenSubKey(UninstallPath + s[i]).GetValue("UninstallString");
                             }
                             catch
                             {
@@ -756,7 +765,7 @@ namespace RationesCurare7
         {
             try
             {
-                Microsoft.Win32.Registry.LocalMachine.DeleteSubKey(s);
+                Registry.LocalMachine.DeleteSubKey(s);
             }
             catch
             {
@@ -764,17 +773,17 @@ namespace RationesCurare7
             }
         }
 
-        public static object ValueToDBNULL(bool PutNull, object ElseValue) => (PutNull ? DBNull.Value : ElseValue);
+        public static object ValueToDBNULL(bool PutNull, object ElseValue) => PutNull ? DBNull.Value : ElseValue;
 
-        public static string LoadImage_Casuale_Try(ref System.Windows.Forms.PictureBox pb)
+        public static string LoadImage_Casuale_Try(ref PictureBox pb)
         {
-            var j = System.Windows.Forms.Application.ExecutablePath;
-            j = System.IO.Path.GetDirectoryName(j);
-            j = System.IO.Path.Combine(j, "Utenti");
+            var j = Application.ExecutablePath;
+            j = Path.GetDirectoryName(j);
+            j = Path.Combine(j, "Utenti");
 
-            if (System.IO.Directory.Exists(j))
+            if (Directory.Exists(j))
             {
-                var fil = System.IO.Directory.GetFiles(j, "*.png", System.IO.SearchOption.AllDirectories);
+                var fil = Directory.GetFiles(j, "*.png", SearchOption.AllDirectories);
 
                 if ((fil?.Length ?? 0) > 0)
                 {
@@ -798,7 +807,7 @@ namespace RationesCurare7
             return "";
         }
 
-        public static Exception LoadImage_Try(string p, ref System.Windows.Forms.PictureBox pb)
+        public static Exception LoadImage_Try(string p, ref PictureBox pb)
         {
             try
             {
@@ -812,16 +821,16 @@ namespace RationesCurare7
             return null;
         }
 
-        public static void LoadImage(string p, ref System.Windows.Forms.PictureBox pb)
+        public static void LoadImage(string p, ref PictureBox pb)
         {
-            using (var stream = System.IO.File.Open(p, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Delete))
+            using (var stream = File.Open(p, FileMode.Open, FileAccess.Read, FileShare.Delete))
             {
                 pb.Image = Image.FromStream(stream);
                 stream.Close();
             }
         }
 
-        public static bool PathDBUtentiIsAccess() => System.IO.Path.GetExtension(PathDBUtenti).Equals(".rqd", StringComparison.OrdinalIgnoreCase);
+        public static bool PathDBUtentiIsAccess() => Path.GetExtension(PathDBUtenti).Equals(".rqd", StringComparison.OrdinalIgnoreCase);
 
         public static DateTime DBNow()
         {
@@ -834,10 +843,10 @@ namespace RationesCurare7
         {
             try
             {
-                var p = System.Diagnostics.Process.GetProcessesByName("RationesCurare7");
+                var p = Process.GetProcessesByName("RationesCurare7");
 
                 if ((p?.Length ?? 0) > 1)
-                    if (MsgBox("RationesCurare è già in esecuzione, vuoi avviarne un altro?", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
+                    if (MsgBox("RationesCurare è già in esecuzione, vuoi avviarne un altro?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                         return false;
             }
             catch

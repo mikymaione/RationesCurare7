@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cUtente
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -111,10 +114,10 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox iUtente;
-        private System.Windows.Forms.LinkLabel bDisconnetti;
-        private System.Windows.Forms.LinkLabel bUtente;
-        public System.Windows.Forms.Label lSaldo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private PictureBox iUtente;
+        private LinkLabel bDisconnetti;
+        private LinkLabel bUtente;
+        public Label lSaldo;
+        private PictureBox pictureBox1;
     }
 }

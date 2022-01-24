@@ -5,13 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
+using RationesCurare7.GB;
+using RationesCurare7.UI.Forms;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -56,27 +54,27 @@ namespace RationesCurare7.UI.Controlli
         private string SelezionaElemento()
         {
             var s = "";
-            GB.cComboItem sel = null;
+            cComboItem sel = null;
 
-            if (this.cCalendar1.SelectedID.Count == 1)
+            if (cCalendar1.SelectedID.Count == 1)
             {
-                var idj = this.cCalendar1.SelectedID[0];
+                var idj = cCalendar1.SelectedID[0];
                 DB.DataWrapper.cCalendario cal = new DB.DataWrapper.cCalendario(idj);
-                sel = new GB.cComboItem(idj.ToString(), cal.Descrizione);
+                sel = new cComboItem(idj, cal.Descrizione);
             }
-            else if (this.cCalendar1.SelectedID.Count > 1)
+            else if (cCalendar1.SelectedID.Count > 1)
             {
                 var idj = "";
-                var ite = new GB.cComboItem[this.cCalendar1.SelectedID.Count];
+                var ite = new cComboItem[cCalendar1.SelectedID.Count];
 
-                for (var i = 0; i < this.cCalendar1.SelectedID.Count; i++)
+                for (var i = 0; i < cCalendar1.SelectedID.Count; i++)
                 {
-                    idj = this.cCalendar1.SelectedID[i];
+                    idj = cCalendar1.SelectedID[i];
                     DB.DataWrapper.cCalendario cal = new DB.DataWrapper.cCalendario(idj);
-                    ite[i] = new GB.cComboItem(idj.ToString(), cal.Descrizione);
+                    ite[i] = new cComboItem(idj, cal.Descrizione);
                 }
 
-                using (var ev = new Forms.fSceltaEvento())
+                using (var ev = new fSceltaEvento())
                 {
                     ev.Elementi = ite;
 
@@ -118,14 +116,14 @@ namespace RationesCurare7.UI.Controlli
                     var cal = new DB.DataWrapper.cCalendario(k);
 
                     if (cal.IDGruppo != "")
-                        using (var fst = new Forms.fSceltaTipoModificaCalendario())
+                        using (var fst = new fSceltaTipoModificaCalendario())
                         {
                             fst.ShowDialog();
-                            ModificaSerie = (fst.Tipo == Forms.fSceltaTipoModificaCalendario.eTipo.Serie);
+                            ModificaSerie = fst.Tipo == fSceltaTipoModificaCalendario.eTipo.Serie;
                         }
                 }
 
-                if ((k != "" && !nuovo) || (nuovo))
+                if (k != "" && !nuovo || nuovo)
                 {
                     var NewType = true;
 
@@ -135,29 +133,29 @@ namespace RationesCurare7.UI.Controlli
 
                     if (NewType)
                     {
-                        using (var c = new Forms.fInserimentoCalendario2())
+                        using (var c = new fInserimentoCalendario2())
                         {
                             if (!nuovo)
                                 c.ID_ = k;
 
-                            c.DataSelezionata = this.cCalendar1.SelectedDate;
+                            c.DataSelezionata = cCalendar1.SelectedDate;
 
                             if (c.ShowDialog() == DialogResult.OK)
-                                this.cCalendar1.LoadDays();
+                                cCalendar1.LoadDays();
                         }
                     }
                     else
                     {
-                        using (var c = new Forms.fInserimentoCalendario())
+                        using (var c = new fInserimentoCalendario())
                         {
                             if (!nuovo)
                                 c.ID_ = k;
 
                             c.ModificaSerie = ModificaSerie;
-                            c.DataSelezionata = this.cCalendar1.SelectedDate;
+                            c.DataSelezionata = cCalendar1.SelectedDate;
 
                             if (c.ShowDialog() == DialogResult.OK)
-                                this.cCalendar1.LoadDays();
+                                cCalendar1.LoadDays();
                         }
                     }
                 }
@@ -179,10 +177,10 @@ namespace RationesCurare7.UI.Controlli
                         var ModificaSerie = false;
 
                         if (cal.IDGruppo != "")
-                            using (var fst = new Forms.fSceltaTipoModificaCalendario())
+                            using (var fst = new fSceltaTipoModificaCalendario())
                             {
                                 fst.ShowDialog();
-                                ModificaSerie = (fst.Tipo == Forms.fSceltaTipoModificaCalendario.eTipo.Serie);
+                                ModificaSerie = fst.Tipo == fSceltaTipoModificaCalendario.eTipo.Serie;
                             }
 
                         var m = new DB.DataWrapper.cCalendario();
@@ -192,7 +190,7 @@ namespace RationesCurare7.UI.Controlli
                         else
                             m.Elimina(cal.ID);
 
-                        this.cCalendar1.LoadDays();
+                        cCalendar1.LoadDays();
                     }
                 }
             }

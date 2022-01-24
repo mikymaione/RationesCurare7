@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fPromemoria
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -192,15 +195,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lOggi;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lDomani;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox lTodoDomani;
-        private System.Windows.Forms.TextBox lTodoOggi;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Label lOggi;
+        private Label label1;
+        private Panel panel2;
+        private Label lDomani;
+        private Label label3;
+        private PictureBox pictureBox2;
+        private TextBox lTodoDomani;
+        private TextBox lTodoOggi;
     }
 }

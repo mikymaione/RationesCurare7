@@ -5,8 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.IO;
 using System.Windows.Forms;
+using RationesCurare7.GB;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -53,10 +56,10 @@ namespace RationesCurare7.UI.Forms
         {
             try
             {
-                System.IO.File.Copy(cGB.DatiDBFisico.Path, cGB.PathDBBackup(), true);
+                File.Copy(cGB.DatiDBFisico.Path, cGB.PathDBBackup(), true);
 
                 if (daTastiera)
-                    this.Close();
+                    Close();
                 else
                     cGB.MsgBox("Copia di backup eseguita!");
             }
@@ -75,14 +78,14 @@ namespace RationesCurare7.UI.Forms
 
                     cGB.sDB.Connessione.Close();
 
-                    System.IO.File.Copy(cGB.PathDBBackup(), cGB.DatiDBFisico.Path, true);
+                    File.Copy(cGB.PathDBBackup(), cGB.DatiDBFisico.Path, true);
 
                     cGB.sDB.Connessione.Open();
 
                     cGB.RationesCurareMainForm.LoadAllCash();
 
                     cGB.MsgBox("Recupero effettuato!");
-                    this.Close();
+                    Close();
                 }
                 catch
                 {
@@ -100,7 +103,7 @@ namespace RationesCurare7.UI.Forms
             cGB.DatiUtente.SincronizzaDB = cbSync.Checked;
 
             if (cGB.DatiUtente.Aggiorna() > 0)
-                this.Close();
+                Close();
             else
                 MsgErroreSalvataggio();
         }
@@ -115,13 +118,13 @@ namespace RationesCurare7.UI.Forms
             var y = bSync.Text;
             bSync.Text = "Sincronizzazione ...";
 
-            this.Enabled = false;
+            Enabled = false;
 
             if (cGB.DatiUtente.SincronizzaDB)
             {
                 if (cGB.sDB.UltimaModifica > DateTime.MinValue)
                 {
-                    var mc = new GB.MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
+                    var mc = new MikyCloud(cGB.DatiDBFisico.Path, cGB.DatiUtente.Email, cGB.DatiUtente.Psw);
                     mc.MandaDBSulSito(cGB.sDB.UltimaModifica, true);
                 }
                 else
@@ -131,7 +134,7 @@ namespace RationesCurare7.UI.Forms
             }
 
             bSync.Text = y;
-            this.Enabled = true;
+            Enabled = true;
         }
 
 

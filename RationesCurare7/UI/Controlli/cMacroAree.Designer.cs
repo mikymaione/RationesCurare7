@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cMacroAree
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -153,13 +156,13 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel pArea;
+        private FlowLayoutPanel pArea;
         private cGroupList gNoCat;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton bNuovo;
-        private System.Windows.Forms.ToolStripButton bElimina;
-        private System.Windows.Forms.ToolStripButton bSalva;
-        private System.Windows.Forms.PictureBox pictureBox1;        
+        private Panel panel1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton bNuovo;
+        private ToolStripButton bElimina;
+        private ToolStripButton bSalva;
+        private PictureBox pictureBox1;        
     }
 }

@@ -5,13 +5,12 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
+using RationesCurare7.Properties;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -21,7 +20,7 @@ namespace RationesCurare7.UI.Controlli
         public event ClickEventHandler ClickEvent;
         public delegate void DoubleClickEventHandler();
         public event DoubleClickEventHandler DoubleClickEvent;
-        public bool ImClicked = false;
+        public bool ImClicked;
         public int ID_ = -1;
         public string Psw = "";
         public string Email = "";
@@ -75,33 +74,30 @@ namespace RationesCurare7.UI.Controlli
 
         private void CaricaFoto()
         {
-            if (System.IO.File.Exists(lPathDB.Text))
+            if (File.Exists(lPathDB.Text))
             {
-                string l = System.IO.Path.ChangeExtension(lPathDB.Text, ".jpg");
-                string p = System.IO.Path.ChangeExtension(lPathDB.Text, ".png");
+                string l = Path.ChangeExtension(lPathDB.Text, ".jpg");
+                string p = Path.ChangeExtension(lPathDB.Text, ".png");
 
-                if (System.IO.File.Exists(l))
+                if (File.Exists(l))
                 {
                     cGB.LoadImage_Try(l, ref pUtente);
                 }
-                else if (System.IO.File.Exists(p))
+                else if (File.Exists(p))
                 {
                     cGB.LoadImage_Try(p, ref pUtente);
-                }
-                else { 
-                
                 }
             }
             else
             {
-                pUtente.Image = global::RationesCurare7.Properties.Resources.DBNotFound;
+                pUtente.Image = Resources.DBNotFound;
             }
         }
 
         public void DeselectMe()
         {
             ImClicked = false;
-            this.BackColor = Color.FromKnownColor(KnownColor.Control);
+            BackColor = Color.FromKnownColor(KnownColor.Control);
         }
 
         public void Click_()
@@ -112,7 +108,7 @@ namespace RationesCurare7.UI.Controlli
         public void Click_(bool ByCode)
         {
             ImClicked = true;
-            this.BackColor = Color.FromKnownColor(KnownColor.ActiveCaption);
+            BackColor = Color.FromKnownColor(KnownColor.ActiveCaption);
 
             if (!ByCode)
                 OnClickEvent();
@@ -132,7 +128,7 @@ namespace RationesCurare7.UI.Controlli
         private void Enter_()
         {
             if (!ImClicked)
-                this.BackColor = Color.FromKnownColor(KnownColor.GradientActiveCaption);
+                BackColor = Color.FromKnownColor(KnownColor.GradientActiveCaption);
         }
 
         private void pUtente_Click(object sender, EventArgs e)

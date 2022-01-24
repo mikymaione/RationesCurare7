@@ -5,8 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Data.Common;
+using System.Globalization;
 
 namespace RationesCurare7.DB.DataWrapper
 {
@@ -17,15 +19,14 @@ namespace RationesCurare7.DB.DataWrapper
         {
             if ("".Equals(cGB.DatiUtente?.Email ?? ""))
                 return EseguiUpdateSistema();
-            else
-                return EseguiUpdateUtente(); //utente
+            return EseguiUpdateUtente(); //utente
         }
 
         private int EseguiUpdateUtente()
         {
             var i = 0;
             var sql = cGB.sDB.LeggiQuery(cDB.Queries.Aggiornamenti);
-            var queries = sql.Split(new char[] { ';' });
+            var queries = sql.Split(';');
             var UltimaDataQ = DateTime.MinValue;
             var UltimaDataU = DateTime.MinValue;
 
@@ -39,7 +40,7 @@ namespace RationesCurare7.DB.DataWrapper
                     //0123456789
                     //--20170211
                     var h = queries[n].Substring(2, 8);
-                    UltimaDataQ = DateTime.ParseExact(h, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                    UltimaDataQ = DateTime.ParseExact(h, "yyyyMMdd", CultureInfo.InvariantCulture);
                 }
 
                 if (UltimaDataQ.CompareTo(UltimaDataU) > 0)
@@ -56,9 +57,12 @@ namespace RationesCurare7.DB.DataWrapper
 
         private int EseguiUpdateSistema()
         {
+            if (cGB.sPC == null)
+                return 0;
+
             var i = 0;
             var sql = cGB.sPC.LeggiQuery(cDB.Queries.Aggiornamenti);
-            var queries = sql.Split(new char[] { ';' });
+            var queries = sql.Split(';');
             var UltimaDataQ = DateTime.MinValue;
             var UltimaDataU = DateTime.MinValue;
             DbTransaction trans = null;
@@ -76,7 +80,7 @@ namespace RationesCurare7.DB.DataWrapper
                     //0123456789
                     //--20170211
                     var h = queries[n].Substring(2, 8);
-                    UltimaDataQ = DateTime.ParseExact(h, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                    UltimaDataQ = DateTime.ParseExact(h, "yyyyMMdd", CultureInfo.InvariantCulture);
                 }
 
                 if (UltimaDataQ.CompareTo(UltimaDataU) > 0)
@@ -98,9 +102,9 @@ namespace RationesCurare7.DB.DataWrapper
 
             foreach (var u in cGB.sDB.DBUtentiAggiornati)
             {
-                var laD = (forza_data > DateTime.MinValue ? forza_data : u.Value);
+                var laD = forza_data > DateTime.MinValue ? forza_data : u.Value;
 
-                var p = new DbParameter[] {
+                var p = new[] {
                     cGB.sDB.NewPar("UltimoAggiornamentoDB", laD),
                     cGB.sDB.NewPar("ID", u.Key)
                 };
@@ -111,6 +115,9 @@ namespace RationesCurare7.DB.DataWrapper
 
         private void ultimoAggiornamento()
         {
+            if (cGB.sDB == null)
+                return;
+
             var sql = "select Email, UltimoAggiornamentoDB from DBInfo";
 
             using (var dr = cGB.sDB.EseguiSQLDataReader(sql))

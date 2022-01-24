@@ -5,18 +5,22 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Forms
 {
     public partial class fCassa : fMyForm
     {
-        private bool ImmagineOK = false;
+        private bool ImmagineOK;
         private string ImageFile = "";
         private string ID__ = "";
-        private byte[] ImageByte = null;
+        private byte[] ImageByte;
 
         public string ID_
         {
@@ -26,7 +30,7 @@ namespace RationesCurare7.UI.Forms
 
                 if (ID__ != "")
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, "", null, false);
+                    var c = new cCasse(ID__, "", null, false);
                     eNome.Text = c.nomenuovo;
                     cbNascondi.Checked = c.Nascondi;
                     CaricaIMG(c.imgName);
@@ -41,14 +45,14 @@ namespace RationesCurare7.UI.Forms
 
         private void bCercaImmagine_Click(object sender, EventArgs e)
         {
-            var k = System.Reflection.Assembly.GetEntryAssembly().Location;
-            k = System.IO.Path.GetDirectoryName(k);
-            k = System.IO.Path.Combine(k, "Casse_Immagini");
+            var k = Assembly.GetEntryAssembly().Location;
+            k = Path.GetDirectoryName(k);
+            k = Path.Combine(k, "Casse_Immagini");
 
             ImageFile = "";
             ImmagineOK = false;
 
-            using (var op = new OpenFileDialog()
+            using (var op = new OpenFileDialog
             {
                 Title = "Selezionare un immagine per la cassa",
                 Multiselect = false,
@@ -79,7 +83,7 @@ namespace RationesCurare7.UI.Forms
                 }
                 else
                 {
-                    if (System.IO.File.Exists(ImageFile))
+                    if (File.Exists(ImageFile))
                     {
                         ImageByte = imageToByteArray(ImageFile);
                         cGB.LoadImage_Try(ImageFile, ref pbCassa);
@@ -96,7 +100,7 @@ namespace RationesCurare7.UI.Forms
 
         public byte[] imageToByteArray(string filename_)
         {
-            using (var fs = new System.IO.FileStream(filename_, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            using (var fs = new FileStream(filename_, FileMode.Open, FileAccess.Read))
             {
                 var MyData = new byte[fs.Length];
                 fs.Read(MyData, 0, (int)fs.Length);
@@ -107,7 +111,7 @@ namespace RationesCurare7.UI.Forms
 
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
-            using (var ms = new System.IO.MemoryStream(byteArrayIn))
+            using (var ms = new MemoryStream(byteArrayIn))
                 return Image.FromStream(ms);
         }
 
@@ -117,7 +121,7 @@ namespace RationesCurare7.UI.Forms
 
             if (!ID__.Equals(eNome.Text, StringComparison.OrdinalIgnoreCase))
             {
-                var m = new DB.DataWrapper.cMovimenti();
+                var m = new cMovimenti();
                 tot += m.NumeroMovimentiPerCassa(ID__);
                 tot += m.NumeroMovimentiPerCassa(eNome.Text);
             }
@@ -144,7 +148,7 @@ namespace RationesCurare7.UI.Forms
                 }
                 else
                 {
-                    var c = new DB.DataWrapper.cCasse(ID__, eNome.Text, ImageByte, cbNascondi.Checked);
+                    var c = new cCasse(ID__, eNome.Text, ImageByte, cbNascondi.Checked);
 
                     if (c.Salva() < 1)
                     {
@@ -153,7 +157,7 @@ namespace RationesCurare7.UI.Forms
                     else
                     {
                         AggiornaAlbero();
-                        this.DialogResult = DialogResult.OK;
+                        DialogResult = DialogResult.OK;
                     }
                 }
             }

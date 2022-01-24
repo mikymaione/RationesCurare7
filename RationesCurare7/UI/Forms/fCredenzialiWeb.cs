@@ -5,8 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using System.IO;
 using System.Windows.Forms;
+using RationesCurare7.maionemikyWS;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -43,14 +46,14 @@ namespace RationesCurare7.UI.Forms
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            using (var ema = new maionemikyWS.EmailSending())
+            using (var ema = new EmailSending())
             {
                 var r = ema.ControllaCredenzialiRC_simple(eEmail.Text, ePassword.Text);
 
                 switch (r)
                 {
-                    case maionemikyWS.CredenzialiRisultato.TuttoOK:
-                        using (var fd = new FolderBrowserDialog()
+                    case CredenzialiRisultato.TuttoOK:
+                        using (var fd = new FolderBrowserDialog
                         {
                             Description = "Cartella dove creare il DB dell'utente",
                             ShowNewFolderButton = true
@@ -58,28 +61,28 @@ namespace RationesCurare7.UI.Forms
                             if (fd.ShowDialog() == DialogResult.OK)
                             {
                                 Psw_ = ePassword.Text;
-                                FileSelezionato_ = System.IO.Path.Combine(fd.SelectedPath, eEmail.Text + ".rqd8");
+                                FileSelezionato_ = Path.Combine(fd.SelectedPath, eEmail.Text + ".rqd8");
 
                                 var ok = cGB.ScaricaUltimoDBDalWeb(ema, "19000101000000", FileSelezionato, eEmail.Text, ePassword.Text, true);
 
                                 if (ok)
-                                    this.DialogResult = DialogResult.OK;
+                                    DialogResult = DialogResult.OK;
                             }
                         break;
 
-                    case maionemikyWS.CredenzialiRisultato.Presente_PasswordErrata:
+                    case CredenzialiRisultato.Presente_PasswordErrata:
                         cGB.MsgBox("Password errata!", MessageBoxIcon.Exclamation);
                         break;
 
-                    case maionemikyWS.CredenzialiRisultato.Assente:
+                    case CredenzialiRisultato.Assente:
                         cGB.MsgBox("Questo utente non esiste!", MessageBoxIcon.Exclamation);
                         break;
 
-                    case maionemikyWS.CredenzialiRisultato.Errore:
+                    case CredenzialiRisultato.Errore:
                         cGB.MsgBox("Errore, riprovare.", MessageBoxIcon.Error);
                         break;
 
-                    case maionemikyWS.CredenzialiRisultato.ProgrammaNonAutorizzato:
+                    case CredenzialiRisultato.ProgrammaNonAutorizzato:
                         cGB.MsgBox("Programma non autorizzato!", MessageBoxIcon.Error);
                         break;
                 }

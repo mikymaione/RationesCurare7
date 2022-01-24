@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fGiroconto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -87,8 +90,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbCasse;
-        private System.Windows.Forms.Label lTitolo;
-        private System.Windows.Forms.Button button1;
+        private ComboBox cbCasse;
+        private Label lTitolo;
+        private Button button1;
     }
 }

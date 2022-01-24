@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fSceltaTipoModificaCalendario
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -104,9 +107,9 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbSerie;
-        private System.Windows.Forms.RadioButton rbSingolo;
-        private System.Windows.Forms.Button bOK;
+        private GroupBox groupBox1;
+        private RadioButton rbSerie;
+        private RadioButton rbSingolo;
+        private Button bOK;
     }
 }

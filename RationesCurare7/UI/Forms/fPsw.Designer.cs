@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Forms
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Forms
 {
     partial class fPsw
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -124,11 +127,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ePsw;
-        private System.Windows.Forms.Button bOK;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button bRecupera;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private Label label1;
+        private TextBox ePsw;
+        private Button bOK;
+        private PictureBox pictureBox1;
+        private Button bRecupera;
+        private ToolTip toolTip1;
     }
 }

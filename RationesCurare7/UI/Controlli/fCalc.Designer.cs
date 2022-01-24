@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class fCalc
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -140,13 +143,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button bAdd;
-        private System.Windows.Forms.Button bSott;
-        private System.Windows.Forms.Button bEurom;
-        private System.Windows.Forms.Button bDiv;
-        private System.Windows.Forms.Button bMul;
-        private System.Windows.Forms.Button bEq;
+        private ListBox listBox1;
+        private Button bAdd;
+        private Button bSott;
+        private Button bEurom;
+        private Button bDiv;
+        private Button bMul;
+        private Button bEq;
         private cMathEdit textBox1;
     }
 }

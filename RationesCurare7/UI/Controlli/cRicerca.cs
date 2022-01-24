@@ -5,7 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
+using RationesCurare7.DB.DataWrapper;
+using RationesCurare7.GB;
+using RationesCurare7.Properties;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -23,7 +27,7 @@ namespace RationesCurare7.UI.Controlli
 
             if (!DesignTime)
             {
-                LatoDaDisegnare = new sLatoBordo()
+                LatoDaDisegnare = new sLatoBordo
                 {
                     Setted = true
                 };
@@ -32,7 +36,7 @@ namespace RationesCurare7.UI.Controlli
                 AcceptButton = bCerca;
                 AutoFocus = eDataDa;
 
-                var m = new DB.DataWrapper.cMovimenti();
+                var m = new cMovimenti();
                 eDescrizione.AutoCompleteCustomSource = m.TutteLeDescrizioni();
                 eMacroArea.AutoCompleteCustomSource = m.TutteLeMacroAree();
                 eDataDa.Value = new DateTime(2005, 1, 1);
@@ -60,7 +64,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void bCerca_Click(object sender, EventArgs e)
         {
-            cGB.RationesCurareMainForm.ShowCash("Saldo", Properties.Resources.saldo32, new GB.cFiltriRicerca()
+            cGB.RationesCurareMainForm.ShowCash("Saldo", Resources.saldo32, new cFiltriRicerca
             {
                 bCassa = cbAttivaCassa.Checked,
                 bData = cbAttivaData.Checked,

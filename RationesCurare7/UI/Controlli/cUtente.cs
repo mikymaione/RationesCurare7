@@ -5,6 +5,8 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
+using System.IO;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Controlli
@@ -21,7 +23,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Carica()
         {
-            var h = System.IO.Path.Combine(cGB.PathFolderDB(), cGB.DatiUtente.Email + ".jpg");
+            var h = Path.Combine(cGB.PathFolderDB(), cGB.DatiUtente.Email + ".jpg");
             bUtente.Text = cGB.DatiUtente.Nome;
 
             //iUtente.Image = Image.FromFile(h);

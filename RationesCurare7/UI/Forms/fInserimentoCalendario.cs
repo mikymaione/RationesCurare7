@@ -5,13 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -43,7 +40,7 @@ namespace RationesCurare7.UI.Forms
 
                 if (ID__ != "")
                 {
-                    DB.DataWrapper.cCalendario m = new DB.DataWrapper.cCalendario(ID__);
+                    cCalendario m = new cCalendario(ID__);
 
                     DataSelezionata = m.Giorno;
                     eDescrizione.Text = m.Descrizione;
@@ -66,7 +63,7 @@ namespace RationesCurare7.UI.Forms
         {
             int j = -1;
 
-            DB.DataWrapper.cCalendario m = new DB.DataWrapper.cCalendario()
+            cCalendario m = new cCalendario
             {
                 ID = ID__,
                 IDGruppo = IDGruppo_,
@@ -81,7 +78,7 @@ namespace RationesCurare7.UI.Forms
             if (j <= 0)
                 MsgErroreSalvataggio();
             else
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                DialogResult = DialogResult.OK;
         }
 
         private void fInserimentoCalendario_KeyDown(object sender, KeyEventArgs e)

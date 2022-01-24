@@ -1,11 +1,14 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cAbout
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -143,13 +146,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lVer;
-        private System.Windows.Forms.Label lInfo;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lCopyRight;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label2;
+        private Label label1;
+        private Label lVer;
+        private Label lInfo;
+        private PictureBox pictureBox1;
+        private Label lCopyRight;
+        private LinkLabel linkLabel1;
+        private RichTextBox richTextBox1;
+        private Label label2;
     }
 }

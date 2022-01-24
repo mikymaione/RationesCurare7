@@ -5,14 +5,19 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using Margins = System.Drawing.Printing.Margins;
 
 namespace RationesCurare7.UI.Controlli
 {
     public class cBaseGrafico : cMyUserControl
     {
-        private System.Windows.Forms.DataVisualization.Charting.Chart il_grafico;
+        private Chart il_grafico;
 
         protected const string ColoreBarra = "LightToDark";
         protected const string cTitolo = "Grafico dei movimenti";
@@ -20,7 +25,7 @@ namespace RationesCurare7.UI.Controlli
         protected double Totale = 0;
         protected DateTime PeriodoCorrente = DateTime.MinValue;
 
-        protected void SpostatiInDirezione(int d, int Periodicita, ref System.Windows.Forms.DateTimePicker eDa, ref System.Windows.Forms.DateTimePicker eA)
+        protected void SpostatiInDirezione(int d, int Periodicita, ref DateTimePicker eDa, ref DateTimePicker eA)
         {
             if (PeriodoCorrente == DateTime.MinValue)
                 PeriodoCorrente = DateTime.Now;
@@ -43,13 +48,13 @@ namespace RationesCurare7.UI.Controlli
             }
         }
 
-        protected void Stampa(System.Windows.Forms.DataVisualization.Charting.Chart grafico_)
+        protected void Stampa(Chart grafico_)
         {
             il_grafico = grafico_;
 
-            using (var pd = new System.Drawing.Printing.PrintDocument())
+            using (var pd = new PrintDocument())
             {
-                var m = new System.Drawing.Printing.Margins(0, 0, 0, 0);
+                var m = new Margins(0, 0, 0, 0);
 
                 il_grafico.Printing.PrintDocument = pd;
                 il_grafico.Printing.PrintDocument.PrintPage += pd_PrintPage;
@@ -61,7 +66,7 @@ namespace RationesCurare7.UI.Controlli
             }
         }
 
-        private void pd_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
+        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
         {
             using (var fontTitle = new Font("Times New Roman", 16))
             using (var format = new StringFormat())

@@ -5,10 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using RationesCurare7.DB.DataWrapper;
 
 namespace RationesCurare7.UI.Controlli
 {
@@ -35,8 +36,7 @@ namespace RationesCurare7.UI.Controlli
 
         private void Inita()
         {
-            var m = new DB.DataWrapper.cMovimenti();
-            eDa.Value = new DateTime(2005, 1, 1, 0, 0, 0);
+            eDa.Value = new DateTime(1900, 1, 1, 0, 0, 0);
             eA.Value = cGB.DateTo235959(DateTime.Now.AddYears(1));
             cbImporti.SelectedIndex = 2;
 
@@ -48,48 +48,55 @@ namespace RationesCurare7.UI.Controlli
             Cerca();
         }
 
-        public void Cerca()
+        private void Cerca()
         {
-            this.Enabled = false;
+            Enabled = false;
 
             try
             {
-                var mov = new DB.DataWrapper.cMovimenti()
+                var mov = new cMovimenti
                 {
                     DataDa = cGB.DateTo00000(eDa.Value),
                     DataA = cGB.DateTo235959(eA.Value)
                 };
 
                 var positivita = 0;
-                var NumCorre = -1;
+                var numCorre = -1;
                 var area = "Altro";
 
-                grafico.Series.Clear();
-
-                if (cbImporti.SelectedIndex == 0)
-                    positivita = -1;
-                else if (cbImporti.SelectedIndex == 1)
-                    positivita = 1;
+                switch (cbImporti.SelectedIndex)
+                {
+                    case 0:
+                        positivita = -1;
+                        break;
+                    case 1:
+                        positivita = 1;
+                        break;
+                }
 
                 Totale = mov.RicercaGraficoTortaSaldo(positivita);
 
-                using (var data_reader = mov.RicercaTorta(positivita))
+                grafico.Series.Clear();
+
+                using (var dataReader = mov.RicercaTorta(positivita))
                 {
-                    var serie_nuova = new System.Windows.Forms.DataVisualization.Charting.Series();
-                    serie_nuova.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                    serie_nuova.SmartLabelStyle.Enabled = true;
-                    serie_nuova["DrawingStyle"] = ColoreBarra;
+                    var serieNuova = new Series
+                    {
+                        ChartType = SeriesChartType.Pie,
+                        SmartLabelStyle = { Enabled = true },
+                        ["DrawingStyle"] = ColoreBarra
+                    };
 
                     try
                     {
-                        if (data_reader.HasRows)
-                            while (data_reader.Read())
+                        if (dataReader.HasRows)
+                            while (dataReader.Read())
                             {
-                                var soldi = cGB.ObjectToMoney(data_reader[1]);
+                                var soldi = cGB.ObjectToMoney(dataReader[1]);
 
                                 try
                                 {
-                                    area = data_reader.GetString(0);
+                                    area = dataReader.GetString(0);
 
                                     if (area == null || area.Equals(""))
                                         area = "Altro";
@@ -101,9 +108,9 @@ namespace RationesCurare7.UI.Controlli
 
                                 if (soldi != 0)
                                 {
-                                    NumCorre += 1;
+                                    numCorre += 1;
 
-                                    var datapoint_attuale = new System.Windows.Forms.DataVisualization.Charting.DataPoint()
+                                    var datapointAttuale = new DataPoint
                                     {
                                         LegendText = ToEuroWithString(soldi, area),
                                         AxisLabel = area,
@@ -111,37 +118,37 @@ namespace RationesCurare7.UI.Controlli
                                         ToolTip = soldi.ToString("c")
                                     };
 
-                                    serie_nuova.Points.Insert(NumCorre, datapoint_attuale);
+                                    serieNuova.Points.Insert(numCorre, datapointAttuale);
                                 }
                             }
 
-                        this.gbGrafico.Text = "Grafico a torta - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
-                        serie_nuova.Name = "Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
+                        gbGrafico.Text = "Grafico a torta - Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
+                        serieNuova.Name = "Saldo = " + cGB.DoubleToMoneyStringValuta(Totale);
 
-                        grafico.Series.Add(serie_nuova);
+                        grafico.Series.Add(serieNuova);
                     }
                     finally
                     {
-                        data_reader.Close();
+                        dataReader.Close();
                     }
                 }
             }
             finally
             {
                 SettaTitolo();
-                this.Enabled = true;
+                Enabled = true;
 
                 foreach (var a in grafico.ChartAreas)
                     a.RecalculateAxesScale();
             }
         }
-   
-        private double[] DoubleToDataPointDouble(double d)
+
+        private static double[] DoubleToDataPointDouble(double d)
         {
-            return new double[] { d };
+            return new[] { d };
         }
 
-        private string ToEuroWithString(double d, string s)
+        private static string ToEuroWithString(double d, string s)
         {
             return s + " " + cGB.DoubleToMoneyStringValuta(d);
         }

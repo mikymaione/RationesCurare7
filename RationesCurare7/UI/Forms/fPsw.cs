@@ -5,13 +5,11 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using RationesCurare7.maionemikyWS;
 
 namespace RationesCurare7.UI.Forms
 {
@@ -32,11 +30,11 @@ namespace RationesCurare7.UI.Forms
 
         private void bRecupera_Click(object sender, EventArgs ea)
         {
-            this.Enabled = false;
+            Enabled = false;
 
             try
             {
-                using (maionemikyWS.EmailSending e = new maionemikyWS.EmailSending())
+                using (EmailSending e = new EmailSending())
                     if (e.RecuperaPswRC_Six(PswC, Email))
                     {
                         cGB.MsgBox("Ti ho inviato la password via email!");
@@ -51,14 +49,14 @@ namespace RationesCurare7.UI.Forms
                 cGB.MsgBox("Errore : " + ex.Message, MessageBoxIcon.Exclamation);
             }
 
-            this.Enabled = true;
+            Enabled = true;
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
             if (ePsw.Text == PswC)
             {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                DialogResult = DialogResult.OK;
             }
             else
             {

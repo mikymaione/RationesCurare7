@@ -1,11 +1,15 @@
-﻿namespace RationesCurare7.UI.Controlli
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+
+namespace RationesCurare7.UI.Controlli
 {
     partial class cGraficoSpline
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -113,10 +117,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button bCerca;
-        private System.Windows.Forms.GroupBox gbGrafico;
-        private System.Windows.Forms.DataVisualization.Charting.Chart grafico;
-        private System.Windows.Forms.Button bStampa;
+        private Panel panel1;
+        private Button bCerca;
+        private GroupBox gbGrafico;
+        private Chart grafico;
+        private Button bStampa;
     }
 }

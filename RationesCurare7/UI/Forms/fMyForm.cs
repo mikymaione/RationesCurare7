@@ -5,6 +5,9 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RationesCurare7.UI.Forms
@@ -13,16 +16,16 @@ namespace RationesCurare7.UI.Forms
     {
         public fMyForm()
         {
-            this.KeyPreview = true;
-            this.KeyDown += new KeyEventHandler(this.fMyForm_KeyDown);
+            KeyPreview = true;
+            KeyDown += fMyForm_KeyDown;
         }
 
         private void fMyForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.DialogResult = DialogResult.Abort;
-                this.Close();
+                DialogResult = DialogResult.Abort;
+                Close();
             }
         }
 
@@ -33,15 +36,15 @@ namespace RationesCurare7.UI.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMyForm));
-            this.SuspendLayout();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(fMyForm));
+            SuspendLayout();
             // 
             // fMyForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "fMyForm";
-            this.ResumeLayout(false);
+            ClientSize = new Size(284, 262);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "fMyForm";
+            ResumeLayout(false);
 
         }
 
