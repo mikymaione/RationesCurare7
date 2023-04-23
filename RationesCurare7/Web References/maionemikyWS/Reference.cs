@@ -11,69 +11,65 @@
 // 
 // Il codice sorgente è stato generato automaticamente da Microsoft.VSDesigner, versione 4.0.30319.42000.
 // 
-
-using System;
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Threading;
-using System.Web.Services;
-using System.Web.Services.Description;
-using System.Web.Services.Protocols;
-using System.Xml.Serialization;
-using RationesCurare7.Properties;
-
 #pragma warning disable 1591
 
 namespace RationesCurare7.maionemikyWS {
+    using System.Diagnostics;
+    using System;
+    using System.Xml.Serialization;
+    using System.ComponentModel;
+    using System.Web.Services.Protocols;
+    using System.Web.Services;
+    
+    
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [WebServiceBinding(Name="EmailSendingSoap", Namespace="http://www.maionemiky.it/")]
-    public partial class EmailSending : SoapHttpClientProtocol {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="EmailSendingSoap", Namespace="http://www.maionemiky.it/")]
+    public partial class EmailSending : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private SendOrPostCallback ComparaDBRCOperationCompleted;
+        private System.Threading.SendOrPostCallback ComparaDBRCOperationCompleted;
         
-        private SendOrPostCallback VersioneDBOperationCompleted;
+        private System.Threading.SendOrPostCallback VersioneDBOperationCompleted;
         
-        private SendOrPostCallback OttieniUltimoDBRCOperationCompleted;
+        private System.Threading.SendOrPostCallback OttieniUltimoDBRCOperationCompleted;
         
-        private SendOrPostCallback SonoLicenziatoOperationCompleted;
+        private System.Threading.SendOrPostCallback SonoLicenziatoOperationCompleted;
         
-        private SendOrPostCallback RecuperaPswRC_SixOperationCompleted;
+        private System.Threading.SendOrPostCallback RecuperaPswRC_SixOperationCompleted;
         
-        private SendOrPostCallback GiaEsisteArchivioFotoOperationCompleted;
+        private System.Threading.SendOrPostCallback GiaEsisteArchivioFotoOperationCompleted;
         
-        private SendOrPostCallback AggiornaUtenteOperationCompleted;
+        private System.Threading.SendOrPostCallback AggiornaUtenteOperationCompleted;
         
-        private SendOrPostCallback DeZippaDBRCOperationCompleted;
+        private System.Threading.SendOrPostCallback DeZippaDBRCOperationCompleted;
         
-        private SendOrPostCallback UploadFileFullOperationCompleted;
+        private System.Threading.SendOrPostCallback UploadFileFullOperationCompleted;
         
-        private SendOrPostCallback UploadFileOperationCompleted;
+        private System.Threading.SendOrPostCallback UploadFileOperationCompleted;
         
-        private SendOrPostCallback UploadFileRCOperationCompleted;
+        private System.Threading.SendOrPostCallback UploadFileRCOperationCompleted;
         
-        private SendOrPostCallback UploadFileRC_simpleOperationCompleted;
+        private System.Threading.SendOrPostCallback UploadFileRC_simpleOperationCompleted;
         
-        private SendOrPostCallback CreaDBPerRCOperationCompleted;
+        private System.Threading.SendOrPostCallback CreaDBPerRCOperationCompleted;
         
-        private SendOrPostCallback CreaDBPerRC_simpleOperationCompleted;
+        private System.Threading.SendOrPostCallback CreaDBPerRC_simpleOperationCompleted;
         
-        private SendOrPostCallback ControllaCredenzialiProgOperationCompleted;
+        private System.Threading.SendOrPostCallback ControllaCredenzialiProgOperationCompleted;
         
-        private SendOrPostCallback ControllaCredenzialiRC_simpleOperationCompleted;
+        private System.Threading.SendOrPostCallback ControllaCredenzialiRC_simpleOperationCompleted;
         
-        private SendOrPostCallback ControllaCredenzialiRCOperationCompleted;
+        private System.Threading.SendOrPostCallback ControllaCredenzialiRCOperationCompleted;
         
-        private SendOrPostCallback MandaMailOperationCompleted;
+        private System.Threading.SendOrPostCallback MandaMailOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public EmailSending() {
-            this.Url = Settings.Default.RationesCurare7_maionemikyWS_EmailSending;
+            this.Url = global::RationesCurare7.Properties.Settings.Default.RationesCurare7_maionemikyWS_EmailSending;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -162,7 +158,7 @@ namespace RationesCurare7.maionemikyWS {
         public event MandaMailCompletedEventHandler MandaMailCompleted;
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/ComparaDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/ComparaDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Comparazione ComparaDBRC(string yyyyMMddHHmmss, string email, string psw) {
             object[] results = this.Invoke("ComparaDBRC", new object[] {
                         yyyyMMddHHmmss,
@@ -179,7 +175,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void ComparaDBRCAsync(string yyyyMMddHHmmss, string email, string psw, object userState) {
             if ((this.ComparaDBRCOperationCompleted == null)) {
-                this.ComparaDBRCOperationCompleted = new SendOrPostCallback(this.OnComparaDBRCOperationCompleted);
+                this.ComparaDBRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnComparaDBRCOperationCompleted);
             }
             this.InvokeAsync("ComparaDBRC", new object[] {
                         yyyyMMddHHmmss,
@@ -189,18 +185,18 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnComparaDBRCOperationCompleted(object arg) {
             if ((this.ComparaDBRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ComparaDBRCCompleted(this, new ComparaDBRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/VersioneDB", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        public DateTime VersioneDB(string email, string psw) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/VersioneDB", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.DateTime VersioneDB(string email, string psw) {
             object[] results = this.Invoke("VersioneDB", new object[] {
                         email,
                         psw});
-            return ((DateTime)(results[0]));
+            return ((System.DateTime)(results[0]));
         }
         
         /// <remarks/>
@@ -211,7 +207,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void VersioneDBAsync(string email, string psw, object userState) {
             if ((this.VersioneDBOperationCompleted == null)) {
-                this.VersioneDBOperationCompleted = new SendOrPostCallback(this.OnVersioneDBOperationCompleted);
+                this.VersioneDBOperationCompleted = new System.Threading.SendOrPostCallback(this.OnVersioneDBOperationCompleted);
             }
             this.InvokeAsync("VersioneDB", new object[] {
                         email,
@@ -220,14 +216,14 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnVersioneDBOperationCompleted(object arg) {
             if ((this.VersioneDBCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.VersioneDBCompleted(this, new VersioneDBCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/OttieniUltimoDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        [return: XmlElement(DataType="base64Binary")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/OttieniUltimoDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
         public byte[] OttieniUltimoDBRC(string yyyyMMddHHmmss, string email, string psw) {
             object[] results = this.Invoke("OttieniUltimoDBRC", new object[] {
                         yyyyMMddHHmmss,
@@ -244,7 +240,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void OttieniUltimoDBRCAsync(string yyyyMMddHHmmss, string email, string psw, object userState) {
             if ((this.OttieniUltimoDBRCOperationCompleted == null)) {
-                this.OttieniUltimoDBRCOperationCompleted = new SendOrPostCallback(this.OnOttieniUltimoDBRCOperationCompleted);
+                this.OttieniUltimoDBRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOttieniUltimoDBRCOperationCompleted);
             }
             this.InvokeAsync("OttieniUltimoDBRC", new object[] {
                         yyyyMMddHHmmss,
@@ -254,13 +250,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnOttieniUltimoDBRCOperationCompleted(object arg) {
             if ((this.OttieniUltimoDBRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.OttieniUltimoDBRCCompleted(this, new OttieniUltimoDBRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/SonoLicenziato", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/SonoLicenziato", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public Licenza SonoLicenziato(string Utente, string Codice) {
             object[] results = this.Invoke("SonoLicenziato", new object[] {
                         Utente,
@@ -276,7 +272,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void SonoLicenziatoAsync(string Utente, string Codice, object userState) {
             if ((this.SonoLicenziatoOperationCompleted == null)) {
-                this.SonoLicenziatoOperationCompleted = new SendOrPostCallback(this.OnSonoLicenziatoOperationCompleted);
+                this.SonoLicenziatoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSonoLicenziatoOperationCompleted);
             }
             this.InvokeAsync("SonoLicenziato", new object[] {
                         Utente,
@@ -285,13 +281,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnSonoLicenziatoOperationCompleted(object arg) {
             if ((this.SonoLicenziatoCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SonoLicenziatoCompleted(this, new SonoLicenziatoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/RecuperaPswRC_Six", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/RecuperaPswRC_Six", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool RecuperaPswRC_Six(string Psw, string Email) {
             object[] results = this.Invoke("RecuperaPswRC_Six", new object[] {
                         Psw,
@@ -307,7 +303,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void RecuperaPswRC_SixAsync(string Psw, string Email, object userState) {
             if ((this.RecuperaPswRC_SixOperationCompleted == null)) {
-                this.RecuperaPswRC_SixOperationCompleted = new SendOrPostCallback(this.OnRecuperaPswRC_SixOperationCompleted);
+                this.RecuperaPswRC_SixOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRecuperaPswRC_SixOperationCompleted);
             }
             this.InvokeAsync("RecuperaPswRC_Six", new object[] {
                         Psw,
@@ -316,13 +312,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnRecuperaPswRC_SixOperationCompleted(object arg) {
             if ((this.RecuperaPswRC_SixCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RecuperaPswRC_SixCompleted(this, new RecuperaPswRC_SixCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/GiaEsisteArchivioFoto", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/GiaEsisteArchivioFoto", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool GiaEsisteArchivioFoto(string descrizione) {
             object[] results = this.Invoke("GiaEsisteArchivioFoto", new object[] {
                         descrizione});
@@ -337,7 +333,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void GiaEsisteArchivioFotoAsync(string descrizione, object userState) {
             if ((this.GiaEsisteArchivioFotoOperationCompleted == null)) {
-                this.GiaEsisteArchivioFotoOperationCompleted = new SendOrPostCallback(this.OnGiaEsisteArchivioFotoOperationCompleted);
+                this.GiaEsisteArchivioFotoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGiaEsisteArchivioFotoOperationCompleted);
             }
             this.InvokeAsync("GiaEsisteArchivioFoto", new object[] {
                         descrizione}, this.GiaEsisteArchivioFotoOperationCompleted, userState);
@@ -345,13 +341,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnGiaEsisteArchivioFotoOperationCompleted(object arg) {
             if ((this.GiaEsisteArchivioFotoCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GiaEsisteArchivioFotoCompleted(this, new GiaEsisteArchivioFotoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/AggiornaUtente", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/AggiornaUtente", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool AggiornaUtente(UtenteProgramma u) {
             object[] results = this.Invoke("AggiornaUtente", new object[] {
                         u});
@@ -366,7 +362,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void AggiornaUtenteAsync(UtenteProgramma u, object userState) {
             if ((this.AggiornaUtenteOperationCompleted == null)) {
-                this.AggiornaUtenteOperationCompleted = new SendOrPostCallback(this.OnAggiornaUtenteOperationCompleted);
+                this.AggiornaUtenteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAggiornaUtenteOperationCompleted);
             }
             this.InvokeAsync("AggiornaUtente", new object[] {
                         u}, this.AggiornaUtenteOperationCompleted, userState);
@@ -374,13 +370,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnAggiornaUtenteOperationCompleted(object arg) {
             if ((this.AggiornaUtenteCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AggiornaUtenteCompleted(this, new AggiornaUtenteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/DeZippaDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/DeZippaDBRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool DeZippaDBRC(string PathFile) {
             object[] results = this.Invoke("DeZippaDBRC", new object[] {
                         PathFile});
@@ -395,7 +391,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void DeZippaDBRCAsync(string PathFile, object userState) {
             if ((this.DeZippaDBRCOperationCompleted == null)) {
-                this.DeZippaDBRCOperationCompleted = new SendOrPostCallback(this.OnDeZippaDBRCOperationCompleted);
+                this.DeZippaDBRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeZippaDBRCOperationCompleted);
             }
             this.InvokeAsync("DeZippaDBRC", new object[] {
                         PathFile}, this.DeZippaDBRCOperationCompleted, userState);
@@ -403,14 +399,14 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnDeZippaDBRCOperationCompleted(object arg) {
             if ((this.DeZippaDBRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DeZippaDBRCCompleted(this, new DeZippaDBRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/UploadFileFull", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        public CredenzialiRisultatoFull UploadFileFull(string MapPath_, string Directory_, CredenzialiDiAccesso Credenziali, CredenzialiDiAccessoRC CredenzialiRC, [XmlElement(DataType="base64Binary")] byte[] f, string fileName) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/UploadFileFull", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CredenzialiRisultatoFull UploadFileFull(string MapPath_, string Directory_, CredenzialiDiAccesso Credenziali, CredenzialiDiAccessoRC CredenzialiRC, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] f, string fileName) {
             object[] results = this.Invoke("UploadFileFull", new object[] {
                         MapPath_,
                         Directory_,
@@ -429,7 +425,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void UploadFileFullAsync(string MapPath_, string Directory_, CredenzialiDiAccesso Credenziali, CredenzialiDiAccessoRC CredenzialiRC, byte[] f, string fileName, object userState) {
             if ((this.UploadFileFullOperationCompleted == null)) {
-                this.UploadFileFullOperationCompleted = new SendOrPostCallback(this.OnUploadFileFullOperationCompleted);
+                this.UploadFileFullOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadFileFullOperationCompleted);
             }
             this.InvokeAsync("UploadFileFull", new object[] {
                         MapPath_,
@@ -442,14 +438,14 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnUploadFileFullOperationCompleted(object arg) {
             if ((this.UploadFileFullCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UploadFileFullCompleted(this, new UploadFileFullCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/UploadFile", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        public CredenzialiRisultato UploadFile(CredenzialiDiAccesso Credenziali, [XmlElement(DataType="base64Binary")] byte[] f, string fileName) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/UploadFile", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CredenzialiRisultato UploadFile(CredenzialiDiAccesso Credenziali, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] f, string fileName) {
             object[] results = this.Invoke("UploadFile", new object[] {
                         Credenziali,
                         f,
@@ -465,7 +461,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void UploadFileAsync(CredenzialiDiAccesso Credenziali, byte[] f, string fileName, object userState) {
             if ((this.UploadFileOperationCompleted == null)) {
-                this.UploadFileOperationCompleted = new SendOrPostCallback(this.OnUploadFileOperationCompleted);
+                this.UploadFileOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadFileOperationCompleted);
             }
             this.InvokeAsync("UploadFile", new object[] {
                         Credenziali,
@@ -475,14 +471,14 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnUploadFileOperationCompleted(object arg) {
             if ((this.UploadFileCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UploadFileCompleted(this, new UploadFileCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/UploadFileRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        public CredenzialiRisultato UploadFileRC(CredenzialiDiAccessoRC Credenziali, [XmlElement(DataType="base64Binary")] byte[] f, string fileName) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/UploadFileRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CredenzialiRisultato UploadFileRC(CredenzialiDiAccessoRC Credenziali, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] f, string fileName) {
             object[] results = this.Invoke("UploadFileRC", new object[] {
                         Credenziali,
                         f,
@@ -498,7 +494,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void UploadFileRCAsync(CredenzialiDiAccessoRC Credenziali, byte[] f, string fileName, object userState) {
             if ((this.UploadFileRCOperationCompleted == null)) {
-                this.UploadFileRCOperationCompleted = new SendOrPostCallback(this.OnUploadFileRCOperationCompleted);
+                this.UploadFileRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadFileRCOperationCompleted);
             }
             this.InvokeAsync("UploadFileRC", new object[] {
                         Credenziali,
@@ -508,14 +504,14 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnUploadFileRCOperationCompleted(object arg) {
             if ((this.UploadFileRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UploadFileRCCompleted(this, new UploadFileRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/UploadFileRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
-        public CredenzialiRisultatoFull UploadFileRC_simple(string yyyyMMddHHmmss, string Utente, string Psw, [XmlElement(DataType="base64Binary")] byte[] f, string fileName) {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/UploadFileRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CredenzialiRisultatoFull UploadFileRC_simple(string yyyyMMddHHmmss, string Utente, string Psw, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] f, string fileName) {
             object[] results = this.Invoke("UploadFileRC_simple", new object[] {
                         yyyyMMddHHmmss,
                         Utente,
@@ -533,7 +529,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void UploadFileRC_simpleAsync(string yyyyMMddHHmmss, string Utente, string Psw, byte[] f, string fileName, object userState) {
             if ((this.UploadFileRC_simpleOperationCompleted == null)) {
-                this.UploadFileRC_simpleOperationCompleted = new SendOrPostCallback(this.OnUploadFileRC_simpleOperationCompleted);
+                this.UploadFileRC_simpleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUploadFileRC_simpleOperationCompleted);
             }
             this.InvokeAsync("UploadFileRC_simple", new object[] {
                         yyyyMMddHHmmss,
@@ -545,13 +541,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnUploadFileRC_simpleOperationCompleted(object arg) {
             if ((this.UploadFileRC_simpleCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UploadFileRC_simpleCompleted(this, new UploadFileRC_simpleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/CreaDBPerRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/CreaDBPerRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool CreaDBPerRC(CredenzialiDiAccessoRC CredenzialiRC) {
             object[] results = this.Invoke("CreaDBPerRC", new object[] {
                         CredenzialiRC});
@@ -566,7 +562,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void CreaDBPerRCAsync(CredenzialiDiAccessoRC CredenzialiRC, object userState) {
             if ((this.CreaDBPerRCOperationCompleted == null)) {
-                this.CreaDBPerRCOperationCompleted = new SendOrPostCallback(this.OnCreaDBPerRCOperationCompleted);
+                this.CreaDBPerRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreaDBPerRCOperationCompleted);
             }
             this.InvokeAsync("CreaDBPerRC", new object[] {
                         CredenzialiRC}, this.CreaDBPerRCOperationCompleted, userState);
@@ -574,13 +570,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnCreaDBPerRCOperationCompleted(object arg) {
             if ((this.CreaDBPerRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CreaDBPerRCCompleted(this, new CreaDBPerRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/CreaDBPerRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/CreaDBPerRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool CreaDBPerRC_simple(string Utente, string Psw) {
             object[] results = this.Invoke("CreaDBPerRC_simple", new object[] {
                         Utente,
@@ -596,7 +592,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void CreaDBPerRC_simpleAsync(string Utente, string Psw, object userState) {
             if ((this.CreaDBPerRC_simpleOperationCompleted == null)) {
-                this.CreaDBPerRC_simpleOperationCompleted = new SendOrPostCallback(this.OnCreaDBPerRC_simpleOperationCompleted);
+                this.CreaDBPerRC_simpleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreaDBPerRC_simpleOperationCompleted);
             }
             this.InvokeAsync("CreaDBPerRC_simple", new object[] {
                         Utente,
@@ -605,13 +601,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnCreaDBPerRC_simpleOperationCompleted(object arg) {
             if ((this.CreaDBPerRC_simpleCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CreaDBPerRC_simpleCompleted(this, new CreaDBPerRC_simpleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/ControllaCredenzialiProg", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/ControllaCredenzialiProg", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public CredenzialiRisultato ControllaCredenzialiProg(CredenzialiDiAccesso Credenziali) {
             object[] results = this.Invoke("ControllaCredenzialiProg", new object[] {
                         Credenziali});
@@ -626,7 +622,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void ControllaCredenzialiProgAsync(CredenzialiDiAccesso Credenziali, object userState) {
             if ((this.ControllaCredenzialiProgOperationCompleted == null)) {
-                this.ControllaCredenzialiProgOperationCompleted = new SendOrPostCallback(this.OnControllaCredenzialiProgOperationCompleted);
+                this.ControllaCredenzialiProgOperationCompleted = new System.Threading.SendOrPostCallback(this.OnControllaCredenzialiProgOperationCompleted);
             }
             this.InvokeAsync("ControllaCredenzialiProg", new object[] {
                         Credenziali}, this.ControllaCredenzialiProgOperationCompleted, userState);
@@ -634,13 +630,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnControllaCredenzialiProgOperationCompleted(object arg) {
             if ((this.ControllaCredenzialiProgCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ControllaCredenzialiProgCompleted(this, new ControllaCredenzialiProgCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/ControllaCredenzialiRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/ControllaCredenzialiRC_simple", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public CredenzialiRisultato ControllaCredenzialiRC_simple(string Utente, string Psw) {
             object[] results = this.Invoke("ControllaCredenzialiRC_simple", new object[] {
                         Utente,
@@ -656,7 +652,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void ControllaCredenzialiRC_simpleAsync(string Utente, string Psw, object userState) {
             if ((this.ControllaCredenzialiRC_simpleOperationCompleted == null)) {
-                this.ControllaCredenzialiRC_simpleOperationCompleted = new SendOrPostCallback(this.OnControllaCredenzialiRC_simpleOperationCompleted);
+                this.ControllaCredenzialiRC_simpleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnControllaCredenzialiRC_simpleOperationCompleted);
             }
             this.InvokeAsync("ControllaCredenzialiRC_simple", new object[] {
                         Utente,
@@ -665,13 +661,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnControllaCredenzialiRC_simpleOperationCompleted(object arg) {
             if ((this.ControllaCredenzialiRC_simpleCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ControllaCredenzialiRC_simpleCompleted(this, new ControllaCredenzialiRC_simpleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/ControllaCredenzialiRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/ControllaCredenzialiRC", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public CredenzialiRisultato ControllaCredenzialiRC(CredenzialiDiAccessoRC CredenzialiRC) {
             object[] results = this.Invoke("ControllaCredenzialiRC", new object[] {
                         CredenzialiRC});
@@ -686,7 +682,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void ControllaCredenzialiRCAsync(CredenzialiDiAccessoRC CredenzialiRC, object userState) {
             if ((this.ControllaCredenzialiRCOperationCompleted == null)) {
-                this.ControllaCredenzialiRCOperationCompleted = new SendOrPostCallback(this.OnControllaCredenzialiRCOperationCompleted);
+                this.ControllaCredenzialiRCOperationCompleted = new System.Threading.SendOrPostCallback(this.OnControllaCredenzialiRCOperationCompleted);
             }
             this.InvokeAsync("ControllaCredenzialiRC", new object[] {
                         CredenzialiRC}, this.ControllaCredenzialiRCOperationCompleted, userState);
@@ -694,13 +690,13 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnControllaCredenzialiRCOperationCompleted(object arg) {
             if ((this.ControllaCredenzialiRCCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ControllaCredenzialiRCCompleted(this, new ControllaCredenzialiRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [SoapDocumentMethod("http://www.maionemiky.it/MandaMail", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=SoapBindingUse.Literal, ParameterStyle=SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/MandaMail", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string MandaMail(string Oggetto, string Testo, string Destinatario) {
             object[] results = this.Invoke("MandaMail", new object[] {
                         Oggetto,
@@ -717,7 +713,7 @@ namespace RationesCurare7.maionemikyWS {
         /// <remarks/>
         public void MandaMailAsync(string Oggetto, string Testo, string Destinatario, object userState) {
             if ((this.MandaMailOperationCompleted == null)) {
-                this.MandaMailOperationCompleted = new SendOrPostCallback(this.OnMandaMailOperationCompleted);
+                this.MandaMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMandaMailOperationCompleted);
             }
             this.InvokeAsync("MandaMail", new object[] {
                         Oggetto,
@@ -727,7 +723,7 @@ namespace RationesCurare7.maionemikyWS {
         
         private void OnMandaMailOperationCompleted(object arg) {
             if ((this.MandaMailCompleted != null)) {
-                InvokeCompletedEventArgs invokeArgs = ((InvokeCompletedEventArgs)(arg));
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.MandaMailCompleted(this, new MandaMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
@@ -742,9 +738,9 @@ namespace RationesCurare7.maionemikyWS {
                         || (url == string.Empty))) {
                 return false;
             }
-            Uri wsUri = new Uri(url);
+            System.Uri wsUri = new System.Uri(url);
             if (((wsUri.Port >= 1024) 
-                        && (string.Compare(wsUri.Host, "localHost", StringComparison.OrdinalIgnoreCase) == 0))) {
+                        && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
                 return true;
             }
             return false;
@@ -752,9 +748,9 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public enum Comparazione {
         
         /// <remarks/>
@@ -771,9 +767,9 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public enum Licenza {
         
         /// <remarks/>
@@ -790,18 +786,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public partial class UtenteProgramma {
         
         private string programmaField;
         
         private string utenteField;
         
-        private DateTime versioneField;
+        private System.DateTime versioneField;
         
         /// <remarks/>
         public string Programma {
@@ -824,7 +820,7 @@ namespace RationesCurare7.maionemikyWS {
         }
         
         /// <remarks/>
-        public DateTime Versione {
+        public System.DateTime Versione {
             get {
                 return this.versioneField;
             }
@@ -835,11 +831,11 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public partial class CredenzialiRisultatoFull {
         
         private CredenzialiRisultato credenzialiRisultato_Field;
@@ -868,9 +864,9 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public enum CredenzialiRisultato {
         
         /// <remarks/>
@@ -896,11 +892,11 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public partial class CredenzialiDiAccessoRC {
         
         private string utenteField;
@@ -929,11 +925,11 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Xml", "4.7.3056.0")]
-    [Serializable()]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    [XmlType(Namespace="http://www.maionemiky.it/")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.maionemiky.it/")]
     public partial class CredenzialiDiAccesso {
         
         private string nomeApplicazioneField;
@@ -950,18 +946,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void ComparaDBRCCompletedEventHandler(object sender, ComparaDBRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class ComparaDBRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ComparaDBRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal ComparaDBRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal ComparaDBRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -976,44 +972,44 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void VersioneDBCompletedEventHandler(object sender, VersioneDBCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class VersioneDBCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class VersioneDBCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal VersioneDBCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal VersioneDBCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public DateTime Result {
+        public System.DateTime Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((DateTime)(this.results[0]));
+                return ((System.DateTime)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void OttieniUltimoDBRCCompletedEventHandler(object sender, OttieniUltimoDBRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class OttieniUltimoDBRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OttieniUltimoDBRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal OttieniUltimoDBRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal OttieniUltimoDBRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1028,18 +1024,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void SonoLicenziatoCompletedEventHandler(object sender, SonoLicenziatoCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class SonoLicenziatoCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SonoLicenziatoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal SonoLicenziatoCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal SonoLicenziatoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1054,18 +1050,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void RecuperaPswRC_SixCompletedEventHandler(object sender, RecuperaPswRC_SixCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class RecuperaPswRC_SixCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RecuperaPswRC_SixCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal RecuperaPswRC_SixCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal RecuperaPswRC_SixCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1080,18 +1076,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GiaEsisteArchivioFotoCompletedEventHandler(object sender, GiaEsisteArchivioFotoCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class GiaEsisteArchivioFotoCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GiaEsisteArchivioFotoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GiaEsisteArchivioFotoCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal GiaEsisteArchivioFotoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1106,18 +1102,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void AggiornaUtenteCompletedEventHandler(object sender, AggiornaUtenteCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class AggiornaUtenteCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AggiornaUtenteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal AggiornaUtenteCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal AggiornaUtenteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1132,18 +1128,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void DeZippaDBRCCompletedEventHandler(object sender, DeZippaDBRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class DeZippaDBRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeZippaDBRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal DeZippaDBRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal DeZippaDBRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1158,18 +1154,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void UploadFileFullCompletedEventHandler(object sender, UploadFileFullCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class UploadFileFullCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadFileFullCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal UploadFileFullCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal UploadFileFullCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1184,18 +1180,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void UploadFileCompletedEventHandler(object sender, UploadFileCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class UploadFileCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadFileCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal UploadFileCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal UploadFileCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1210,18 +1206,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void UploadFileRCCompletedEventHandler(object sender, UploadFileRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class UploadFileRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadFileRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal UploadFileRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal UploadFileRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1236,18 +1232,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void UploadFileRC_simpleCompletedEventHandler(object sender, UploadFileRC_simpleCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class UploadFileRC_simpleCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UploadFileRC_simpleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal UploadFileRC_simpleCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal UploadFileRC_simpleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1262,18 +1258,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void CreaDBPerRCCompletedEventHandler(object sender, CreaDBPerRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class CreaDBPerRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreaDBPerRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal CreaDBPerRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal CreaDBPerRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1288,18 +1284,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void CreaDBPerRC_simpleCompletedEventHandler(object sender, CreaDBPerRC_simpleCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class CreaDBPerRC_simpleCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreaDBPerRC_simpleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal CreaDBPerRC_simpleCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal CreaDBPerRC_simpleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1314,18 +1310,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void ControllaCredenzialiProgCompletedEventHandler(object sender, ControllaCredenzialiProgCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class ControllaCredenzialiProgCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ControllaCredenzialiProgCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal ControllaCredenzialiProgCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal ControllaCredenzialiProgCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1340,18 +1336,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void ControllaCredenzialiRC_simpleCompletedEventHandler(object sender, ControllaCredenzialiRC_simpleCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class ControllaCredenzialiRC_simpleCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ControllaCredenzialiRC_simpleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal ControllaCredenzialiRC_simpleCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal ControllaCredenzialiRC_simpleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1366,18 +1362,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void ControllaCredenzialiRCCompletedEventHandler(object sender, ControllaCredenzialiRCCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class ControllaCredenzialiRCCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ControllaCredenzialiRCCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal ControllaCredenzialiRCCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal ControllaCredenzialiRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1392,18 +1388,18 @@ namespace RationesCurare7.maionemikyWS {
     }
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void MandaMailCompletedEventHandler(object sender, MandaMailCompletedEventArgs e);
     
     /// <remarks/>
-    [GeneratedCode("System.Web.Services", "4.7.3056.0")]
-    [DebuggerStepThrough()]
-    [DesignerCategory("code")]
-    public partial class MandaMailCompletedEventArgs : AsyncCompletedEventArgs {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class MandaMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal MandaMailCompletedEventArgs(object[] results, Exception exception, bool cancelled, object userState) : 
+        internal MandaMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

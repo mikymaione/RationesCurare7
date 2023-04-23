@@ -8,19 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-
 #pragma warning disable 1591
 
 namespace RationesCurare7.UI.Stampe {
@@ -29,44 +16,44 @@ namespace RationesCurare7.UI.Stampe {
     /// <summary>
     ///Represents a strongly typed in-memory cache of data.
     ///</summary>
-    [Serializable()]
-    [DesignerCategory("code")]
-    [ToolboxItem(true)]
-    [XmlSchemaProvider("GetTypedDataSetSchema")]
-    [XmlRoot("dsDB")]
-    [HelpKeyword("vs.data.DataSet")]
-    public partial class dsDB : DataSet {
+    [global::System.Serializable()]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsDB")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
+    public partial class dsDB : global::System.Data.DataSet {
         
         private MovimentiDataTable tableMovimenti;
         
-        private SchemaSerializationMode _schemaSerializationMode = SchemaSerializationMode.IncludeSchema;
+        private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public dsDB() {
             this.BeginInit();
             this.InitClass();
-            CollectionChangeEventHandler schemaChangedHandler = new CollectionChangeEventHandler(this.SchemaChanged);
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dsDB(SerializationInfo info, StreamingContext context) : 
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected dsDB(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
-                CollectionChangeEventHandler schemaChangedHandler1 = new CollectionChangeEventHandler(this.SchemaChanged);
+                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((this.DetermineSchemaSerializationMode(info, context) == SchemaSerializationMode.IncludeSchema)) {
-                DataSet ds = new DataSet();
-                ds.ReadXmlSchema(new XmlTextReader(new StringReader(strSchema)));
+            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+                global::System.Data.DataSet ds = new global::System.Data.DataSet();
+                ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["Movimenti"] != null)) {
                     base.Tables.Add(new MovimentiDataTable(ds.Tables["Movimenti"]));
                 }
@@ -76,33 +63,33 @@ namespace RationesCurare7.UI.Stampe {
                 this.Locale = ds.Locale;
                 this.CaseSensitive = ds.CaseSensitive;
                 this.EnforceConstraints = ds.EnforceConstraints;
-                this.Merge(ds, false, MissingSchemaAction.Add);
+                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
             else {
-                this.ReadXmlSchema(new XmlTextReader(new StringReader(strSchema)));
+                this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
             this.GetSerializationData(info, context);
-            CollectionChangeEventHandler schemaChangedHandler = new CollectionChangeEventHandler(this.SchemaChanged);
+            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public MovimentiDataTable Movimenti {
             get {
                 return this.tableMovimenti;
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override SchemaSerializationMode SchemaSerializationMode {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.BrowsableAttribute(true)]
+        [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
             get {
                 return this._schemaSerializationMode;
             }
@@ -111,59 +98,59 @@ namespace RationesCurare7.UI.Stampe {
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new DataTableCollection Tables {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public new global::System.Data.DataTableCollection Tables {
             get {
                 return base.Tables;
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public new DataRelationCollection Relations {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public new global::System.Data.DataRelationCollection Relations {
             get {
                 return base.Relations;
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
             this.EndInit();
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public override DataSet Clone() {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public override global::System.Data.DataSet Clone() {
             dsDB cln = ((dsDB)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         protected override bool ShouldSerializeTables() {
             return false;
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         protected override bool ShouldSerializeRelations() {
             return false;
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override void ReadXmlSerializable(XmlReader reader) {
-            if ((this.DetermineSchemaSerializationMode(reader) == SchemaSerializationMode.IncludeSchema)) {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
+            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
-                DataSet ds = new DataSet();
+                global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
                 if ((ds.Tables["Movimenti"] != null)) {
                     base.Tables.Add(new MovimentiDataTable(ds.Tables["Movimenti"]));
@@ -174,7 +161,7 @@ namespace RationesCurare7.UI.Stampe {
                 this.Locale = ds.Locale;
                 this.CaseSensitive = ds.CaseSensitive;
                 this.EnforceConstraints = ds.EnforceConstraints;
-                this.Merge(ds, false, MissingSchemaAction.Add);
+                this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
             else {
@@ -183,23 +170,23 @@ namespace RationesCurare7.UI.Stampe {
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override XmlSchema GetSchemaSerializable() {
-            MemoryStream stream = new MemoryStream();
-            this.WriteXmlSchema(new XmlTextWriter(stream, null));
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
+            global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
+            this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
-            return XmlSchema.Read(new XmlTextReader(stream), null);
+            return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars() {
             this.InitVars(true);
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
             this.tableMovimenti = ((MovimentiDataTable)(base.Tables["Movimenti"]));
             if ((initTable == true)) {
@@ -209,51 +196,51 @@ namespace RationesCurare7.UI.Stampe {
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
             this.DataSetName = "dsDB";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/dsDB.xsd";
             this.EnforceConstraints = true;
-            this.SchemaSerializationMode = SchemaSerializationMode.IncludeSchema;
+            this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableMovimenti = new MovimentiDataTable();
             base.Tables.Add(this.tableMovimenti);
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeMovimenti() {
             return false;
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void SchemaChanged(object sender, CollectionChangeEventArgs e) {
-            if ((e.Action == CollectionChangeAction.Remove)) {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
+            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
             }
         }
         
-        [DebuggerNonUserCode()]
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public static XmlSchemaComplexType GetTypedDataSetSchema(XmlSchemaSet xs) {
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             dsDB ds = new dsDB();
-            XmlSchemaComplexType type = new XmlSchemaComplexType();
-            XmlSchemaSequence sequence = new XmlSchemaSequence();
-            XmlSchemaAny any = new XmlSchemaAny();
+            global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+            global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+            global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
             any.Namespace = ds.Namespace;
             sequence.Items.Add(any);
             type.Particle = sequence;
-            XmlSchema dsSchema = ds.GetSchemaSerializable();
+            global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
             if (xs.Contains(dsSchema.TargetNamespace)) {
-                MemoryStream s1 = new MemoryStream();
-                MemoryStream s2 = new MemoryStream();
+                global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                 try {
-                    XmlSchema schema = null;
+                    global::System.Xml.Schema.XmlSchema schema = null;
                     dsSchema.Write(s1);
-                    for (IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                        schema = ((XmlSchema)(schemas.Current));
+                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                         s2.SetLength(0);
                         schema.Write(s2);
                         if ((s1.Length == s2.Length)) {
@@ -282,30 +269,30 @@ namespace RationesCurare7.UI.Stampe {
             return type;
         }
         
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void MovimentiRowChangeEventHandler(object sender, MovimentiRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
-        [Serializable()]
-        [XmlSchemaProvider("GetTypedTableSchema")]
-        public partial class MovimentiDataTable : TypedTableBase<MovimentiRow> {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MovimentiDataTable : global::System.Data.TypedTableBase<MovimentiRow> {
             
-            private DataColumn columnID;
+            private global::System.Data.DataColumn columnID;
             
-            private DataColumn columnnome;
+            private global::System.Data.DataColumn columnnome;
             
-            private DataColumn columnsoldi;
+            private global::System.Data.DataColumn columnsoldi;
             
-            private DataColumn columndata;
+            private global::System.Data.DataColumn columndata;
             
-            private DataColumn columntipo;
+            private global::System.Data.DataColumn columntipo;
             
-            private DataColumn columndescrizione;
+            private global::System.Data.DataColumn columndescrizione;
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MovimentiDataTable() {
                 this.TableName = "Movimenti";
                 this.BeginInit();
@@ -313,9 +300,9 @@ namespace RationesCurare7.UI.Stampe {
                 this.EndInit();
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MovimentiDataTable(DataTable table) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal MovimentiDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -330,99 +317,99 @@ namespace RationesCurare7.UI.Stampe {
                 this.MinimumCapacity = table.MinimumCapacity;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected MovimentiDataTable(SerializationInfo info, StreamingContext context) : 
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected MovimentiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn IDColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
                 get {
                     return this.columnID;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn nomeColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nomeColumn {
                 get {
                     return this.columnnome;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn soldiColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn soldiColumn {
                 get {
                     return this.columnsoldi;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn dataColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dataColumn {
                 get {
                     return this.columndata;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn tipoColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tipoColumn {
                 get {
                     return this.columntipo;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataColumn descrizioneColumn {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn descrizioneColumn {
                 get {
                     return this.columndescrizione;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [Browsable(false)]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
                     return this.Rows.Count;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MovimentiRow this[int index] {
                 get {
                     return ((MovimentiRow)(this.Rows[index]));
                 }
             }
             
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public event MovimentiRowChangeEventHandler MovimentiRowChanging;
             
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public event MovimentiRowChangeEventHandler MovimentiRowChanged;
             
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public event MovimentiRowChangeEventHandler MovimentiRowDeleting;
             
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public event MovimentiRowChangeEventHandler MovimentiRowDeleted;
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void AddMovimentiRow(MovimentiRow row) {
                 this.Rows.Add(row);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MovimentiRow AddMovimentiRow(int ID, string nome, double soldi, DateTime data, string tipo, string descrizione) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public MovimentiRow AddMovimentiRow(int ID, string nome, double soldi, System.DateTime data, string tipo, string descrizione) {
                 MovimentiRow rowMovimentiRow = ((MovimentiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -436,29 +423,29 @@ namespace RationesCurare7.UI.Stampe {
                 return rowMovimentiRow;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MovimentiRow FindByID(int ID) {
                 return ((MovimentiRow)(this.Rows.Find(new object[] {
                             ID})));
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override DataTable Clone() {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
                 MovimentiDataTable cln = ((MovimentiDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override DataTable CreateInstance() {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
                 return new MovimentiDataTable();
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnnome = base.Columns["nome"];
@@ -468,122 +455,122 @@ namespace RationesCurare7.UI.Stampe {
                 this.columndescrizione = base.Columns["descrizione"];
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new DataColumn("ID", typeof(int), null, MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnnome = new DataColumn("nome", typeof(string), null, MappingType.Element);
+                this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnome);
-                this.columnsoldi = new DataColumn("soldi", typeof(double), null, MappingType.Element);
+                this.columnsoldi = new global::System.Data.DataColumn("soldi", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsoldi);
-                this.columndata = new DataColumn("data", typeof(DateTime), null, MappingType.Element);
+                this.columndata = new global::System.Data.DataColumn("data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndata);
-                this.columntipo = new DataColumn("tipo", typeof(string), null, MappingType.Element);
+                this.columntipo = new global::System.Data.DataColumn("tipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntipo);
-                this.columndescrizione = new DataColumn("descrizione", typeof(string), null, MappingType.Element);
+                this.columndescrizione = new global::System.Data.DataColumn("descrizione", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescrizione);
-                this.Constraints.Add(new UniqueConstraint("MovimentiKey1", new DataColumn[] {
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("MovimentiKey1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MovimentiRow NewMovimentiRow() {
                 return ((MovimentiRow)(this.NewRow()));
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new MovimentiRow(builder);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override Type GetRowType() {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
                 return typeof(MovimentiRow);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.MovimentiRowChanged != null)) {
                     this.MovimentiRowChanged(this, new MovimentiRowChangeEvent(((MovimentiRow)(e.Row)), e.Action));
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.MovimentiRowChanging != null)) {
                     this.MovimentiRowChanging(this, new MovimentiRowChangeEvent(((MovimentiRow)(e.Row)), e.Action));
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.MovimentiRowDeleted != null)) {
                     this.MovimentiRowDeleted(this, new MovimentiRowChangeEvent(((MovimentiRow)(e.Row)), e.Action));
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.MovimentiRowDeleting != null)) {
                     this.MovimentiRowDeleting(this, new MovimentiRowChangeEvent(((MovimentiRow)(e.Row)), e.Action));
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void RemoveMovimentiRow(MovimentiRow row) {
                 this.Rows.Remove(row);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static XmlSchemaComplexType GetTypedTableSchema(XmlSchemaSet xs) {
-                XmlSchemaComplexType type = new XmlSchemaComplexType();
-                XmlSchemaSequence sequence = new XmlSchemaSequence();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 dsDB ds = new dsDB();
-                XmlSchemaAny any1 = new XmlSchemaAny();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = XmlSchemaContentProcessing.Lax;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                XmlSchemaAny any2 = new XmlSchemaAny();
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = XmlSchemaContentProcessing.Lax;
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                XmlSchemaAttribute attribute1 = new XmlSchemaAttribute();
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                XmlSchemaAttribute attribute2 = new XmlSchemaAttribute();
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "MovimentiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                XmlSchema dsSchema = ds.GetSchemaSerializable();
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace)) {
-                    MemoryStream s1 = new MemoryStream();
-                    MemoryStream s2 = new MemoryStream();
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                     try {
-                        XmlSchema schema = null;
+                        global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((XmlSchema)(schemas.Current));
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
                             if ((s1.Length == s2.Length)) {
@@ -616,19 +603,19 @@ namespace RationesCurare7.UI.Stampe {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class MovimentiRow : DataRow {
+        public partial class MovimentiRow : global::System.Data.DataRow {
             
             private MovimentiDataTable tableMovimenti;
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MovimentiRow(DataRowBuilder rb) : 
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal MovimentiRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableMovimenti = ((MovimentiDataTable)(this.Table));
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int ID {
                 get {
                     return ((int)(this[this.tableMovimenti.IDColumn]));
@@ -638,15 +625,15 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string nome {
                 get {
                     try {
                         return ((string)(this[this.tableMovimenti.nomeColumn]));
                     }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Il valore della colonna \'nome\' nella tabella \'Movimenti\' è DBNull.", e);
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'nome\' nella tabella \'Movimenti\' è DBNull.", e);
                     }
                 }
                 set {
@@ -654,15 +641,15 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public double soldi {
                 get {
                     try {
                         return ((double)(this[this.tableMovimenti.soldiColumn]));
                     }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Il valore della colonna \'soldi\' nella tabella \'Movimenti\' è DBNull.", e);
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'soldi\' nella tabella \'Movimenti\' è DBNull.", e);
                     }
                 }
                 set {
@@ -670,15 +657,15 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DateTime data {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime data {
                 get {
                     try {
-                        return ((DateTime)(this[this.tableMovimenti.dataColumn]));
+                        return ((global::System.DateTime)(this[this.tableMovimenti.dataColumn]));
                     }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Il valore della colonna \'data\' nella tabella \'Movimenti\' è DBNull.", e);
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'data\' nella tabella \'Movimenti\' è DBNull.", e);
                     }
                 }
                 set {
@@ -686,15 +673,15 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string tipo {
                 get {
                     try {
                         return ((string)(this[this.tableMovimenti.tipoColumn]));
                     }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Il valore della colonna \'tipo\' nella tabella \'Movimenti\' è DBNull.", e);
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'tipo\' nella tabella \'Movimenti\' è DBNull.", e);
                     }
                 }
                 set {
@@ -702,15 +689,15 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string descrizione {
                 get {
                     try {
                         return ((string)(this[this.tableMovimenti.descrizioneColumn]));
                     }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Il valore della colonna \'descrizione\' nella tabella \'Movimenti\' è DBNull.", e);
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Il valore della colonna \'descrizione\' nella tabella \'Movimenti\' è DBNull.", e);
                     }
                 }
                 set {
@@ -718,95 +705,95 @@ namespace RationesCurare7.UI.Stampe {
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsnomeNull() {
                 return this.IsNull(this.tableMovimenti.nomeColumn);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetnomeNull() {
-                this[this.tableMovimenti.nomeColumn] = Convert.DBNull;
+                this[this.tableMovimenti.nomeColumn] = global::System.Convert.DBNull;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IssoldiNull() {
                 return this.IsNull(this.tableMovimenti.soldiColumn);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetsoldiNull() {
-                this[this.tableMovimenti.soldiColumn] = Convert.DBNull;
+                this[this.tableMovimenti.soldiColumn] = global::System.Convert.DBNull;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsdataNull() {
                 return this.IsNull(this.tableMovimenti.dataColumn);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetdataNull() {
-                this[this.tableMovimenti.dataColumn] = Convert.DBNull;
+                this[this.tableMovimenti.dataColumn] = global::System.Convert.DBNull;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IstipoNull() {
                 return this.IsNull(this.tableMovimenti.tipoColumn);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SettipoNull() {
-                this[this.tableMovimenti.tipoColumn] = Convert.DBNull;
+                this[this.tableMovimenti.tipoColumn] = global::System.Convert.DBNull;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsdescrizioneNull() {
                 return this.IsNull(this.tableMovimenti.descrizioneColumn);
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetdescrizioneNull() {
-                this[this.tableMovimenti.descrizioneColumn] = Convert.DBNull;
+                this[this.tableMovimenti.descrizioneColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class MovimentiRowChangeEvent : EventArgs {
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class MovimentiRowChangeEvent : global::System.EventArgs {
             
             private MovimentiRow eventRow;
             
-            private DataRowAction eventAction;
+            private global::System.Data.DataRowAction eventAction;
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MovimentiRowChangeEvent(MovimentiRow row, DataRowAction action) {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public MovimentiRowChangeEvent(MovimentiRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public MovimentiRow Row {
                 get {
                     return this.eventRow;
                 }
             }
             
-            [DebuggerNonUserCode()]
-            [GeneratedCode("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataRowAction Action {
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
                 }
