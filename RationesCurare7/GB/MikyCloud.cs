@@ -226,7 +226,7 @@ namespace RationesCurare7.GB
             var cart = Path.GetDirectoryName(p);
             var ext = Path.GetExtension(p);
 
-            ZipConstants.DefaultCodePage = 850;
+            // ZipConstants.DefaultCodePage = 850;
 
             var z = new FastZip();
             z.CreateZip(zp, cart, false, ext);

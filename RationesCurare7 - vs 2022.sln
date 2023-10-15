@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationesCurare7", "RationesCurare7\RationesCurare7.csproj", "{AB80992E-E81F-45E6-8EDA-666693BE6856}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILCalc", "ILCalc\ILCalc.csproj", "{7C413C2E-73BA-40E2-9D01-68796471FE62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationesCurare", "RationesCurare\RationesCurare.csproj", "{BD3745B2-D4B8-4674-9C00-BDEA19E66673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCApi", "RCApi\RCApi.csproj", "{3E76BF6D-98D2-4162-8E08-047D51EAFD70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{BD3745B2-D4B8-4674-9C00-BDEA19E66673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD3745B2-D4B8-4674-9C00-BDEA19E66673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3745B2-D4B8-4674-9C00-BDEA19E66673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E76BF6D-98D2-4162-8E08-047D51EAFD70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E76BF6D-98D2-4162-8E08-047D51EAFD70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E76BF6D-98D2-4162-8E08-047D51EAFD70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E76BF6D-98D2-4162-8E08-047D51EAFD70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

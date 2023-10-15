@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("[MAIONE MIKY]")]
 [assembly: AssemblyProduct("RationesCurare7")]
-[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2022")]
+[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2023")]
 [assembly: AssemblyTrademark("[MAIONE MIKY]")]
 [assembly: AssemblyCulture("")]
 
@@ -39,5 +39,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.22.01.25")]
-[assembly: AssemblyFileVersion("20.22.01.25")]
+[assembly: AssemblyVersion("20.23.10.16")]
+[assembly: AssemblyFileVersion("20.23.10.16")]
