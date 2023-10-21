@@ -261,8 +261,8 @@ namespace RationesCurare7.DB.DataWrapper
                 new[] {
                     cGB.sDB.NewPar("descrizione", descrizione ?? "%%"),
                     cGB.sDB.NewPar("MacroArea", MacroArea ?? "%%"),
-                    cGB.sDB.NewPar("DataDa", DataDa),
-                    cGB.sDB.NewPar("DataA", DataA),
+                    cGB.sDB.NewPar("dataDa", DataDa),
+                    cGB.sDB.NewPar("dataA", DataA),
                 } :
                 new DbParameter[0];
 
@@ -278,8 +278,8 @@ namespace RationesCurare7.DB.DataWrapper
         {
             var p = new[] {
                 cGB.sDB.NewPar("sPos", positivita),
-                cGB.sDB.NewPar("DataDa", DataDa),
-                cGB.sDB.NewPar("DataA", DataA),
+                cGB.sDB.NewPar("dataDa", DataDa),
+                cGB.sDB.NewPar("dataA", DataA),
             };
 
             using (var dr = cGB.sDB.EseguiSQLDataReader(cGB.sDB.LeggiQuery(cDB.Queries.Movimenti_GraficoTortaSaldo), p))
@@ -300,8 +300,8 @@ namespace RationesCurare7.DB.DataWrapper
             var p = new[] {
                 cGB.sDB.NewPar("descrizione", descrizione ?? "%%"),
                 cGB.sDB.NewPar("MacroArea", MacroArea ?? "%%"),
-                cGB.sDB.NewPar("DataDa", DataDa),
-                cGB.sDB.NewPar("DataA", DataA)
+                cGB.sDB.NewPar("dataDa", DataDa),
+                cGB.sDB.NewPar("dataA", DataA)
             };
 
             return cGB.sDB.EseguiSQLDataReader(s, p);
@@ -313,8 +313,8 @@ namespace RationesCurare7.DB.DataWrapper
 
             var p = new[] {
                 cGB.sDB.NewPar("sPos", positivita),
-                cGB.sDB.NewPar("DataDa", DataDa),
-                cGB.sDB.NewPar("DataA", DataA)
+                cGB.sDB.NewPar("dataDa", DataDa),
+                cGB.sDB.NewPar("dataA", DataA)
             };
 
             return cGB.sDB.EseguiSQLDataReader(s, p);

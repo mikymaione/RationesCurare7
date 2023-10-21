@@ -126,7 +126,9 @@
     <Reference Include="FastColoredTextBox">
       <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>..\packages\Mono.Data.Sqlite.1.0.61\lib\net40\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
