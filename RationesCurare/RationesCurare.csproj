@@ -100,6 +100,7 @@
     <Content Include="DB\DBW\Movimenti_RicercaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
+    <Content Include="DB\DBW\Utente_Carica.sql" />
     <Content Include="EmailSending.asmx" />
     <Content Include="Global.asax" />
     <Content Include="mCassa.aspx" />

@@ -58,6 +58,7 @@ namespace RationesCurare7.DB
             Utenti_Elimina,
             Utenti_Dettaglio,
             Utenti_ByPath,
+            Utente_Carica,
             Calendario_Ricerca,
             Calendario_Inserisci,
             Calendario_Aggiorna,

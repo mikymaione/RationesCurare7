@@ -29,7 +29,7 @@ namespace RationesCurare
 
                 try
                 {
-                    Tipo = Request.QueryString["T"];
+                    Tipo = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Request.QueryString["T"]);
                 }
                 catch
                 {
@@ -48,17 +48,17 @@ namespace RationesCurare
                     idCassa.DataSource = casse;
                     idCassa.DataBind();
 
-                    if (Tipo != null)
-                        idCassa.SelectedValue = Tipo;
-
                     idGiroconto.DataSource = casse;
                     idGiroconto.DataBind();
+
+                    if (Tipo != null)
+                        idCassa.SelectedValue = Tipo;
 
                     if (IDMovimento > -1)
                     {
                         var par = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("ID", IDMovimento)
-                    };
+                            cDB.NewPar("ID", IDMovimento)
+                        };
 
                         using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Dettaglio, par))
                             if (dr.HasRows)
@@ -74,9 +74,43 @@ namespace RationesCurare
                     }
                     else
                     {
+                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Utente_Carica))
+                            if (dr.HasRows)
+                                while (dr.Read())
+                                {
+                                    idNome.Value = dr["Nome"] as string;
+                                }
+
                         idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
                     }
                 }
+        }
+
+        private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data)
+        {
+            if (IDMovimento > -1)
+            {
+                return new System.Data.Common.DbParameter[] {
+                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
+                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
+                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
+                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                };
+            }
+            else
+            {
+                return new System.Data.Common.DbParameter[] {
+                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
+                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
+                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                };
+            }
         }
 
         private int SalvaMovimento()
@@ -88,15 +122,7 @@ namespace RationesCurare
             {
                 var tran = db.BeginTransaction();
 
-                var param1 = new System.Data.Common.DbParameter[] {
-                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
-                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
-                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
-                };
-
+                var param1 = getParamsForSave(soldi, data);
                 var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
 
                 // con giroconto

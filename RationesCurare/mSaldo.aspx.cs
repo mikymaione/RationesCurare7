@@ -20,7 +20,7 @@ namespace RationesCurare
             var r = dt.Rows[e.NewSelectedIndex];
             var nome = r.ItemArray[0];
 
-            Response.Redirect("mMovimento.aspx?ID=" + nome);
+            Response.Redirect($"mMovimento.aspx?T={Tipo}&ID={nome}");
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

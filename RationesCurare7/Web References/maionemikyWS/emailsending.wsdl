@@ -57,6 +57,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="OttieniUltimoDBRCRqd8">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="yyyyMMddHHmmss" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OttieniUltimoDBRCRqd8Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OttieniUltimoDBRCRqd8Result" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SonoLicenziato">
         <s:complexType>
           <s:sequence>
@@ -349,6 +365,12 @@
   <wsdl:message name="OttieniUltimoDBRCSoapOut">
     <wsdl:part name="parameters" element="tns:OttieniUltimoDBRCResponse" />
   </wsdl:message>
+  <wsdl:message name="OttieniUltimoDBRCRqd8SoapIn">
+    <wsdl:part name="parameters" element="tns:OttieniUltimoDBRCRqd8" />
+  </wsdl:message>
+  <wsdl:message name="OttieniUltimoDBRCRqd8SoapOut">
+    <wsdl:part name="parameters" element="tns:OttieniUltimoDBRCRqd8Response" />
+  </wsdl:message>
   <wsdl:message name="SonoLicenziatoSoapIn">
     <wsdl:part name="parameters" element="tns:SonoLicenziato" />
   </wsdl:message>
@@ -452,6 +474,10 @@
       <wsdl:input message="tns:OttieniUltimoDBRCSoapIn" />
       <wsdl:output message="tns:OttieniUltimoDBRCSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRCRqd8">
+      <wsdl:input message="tns:OttieniUltimoDBRCRqd8SoapIn" />
+      <wsdl:output message="tns:OttieniUltimoDBRCRqd8SoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SonoLicenziato">
       <wsdl:input message="tns:SonoLicenziatoSoapIn" />
       <wsdl:output message="tns:SonoLicenziatoSoapOut" />
@@ -535,6 +561,15 @@
     </wsdl:operation>
     <wsdl:operation name="OttieniUltimoDBRC">
       <soap:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRCRqd8">
+      <soap:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRCRqd8" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -700,6 +735,15 @@
     </wsdl:operation>
     <wsdl:operation name="OttieniUltimoDBRC">
       <soap12:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OttieniUltimoDBRCRqd8">
+      <soap12:operation soapAction="http://www.maionemiky.it/OttieniUltimoDBRCRqd8" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

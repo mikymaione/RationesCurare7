@@ -65,9 +65,9 @@
         <hr>
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-    </form>
 
-    <button class="myBtn" title="Nuovo importo" type="button" onclick="location.href='mMovimento.aspx?ID=-1'"></button>
+        <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="" ID="bNuovo" OnClick="bNuovo_Click" />    
+    </form>    
 
     <hr>
     <ruby>© 2006-2022, [MAIONE MIKY]</ruby>

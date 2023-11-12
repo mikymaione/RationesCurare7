@@ -309,288 +309,324 @@ namespace RationesCurare7.UI.Forms
         {
             LastSelectedNode = cAlbero.SelectedNode;
 
-            if (a == eActions.NuovoMovimento)
+            switch (a)
             {
-                using (var sce = new fGiroconto
-                {
-                    Titolo = "Scegli la cassa in cui vuoi inserire"
-                })
-                    if (sce.ShowDialog() == DialogResult.OK)
+                case eActions.NuovoMovimento:
                     {
-                        var mov = new cMovimenti();
-
-                        using (var fi = new fInserimento
+                        using (var sce = new fGiroconto
                         {
-                            Tipo = sce.CassaSelezionata,
-                            Saldo = mov.Saldo(sce.CassaSelezionata)
+                            Titolo = "Scegli la cassa in cui vuoi inserire"
                         })
-                            if (fi.ShowDialog() == DialogResult.OK)
-                                cGB.RationesCurareMainForm.LoadAllCash();
-                    }
-            }
-            else if (a == eActions.NuovoGiroconto)
-            {
-                using (var sce = new fGiroconto
-                {
-                    Titolo = "Scegli la cassa in cui vuoi inserire"
-                })
-                    if (sce.ShowDialog() == DialogResult.OK)
-                        using (var g = new fGiroconto(sce.CassaSelezionata))
-                            if (g.ShowDialog() == DialogResult.OK)
+                            if (sce.ShowDialog() == DialogResult.OK)
                             {
                                 var mov = new cMovimenti();
 
                                 using (var fi = new fInserimento
                                 {
-                                    Modalita = fInserimento.eModalita.Giroconto,
-                                    TipoGiroconto = g.CassaSelezionata,
                                     Tipo = sce.CassaSelezionata,
                                     Saldo = mov.Saldo(sce.CassaSelezionata)
                                 })
                                     if (fi.ShowDialog() == DialogResult.OK)
                                         cGB.RationesCurareMainForm.LoadAllCash();
                             }
-            }
-            else if (a == eActions.Calendario)
-            {
-                var c = new cCalendario();
-                AddNewTab(c, "Calendario", Resources.calendario32);
-            }
-            else if (a == eActions.MacroAree)
-            {
-                var c = new cMacroAree();
-                AddNewTab(c, "Macro aree", Resources.MacroAree);
-            }
-            else if (a == eActions.OpzioniDB)
-            {
-                using (var d = new fOpzioniDb())
-                    d.ShowDialog();
-            }
-            else if (a == eActions.Calcolatrice)
-            {
-                var d = new fCalc
-                {
-                    StartPosition = FormStartPosition.CenterScreen,
-                    TopMost = true,
-                    ShowInTaskbar = true
-                };
 
-                d.Show();
-            }
-            else if (a == eActions.ControllaPromemoria)
-            {
-                var c = new DB.DataWrapper.cCalendario();
+                        break;
+                    }
 
-                if (c.PresenzaPromemoria())
-                {
-                    using (fPromemoria p = new fPromemoria())
-                        p.ShowDialog();
-                }
-                else
-                {
-                    if (ByUser)
-                        cGB.MsgBox("Nessun promemoria a breve scadenza.");
-                }
-            }
-            else if (a == eActions.ControllaPeriodiciSoloAlert)
-            {
-                var c = new cPeriodici();
-                var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi_plus_X_Giorni(5);
-
-                if (mov_periodici_entro_oggi != null)
-                    if (mov_periodici_entro_oggi.Count > 0)
+                case eActions.NuovoGiroconto:
                     {
-                        foreach (var pi in mov_periodici_entro_oggi)
+                        using (var sce = new fGiroconto
                         {
-                            var dtd = DateTime.Now;
-                            var MeseDaAggiungere = 0;
+                            Titolo = "Scegli la cassa in cui vuoi inserire"
+                        })
+                            if (sce.ShowDialog() == DialogResult.OK)
+                                using (var g = new fGiroconto(sce.CassaSelezionata))
+                                    if (g.ShowDialog() == DialogResult.OK)
+                                    {
+                                        var mov = new cMovimenti();
 
-                            switch (pi.TipoGiornoMese)
-                            {
-                                case cPeriodici.ePeriodicita.G:
-                                    if (pi.PartendoDalGiorno.Year < 1900)
-                                        dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
-                                    else
-                                        dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
-                                    break;
-                                case cPeriodici.ePeriodicita.M:
-                                    MeseDaAggiungere = 1;
-                                    break;
-                                case cPeriodici.ePeriodicita.B:
-                                    MeseDaAggiungere = 2;
-                                    break;
-                                case cPeriodici.ePeriodicita.T:
-                                    MeseDaAggiungere = 3;
-                                    break;
-                                case cPeriodici.ePeriodicita.Q:
-                                    MeseDaAggiungere = 4;
-                                    break;
-                                case cPeriodici.ePeriodicita.S:
-                                    MeseDaAggiungere = 6;
-                                    break;
-                                case cPeriodici.ePeriodicita.A:
-                                    MeseDaAggiungere = 12;
-                                    break;
-                            }
+                                        using (var fi = new fInserimento
+                                        {
+                                            Modalita = fInserimento.eModalita.Giroconto,
+                                            TipoGiroconto = g.CassaSelezionata,
+                                            Tipo = sce.CassaSelezionata,
+                                            Saldo = mov.Saldo(sce.CassaSelezionata)
+                                        })
+                                            if (fi.ShowDialog() == DialogResult.OK)
+                                                cGB.RationesCurareMainForm.LoadAllCash();
+                                    }
 
-                            switch (pi.TipoGiornoMese)
-                            {
-                                case cPeriodici.ePeriodicita.M:
-                                case cPeriodici.ePeriodicita.B:
-                                case cPeriodici.ePeriodicita.T:
-                                case cPeriodici.ePeriodicita.Q:
-                                case cPeriodici.ePeriodicita.S:
-                                case cPeriodici.ePeriodicita.A:
-                                    dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere));
-                                    break;
-                            }
+                        break;
+                    }
 
-                            pi.GiornoDelMese = dtd;
+                case eActions.Calendario:
+                    {
+                        var c = new cCalendario();
+                        AddNewTab(c, "Calendario", Resources.calendario32);
+                        break;
+                    }
+
+                case eActions.MacroAree:
+                    {
+                        var c = new cMacroAree();
+                        AddNewTab(c, "Macro aree", Resources.MacroAree);
+                        break;
+                    }
+
+                case eActions.OpzioniDB:
+                    {
+                        using (var d = new fOpzioniDb())
+                            d.ShowDialog();
+                        break;
+                    }
+
+                case eActions.Calcolatrice:
+                    {
+                        var d = new fCalc
+                        {
+                            StartPosition = FormStartPosition.CenterScreen,
+                            TopMost = true,
+                            ShowInTaskbar = true
+                        };
+
+                        d.Show();
+                        break;
+                    }
+
+                case eActions.ControllaPromemoria:
+                    {
+                        var c = new DB.DataWrapper.cCalendario();
+
+                        if (c.PresenzaPromemoria())
+                        {
+                            using (fPromemoria p = new fPromemoria())
+                                p.ShowDialog();
+                        }
+                        else
+                        {
+                            if (ByUser)
+                                cGB.MsgBox("Nessun promemoria a breve scadenza.");
                         }
 
-                        mov_periodici_entro_oggi.Sort();
-
-                        using (var f = new fPromemoriaPeriodici { Movimenti = mov_periodici_entro_oggi })
-                            f.ShowDialog();
+                        break;
                     }
-            }
-            else if (a == eActions.ControllaPeriodici)
-            {
-                var CiSono = false;
-                var c = new cPeriodici();
-                var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi();
 
-                if (mov_periodici_entro_oggi != null)
-                    if (mov_periodici_entro_oggi.Count > 0)
-                        CiSono = true;
-
-                if (CiSono)
-                {
-                    var QualcosaInserito = false;
-
-                    if (cGB.MsgBox("Ci sono dei movimenti periodici da inserire, vuoi visualizzarli ora?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                case eActions.ControllaPeriodiciSoloAlert:
                     {
-                        foreach (var pi in mov_periodici_entro_oggi)
-                            using (var inz = new fInserimento())
+                        var c = new cPeriodici();
+                        var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi_plus_X_Giorni(5);
+
+                        if (mov_periodici_entro_oggi != null)
+                            if (mov_periodici_entro_oggi.Count > 0)
                             {
-                                var dtd = DateTime.Now;
-                                var MeseDaAggiungere_ = 0;
-
-                                switch (pi.TipoGiornoMese)
+                                foreach (var pi in mov_periodici_entro_oggi)
                                 {
-                                    case cPeriodici.ePeriodicita.G:
-                                        if (pi.PartendoDalGiorno.Year < 1900)
-                                            dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
-                                        else
-                                            dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
-                                        break;
-                                    case cPeriodici.ePeriodicita.M:
-                                        MeseDaAggiungere_ = 1;
-                                        break;
-                                    case cPeriodici.ePeriodicita.B:
-                                        MeseDaAggiungere_ = 2;
-                                        break;
-                                    case cPeriodici.ePeriodicita.T:
-                                        MeseDaAggiungere_ = 3;
-                                        break;
-                                    case cPeriodici.ePeriodicita.Q:
-                                        MeseDaAggiungere_ = 4;
-                                        break;
-                                    case cPeriodici.ePeriodicita.S:
-                                        MeseDaAggiungere_ = 6;
-                                        break;
-                                    case cPeriodici.ePeriodicita.A:
-                                        MeseDaAggiungere_ = 12;
-                                        break;
-                                }
+                                    var dtd = DateTime.Now;
+                                    var MeseDaAggiungere = 0;
 
-                                switch (pi.TipoGiornoMese)
-                                {
-                                    case cPeriodici.ePeriodicita.M:
-                                    case cPeriodici.ePeriodicita.B:
-                                    case cPeriodici.ePeriodicita.T:
-                                    case cPeriodici.ePeriodicita.Q:
-                                    case cPeriodici.ePeriodicita.S:
-                                    case cPeriodici.ePeriodicita.A:
-                                        dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere_));
-                                        break;
-                                }
-
-                                inz.Tipo = pi.tipo;
-                                inz.eDescrizione.Text = pi.descrizione;
-                                inz.eMacroArea.Text = pi.MacroArea == null || pi.MacroArea == "" ? inz.GetMacroArea4Descrizione(pi.descrizione) : pi.MacroArea;
-                                inz.eNome.Text = pi.nome;
-                                inz.eSoldi.Value = pi.soldi;
-
-                                if (inz.ShowDialog() == DialogResult.OK)
-                                {
-                                    if (pi.TipoGiorniMese == 'G')
+                                    switch (pi.TipoGiornoMese)
                                     {
-                                        pi.GiornoDelMese = new DateTime();
-                                        pi.PartendoDalGiorno = dtd;
-                                    }
-                                    else
-                                    {
-                                        pi.PartendoDalGiorno = new DateTime();
-                                        pi.GiornoDelMese = dtd;
+                                        case cPeriodici.ePeriodicita.G:
+                                            if (pi.PartendoDalGiorno.Year < 1900)
+                                                dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
+                                            else
+                                                dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
+                                            break;
+                                        case cPeriodici.ePeriodicita.M:
+                                            MeseDaAggiungere = 1;
+                                            break;
+                                        case cPeriodici.ePeriodicita.B:
+                                            MeseDaAggiungere = 2;
+                                            break;
+                                        case cPeriodici.ePeriodicita.T:
+                                            MeseDaAggiungere = 3;
+                                            break;
+                                        case cPeriodici.ePeriodicita.Q:
+                                            MeseDaAggiungere = 4;
+                                            break;
+                                        case cPeriodici.ePeriodicita.S:
+                                            MeseDaAggiungere = 6;
+                                            break;
+                                        case cPeriodici.ePeriodicita.A:
+                                            MeseDaAggiungere = 12;
+                                            break;
                                     }
 
-                                    pi.Salva();
-                                    QualcosaInserito = true;
+                                    switch (pi.TipoGiornoMese)
+                                    {
+                                        case cPeriodici.ePeriodicita.M:
+                                        case cPeriodici.ePeriodicita.B:
+                                        case cPeriodici.ePeriodicita.T:
+                                        case cPeriodici.ePeriodicita.Q:
+                                        case cPeriodici.ePeriodicita.S:
+                                        case cPeriodici.ePeriodicita.A:
+                                            dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere));
+                                            break;
+                                    }
+
+                                    pi.GiornoDelMese = dtd;
                                 }
+
+                                mov_periodici_entro_oggi.Sort();
+
+                                using (var f = new fPromemoriaPeriodici { Movimenti = mov_periodici_entro_oggi })
+                                    f.ShowDialog();
                             }
 
-                        if (QualcosaInserito)
-                            LoadAllCash();
+                        break;
                     }
-                }
-                else
-                {
-                    if (ByUser)
-                        cGB.MsgBox("Non ricorre nessun movimento periodico.");
-                }
-            }
-            else if (a == eActions.GraficoSpline)
-            {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoSpline", "Grafico a linee", Resources.grafico32);
-            }
-            else if (a == eActions.Grafico)
-            {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGrafico", "Grafico", Resources.grafico32);
-            }
-            else if (a == eActions.Torta)
-            {
-                AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoTorta", "Torta", Resources.PieChart);
-            }
-            else if (a == eActions.MovimentiPeriodici)
-            {
-                var c = new cMovimentiPeriodici();
-                AddNewTab(c, "Movimenti periodici", Resources.perdioci32);
-            }
-            else if (a == eActions.Casse)
-            {
-                var c = new Controlli.cCasse();
-                AddNewTab(c, "Casse", Resources.ingranaggio32);
-            }
-            else if (a == eActions.Novita)
-            {
-                var c = new cNovita();
-                AddNewTab(c, "Novità", Resources.star32);
-            }
-            else if (a == eActions.Cerca)
-            {
-                var c = new cRicerca();
-                AddNewTab(c, "Ricerca", Resources.find32);
-            }
-            else if (a == eActions.About)
-            {
-                var c = new cAbout();
-                AddNewTab(c, "About", Resources.about32);
-            }
-            else if (a == eActions.CosaNePensi)
-            {
-                var c = new cCosaNePensi();
-                AddNewTab(c, "Cosa ne pensi?", Resources.mail32);
+
+                case eActions.ControllaPeriodici:
+                    {
+                        var CiSono = false;
+                        var c = new cPeriodici();
+                        var mov_periodici_entro_oggi = c.RicercaScadenzeEntroOggi();
+
+                        if (mov_periodici_entro_oggi != null)
+                            if (mov_periodici_entro_oggi.Count > 0)
+                                CiSono = true;
+
+                        if (CiSono)
+                        {
+                            var QualcosaInserito = false;
+
+                            if (cGB.MsgBox("Ci sono dei movimenti periodici da inserire, vuoi visualizzarli ora?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                foreach (var pi in mov_periodici_entro_oggi)
+                                    using (var inz = new fInserimento())
+                                    {
+                                        var dtd = DateTime.Now;
+                                        var MeseDaAggiungere_ = 0;
+
+                                        switch (pi.TipoGiornoMese)
+                                        {
+                                            case cPeriodici.ePeriodicita.G:
+                                                if (pi.PartendoDalGiorno.Year < 1900)
+                                                    dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddDays(pi.NumeroGiorni));
+                                                else
+                                                    dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.PartendoDalGiorno.Day).AddDays(pi.NumeroGiorni));
+                                                break;
+                                            case cPeriodici.ePeriodicita.M:
+                                                MeseDaAggiungere_ = 1;
+                                                break;
+                                            case cPeriodici.ePeriodicita.B:
+                                                MeseDaAggiungere_ = 2;
+                                                break;
+                                            case cPeriodici.ePeriodicita.T:
+                                                MeseDaAggiungere_ = 3;
+                                                break;
+                                            case cPeriodici.ePeriodicita.Q:
+                                                MeseDaAggiungere_ = 4;
+                                                break;
+                                            case cPeriodici.ePeriodicita.S:
+                                                MeseDaAggiungere_ = 6;
+                                                break;
+                                            case cPeriodici.ePeriodicita.A:
+                                                MeseDaAggiungere_ = 12;
+                                                break;
+                                        }
+
+                                        switch (pi.TipoGiornoMese)
+                                        {
+                                            case cPeriodici.ePeriodicita.M:
+                                            case cPeriodici.ePeriodicita.B:
+                                            case cPeriodici.ePeriodicita.T:
+                                            case cPeriodici.ePeriodicita.Q:
+                                            case cPeriodici.ePeriodicita.S:
+                                            case cPeriodici.ePeriodicita.A:
+                                                dtd = cGB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, pi.GiornoDelMese.Day).AddMonths(MeseDaAggiungere_));
+                                                break;
+                                        }
+
+                                        inz.Tipo = pi.tipo;
+                                        inz.eDescrizione.Text = pi.descrizione;
+                                        inz.eMacroArea.Text = pi.MacroArea == null || pi.MacroArea == "" ? inz.GetMacroArea4Descrizione(pi.descrizione) : pi.MacroArea;
+                                        inz.eNome.Text = pi.nome;
+                                        inz.eSoldi.Value = pi.soldi;
+                                        inz.eData.Value_ = dtd;
+
+                                        if (inz.ShowDialog() == DialogResult.OK)
+                                        {
+                                            if (pi.TipoGiorniMese == 'G')
+                                            {
+                                                pi.GiornoDelMese = new DateTime();
+                                                pi.PartendoDalGiorno = dtd;
+                                            }
+                                            else
+                                            {
+                                                pi.PartendoDalGiorno = new DateTime();
+                                                pi.GiornoDelMese = dtd;
+                                            }
+
+                                            pi.Salva();
+                                            QualcosaInserito = true;
+                                        }
+                                    }
+
+                                if (QualcosaInserito)
+                                    LoadAllCash();
+                            }
+                        }
+                        else
+                        {
+                            if (ByUser)
+                                cGB.MsgBox("Non ricorre nessun movimento periodico.");
+                        }
+
+                        break;
+                    }
+
+                case eActions.GraficoSpline:
+                    AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoSpline", "Grafico a linee", Resources.grafico32);
+                    break;
+                case eActions.Grafico:
+                    AddNewTabGrafico("RationesCurare7.UI.Controlli.cGrafico", "Grafico", Resources.grafico32);
+                    break;
+                case eActions.Torta:
+                    AddNewTabGrafico("RationesCurare7.UI.Controlli.cGraficoTorta", "Torta", Resources.PieChart);
+                    break;
+
+                case eActions.MovimentiPeriodici:
+                    {
+                        var c = new cMovimentiPeriodici();
+                        AddNewTab(c, "Movimenti periodici", Resources.perdioci32);
+                        break;
+                    }
+
+                case eActions.Casse:
+                    {
+                        var c = new Controlli.cCasse();
+                        AddNewTab(c, "Casse", Resources.ingranaggio32);
+                        break;
+                    }
+
+                case eActions.Novita:
+                    {
+                        var c = new cNovita();
+                        AddNewTab(c, "Novità", Resources.star32);
+                        break;
+                    }
+
+                case eActions.Cerca:
+                    {
+                        var c = new cRicerca();
+                        AddNewTab(c, "Ricerca", Resources.find32);
+                        break;
+                    }
+
+                case eActions.About:
+                    {
+                        var c = new cAbout();
+                        AddNewTab(c, "About", Resources.about32);
+                        break;
+                    }
+
+                case eActions.CosaNePensi:
+                    {
+                        var c = new cCosaNePensi();
+                        AddNewTab(c, "Cosa ne pensi?", Resources.mail32);
+                        break;
+                    }
             }
 
             cAlbero.SelectedNode = LastSelectedNode;

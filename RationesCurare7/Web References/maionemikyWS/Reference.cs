@@ -35,6 +35,8 @@ namespace RationesCurare7.maionemikyWS {
         
         private System.Threading.SendOrPostCallback OttieniUltimoDBRCOperationCompleted;
         
+        private System.Threading.SendOrPostCallback OttieniUltimoDBRCRqd8OperationCompleted;
+        
         private System.Threading.SendOrPostCallback SonoLicenziatoOperationCompleted;
         
         private System.Threading.SendOrPostCallback RecuperaPswRC_SixOperationCompleted;
@@ -111,6 +113,9 @@ namespace RationesCurare7.maionemikyWS {
         
         /// <remarks/>
         public event OttieniUltimoDBRCCompletedEventHandler OttieniUltimoDBRCCompleted;
+        
+        /// <remarks/>
+        public event OttieniUltimoDBRCRqd8CompletedEventHandler OttieniUltimoDBRCRqd8Completed;
         
         /// <remarks/>
         public event SonoLicenziatoCompletedEventHandler SonoLicenziatoCompleted;
@@ -252,6 +257,40 @@ namespace RationesCurare7.maionemikyWS {
             if ((this.OttieniUltimoDBRCCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.OttieniUltimoDBRCCompleted(this, new OttieniUltimoDBRCCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.maionemiky.it/OttieniUltimoDBRCRqd8", RequestNamespace="http://www.maionemiky.it/", ResponseNamespace="http://www.maionemiky.it/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] OttieniUltimoDBRCRqd8(string yyyyMMddHHmmss, string email, string psw) {
+            object[] results = this.Invoke("OttieniUltimoDBRCRqd8", new object[] {
+                        yyyyMMddHHmmss,
+                        email,
+                        psw});
+            return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OttieniUltimoDBRCRqd8Async(string yyyyMMddHHmmss, string email, string psw) {
+            this.OttieniUltimoDBRCRqd8Async(yyyyMMddHHmmss, email, psw, null);
+        }
+        
+        /// <remarks/>
+        public void OttieniUltimoDBRCRqd8Async(string yyyyMMddHHmmss, string email, string psw, object userState) {
+            if ((this.OttieniUltimoDBRCRqd8OperationCompleted == null)) {
+                this.OttieniUltimoDBRCRqd8OperationCompleted = new System.Threading.SendOrPostCallback(this.OnOttieniUltimoDBRCRqd8OperationCompleted);
+            }
+            this.InvokeAsync("OttieniUltimoDBRCRqd8", new object[] {
+                        yyyyMMddHHmmss,
+                        email,
+                        psw}, this.OttieniUltimoDBRCRqd8OperationCompleted, userState);
+        }
+        
+        private void OnOttieniUltimoDBRCRqd8OperationCompleted(object arg) {
+            if ((this.OttieniUltimoDBRCRqd8Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OttieniUltimoDBRCRqd8Completed(this, new OttieniUltimoDBRCRqd8CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1010,6 +1049,32 @@ namespace RationesCurare7.maionemikyWS {
         private object[] results;
         
         internal OttieniUltimoDBRCCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public byte[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OttieniUltimoDBRCRqd8CompletedEventHandler(object sender, OttieniUltimoDBRCRqd8CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OttieniUltimoDBRCRqd8CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OttieniUltimoDBRCRqd8CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

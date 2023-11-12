@@ -479,63 +479,15 @@ namespace RationesCurare7
         {
             var ok = false;
             var db_path = Path.GetDirectoryName(PathDB);
-            var zip_path = Path.Combine(db_path, email_ + ".zip");
+            var rqd8_path = Path.Combine(db_path, email_ + ".rqd8");
 
             try
             {
-                var db_bytes = e.OttieniUltimoDBRC(yyyyMMddHHmmss, email_, psw);
+                var db_bytes = e.OttieniUltimoDBRCRqd8(yyyyMMddHHmmss, email_, psw);
 
                 if ((db_bytes?.Length ?? 0) > 0)
                 {
-                    File.WriteAllBytes(zip_path, db_bytes);
-
-                    if (File.Exists(zip_path))
-                    {
-                        var guid = Path.Combine(db_path, Guid.NewGuid().ToString());
-
-                        try
-                        {
-                            if (!CreaNuovo)
-                                File.Move(PathDB, guid);
-
-                            try
-                            {
-                                var zip = new ZipFile(zip_path);
-
-                                foreach (ZipEntry zipEntry in zip)
-                                {
-                                    if (!zipEntry.IsFile)
-                                        continue; // Ignore directories
-
-                                    var entryFileName = Path.GetFileName(zipEntry.Name);
-                                    var buffer = new byte[4096]; // 4K is optimum
-                                    var zipStream = zip.GetInputStream(zipEntry);
-
-                                    // Manipulate the output filename here as desired.
-                                    var fullZipToPath = Path.Combine(db_path, entryFileName);
-
-                                    using (var streamWriter = File.Create(fullZipToPath))
-                                        Copy(zipStream, streamWriter, buffer);
-                                }
-
-                                zip.Close();
-
-                                File.Delete(guid);
-                                File.Delete(zip_path);
-
-                                ok = true;
-                            }
-                            catch (Exception ex4)
-                            {
-                                File.Move(guid, PathDB);
-                                MsgBox(ex4);
-                            }
-                        }
-                        catch (Exception ex3)
-                        {
-                            MsgBox(ex3);
-                        }
-                    }
+                    File.WriteAllBytes(rqd8_path, db_bytes);
                 }
             }
             catch (Exception ex2)

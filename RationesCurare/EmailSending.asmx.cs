@@ -96,7 +96,13 @@ namespace maionemiky
         [WebMethod]
         public byte[] OttieniUltimoDBRC(string yyyyMMddHHmmss, string email, string psw)
         {
-            return OttieniUltimoDBRC_p(yyyyMMddHHmmss, email, psw);
+            return OttieniUltimoDBRC_p(TipoFileDb.zip, yyyyMMddHHmmss, email, psw);
+        }
+
+        [WebMethod]
+        public byte[] OttieniUltimoDBRCRqd8(string yyyyMMddHHmmss, string email, string psw)
+        {
+            return OttieniUltimoDBRC_p(TipoFileDb.rqd8, yyyyMMddHHmmss, email, psw);
         }
 
         [WebMethod]
@@ -335,7 +341,7 @@ namespace maionemiky
 
             }
 
-            return (i > 0);
+            return i > 0;
         }
 
         public bool CreaDBPerRC_pri(CredenzialiDiAccessoRC CredenzialiRC)
@@ -615,7 +621,7 @@ namespace maionemiky
             {
                 var j = System.IO.Directory.GetFiles(s);
 
-                b = (j.Length > 0);
+                b = j.Length > 0;
             }
             catch
             {
@@ -782,7 +788,7 @@ namespace maionemiky
         {
             var dSERVER = DateTime.MinValue;
 
-            if ((ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK))
+            if (ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK)
                 try
                 {
                     var dira = Server.MapPath("App_Data");
@@ -791,7 +797,7 @@ namespace maionemiky
                     {
                         var f = System.IO.Path.Combine(dira, email + ".date");
 
-                        if ((System.IO.File.Exists(f)))
+                        if (System.IO.File.Exists(f))
                             using (var sr = new System.IO.StreamReader(f))
                             {
                                 try
@@ -820,7 +826,7 @@ namespace maionemiky
         {
             var c = Comparazione.AccessoNonAutizzato;
 
-            if ((ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK))
+            if (ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK)
                 try
                 {
                     var vSERVER = VersioneDB_pri(email, psw);
@@ -844,15 +850,15 @@ namespace maionemiky
             return c;
         }
 
-        private byte[] OttieniUltimoDBRC_p(string yyyyMMddHHmmss, string email, string psw)
+        private byte[] OttieniUltimoDBRC_p(TipoFileDb tipoFileDb, string yyyyMMddHHmmss, string email, string psw)
         {
-            if ((ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK))
-                if ((DBSulServerEPiuNuovo(yyyyMMddHHmmss, email, psw) == Comparazione.Server))
+            if (ControllaCredenzialiRC_simple(email, psw) == CredenzialiRisultato.TuttoOK)
+                if (DBSulServerEPiuNuovo(yyyyMMddHHmmss, email, psw) == Comparazione.Server)
                 {
                     var dira = Server.MapPath("App_Data");
-                    var FName = System.IO.Path.Combine(dira, email + ".zip");
+                    var FName = System.IO.Path.Combine(dira, $"{email}.{tipoFileDb}");
 
-                    if ((System.IO.File.Exists(FName)))
+                    if (System.IO.File.Exists(FName))
                         try
                         {
                             using (var fs1 = System.IO.File.Open(FName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
@@ -874,6 +880,11 @@ namespace maionemiky
             return null;
         }
 
+        private enum TipoFileDb
+        {
+            zip,
+            rqd8,
+        }
 
     }
 }

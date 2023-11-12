@@ -7,6 +7,10 @@ namespace RationesCurare
     public partial class RC : MasterPage
     {
 
+        private string Tipo => Request.QueryString.HasKeys()
+                   ? Request.QueryString["T"]
+                   : "";
+
         private string CurrentPage => Page.AppRelativeVirtualPath.Replace("~/", "").Replace(".aspx", "");
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,7 +30,7 @@ namespace RationesCurare
             var navs = new HtmlAnchor[] {
                 nav_mMenu,
                 nav_mCasse,
-                nav_mSaldo,                
+                nav_mSaldo,
                 nav_mGrafico,
                 nav_mLogout
             };
@@ -35,6 +39,13 @@ namespace RationesCurare
                 nav.Attributes["class"] = me.Equals(nav.ID)
                     ? "not-active"
                     : "";
+        }
+
+        protected void bNuovo_Click(object sender, EventArgs e)
+        {
+            var tipo = Tipo.Length == 0 ? "" : $"T={Tipo}";
+
+            Response.Redirect($"mMovimento.aspx?{tipo}&ID=-1");
         }
 
     }
