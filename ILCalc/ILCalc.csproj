@@ -23,7 +23,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <ReleaseVersion>20.23.1102</ReleaseVersion>
+    <ReleaseVersion>20.23.1202</ReleaseVersion>
     <Description>Arithmetical expressions compiler and evaluator.</Description>
     <TargetFrameworkProfile />
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

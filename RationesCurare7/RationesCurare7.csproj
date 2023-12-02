@@ -38,7 +38,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <ReleaseVersion>20.23.1102</ReleaseVersion>
+    <ReleaseVersion>20.23.1202</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>rc.ico</ApplicationIcon>
