@@ -4,38 +4,20 @@ namespace RationesCurare
 {
     public partial class mLogin : System.Web.UI.Page
     {
-        private string Richiesta
-        {
-            get
-            {
-                var t = "";
-
-                try
-                {
-                    t = Request.QueryString["C"];
-                }
-                catch
-                {
-                    //error                    
-                }
-
-                if (t == null)
-                    t = "";
-
-                return t;
-            }
-        }
+        private string Richiesta => GB.GetQueryString(Request, "C");
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Richiesta.Equals("L", StringComparison.OrdinalIgnoreCase))
+            if (!IsPostBack)
             {
-                DeleteCookieLogin(true);
-            }
-            else
-            {
-                if (!IsPostBack)
+                if (Richiesta.Equals("L", StringComparison.OrdinalIgnoreCase))
+                {
+                    DeleteCookieLogin(true);
+                }
+                else
+                {
                     AutoLogin();
+                }
             }
         }
 
@@ -54,10 +36,7 @@ namespace RationesCurare
 
         private void DoLogin()
         {
-            var nome = eUtente.Value;
-            var psw = ePsw.Value;
-
-            Login_(nome, psw);
+            Login_(eUtente.Value, ePsw.Value);
         }
 
         private bool ControllaCredenziali(string nome, string psw)
