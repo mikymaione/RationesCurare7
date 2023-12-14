@@ -20,7 +20,7 @@ namespace RationesCurare
             {
                 try
                 {
-                    IDMovimento = GB.ObjectToInt(Request.QueryString["ID"], -1);
+                    IDMovimento = GB.ObjectToInt(GB.GetQueryString(Request, "ID"), -1);
                 }
                 catch
                 {
@@ -29,7 +29,7 @@ namespace RationesCurare
 
                 try
                 {
-                    Tipo = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Request.QueryString["T"]);
+                    Tipo = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(GB.GetQueryString(Request, "T"));
                 }
                 catch
                 {
@@ -51,7 +51,7 @@ namespace RationesCurare
                     idGiroconto.DataSource = casse;
                     idGiroconto.DataBind();
 
-                    if (Tipo != null)
+                    if (Tipo.Length > 0)
                         idCassa.SelectedValue = Tipo;
 
                     if (IDMovimento > -1)

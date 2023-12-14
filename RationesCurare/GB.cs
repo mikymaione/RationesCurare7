@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
@@ -15,6 +16,9 @@ namespace RationesCurare
            System.IO.Path.Combine(HttpContext.Current.Request.MapPath("DB"), "DBW");
 
         public static GB Instance { get; protected set; } = new GB();
+
+        public static string GetQueryString(HttpRequest request, string name) =>
+            request.QueryString.AllKeys.Contains(name) ? request.QueryString[name] : "";
 
         public cSession getCurrentSession(HttpSessionState session)
         {

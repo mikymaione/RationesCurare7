@@ -10,17 +10,16 @@ namespace RationesCurare
 
         public string SottoTitolo = "";
 
-        private string Tipo => Request.QueryString.HasKeys()
-                    ? Request.QueryString["T"]
-                    : "Saldo";
+        private string Tipo => GB.GetQueryString(Request, "T");
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             var dt = GridView1.DataSource as System.Data.DataTable;
             var r = dt.Rows[e.NewSelectedIndex];
             var nome = r.ItemArray[0];
+            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
 
-            Response.Redirect($"mMovimento.aspx?T={Tipo}&ID={nome}");
+            Response.Redirect($"mMovimento.aspx?ID={nome}{tipo}");
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

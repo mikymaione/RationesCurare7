@@ -54,8 +54,8 @@ namespace RationesCurare
 
         private void DoLogin()
         {
-            var nome = eUtente.Text;
-            var psw = ePsw.Text;
+            var nome = eUtente.Value;
+            var psw = ePsw.Value;
 
             Login_(nome, psw);
         }
@@ -124,8 +124,8 @@ namespace RationesCurare
             var n = new string[] { "AutoLogin_UserName", "AutoLogin_UserPassword", "AutoLogin" };
             var c = new string[] { "", "", "FALSE" };
 
-            eUtente.Text = "";
-            ePsw.Text = "";
+            eUtente.Value = "";
+            ePsw.Value = "";
             cbMemorizza.Value = "0";
 
             GB.SetCookie(Response, n, c);
@@ -141,9 +141,8 @@ namespace RationesCurare
 
         protected void bRegistrati_Click(object sender, EventArgs e)
         {
-            var nome = eUtente.Text;
-            var psw = ePsw.Text;
-
+            var nome = eUtente.Value;
+            var psw = ePsw.Value;
 
             if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
             {

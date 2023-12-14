@@ -21,6 +21,10 @@
             cursor: pointer;
         }
 
+        input:user-invalid {
+            border-color: #F79E10;
+        }
+
         .descrizione {
             width: 100%;
         }

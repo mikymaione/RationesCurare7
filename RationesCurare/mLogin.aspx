@@ -4,15 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="icon" href="favicon.ico">
+
+    <link rel="icon" href="rc.ico">
     <link rel="stylesheet" type="text/css" href="css/F79E10.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu Mono'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2021-11-21" scheme="YYYY-MM-DD">
+    <meta name="date" content="2023-12-14" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
-    <meta name="description" content="Maione Michele’s personal website">
+    <meta name="description" content="RationesCurare">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,6 +40,10 @@
             cursor: pointer;
         }
 
+        input:user-invalid {
+            border-color: #F79E10;
+        }
+
         .descrizione {
             width: 100%;
         }
@@ -50,12 +56,12 @@
 
     <form id="form1" runat="server">
         <div>
-            <label for="eUtente">Utente</label>
-            <asp:TextBox ID="eUtente" runat="server" placeholder="email" TextMode="Email" />
+            <label for="eUtente">Utente</label>          
+            <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
         </div>
         <div>
-            <label for="ePsw">Password</label>
-            <asp:TextBox ID="ePsw" runat="server" placeholder="Password" TextMode="Password" />
+            <label for="ePsw">Password</label>          
+            <input id="ePsw" name="ePsw" runat="server" placeholder="Password" type="password" required>
         </div>
 
         <div>
@@ -79,6 +85,6 @@
     </form>
 
     <hr />
-    <ruby>© 2006-2021, [MAIONE MIKY]</ruby>
+    <ruby>© 2006-2023, [MAIONE MIKY]</ruby>
 </body>
 </html>

@@ -7,9 +7,7 @@ namespace RationesCurare
     public partial class RC : MasterPage
     {
 
-        private string Tipo => Request.QueryString.HasKeys()
-                   ? Request.QueryString["T"]
-                   : "";
+        private string Tipo => GB.GetQueryString(Request, "T");
 
         private string CurrentPage => Page.AppRelativeVirtualPath.Replace("~/", "").Replace(".aspx", "");
 
@@ -43,9 +41,9 @@ namespace RationesCurare
 
         protected void bNuovo_Click(object sender, EventArgs e)
         {
-            var tipo = Tipo.Length == 0 ? "" : $"T={Tipo}";
+            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
 
-            Response.Redirect($"mMovimento.aspx?{tipo}&ID=-1");
+            Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
         }
 
     }

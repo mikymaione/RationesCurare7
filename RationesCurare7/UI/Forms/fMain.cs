@@ -543,7 +543,7 @@ namespace RationesCurare7.UI.Forms
                                         inz.eMacroArea.Text = pi.MacroArea == null || pi.MacroArea == "" ? inz.GetMacroArea4Descrizione(pi.descrizione) : pi.MacroArea;
                                         inz.eNome.Text = pi.nome;
                                         inz.eSoldi.Value = pi.soldi;
-                                        inz.eData.Value_ = dtd;
+                                        inz.eData.Value_ = pi.GiornoDelMese;
 
                                         if (inz.ShowDialog() == DialogResult.OK)
                                         {
