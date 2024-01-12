@@ -1,5 +1,4 @@
-﻿using RationesCurare.DB.DataWrapper;
-using System;
+﻿using System;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
@@ -18,11 +17,11 @@ namespace RationesCurare
 
             if (s == null)
             {
-                Response.Redirect("mLogin.aspx");
+                Response.Redirect("welcome.aspx");
             }
             else if (!s.LoggedIN)
             {
-                Response.Redirect("mLogin.aspx");
+                Response.Redirect("welcome.aspx");
             }
             else
             {

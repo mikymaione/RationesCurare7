@@ -61,11 +61,14 @@
 <body>
     <h1>RationesCurare</h1>
     <hr />
-    <h2>Install</h2>
+    <h2>Installazione</h2>
     
-    <p>Welcome to RationesCurare, an open-source software for the management of the personal economy.</p>
+    <p>Benvenuti in RationesCurare, un software open source per la gestione dell'economia personale.</p>
 
-    <button id="butInstall" name="butInstall" type="button">Install</button> 
+    <form id="form1" runat="server">       
+        <button id="butInstall" name="butInstall" type="button" style="display: none;">Installa la app sul tuo dispositivo</button> 
+        <asp:Button ID="bEntra" runat="server" Text="Entra" OnClick="bEntra_Click" />
+    </form>
 
     <script>
         window.addEventListener('beforeinstallprompt', (event) => {
@@ -74,7 +77,10 @@
             console.log('👍', 'beforeinstallprompt', event);
 
             // Stash the event so it can be triggered later.
-            window.deferredPrompt = event;            
+            window.deferredPrompt = event;      
+
+            // Show install button.     
+            document.getElementById('butInstall').style.display = 'inline';
         });
 
         window.addEventListener('appinstalled', (event) => {
@@ -103,7 +109,10 @@
 
             // Reset the deferred prompt variable, since
             // prompt() can only be called once.
-            window.deferredPrompt = null;            
+            window.deferredPrompt = null;     
+
+            // Hide the install button.
+            document.getElementById('butInstall').style.display = 'none';
         });
     </script>
 
