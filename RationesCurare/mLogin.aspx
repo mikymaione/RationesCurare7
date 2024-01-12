@@ -27,7 +27,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RationesCurare - Login</title>
+    <title>Rationes Curare</title>
 
     <style>
         div {

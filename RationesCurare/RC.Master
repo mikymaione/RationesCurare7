@@ -29,7 +29,7 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
     
-    <title>RationesCurare</title>
+    <title>Rationes Curare</title>
 
     <style>
         .myBtn {
