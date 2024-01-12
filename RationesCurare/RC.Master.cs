@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RationesCurare.DB.DataWrapper;
+using System;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
@@ -13,12 +14,24 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (GB.Instance.getCurrentSession(Session) == null)
+            var s = GB.Instance.getCurrentSession(Session);
+
+            if (s == null)
+            {
                 Response.Redirect("mLogin.aspx");
-            else if (!GB.Instance.getCurrentSession(Session).LoggedIN)
+            }
+            else if (!s.LoggedIN)
+            {
                 Response.Redirect("mLogin.aspx");
+            }
             else
+            {
                 DisableNavs();
+
+                // TODO
+                // var p = new PeriodiciService();
+                // p.ControllaPeriodici(Session);
+            }
         }
 
         private void DisableNavs()

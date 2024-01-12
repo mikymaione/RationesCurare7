@@ -108,14 +108,13 @@ namespace RationesCurare7.DB.DataWrapper
 
         public int Aggiorna()
         {
-            var i = 0;
             var x = -1;
             var p = new DbParameter[2];
 
             p[x += 1] = cGB.sDB.NewPar("Descrizione", Descrizione);
             p[x += 1] = cGB.sDB.NewPar("ID", StringIDToInt(ID));
 
-            i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Aggiorna), p);
+            var i = cGB.sDB.EseguiSQLNoQuery(cGB.sDB.LeggiQuery(cDB.Queries.Calendario_Aggiorna), p);
 
             return i;
         }

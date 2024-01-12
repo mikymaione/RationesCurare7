@@ -100,8 +100,18 @@
     <Content Include="DB\DBW\Movimenti_RicercaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
+    <Content Include="DB\DBW\Periodici_Aggiorna.sql" />
+    <Content Include="DB\DBW\Periodici_Scadenza.sql" />
     <Content Include="DB\DBW\Utente_Carica.sql" />
     <Content Include="EmailSending.asmx" />
+    <Content Include="favicon\android-chrome-192x192.png" />
+    <Content Include="favicon\apple-touch-icon.png" />
+    <Content Include="favicon\browserconfig.xml" />
+    <Content Include="favicon\favicon-16x16.png" />
+    <Content Include="favicon\favicon-32x32.png" />
+    <Content Include="favicon\favicon.ico" />
+    <Content Include="favicon\mstile-150x150.png" />
+    <Content Include="favicon\safari-pinned-tab.svg" />
     <Content Include="Global.asax" />
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
@@ -110,12 +120,13 @@
     <Content Include="mMenu.aspx" />
     <Content Include="mMovimento.aspx" />
     <Content Include="mSaldo.aspx" />
-    <Content Include="rc.ico" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cSession.cs" />
     <Compile Include="DB\cDB.cs" />
+    <Compile Include="DB\DataWrapper\cPeriodici.cs" />
+    <Compile Include="DB\DataWrapper\PeriodiciService.cs" />
     <Compile Include="EmailSending.asmx.cs">
       <DependentUpon>EmailSending.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -183,6 +194,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon\site.webmanifest" />
     <None Include="packages.config" />
     <Content Include="RC.Master" />
     <None Include="Web.Debug.config">

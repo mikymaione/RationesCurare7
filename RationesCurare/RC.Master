@@ -5,14 +5,23 @@
 <html>
 <head runat="server">
 
-    <link rel="icon" href="rc.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">    
+
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#F79E10">
+
+    <meta name="msapplication-TileColor" content="#F79E10">
+    <meta name="theme-color" content="#F79E10">
+
     <link rel="stylesheet" type="text/css" href="css/F79E10.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
-
-    <meta name="date" content="2023-12-14" scheme="YYYY-MM-DD">
+    
+    <meta name="date" content="2024-01-12" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
 
@@ -70,6 +79,6 @@
     </form>    
 
     <hr>
-    <ruby>© 2006-2023, [MAIONE MIKY]</ruby>
+    <ruby>© 2006-2024, [MAIONE MIKY]</ruby>
 </body>
 </html>

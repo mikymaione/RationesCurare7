@@ -125,6 +125,30 @@ namespace RationesCurare
             return i;
         }
 
+        public static double ObjectToMoney(object o) =>
+            ObjectToMoney(o, 0);
+
+        public static double ObjectToMoney(object o, double default_)
+        {
+            var d = default_;
+
+            try
+            {
+                d = (double)o;
+            }
+            catch (InvalidCastException)
+            {
+                //error cast
+                d = ObjectToDouble(o, default_);
+            }
+            catch (Exception)
+            {
+                //error generic                           
+            }
+
+            return d;
+        }
+
         public static double HTMLDoubleToDouble(string o)
         {
             return double.Parse(o.Replace(".", ","));
@@ -153,6 +177,10 @@ namespace RationesCurare
 
             return i;
         }
+
+        public static object ValueToDBNULL(bool PutNull, object ElseValue) => PutNull ? DBNull.Value : ElseValue;
+
+        public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
 
         public static DateTime StringToDate(string o, DateTime default_)
         {
