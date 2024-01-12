@@ -111,6 +111,7 @@
     <Content Include="favicon\favicon-32x32.png" />
     <Content Include="favicon\favicon.ico" />
     <Content Include="favicon\mstile-150x150.png" />
+    <Content Include="favicon\rc-512x512.png" />
     <Content Include="favicon\safari-pinned-tab.svg" />
     <Content Include="Global.asax" />
     <Content Include="mCassa.aspx" />
@@ -121,6 +122,7 @@
     <Content Include="mMovimento.aspx" />
     <Content Include="mSaldo.aspx" />
     <Content Include="Web.config" />
+    <Content Include="welcome.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cSession.cs" />
@@ -191,6 +193,13 @@
     </Compile>
     <Compile Include="RC.Master.designer.cs">
       <DependentUpon>RC.Master</DependentUpon>
+    </Compile>
+    <Compile Include="welcome.aspx.cs">
+      <DependentUpon>welcome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="welcome.aspx.designer.cs">
+      <DependentUpon>welcome.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
