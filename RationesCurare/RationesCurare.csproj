@@ -194,7 +194,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon\site.webmanifest" />
+    <Content Include="favicon\site.json" />
     <None Include="packages.config" />
     <Content Include="RC.Master" />
     <None Include="Web.Debug.config">
