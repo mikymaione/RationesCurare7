@@ -7,6 +7,10 @@ namespace RationesCurare
 {
     public partial class mMenu : Page
     {
+        protected void bNuovo_Click(object sender, EventArgs e)
+        {            
+            Response.Redirect($"mMovimento.aspx?ID=-1");
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

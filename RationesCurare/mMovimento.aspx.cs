@@ -14,6 +14,13 @@ namespace RationesCurare
 
         protected string userName => GB.Instance.getCurrentSession(Session).UserName;
 
+        protected void bNuovo_Click(object sender, EventArgs e)
+        {
+            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
+
+            Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString.HasKeys())

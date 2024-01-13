@@ -1,22 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mMenu.aspx.cs" Inherits="RationesCurare.mMenu" EnableEventValidation="false" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .trGrid {
-            cursor: pointer;
-        }
-
-            .trGrid:hover {
-                color: black !important;
-                background-color: #F79E10 !important;
-            }
-
-                .trGrid:hover span {
-                    color: black;
-                }
-    </style>
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Saldo</h2>
 
@@ -50,4 +33,6 @@
         </Columns>
 
     </asp:GridView>
+
+    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

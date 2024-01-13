@@ -29,37 +29,7 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
     
-    <title>Rationes Curare</title>
-
-    <style>
-        .myBtn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 99;
-            font-family: 'Material Icons';
-            font-size: 24px;
-            border: none;
-            outline: none;
-            background-color: #464453;
-            color: white;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            /* Support for all WebKit browsers. */
-            -webkit-font-smoothing: antialiased;
-            /* Support for Safari and Chrome. */
-            text-rendering: optimizeLegibility;
-            /* Support for Firefox. */
-            -moz-osx-font-smoothing: grayscale;
-            /* Support for IE. */
-            font-feature-settings: 'liga';
-        }
-
-            .myBtn:hover {
-                background-color: #F79E10;
-            }
-    </style>
+    <title>Rationes Curare</title>   
 </head>
 <body>
     <h1>RationesCurare</h1>
@@ -74,9 +44,7 @@
         </nav>
         <hr>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-
-        <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="" ID="bNuovo" OnClick="bNuovo_Click" />    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>        
     </form>    
 
     <hr>

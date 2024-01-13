@@ -4,30 +4,7 @@
     <style>
         div {
             margin-bottom: 1rem;
-        }
-
-        select {
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        input:not([type='submit']) {
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        input[type='submit'] {
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-
-        input:user-invalid {
-            border-color: #F79E10;
-        }
-
-        .descrizione {
-            width: 100%;
-        }
+        }       
     </style>
 
     <script>
@@ -89,10 +66,10 @@
                 foreach (var de in getDescrizioni())
                 {
             %>
-            <option value="<%=de%>">
-                <% 
-                    }
-                %>
+                    <option value="<%=de%>">
+            <% 
+                }
+            %>
         </datalist>
     </div>
     <div>
@@ -103,10 +80,10 @@
                 foreach (var ma in getMacroAree())
                 {
             %>
-            <option value="<%=ma%>">
-                <% 
-                    }
-                %>
+                    <option value="<%=ma%>">
+            <% 
+                }
+            %>
         </datalist>
     </div>
     <div>

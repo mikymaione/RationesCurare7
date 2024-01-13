@@ -12,6 +12,13 @@ namespace RationesCurare
 
         private string Tipo => GB.GetQueryString(Request, "T");
 
+        protected void bNuovo_Click(object sender, EventArgs e)
+        {
+            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
+
+            Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
+        }
+
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             var dt = GridView1.DataSource as System.Data.DataTable;

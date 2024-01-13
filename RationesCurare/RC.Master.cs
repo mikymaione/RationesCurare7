@@ -49,14 +49,7 @@ namespace RationesCurare
                 nav.Attributes["class"] = me.Equals(nav.ID)
                     ? "not-active"
                     : "";
-        }
-
-        protected void bNuovo_Click(object sender, EventArgs e)
-        {
-            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
-
-            Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
-        }
+        }       
 
     }
 }

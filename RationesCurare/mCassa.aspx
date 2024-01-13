@@ -5,25 +5,6 @@
         div {
             margin-bottom: 1rem;
         }
-
-        select {
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        input:not([type='submit']) {
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        input[type='submit'] {
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-
-        .descrizione {
-            width: 100%;
-        }
     </style>
 </asp:Content>
 
