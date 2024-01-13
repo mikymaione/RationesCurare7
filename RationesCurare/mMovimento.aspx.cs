@@ -37,6 +37,8 @@ namespace RationesCurare
                 }
             }
 
+            bElimina.Visible = IDMovimento != -1;
+
             SottoTitolo = IDMovimento == -1
                 ? "Nuovo importo"
                 : $"Importo {IDMovimento}";
