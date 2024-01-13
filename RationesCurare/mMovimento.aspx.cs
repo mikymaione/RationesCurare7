@@ -51,6 +51,9 @@ namespace RationesCurare
                 : $"Importo {IDMovimento}";
 
             if (!Page.IsPostBack)
+            {
+                ViewState["PreviousPage"] = Request.UrlReferrer;
+
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
@@ -93,6 +96,7 @@ namespace RationesCurare
                         idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
                     }
                 }
+            }
         }
 
         private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data)
@@ -171,8 +175,8 @@ namespace RationesCurare
         {
             try
             {
-                lErrore.Text = $"{SalvaMovimento()} elementi salvati!";
-                DisableUI();
+                SalvaMovimento();
+                Response.Redirect(ViewState["PreviousPage"].ToString());
             }
             catch (Exception ex)
             {
@@ -221,31 +225,24 @@ namespace RationesCurare
             return descrizioni;
         }
 
-        private void DisableUI()
-        {
-            idNome.Disabled = true;
-            idDescrizione.Disabled = true;
-            idMacroarea.Disabled = true;
-            idSoldi.Disabled = true;
-            idData.Disabled = true;
-            idCassa.Enabled = false;
-            idGiroconto.Enabled = false;
-            bSalva.Enabled = false;
-            bElimina.Enabled = false;
-        }
-
         protected void bElimina_Click(object sender, EventArgs e)
         {
-            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+            try
             {
-                var param = new System.Data.Common.DbParameter[] {
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                {
+                    var param = new System.Data.Common.DbParameter[] {
                     cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
 
-                var r = db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
-                lErrore.Text = $"{r} elementi eliminati!";
+                    db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
+                }
 
-                DisableUI();
+                Response.Redirect(ViewState["PreviousPage"].ToString());
+            }
+            catch (Exception ex)
+            {
+                lErrore.Text = $"Errore: {ex.Message}";
             }
         }
 
