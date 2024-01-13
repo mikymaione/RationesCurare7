@@ -232,8 +232,8 @@ namespace RationesCurare
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var param = new System.Data.Common.DbParameter[] {
-                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
-                };
+                        cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                    };
 
                     db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
                 }

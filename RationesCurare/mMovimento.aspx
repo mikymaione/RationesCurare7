@@ -110,12 +110,7 @@
 
         <script>
             function confirmDelete() {
-                let result = confirm("Vuoi eliminare questo elemento?");
-
-                if (result) {
-                    let movID = <%=IDMovimento%>;
-                    location.href = 'mMovimento.aspx?DEL=' + movID;
-                }
+                return confirm("Vuoi eliminare questo elemento?");                
             }
         </script>
 
