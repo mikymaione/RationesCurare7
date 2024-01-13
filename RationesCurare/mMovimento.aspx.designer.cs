@@ -24,15 +24,6 @@ namespace RationesCurare
         protected global::System.Web.UI.ScriptManager smMain;
 
         /// <summary>
-        /// idNome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText idNome;
-
-        /// <summary>
         /// idSoldi control.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,15 @@ namespace RationesCurare
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList idGiroconto;
+
+        /// <summary>
+        /// idNome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idNome;
 
         /// <summary>
         /// bSalva control.

@@ -32,17 +32,13 @@
     <h2><%=SottoTitolo %></h2>
 
     <asp:ScriptManager ID="smMain" runat="server" EnablePageMethods="true" />
-
+    
     <div>
-        <label for="idNome">Nome</label>
-        <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required>
+        <label class="required" for="idSoldi">Importo</label>
+        <input id="idSoldi" runat="server" type="number" step="0.01" maxlength="12" autofocus required onchange="resoconto();">
     </div>
     <div>
-        <label for="idSoldi">Importo</label>
-        <input id="idSoldi" runat="server" type="number" step="0.01" maxlength="11" required onchange="resoconto();">
-    </div>
-    <div>
-        <label for="idData">Data</label>
+        <label class="required" for="idData">Data</label>
         <input id="idData" runat="server" type="datetime-local" required>
     </div>
     <div>
@@ -59,7 +55,7 @@
             }
         </script>
 
-        <label for="idDescrizione">Descrizione</label>
+        <label class="required" for="idDescrizione">Descrizione</label>
         <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required>
         <datalist id="dlDescrizioni">
             <%
@@ -73,7 +69,7 @@
         </datalist>
     </div>
     <div>
-        <label for="idMacroarea">Macroarea</label>
+        <label class="required" for="idMacroarea">Macroarea</label>
         <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required>
         <datalist id="dlMacroaree">
             <%
@@ -87,14 +83,18 @@
         </datalist>
     </div>
     <div>
-        <label for="idCassa">Cassa</label>
+        <label class="required" for="idCassa">Dalla cassa</label>
         <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();"></asp:DropDownList>
     </div>
     <div>
-        <label for="idGiroconto">Giroconto</label>
+        <label for="idGiroconto">Alla cassa</label>
         <asp:DropDownList ID="idGiroconto" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();">
             <asp:ListItem Value="" Text="--nessuno--" Selected="true"></asp:ListItem>
         </asp:DropDownList>
+    </div>
+    <div>
+        <label class="required" for="idNome">Autore</label>
+        <input id="idNome" runat="server" maxlength="255" autocomplete="on" required>
     </div>
 
     <h3>Resoconto</h3>

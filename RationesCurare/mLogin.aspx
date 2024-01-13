@@ -42,11 +42,11 @@
 
     <form id="form1" runat="server">
         <div>
-            <label for="eUtente">Utente</label>          
+            <label class="required" for="eUtente">Utente</label>          
             <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
         </div>
         <div>
-            <label for="ePsw">Password</label>          
+            <label class="required" for="ePsw">Password</label>          
             <input id="ePsw" name="ePsw" runat="server" placeholder="Password" type="password" required>
         </div>
 

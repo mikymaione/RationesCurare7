@@ -7,7 +7,7 @@
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">    
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 
     <link rel="manifest" href="favicon/site.json">
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#F79E10">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
-    
+
     <meta name="date" content="2024-01-12" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
@@ -28,8 +28,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
-    
-    <title>Rationes Curare</title>   
+
+    <title>Rationes Curare</title>
 </head>
 <body>
     <h1>RationesCurare</h1>
@@ -44,8 +44,8 @@
         </nav>
         <hr>
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>        
-    </form>    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </form>
 
     <hr>
     <ruby>© 2006-2024, [MAIONE MIKY]</ruby>

@@ -12,13 +12,13 @@
         <HeaderStyle BackColor="Black" ForeColor="White" />
 
         <Columns>
-            <asp:TemplateField HeaderText="Tipo">
+            <asp:TemplateField HeaderText="Tipo" HeaderStyle-HorizontalAlign="Left">
                 <ItemTemplate>
                     <asp:Literal runat="server" Text='<%# Eval("Tipo") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Saldo" ItemStyle-Wrap="false" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
+            <asp:TemplateField HeaderText="Saldo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:Label ID="lblsoldi" runat="server" Text='<%# Eval("Saldo", "{0:c}") %>' />
                 </ItemTemplate>
@@ -34,5 +34,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

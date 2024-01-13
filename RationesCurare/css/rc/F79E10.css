@@ -1,4 +1,4 @@
-body {
+﻿body {
     max-width: 745px;
     margin: auto;
     padding-top: 0px;
@@ -43,6 +43,11 @@ a:active, a:hover {
 .img-max-size {
     max-width: 100%;
     height: auto;
+}
+
+.required:after {
+    content: "٭";
+    color: #F79E10;
 }
 
 select {
@@ -93,11 +98,14 @@ input {
             color: black;
         }
 
+.googleIcon {
+    font-family: 'Material Icons';
+}
+
 .myBtn {
     position: fixed;
     bottom: 20px;
     z-index: 99;
-    font-family: 'Material Icons';
     font-size: 24px;
     border: none;
     outline: none;

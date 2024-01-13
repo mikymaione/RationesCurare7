@@ -23,7 +23,7 @@
     <h2>Gestione casse</h2>    
 
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Nome" Width="100%" RowStyle-CssClass="trGrid"
-        OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
+        OnSelectedIndexChanging="GridView1_SelectedIndexChanging" HeaderStyle-HorizontalAlign="Left"
         OnRowDataBound="GridView1_RowDataBound">
 
         <AlternatingRowStyle BackColor="#f0f0f0" />
@@ -37,5 +37,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo cassa" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo cassa" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

@@ -12,7 +12,7 @@
     <h2><%=SottoTitolo %></h2>
 
     <div>
-        <label for="idNome">Nome</label>
+        <label class="required" for="idNome">Nome</label>
         <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required>
     </div>
     <div>

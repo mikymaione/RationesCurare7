@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("[MAIONE MIKY]")]
 [assembly: AssemblyProduct("RationesCurare")]
-[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2023")]
+[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2024")]
 [assembly: AssemblyTrademark("[MAIONE MIKY]")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come illustrato di seguito:
-[assembly: AssemblyVersion("20.23.12.14")]
-[assembly: AssemblyFileVersion("20.23.12.14")]
+[assembly: AssemblyVersion("20.24.01.13")]
+[assembly: AssemblyFileVersion("20.24.01.13")]

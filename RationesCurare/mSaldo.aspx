@@ -6,7 +6,7 @@
     <table width="100%">
         <thead>
             <tr style="background-color: black; color: white">
-                <th colspan="2">Filtri</th>
+                <th colspan="2" style="text-align: left">Filtri</th>
             </tr>
         </thead>
         <tr>
@@ -100,8 +100,7 @@
         <PagerSettings Mode="NumericFirstLast" Position="TopAndBottom" />
 
         <Columns>
-
-            <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true">
+            <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
                 <ItemTemplate>
                     <div>
                         <asp:Label runat="server" Text='<%# Eval("MacroArea") %>' CssClass="trLabel" />
@@ -119,7 +118,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
+            <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:Label ID="lblsoldi" runat="server" Text='<%# Eval("soldi", "{0:c}") %>' />
                 </ItemTemplate>
@@ -131,5 +130,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />    
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />    
 </asp:Content>
