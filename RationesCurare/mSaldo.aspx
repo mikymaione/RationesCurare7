@@ -131,5 +131,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="" ID="bNuovo" OnClick="bNuovo_Click" />    
+    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />    
 </asp:Content>

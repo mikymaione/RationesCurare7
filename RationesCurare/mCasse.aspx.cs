@@ -7,6 +7,11 @@ namespace RationesCurare
 {
     public partial class mCasse : Page
     {
+        protected void bNuovo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("mCassa.aspx");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (GB.Instance.getCurrentSession(Session) != null)
@@ -23,7 +28,7 @@ namespace RationesCurare
             var r = dt.Rows[e.NewSelectedIndex];
             var nome = r.ItemArray[0];
 
-            Response.Redirect("mCassa.aspx?ID=" + nome);
+            Response.Redirect($"mCassa.aspx?ID={nome}");
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

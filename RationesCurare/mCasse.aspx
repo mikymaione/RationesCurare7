@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Gestione casse</title>
 
-    <style>
+    <style>        
         .trGrid {
             cursor: pointer;
         }
@@ -36,4 +36,6 @@
         <RowStyle CssClass="trGrid"></RowStyle>
 
     </asp:GridView>
+
+    <asp:Button runat="server" CssClass="myBtn" ToolTip="Nuovo cassa" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

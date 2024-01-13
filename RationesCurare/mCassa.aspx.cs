@@ -29,6 +29,9 @@ namespace RationesCurare
                   : $"Cassa {IDCassa}";
 
             if (!Page.IsPostBack)
+            {
+                ViewState["PreviousPage"] = Request.UrlReferrer;
+
                 if (!"".Equals(IDCassa))
                     using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                     {
@@ -44,6 +47,7 @@ namespace RationesCurare
                                     idNascondi.Value = GB.ObjectToBool(dr["Nascondi"]) ? "1" : "0";
                                 }
                     }
+            }
         }
 
         protected void bSalva_Click(object sender, EventArgs e)
@@ -57,10 +61,9 @@ namespace RationesCurare
                         cDB.NewPar("Nascondi", "1".Equals(idNascondi.Value), System.Data.DbType.Boolean),
                     };
 
-                    var r = db.EseguiSQLNoQuery("".Equals(IDCassa) ? cDB.Queries.Casse_Inserisci : cDB.Queries.Casse_Aggiorna, param);
+                    db.EseguiSQLNoQuery("".Equals(IDCassa) ? cDB.Queries.Casse_Inserisci : cDB.Queries.Casse_Aggiorna, param);
 
-                    lErrore.Text = $"{r} elementi salvati!";
-                    idNome.Disabled = true;
+                    Response.Redirect(ViewState["PreviousPage"].ToString());
                 }
             }
             catch (Exception ex)
