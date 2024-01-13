@@ -64,6 +64,10 @@ input {
         cursor: pointer;
     }
 
+    input[type='checkbox'] {
+        width: auto;
+    }
+
     input:user-invalid {
         border-color: #F79E10;
     }
