@@ -52,8 +52,7 @@ a:active, a:hover {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
-    color: #464453 !important;
-    font-weight: bold;
+    color: #464453 !important;    
 }
 
 .img-max-size {
