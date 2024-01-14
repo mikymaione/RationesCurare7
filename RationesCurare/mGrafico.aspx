@@ -6,8 +6,8 @@
     <h2>Grafico a barre</h2>
 
     <nav>
-        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server">Mensile</a> |		    
-        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server">Annuale</a>
+        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: initial">Mensile</a> |		    
+        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: initial">Annuale</a>
     </nav>
 
     <asp:Chart ID="Chart1" runat="server" ImageStorageMode="UseImageLocation" ImageLocation="~/public/ChartImages/chartStatComp_#SEQ(100,10)" OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" Width="745px" Height="500px" CssClass="img-max-size">
