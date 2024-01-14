@@ -10,6 +10,23 @@
     font-family: 'Ubuntu Mono';
 }
 
+.menu {
+    display: flex;
+}
+
+    .menu a {
+        display: inline-block;
+        list-style: none;
+    }
+
+        .menu a:not(:last-of-type) {
+            margin-right: 8px;
+        }
+
+        .menu a:last-of-type {
+            margin-left: auto;
+        }
+
 .giustificato {
     text-align: justify;
     text-justify: inter-character;
@@ -28,7 +45,7 @@ em, a:link, a:visited {
 }
 
 a:active, a:hover {
-    color: black;    
+    color: black;
 }
 
 .not-active {
