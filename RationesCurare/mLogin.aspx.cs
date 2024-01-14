@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RationesCurare7.DB;
+using System;
 
 namespace RationesCurare
 {
@@ -30,13 +31,13 @@ namespace RationesCurare
             if (auto.Equals("TRUE", StringComparison.OrdinalIgnoreCase))
             {
                 cbMemorizza.Value = "1";
-                Login_(nome, psw);
+                Login_(nome, psw, true);
             }
         }
 
         private void DoLogin()
         {
-            Login_(eUtente.Value, ePsw.Value);
+            Login_(eUtente.Value, ePsw.Value, true);
         }
 
         private bool ControllaCredenziali(string nome, string psw)
@@ -64,7 +65,7 @@ namespace RationesCurare
             return false;
         }
 
-        private void Login_(string nome, string psw)
+        private void Login_(string nome, string psw, bool redirect)
         {
             if (nome != null && nome.Length > 4
                 && psw != null && psw.Length > 1
@@ -90,7 +91,8 @@ namespace RationesCurare
                     DeleteCookieLogin(false);
                 }
 
-                Response.Redirect("mMenu.aspx");
+                if (redirect)
+                    Response.Redirect("mMenu.aspx");
             }
             else
             {
@@ -120,40 +122,80 @@ namespace RationesCurare
 
         protected void bRegistrati_Click(object sender, EventArgs e)
         {
-            var nome = eUtente.Value;
-            var psw = ePsw.Value;
-
-            if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
+            if (divNickName.Visible)
             {
-                var p = MapPath("App_Data");
-                var f = System.IO.Path.Combine(p, nome);
+                var utente = eNickName.Value;
+                var nome = eUtente.Value;
+                var psw = ePsw.Value;
 
-                if (System.IO.File.Exists(f + ".rqd8") || System.IO.File.Exists(f + ".psw"))
+                if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
                 {
-                    lErrore.Text = "Utente già esistente!";
+                    var p = MapPath("App_Data");
+                    var f = System.IO.Path.Combine(p, nome);
+
+                    if (System.IO.File.Exists(f + ".rqd8") || System.IO.File.Exists(f + ".psw"))
+                    {
+                        lErrore.Text = "Utente già esistente!";
+                    }
+                    else
+                    {
+                        var standard = System.IO.Path.Combine(p, "standard.rqd8");
+
+                        try
+                        {
+                            System.IO.File.Copy(standard, f + ".rqd8");
+
+                            using (var sw = new System.IO.StreamWriter(f + ".psw"))
+                                sw.WriteLine(psw);
+
+                            CreaUtenteInDbInfo(nome, utente, psw);
+                        }
+                        catch (Exception ex)
+                        {
+                            lErrore.Text = ex.Message;
+                        }
+                    }
                 }
                 else
                 {
-                    var standard = System.IO.Path.Combine(p, "standard.rqd8");
-
-                    try
-                    {
-                        System.IO.File.Copy(standard, f + ".rqd8");
-
-                        using (var sw = new System.IO.StreamWriter(f + ".psw"))
-                            sw.WriteLine(psw);
-
-                        DoLogin();
-                    }
-                    catch (Exception ex)
-                    {
-                        lErrore.Text = ex.Message;
-                    }
+                    lErrore.Text = "Email o password non valide!";
                 }
             }
             else
             {
-                lErrore.Text = "Email o password non valide!";
+                divNickName.Visible = true;
+            }
+        }
+
+        void CreaUtenteInDbInfo(string email, string nome, string psw)
+        {
+            try
+            {
+                Login_(email, psw, false);
+
+                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                {
+                    var UltimaModifica = DateTime.Now.AddYears(-15);
+                    var UltimoAggiornamentoDB = DateTime.Now.AddYears(-15);
+
+                    var param = new System.Data.Common.DbParameter[] {
+                        cDB.NewPar("nome", nome, System.Data.DbType.String),
+                        cDB.NewPar("Psw", psw, System.Data.DbType.String),
+                        cDB.NewPar("Email", email, System.Data.DbType.String),
+                        cDB.NewPar("SincronizzaDB", true, System.Data.DbType.Boolean),
+                        cDB.NewPar("UltimaModifica", UltimaModifica, System.Data.DbType.DateTime),
+                        cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB, System.Data.DbType.DateTime),
+                        cDB.NewPar("Valuta", "EUR", System.Data.DbType.String),
+                    };
+
+                    db.EseguiSQLNoQuery(cDB.Queries.DBInfo_Inserisci, param);
+
+                    Response.Redirect("mMenu.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                lErrore.Text = $"Errore: {ex.Message}";
             }
         }
 

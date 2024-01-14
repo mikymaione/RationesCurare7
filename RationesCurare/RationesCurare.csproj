@@ -84,6 +84,7 @@
     <Content Include="DB\DBW\Casse_Inserisci.sql" />
     <Content Include="DB\DBW\Casse_Lista.sql" />
     <Content Include="DB\DBW\Casse_Ricerca.sql" />
+    <Content Include="DB\DBW\DBInfo_Inserisci.sql" />
     <Content Include="DB\DBW\Movimenti_Aggiorna.sql" />
     <Content Include="DB\DBW\Movimenti_AutoCompleteSource.sql" />
     <Content Include="DB\DBW\Movimenti_AutoCompleteSourceMA.sql" />

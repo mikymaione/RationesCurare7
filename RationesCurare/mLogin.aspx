@@ -40,9 +40,13 @@
     <hr />
     <h2>Login</h2>
 
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">    
+        <div id="divNickName" runat="server" visible="false">
+            <label class="required" for="eNickName">Utente</label>          
+            <input id="eNickName" name="eNickName" runat="server" placeholder="Utente" required>
+        </div>
         <div>
-            <label class="required" for="eUtente">Utente</label>          
+            <label class="required" for="eUtente">Email</label>          
             <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
         </div>
         <div>

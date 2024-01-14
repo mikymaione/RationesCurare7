@@ -20,6 +20,7 @@ namespace RationesCurare7.DB
         public enum Queries
         {
             Aggiornamenti,
+            DBInfo_Inserisci,
             Movimenti_Inserisci,
             Movimenti_Aggiorna,
             Movimenti_AggiornaMacroAree,
