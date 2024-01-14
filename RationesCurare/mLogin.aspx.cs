@@ -37,7 +37,7 @@ namespace RationesCurare
 
         private void DoLogin()
         {
-            Login_(eUtente.Value, ePsw.Value, true);
+            Login_(eUtente.Value.TrimEnd(), ePsw.Value.TrimEnd(), true);
         }
 
         private bool ControllaCredenziali(string nome, string psw)
@@ -124,9 +124,9 @@ namespace RationesCurare
         {
             if (divNickName.Visible)
             {
-                var utente = eNickName.Value;
-                var nome = eUtente.Value;
-                var psw = ePsw.Value;
+                var utente = eNickName.Value.TrimEnd();
+                var nome = eUtente.Value.TrimEnd();
+                var psw = ePsw.Value.TrimEnd();
 
                 if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
                 {

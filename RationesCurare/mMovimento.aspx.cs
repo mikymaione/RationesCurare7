@@ -99,23 +99,23 @@ namespace RationesCurare
             if (isNewRecord)
             {
                 return new System.Data.Common.DbParameter[] {
-                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
-                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
+                    cDB.NewPar("tipo", idCassa.SelectedValue.TrimEnd(), System.Data.DbType.String),
+                    cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String)
                 };
             }
             else
             {
                 return new System.Data.Common.DbParameter[] {
-                    cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                    cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
-                    cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                    cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
+                    cDB.NewPar("tipo", idCassa.SelectedValue.TrimEnd(), System.Data.DbType.String),
+                    cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
+                    cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String),
                     cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
             }
@@ -137,12 +137,12 @@ namespace RationesCurare
                 if (isNewRecord && idGiroconto.SelectedIndex > 0)
                 {
                     var param2 = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                        cDB.NewPar("tipo", idGiroconto.SelectedValue, System.Data.DbType.String),
-                        cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
+                        cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
+                        cDB.NewPar("tipo", idGiroconto.SelectedValue.TrimEnd(), System.Data.DbType.String),
+                        cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
                         cDB.NewPar("soldi", -soldi, System.Data.DbType.Double),
                         cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                        cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                        cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String)
                     };
 
                     var m2 = db.EseguiSQLNoQuery(ref tran, cDB.Queries.Movimenti_Inserisci, param2);
@@ -180,8 +180,10 @@ namespace RationesCurare
         }
 
         [System.Web.Services.WebMethod]
-        public static string getMacroAreaByDescrizione(string userName, string descrizione)
+        public static string getMacroAreaByDescrizione(string userName, string descrizione_)
         {
+            var descrizione = descrizione_.TrimEnd();
+
             var PathDB = GB.getDBPathByName(userName);
 
             using (var db = new cDB(PathDB))

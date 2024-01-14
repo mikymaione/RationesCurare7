@@ -36,8 +36,8 @@ namespace RationesCurare
                     using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                     {
                         var par = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", IDCassa)
-                    };
+                            cDB.NewPar("nome", IDCassa)
+                        };
 
                         using (var dr = db.EseguiSQLDataReader(cDB.Queries.Casse_Carica, par))
                             if (dr.HasRows)
@@ -57,7 +57,7 @@ namespace RationesCurare
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var param = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
+                        cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
                         cDB.NewPar("Nascondi", "1".Equals(idNascondi.Value), System.Data.DbType.Boolean),
                     };
 
