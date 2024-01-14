@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using System.Xml.Linq;
 
 namespace RationesCurare
 {
@@ -52,14 +53,21 @@ namespace RationesCurare
                             if (dr.HasRows)
                                 while (dr.Read())
                                 {
+                                    var TipoGiorniMese = dr["TipoGiorniMese"] as string;
+                                    var Scadenza = dr["Scadenza"];
+
                                     idNome.Value = dr["Nome"] as string;
                                     idDescrizione.Value = dr["Descrizione"] as string;
                                     idMacroarea.Value = dr["Macroarea"] as string;
                                     idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, dr["Tipo"] as string);
                                     idSoldi.Value = GB.ObjectToHTMLDouble(dr["Soldi"], 0);
-                                    idPartendoDalGiorno.Value = GB.ObjectToDateStringHTML(dr["PartendoDalGiorno"]);
-                                    idScadenza.Value = GB.ObjectToDateStringHTML(dr["Scadenza"]);
-                                    idTipoGiorniMese.Value = dr["TipoGiorniMese"] as string;
+                                    idData.Value = GB.ObjectToDateStringHTML(
+                                        TipoGiorniMese == "G" ? dr["PartendoDalGiorno"] : dr["GiornoDelMese"]
+                                    );
+                                    idNumeroGiorni.Value = dr["NumeroGiorni"] as string;
+                                    idScadenza.Value = GB.ObjectToDateStringHTML(Scadenza);
+                                    bScadenza.Checked = !(Scadenza is DBNull);
+                                    idTipoGiorniMese.Value = TipoGiorniMese;
                                 }
                     }
                     else
@@ -75,6 +83,12 @@ namespace RationesCurare
 
         private System.Data.Common.DbParameter[] getParamsForSave()
         {
+            var Scadenza = GB.ValueToDBNULL(!bScadenza.Checked, GB.StringHTMLToDate(idScadenza.Value));
+            var TipoGiorniMese = idTipoGiorniMese.Value;
+            var PartendoDalGiorno = GB.ValueToDBNULL(TipoGiorniMese != "G", GB.StringHTMLToDate(idData.Value));
+            var GiornoDelMese = GB.ValueToDBNULL(TipoGiorniMese == "G", GB.StringHTMLToDate(idData.Value));
+            var NumeroGiorni = GB.HTMLIntToInt(idNumeroGiorni.Value, 0);
+
             if (IDMovimento > -1)
             {
                 return new System.Data.Common.DbParameter[] {
@@ -82,11 +96,11 @@ namespace RationesCurare
                     cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
                     cDB.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
-                    cDB.NewPar("NumeroGiorni", GB.HTMLIntToInt (idNumeroGiorni.Value), System.Data.DbType.Int32),
-                    cDB.NewPar("GiornoDelMese", DateTime.Now, System.Data.DbType.DateTime),
-                    cDB.NewPar("PartendoDalGiorno", GB.StringHTMLToDate(idPartendoDalGiorno.Value), System.Data.DbType.DateTime),
-                    cDB.NewPar("Scadenza", GB.StringHTMLToDate(idScadenza.Value), System.Data.DbType.DateTime),
-                    cDB.NewPar("TipoGiorniMese", idTipoGiorniMese.Value, System.Data.DbType.String),
+                    cDB.NewPar("NumeroGiorni", NumeroGiorni, System.Data.DbType.Int32),
+                    cDB.NewPar("GiornoDelMese", GiornoDelMese, System.Data.DbType.DateTime),
+                    cDB.NewPar("PartendoDalGiorno", PartendoDalGiorno, System.Data.DbType.DateTime),
+                    cDB.NewPar("Scadenza", Scadenza, System.Data.DbType.DateTime),
+                    cDB.NewPar("TipoGiorniMese", TipoGiorniMese, System.Data.DbType.String),
                     cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
                     cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
@@ -98,11 +112,11 @@ namespace RationesCurare
                     cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
                     cDB.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
-                    cDB.NewPar("NumeroGiorni", GB.HTMLIntToInt (idNumeroGiorni.Value), System.Data.DbType.Int32),
-                    cDB.NewPar("GiornoDelMese", DateTime.Now, System.Data.DbType.DateTime),
-                    cDB.NewPar("PartendoDalGiorno", GB.StringHTMLToDateTime(idPartendoDalGiorno.Value), System.Data.DbType.DateTime),
-                    cDB.NewPar("Scadenza", GB.StringHTMLToDateTime(idScadenza.Value), System.Data.DbType.DateTime),
-                    cDB.NewPar("TipoGiorniMese", idTipoGiorniMese.Value, System.Data.DbType.String),
+                    cDB.NewPar("NumeroGiorni", NumeroGiorni, System.Data.DbType.Int32),
+                    cDB.NewPar("GiornoDelMese", GiornoDelMese, System.Data.DbType.DateTime),
+                    cDB.NewPar("PartendoDalGiorno", PartendoDalGiorno, System.Data.DbType.DateTime),
+                    cDB.NewPar("Scadenza", Scadenza, System.Data.DbType.DateTime),
+                    cDB.NewPar("TipoGiorniMese", TipoGiorniMese, System.Data.DbType.String),
                     cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
                 };
             }

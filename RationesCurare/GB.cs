@@ -151,9 +151,16 @@ namespace RationesCurare
             return d;
         }
 
-        public static int HTMLIntToInt(string o)
+        public static int HTMLIntToInt(string o, int default_)
         {
-            return int.Parse(o.Replace(".", ","));
+            try
+            {
+                return int.Parse(o.Replace(".", ","));
+            }
+            catch
+            {
+                return default_;
+            }
         }
 
         public static double HTMLDoubleToDouble(string o)

@@ -65,8 +65,9 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Title = "RationesCurare - " + Tipo;
-            SottoTitolo = Tipo;
+            var TipoDesc = string.IsNullOrEmpty(Tipo) ? "Saldo" : Tipo;
+            Title = $"RationesCurare - {TipoDesc}";
+            SottoTitolo = TipoDesc;
 
             Form.DefaultButton = bCerca.UniqueID;
 

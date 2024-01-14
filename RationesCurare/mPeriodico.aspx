@@ -114,8 +114,8 @@
         </select>
     </div>
     <div>
-        <label class="required" for="idPartendoDalGiorno">Partendo dal giorno</label>
-        <input id="idPartendoDalGiorno" runat="server" type="date" required>
+        <label class="required" for="idData">Partendo dal giorno</label>
+        <input id="idData" runat="server" type="date" required>
     </div>
     <div id="divNumeroGiorni">
         <label class="required" for="idNumeroGiorni">Ogni quanti giorni</label>

@@ -276,7 +276,7 @@ namespace RationesCurare7.DB
 
         public static DbParameter NewPar(string Nome, object Valore, DbType tipo)
         {
-            if (tipo == DbType.Date || tipo == DbType.DateTime)
+            if (!(Valore is DBNull) && (tipo == DbType.Date || tipo == DbType.DateTime))
             {
                 //"YYYY-MM-DD HH:MM:SS.SSS"                
                 return new SQLiteParameter(Nome, DbType.String)
