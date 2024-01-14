@@ -28,15 +28,14 @@ em, a:link, a:visited {
 }
 
 a:active, a:hover {
-    color: black;
-    background-color: #F79E10;
+    color: black;    
 }
 
 .not-active {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
-    color: black !important;
+    color: #464453 !important;
     font-weight: bold;
 }
 
