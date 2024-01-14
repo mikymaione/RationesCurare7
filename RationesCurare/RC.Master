@@ -30,17 +30,25 @@
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 
     <title>Rationes Curare</title>
+
+    <style>
+        a {
+            font-family: 'Material Icons';
+            font-size: xxx-large;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <h1>RationesCurare</h1>
 
     <form id="form1" runat="server">
         <nav>
-            <a runat="server" id="nav_mMenu" href="mMenu.aspx">Saldo</a> |
-            <a runat="server" id="nav_mCasse" href="mCasse.aspx">Casse</a> |
-            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">Importi</a> |
-		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">Grafico</a> |
-		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">Logout</a>
+            <a runat="server" id="nav_mMenu" href="mMenu.aspx">point_of_sale</a>
+            <a runat="server" id="nav_mCasse" href="mCasse.aspx">account_balance_wallet</a>
+            <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">payments</a>
+		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">bar_chart</a>
+		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">logout</a>
         </nav>
         <hr>
 
