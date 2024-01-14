@@ -1,6 +1,7 @@
 ﻿using RationesCurare7.DB;
 using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
@@ -9,6 +10,8 @@ namespace RationesCurare
 
         protected string IDCassa = "";
         public string SottoTitolo = "";
+
+        public bool isNewRecord => string.IsNullOrEmpty(IDCassa);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +27,12 @@ namespace RationesCurare
                 }
             }
 
-            SottoTitolo = "".Equals(IDCassa)
+            if (isNewRecord)
+                idNome.Attributes.Remove("readonly");
+            else
+                idNome.Attributes.Add("readonly", "readonly");
+
+            SottoTitolo = isNewRecord
                   ? "Nuovo account"
                   : $"Account {IDCassa}";
 
@@ -32,7 +40,7 @@ namespace RationesCurare
             {
                 ViewState["PreviousPage"] = Request.UrlReferrer;
 
-                if (!"".Equals(IDCassa))
+                if (!isNewRecord)
                     using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                     {
                         var par = new System.Data.Common.DbParameter[] {

@@ -13,7 +13,7 @@
 
     <div>
         <label class="required" for="idNome">Nome</label>
-        <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required>
+        <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required >
     </div>
     <div>
         <label for="idNascondi">Nascondi</label>

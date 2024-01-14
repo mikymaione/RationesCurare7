@@ -31,6 +31,7 @@
 
         <Columns>
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
+            <asp:BoundField DataField="NascondiS" HeaderText="Nascondi" />
         </Columns>
 
         <RowStyle CssClass="trGrid"></RowStyle>
