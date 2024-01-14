@@ -1,15 +1,13 @@
 ﻿using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace RationesCurare
 {
-    public partial class mMovimento : System.Web.UI.Page
+    public partial class mPeriodico : Page
     {
-
         protected long IDMovimento = -1;
-        private string Tipo = "";
-
         public string SottoTitolo = "";
 
         protected string userName => GB.Instance.getCurrentSession(Session).UserName;
@@ -26,22 +24,13 @@ namespace RationesCurare
                 {
                     // no id
                 }
-
-                try
-                {
-                    Tipo = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(GB.GetQueryString(Request, "T"));
-                }
-                catch
-                {
-                    // no tipo                   
-                }
             }
 
             bElimina.Visible = IDMovimento != -1;
 
             SottoTitolo = IDMovimento == -1
-                ? "Nuovo importo"
-                : $"Importo {IDMovimento}";
+                ? "Nuovo periodico"
+                : $"Periodico {IDMovimento}";
 
             if (!Page.IsPostBack)
             {
@@ -53,19 +42,13 @@ namespace RationesCurare
                     idCassa.DataSource = casse;
                     idCassa.DataBind();
 
-                    idGiroconto.DataSource = casse;
-                    idGiroconto.DataBind();
-
-                    if (Tipo.Length > 0)
-                        idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, Tipo);
-
                     if (IDMovimento > -1)
                     {
                         var par = new System.Data.Common.DbParameter[] {
                             cDB.NewPar("ID", IDMovimento)
                         };
 
-                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_Dettaglio, par))
+                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Periodici_Dettaglio, par))
                             if (dr.HasRows)
                                 while (dr.Read())
                                 {
@@ -74,7 +57,9 @@ namespace RationesCurare
                                     idMacroarea.Value = dr["Macroarea"] as string;
                                     idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, dr["Tipo"] as string);
                                     idSoldi.Value = GB.ObjectToHTMLDouble(dr["Soldi"], 0);
-                                    idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
+                                    idPartendoDalGiorno.Value = GB.ObjectToDateStringHTML(dr["PartendoDalGiorno"]);
+                                    idScadenza.Value = GB.ObjectToDateStringHTML(dr["Scadenza"]);
+                                    idTipoGiorniMese.Value = dr["TipoGiorniMese"] as string;
                                 }
                     }
                     else
@@ -83,14 +68,12 @@ namespace RationesCurare
                             if (dr.HasRows)
                                 while (dr.Read())
                                     idNome.Value = dr["Nome"] as string;
-
-                        idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
                     }
                 }
             }
         }
 
-        private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data)
+        private System.Data.Common.DbParameter[] getParamsForSave()
         {
             if (IDMovimento > -1)
             {
@@ -98,8 +81,12 @@ namespace RationesCurare
                     cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
                     cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
-                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                    cDB.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
+                    cDB.NewPar("NumeroGiorni", GB.HTMLIntToInt (idNumeroGiorni.Value), System.Data.DbType.Int32),
+                    cDB.NewPar("GiornoDelMese", DateTime.Now, System.Data.DbType.DateTime),
+                    cDB.NewPar("PartendoDalGiorno", GB.StringHTMLToDate(idPartendoDalGiorno.Value), System.Data.DbType.DateTime),
+                    cDB.NewPar("Scadenza", GB.StringHTMLToDate(idScadenza.Value), System.Data.DbType.DateTime),
+                    cDB.NewPar("TipoGiorniMese", idTipoGiorniMese.Value, System.Data.DbType.String),
                     cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
                     cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
@@ -110,55 +97,23 @@ namespace RationesCurare
                     cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
                     cDB.NewPar("tipo", idCassa.SelectedValue, System.Data.DbType.String),
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                    cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
-                    cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    cDB.NewPar("soldi", GB.HTMLDoubleToDouble(idSoldi.Value), System.Data.DbType.Double),
+                    cDB.NewPar("NumeroGiorni", GB.HTMLIntToInt (idNumeroGiorni.Value), System.Data.DbType.Int32),
+                    cDB.NewPar("GiornoDelMese", DateTime.Now, System.Data.DbType.DateTime),
+                    cDB.NewPar("PartendoDalGiorno", GB.StringHTMLToDateTime(idPartendoDalGiorno.Value), System.Data.DbType.DateTime),
+                    cDB.NewPar("Scadenza", GB.StringHTMLToDateTime(idScadenza.Value), System.Data.DbType.DateTime),
+                    cDB.NewPar("TipoGiorniMese", idTipoGiorniMese.Value, System.Data.DbType.String),
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
                 };
             }
         }
 
         private int SalvaMovimento()
         {
-            var soldi = GB.HTMLDoubleToDouble(idSoldi.Value);
-            var data = GB.StringHTMLToDateTime(idData.Value);
-
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
-                var tran = db.BeginTransaction();
-
-                var param1 = getParamsForSave(soldi, data);
-                var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
-
-                // con giroconto
-                if (IDMovimento == -1 && idGiroconto.SelectedIndex > 0)
-                {
-                    var param2 = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
-                        cDB.NewPar("tipo", idGiroconto.SelectedValue, System.Data.DbType.String),
-                        cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
-                        cDB.NewPar("soldi", -soldi, System.Data.DbType.Double),
-                        cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                        cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
-                    };
-
-                    var m2 = db.EseguiSQLNoQuery(ref tran, cDB.Queries.Movimenti_Inserisci, param2);
-
-                    if (m1 + m2 == 2)
-                    {
-                        tran.Commit();
-                        return 2;
-                    }
-                    else
-                    {
-                        tran.Rollback();
-                        return 0;
-                    }
-                }
-                else
-                {
-                    tran.Commit();
-                    return m1;
-                }
+                var param1 = getParamsForSave();
+                return db.EseguiSQLNoQuery(IDMovimento > -1 ? cDB.Queries.Periodici_Aggiorna : cDB.Queries.Periodici_Inserisci, param1);
             }
         }
 
@@ -226,7 +181,7 @@ namespace RationesCurare
                         cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                     };
 
-                    db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
+                    db.EseguiSQLNoQuery(cDB.Queries.Periodici_Elimina, param);
                 }
 
                 Response.Redirect(ViewState["PreviousPage"].ToString());

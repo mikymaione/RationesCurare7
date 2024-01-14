@@ -21,7 +21,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2024-01-13" scheme="YYYY-MM-DD">
+    <meta name="date" content="2024-01-14" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
 
@@ -47,6 +47,7 @@
             <a runat="server" id="nav_mMenu" href="mMenu.aspx">point_of_sale</a>
             <a runat="server" id="nav_mCasse" href="mCasse.aspx">account_balance_wallet</a>
             <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">payments</a>
+            <a runat="server" id="nav_mPeriodici" href="mPeriodici.aspx">update</a>
 		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">bar_chart</a>
 		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">logout</a>
         </nav>

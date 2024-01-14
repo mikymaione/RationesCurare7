@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.SessionState;
+using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
@@ -149,6 +151,11 @@ namespace RationesCurare
             return d;
         }
 
+        public static int HTMLIntToInt(string o)
+        {
+            return int.Parse(o.Replace(".", ","));
+        }
+
         public static double HTMLDoubleToDouble(string o)
         {
             return double.Parse(o.Replace(".", ","));
@@ -206,11 +213,23 @@ namespace RationesCurare
             return d?.ToString("dd/MM/yyyy HH:mm");
         }
 
+        public static string ObjectToDateStringHTML(object o)
+        {
+            var d = ObjectToDateTime(o, DateTime.Now);
+
+            return d?.ToString("yyyy-MM-dd");
+        }
+
         public static string ObjectToDateTimeStringHTML(object o)
         {
             var d = ObjectToDateTime(o, DateTime.Now);
 
             return d?.ToString("yyyy-MM-ddTHH:mm");
+        }
+
+        public static DateTime StringHTMLToDate(string o)
+        {
+            return DateTime.ParseExact(o, "yyyy-MM-dd", null);
         }
 
         public static DateTime StringHTMLToDateTime(string o)
@@ -244,6 +263,18 @@ namespace RationesCurare
                 return null;
         }
 
+        public static string ComboBoxItemsByValue(DropDownList d, string value)
+        {
+            foreach (ListItem li in d.Items)
+            {
+                if (string.Compare(li.Value, value, true) == 0)
+                {
+                    return li.Value;
+                }
+            }
+
+            return null;
+        }
 
     }
 }

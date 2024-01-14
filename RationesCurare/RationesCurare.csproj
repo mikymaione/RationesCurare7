@@ -101,6 +101,7 @@
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
     <Content Include="DB\DBW\Periodici_Aggiorna.sql" />
+    <Content Include="DB\DBW\Periodici_Ricerca.sql" />
     <Content Include="DB\DBW\Periodici_Scadenza.sql" />
     <Content Include="DB\DBW\Utente_Carica.sql" />
     <Content Include="EmailSending.asmx" />
@@ -120,6 +121,8 @@
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
     <Content Include="mMovimento.aspx" />
+    <Content Include="mPeriodici.aspx" />
+    <Content Include="mPeriodico.aspx" />
     <Content Include="mSaldo.aspx" />
     <Content Include="Web.config" />
     <Content Include="welcome.aspx" />
@@ -178,6 +181,20 @@
     </Compile>
     <Compile Include="mMovimento.aspx.designer.cs">
       <DependentUpon>mMovimento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mPeriodici.aspx.cs">
+      <DependentUpon>mPeriodici.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mPeriodici.aspx.designer.cs">
+      <DependentUpon>mPeriodici.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mPeriodico.aspx.cs">
+      <DependentUpon>mPeriodico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mPeriodico.aspx.designer.cs">
+      <DependentUpon>mPeriodico.aspx</DependentUpon>
     </Compile>
     <Compile Include="mSaldo.aspx.cs">
       <DependentUpon>mSaldo.aspx</DependentUpon>
