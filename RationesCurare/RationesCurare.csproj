@@ -101,6 +101,9 @@
     <Content Include="DB\DBW\Movimenti_Saldo.sql" />
     <Content Include="DB\DBW\Movimenti_SaldoPerCassa.sql" />
     <Content Include="DB\DBW\Periodici_Aggiorna.sql" />
+    <Content Include="DB\DBW\Periodici_Dettaglio.sql" />
+    <Content Include="DB\DBW\Periodici_Elimina.sql" />
+    <Content Include="DB\DBW\Periodici_Inserisci.sql" />
     <Content Include="DB\DBW\Periodici_Ricerca.sql" />
     <Content Include="DB\DBW\Periodici_Scadenza.sql" />
     <Content Include="DB\DBW\Utente_Carica.sql" />
