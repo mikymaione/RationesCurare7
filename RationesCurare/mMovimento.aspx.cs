@@ -7,7 +7,7 @@ namespace RationesCurare
     public partial class mMovimento : System.Web.UI.Page
     {
 
-        protected int IDMovimento = -1;
+        protected long IDMovimento = -1;
         private string Tipo = "";
 
         public string SottoTitolo = "";

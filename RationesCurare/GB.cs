@@ -93,13 +93,13 @@ namespace RationesCurare
             return i;
         }
 
-        public static int ObjectToInt(string o, int default_)
+        public static long ObjectToInt(string o, long default_)
         {
             var i = default_;
 
             try
             {
-                i = int.Parse(o);
+                i = long.Parse(o);
             }
             catch
             {
@@ -109,13 +109,13 @@ namespace RationesCurare
             return i;
         }
 
-        public static int ObjectToInt(object o, int default_)
+        public static long ObjectToInt(object o, long default_)
         {
             var i = default_;
 
             try
             {
-                i = (int)o;
+                i = (long)o;
             }
             catch
             {
@@ -201,16 +201,16 @@ namespace RationesCurare
 
         public static string ObjectToDateTimeString(object o)
         {
-            var d = ObjectToDateTime(o);
+            var d = ObjectToDateTime(o, DateTime.Now);
 
-            return d.ToString("dd/MM/yyyy HH:mm");
+            return d?.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static string ObjectToDateTimeStringHTML(object o)
         {
-            var d = ObjectToDateTime(o);
+            var d = ObjectToDateTime(o, DateTime.Now);
 
-            return d.ToString("yyyy-MM-ddTHH:mm");
+            return d?.ToString("yyyy-MM-ddTHH:mm");
         }
 
         public static DateTime StringHTMLToDateTime(string o)
@@ -218,13 +218,11 @@ namespace RationesCurare
             return DateTime.ParseExact(o, "yyyy-MM-ddTHH:mm", null);
         }
 
-        public static DateTime ObjectToDateTime(object o)
+        public static DateTime? ObjectToDateTime(object o, DateTime? default_)
         {
-            var d = DateTime.Now;
-
             if (o is DateTime)
             {
-                d = (DateTime)o;
+                return (DateTime)o;
             }
             else if (o is string)
             {
@@ -232,16 +230,18 @@ namespace RationesCurare
 
                 if (x.Length == 10)
                 {
-                    d = DateTime.ParseExact(x, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                    return DateTime.ParseExact(x, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                 }
                 else
                 {
                     x = x.Substring(0, 19);
-                    d = DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    return DateTime.ParseExact(x, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                 }
             }
-
-            return d;
+            else if (default_.HasValue)
+                return (DateTime)default_;
+            else
+                return null;
         }
 
 

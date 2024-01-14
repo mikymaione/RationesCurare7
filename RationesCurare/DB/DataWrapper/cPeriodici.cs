@@ -20,12 +20,12 @@ namespace RationesCurare.DB.DataWrapper
             NOTSETTED
         }
 
-        public int ID = -1;
-        public int NumeroGiorni;
+        public long ID = -1;
+        public long NumeroGiorni;
         public double soldi;
         public char TipoGiorniMese;
         public string nome, tipo, descrizione, MacroArea;
-        public DateTime GiornoDelMese, PartendoDalGiorno, Scadenza;
+        public DateTime? GiornoDelMese, PartendoDalGiorno, Scadenza;
 
 
         private Dictionary<ePeriodicita, char> PeriodicitaC = new Dictionary<ePeriodicita, char>();
@@ -40,6 +40,48 @@ namespace RationesCurare.DB.DataWrapper
             { ePeriodicita.S ,"Semestrale" },
             { ePeriodicita.A ,"Annuale" },
         };
+
+        public DateTime DTD
+        {
+            get
+            {
+                switch (TipoGiornoMese)
+                {
+                    case ePeriodicita.G:
+                        if (!PartendoDalGiorno.HasValue || PartendoDalGiorno.Value.Year < 1900)
+                            return GB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, GiornoDelMese.Value.Day).AddDays(NumeroGiorni));
+                        else
+                            return GB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, PartendoDalGiorno.Value.Day).AddDays(NumeroGiorni));
+
+                    default:
+                        return GB.DateToOnlyDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, GiornoDelMese.Value.Day).AddMonths(MeseDaAggiungere));
+                }
+            }
+        }
+
+        public int MeseDaAggiungere
+        {
+            get
+            {
+                switch (TipoGiornoMese)
+                {
+                    case ePeriodicita.M:
+                        return 1;
+                    case ePeriodicita.B:
+                        return 2;
+                    case ePeriodicita.T:
+                        return 3;
+                    case ePeriodicita.Q:
+                        return 4;
+                    case ePeriodicita.S:
+                        return 6;
+                    case ePeriodicita.A:
+                        return 12;
+                    default:
+                        return 0;
+                }
+            }
+        }
 
         public ePeriodicita TipoGiornoMese
         {
@@ -99,9 +141,9 @@ namespace RationesCurare.DB.DataWrapper
                         descrizione = Convert.ToString(dr["descrizione"]);
                         MacroArea = Convert.ToString(dr["MacroArea"]);
                         TipoGiorniMese = Convert.ToChar(dr["TipoGiorniMese"]);
-                        GiornoDelMese = GB.ObjectToDateTime(dr["GiornoDelMese"]);
-                        PartendoDalGiorno = GB.ObjectToDateTime(dr["PartendoDalGiorno"]);
-                        Scadenza = GB.ObjectToDateTime(dr["Scadenza"]);
+                        GiornoDelMese = GB.ObjectToDateTime(dr["GiornoDelMese"], null);
+                        PartendoDalGiorno = GB.ObjectToDateTime(dr["PartendoDalGiorno"], null);
+                        Scadenza = GB.ObjectToDateTime(dr["Scadenza"], null);
                     }
         }
 
@@ -144,9 +186,9 @@ namespace RationesCurare.DB.DataWrapper
                             descrizione = Convert.ToString(dr["descrizione"]),
                             MacroArea = Convert.ToString(dr["MacroArea"]),
                             TipoGiorniMese = Convert.ToChar(dr["TipoGiorniMese"]),
-                            GiornoDelMese = GB.ObjectToDateTime(dr["GiornoDelMese"]),
-                            PartendoDalGiorno = GB.ObjectToDateTime(dr["PartendoDalGiorno"]),
-                            Scadenza = GB.ObjectToDateTime(dr["Scadenza"])
+                            GiornoDelMese = GB.ObjectToDateTime(dr["GiornoDelMese"], null),
+                            PartendoDalGiorno = GB.ObjectToDateTime(dr["PartendoDalGiorno"], null),
+                            Scadenza = GB.ObjectToDateTime(dr["Scadenza"], null)
                         });
 
             return c;

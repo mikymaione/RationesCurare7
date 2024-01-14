@@ -147,12 +147,12 @@ namespace RationesCurare7.DB
             return EseguiSQLDataTable(sql, null);
         }
 
-        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, int MaxRows = -1)
+        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, long MaxRows = -1)
         {
             return EseguiSQLDataTable(LeggiQuery(q), param, null, MaxRows);
         }
 
-        public DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null, int MaxRows = -1)
+        public DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null, long MaxRows = -1)
         {
             var t = new DataTable();
 

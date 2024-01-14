@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RationesCurare.DB.DataWrapper;
+using System;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
@@ -27,9 +28,8 @@ namespace RationesCurare
             {
                 DisableNavs();
 
-                // TODO
-                // var p = new PeriodiciService();
-                // p.ControllaPeriodici(Session);
+                var p = new PeriodiciService();
+                p.ControllaPeriodici(Session);
             }
         }
 
@@ -49,7 +49,7 @@ namespace RationesCurare
                 nav.Attributes["class"] = me.Equals(nav.ID)
                     ? "not-active"
                     : "";
-        }       
+        }
 
     }
 }
