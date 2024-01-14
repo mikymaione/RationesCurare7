@@ -8,9 +8,12 @@ namespace RationesCurare
     {
 
         protected long IDMovimento = -1;
+
         private string Tipo = "";
 
         public string SottoTitolo = "";
+
+        public bool isNewRecord => IDMovimento == -1;
 
         protected string userName => GB.Instance.getCurrentSession(Session).UserName;
 
@@ -37,9 +40,10 @@ namespace RationesCurare
                 }
             }
 
-            bElimina.Visible = IDMovimento != -1;
+            divGiroconto.Visible = isNewRecord;
+            bElimina.Visible = !isNewRecord;
 
-            SottoTitolo = IDMovimento == -1
+            SottoTitolo = isNewRecord
                 ? "Nuovo importo"
                 : $"Importo {IDMovimento}";
 
@@ -59,7 +63,16 @@ namespace RationesCurare
                     if (Tipo.Length > 0)
                         idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, Tipo);
 
-                    if (IDMovimento > -1)
+                    if (isNewRecord)
+                    {
+                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Utente_Carica))
+                            if (dr.HasRows)
+                                while (dr.Read())
+                                    idNome.Value = dr["Nome"] as string;
+
+                        idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
+                    }
+                    else
                     {
                         var par = new System.Data.Common.DbParameter[] {
                             cDB.NewPar("ID", IDMovimento)
@@ -77,22 +90,13 @@ namespace RationesCurare
                                     idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
                                 }
                     }
-                    else
-                    {
-                        using (var dr = db.EseguiSQLDataReader(cDB.Queries.Utente_Carica))
-                            if (dr.HasRows)
-                                while (dr.Read())
-                                    idNome.Value = dr["Nome"] as string;
-
-                        idData.Value = GB.ObjectToDateTimeStringHTML(DateTime.Now);
-                    }
                 }
             }
         }
 
         private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data)
         {
-            if (IDMovimento > -1)
+            if (isNewRecord)
             {
                 return new System.Data.Common.DbParameter[] {
                     cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),
@@ -100,8 +104,7 @@ namespace RationesCurare
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
-                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
                 };
             }
             else
@@ -112,7 +115,8 @@ namespace RationesCurare
                     cDB.NewPar("descrizione", idDescrizione.Value, System.Data.DbType.String),
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String)
+                    cDB.NewPar("MacroArea", idMacroarea.Value, System.Data.DbType.String),
+                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                 };
             }
         }
@@ -130,7 +134,7 @@ namespace RationesCurare
                 var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
 
                 // con giroconto
-                if (IDMovimento == -1 && idGiroconto.SelectedIndex > 0)
+                if (isNewRecord && idGiroconto.SelectedIndex > 0)
                 {
                     var param2 = new System.Data.Common.DbParameter[] {
                         cDB.NewPar("nome", idNome.Value, System.Data.DbType.String),

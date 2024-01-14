@@ -69,6 +69,15 @@ namespace RationesCurare
         protected global::System.Web.UI.WebControls.DropDownList idCassa;
 
         /// <summary>
+        /// divGiroconto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGiroconto;
+
+        /// <summary>
         /// idGiroconto control.
         /// </summary>
         /// <remarks>

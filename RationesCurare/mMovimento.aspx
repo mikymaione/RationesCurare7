@@ -86,7 +86,7 @@
         <label class="required" for="idCassa">Dal account</label>
         <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();"></asp:DropDownList>
     </div>
-    <div>
+    <div id="divGiroconto" runat="server">
         <label for="idGiroconto">Al account</label>
         <asp:DropDownList ID="idGiroconto" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();">
             <asp:ListItem Value="" Text="--nessuno--" Selected="true"></asp:ListItem>
