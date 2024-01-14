@@ -39,6 +39,7 @@ namespace RationesCurare
                 nav_mMenu,
                 nav_mCasse,
                 nav_mSaldo,
+                nav_mPeriodici,
                 nav_mGrafico,
                 nav_mLogout
             };
