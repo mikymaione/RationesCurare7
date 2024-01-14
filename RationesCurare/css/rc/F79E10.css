@@ -96,6 +96,11 @@ input {
     width: 100%;
 }
 
+.trLabelC {
+    color: #464453;
+    font-size: larger;
+}
+
 .trLabel {
     color: #F79E10;
 }

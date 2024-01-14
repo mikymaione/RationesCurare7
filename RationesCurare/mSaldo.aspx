@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2><%=SottoTitolo %></h2>
+    <h2><%=SottoTitolo%></h2>
 
     <table width="100%">
         <thead>
@@ -101,12 +101,13 @@
 
         <Columns>
             <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
-                <ItemTemplate>
+                <ItemTemplate>                    
                     <div>
+                        <asp:Label runat="server" Text='<%# Eval("Tipo") %>' CssClass="trLabelC" Visible="<%# TipoVisibile %>" />
                         <asp:Label runat="server" Text='<%# Eval("MacroArea") %>' CssClass="trLabel" />
                     </div>
                     <div>
-                        <small>
+                        <small>                      
                             <asp:Literal runat="server" Text='<%# Eval("descrizione") %>' />
                         </small>
                     </div>
@@ -116,7 +117,7 @@
                         </ruby>
                     </div>
                 </ItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>            
 
             <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>

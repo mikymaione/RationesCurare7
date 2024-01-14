@@ -10,11 +10,15 @@ namespace RationesCurare
 
         public string SottoTitolo = "";
 
+        public bool TipoNonSettato => Tipo.Length == 0;
+
+        public bool TipoVisibile => TipoNonSettato;
+
         private string Tipo => GB.GetQueryString(Request, "T");
 
         protected void bNuovo_Click(object sender, EventArgs e)
         {
-            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
+            var tipo = TipoNonSettato ? "" : $"&T={Tipo}";
 
             Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
         }
@@ -24,7 +28,7 @@ namespace RationesCurare
             var dt = GridView1.DataSource as System.Data.DataTable;
             var r = dt.Rows[e.NewSelectedIndex];
             var nome = r.ItemArray[0];
-            var tipo = Tipo.Length == 0 ? "" : $"&T={Tipo}";
+            var tipo = TipoNonSettato ? "" : $"&T={Tipo}";
 
             Response.Redirect($"mMovimento.aspx?ID={nome}{tipo}");
         }

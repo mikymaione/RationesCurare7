@@ -12,7 +12,7 @@
         <HeaderStyle BackColor="Black" ForeColor="White" />
 
         <Columns>
-            <asp:TemplateField HeaderText="Tipo" HeaderStyle-HorizontalAlign="Left">
+            <asp:TemplateField HeaderText="Account" HeaderStyle-HorizontalAlign="Left">
                 <ItemTemplate>
                     <asp:Literal runat="server" Text='<%# Eval("Tipo") %>' />
                 </ItemTemplate>
