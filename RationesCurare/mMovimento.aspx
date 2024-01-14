@@ -83,11 +83,11 @@
         </datalist>
     </div>
     <div>
-        <label class="required" for="idCassa">Dalla cassa</label>
+        <label class="required" for="idCassa">Dal account</label>
         <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();"></asp:DropDownList>
     </div>
     <div>
-        <label for="idGiroconto">Alla cassa</label>
+        <label for="idGiroconto">Al account</label>
         <asp:DropDownList ID="idGiroconto" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();">
             <asp:ListItem Value="" Text="--nessuno--" Selected="true"></asp:ListItem>
         </asp:DropDownList>

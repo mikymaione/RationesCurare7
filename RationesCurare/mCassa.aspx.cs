@@ -25,8 +25,8 @@ namespace RationesCurare
             }
 
             SottoTitolo = "".Equals(IDCassa)
-                  ? "Nuova cassa"
-                  : $"Cassa {IDCassa}";
+                  ? "Nuovo account"
+                  : $"Account {IDCassa}";
 
             if (!Page.IsPostBack)
             {

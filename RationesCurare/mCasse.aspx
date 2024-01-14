@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mCasse.aspx.cs" Inherits="RationesCurare.mCasse" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Gestione casse</title>
+    <title>Gestione account</title>
 
     <style>        
         .trGrid {
@@ -20,7 +20,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Gestione casse</h2>    
+    <h2>Gestione account</h2>    
 
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Nome" Width="100%" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging" HeaderStyle-HorizontalAlign="Left"
@@ -37,5 +37,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo cassa" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo account" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>
