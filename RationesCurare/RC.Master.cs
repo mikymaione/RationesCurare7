@@ -8,8 +8,6 @@ namespace RationesCurare
     public partial class RC : MasterPage
     {
 
-        private string Tipo => GB.GetQueryString(Request, "T");
-
         private string CurrentPage => Page.AppRelativeVirtualPath.Replace("~/", "").Replace(".aspx", "");
 
         protected void Page_Load(object sender, EventArgs e)
