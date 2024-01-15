@@ -32,27 +32,79 @@
     text-justify: inter-character;
 }
 
-figcaption, h2, h3, ruby {
-    color: #464453;
+@media (prefers-color-scheme: light) {
+    .disab figcaption, h2, h3, ruby {
+        color: #464453;
+    }
+
+    em, a:link, a:visited {
+        color: #F79E10;
+    }
+
+    a:active, a:hover {
+        color: black;
+    }
+
+    .not-active {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: #464453 !important;
+    }
+
+    tr.trGrid:nth-child(odd) {
+        background-color: #f0f0f0;
+    }
+
+    .trLabelC {
+        color: #464453;
+        font-size: larger;
+    }
 }
 
-.disab {
-    color: #464453;
-}
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #333;
+        color: #FFF;
+    }
 
-em, a:link, a:visited {
-    color: #F79E10;
-}
+    input {
+        background: #333;
+        color: #FFF;
+    }
 
-a:active, a:hover {
-    color: black;
-}
+    select {
+        background: #333;
+        color: #FFF;
+    }
 
-.not-active {
-    pointer-events: none;
-    cursor: default;
-    text-decoration: none;
-    color: #464453 !important;    
+    .disab figcaption, h2, h3, ruby {
+        color: black;
+    }
+
+    em, a:link, a:visited {
+        color: #F79E10;
+    }
+
+    a:active, a:hover {
+        color: black;
+    }
+
+    .not-active {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: #FFF !important;
+    }
+
+    tr.trGrid:nth-child(odd) {
+        background-color: #474747;
+    }
+
+    .trLabelC {
+        color: black;
+        font-size: larger;
+    }
 }
 
 .img-max-size {
@@ -94,11 +146,6 @@ input {
 
 .descrizione {
     width: 100%;
-}
-
-.trLabelC {
-    color: #464453;
-    font-size: larger;
 }
 
 .trLabel {

@@ -6,8 +6,7 @@
     <asp:GridView ID="GridView1" runat="server" DataKeyNames="Tipo" AutoGenerateColumns="False" AllowPaging="False" AllowSorting="False" ShowFooter="True" Width="100%" GridLines="None" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
         OnRowDataBound="GridView1_RowDataBound">
-
-        <AlternatingRowStyle BackColor="#f0f0f0" />
+        
         <FooterStyle BackColor="Black" ForeColor="White" />
         <HeaderStyle BackColor="Black" ForeColor="White" />
 

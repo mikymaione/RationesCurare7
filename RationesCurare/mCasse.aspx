@@ -25,8 +25,7 @@
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Nome" Width="100%" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging" HeaderStyle-HorizontalAlign="Left"
         OnRowDataBound="GridView1_RowDataBound">
-
-        <AlternatingRowStyle BackColor="#f0f0f0" />
+       
         <HeaderStyle BackColor="Black" ForeColor="White" />
 
         <Columns>

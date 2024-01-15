@@ -28,8 +28,7 @@
         AllowPaging="False" ShowFooter="True" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
         OnRowDataBound="GridView1_RowDataBound">
-
-        <AlternatingRowStyle BackColor="#f0f0f0" />
+        
         <FooterStyle BackColor="Black" ForeColor="White" />
         <HeaderStyle BackColor="Black" ForeColor="White" />
         <PagerSettings Mode="NumericFirstLast" Position="TopAndBottom" />
