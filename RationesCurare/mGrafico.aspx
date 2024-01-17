@@ -10,15 +10,24 @@
         <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: initial">Annuale</a>
     </nav>
 
-    <asp:Chart ID="Chart1" runat="server" ImageStorageMode="UseImageLocation" ImageLocation="~/public/ChartImages/chartStatComp_#SEQ(100,10)" OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" Width="745px" Height="500px" CssClass="img-max-size">
+    <asp:Chart ID="Chart1" runat="server" 
+        ImageStorageMode="UseImageLocation" ImageLocation="~/public/ChartImages/chartStatComp_#SEQ(100,10)" 
+        OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" BackColor="Transparent"
+        AntiAliasing="Graphics" TextAntiAliasingQuality="High"
+        Width="745px" Height="500px" CssClass="img-max-size">
+
         <Series>
-            <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="Mese" Color="Green" />
+            <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="Mese" />
         </Series>
 
         <ChartAreas>
-            <asp:ChartArea Name="ChartArea1">
-                <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont" />
-                <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont" />
+            <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
+                <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" />
+                </AxisY>
+                <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" />
+                </AxisX>
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>

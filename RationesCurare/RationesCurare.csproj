@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon\site.json" />
+    <Content Include="css\rc\UbuntuMono-Regular.ttf" />
     <None Include="packages.config" />
     <Content Include="RC.Master" />
     <None Include="Web.Debug.config">
