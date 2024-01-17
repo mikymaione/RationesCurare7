@@ -52,9 +52,9 @@ namespace RationesCurare.DB.DataWrapper
                             cDB.NewPar("descrizione", pi.descrizione),
                             cDB.NewPar("soldi", pi.soldi),
                             cDB.NewPar("NumeroGiorni", pi.NumeroGiorni),
-                            cDB.NewPar("GiornoDelMese", GB.ValueToDBNULL(!pi.GiornoDelMese.HasValue, GB.DateToOnlyDate(pi.GiornoDelMese.GetValueOrDefault(DateTime.Now)))),
-                            cDB.NewPar("PartendoDalGiorno", GB.ValueToDBNULL(!pi.PartendoDalGiorno.HasValue, GB.DateToOnlyDate(pi.PartendoDalGiorno.GetValueOrDefault(DateTime.Now)))),
-                            cDB.NewPar("Scadenza", GB.ValueToDBNULL(!pi.Scadenza.HasValue, GB.DateToOnlyDate(pi.Scadenza.GetValueOrDefault(DateTime.Now)))),
+                            cDB.NewPar("GiornoDelMese", GB.ValueToDBNULL(!pi.GiornoDelMese.HasValue, ()=> GB.DateToOnlyDate(pi.GiornoDelMese.GetValueOrDefault(DateTime.Now)))),
+                            cDB.NewPar("PartendoDalGiorno", GB.ValueToDBNULL(!pi.PartendoDalGiorno.HasValue, ()=> GB.DateToOnlyDate(pi.PartendoDalGiorno.GetValueOrDefault(DateTime.Now)))),
+                            cDB.NewPar("Scadenza", GB.ValueToDBNULL(!pi.Scadenza.HasValue, ()=> GB.DateToOnlyDate(pi.Scadenza.GetValueOrDefault(DateTime.Now)))),
                             cDB.NewPar("TipoGiorniMese", $"{pi.TipoGiorniMese}"),
                             cDB.NewPar("MacroArea", pi.MacroArea),
                             cDB.NewPar("ID", pi.ID)

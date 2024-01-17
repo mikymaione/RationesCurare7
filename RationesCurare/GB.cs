@@ -192,7 +192,7 @@ namespace RationesCurare
             return i;
         }
 
-        public static object ValueToDBNULL(bool PutNull, object ElseValue) => PutNull ? DBNull.Value : ElseValue;
+        public static object ValueToDBNULL(bool PutNull, Func<object> ElseValue) => PutNull ? DBNull.Value : ElseValue();
 
         public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
 

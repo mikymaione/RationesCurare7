@@ -83,10 +83,10 @@ namespace RationesCurare
 
         private System.Data.Common.DbParameter[] getParamsForSave()
         {
-            var Scadenza = GB.ValueToDBNULL(!bScadenza.Checked, GB.StringHTMLToDate(idScadenza.Value));
+            var Scadenza = GB.ValueToDBNULL(!bScadenza.Checked, () => GB.StringHTMLToDate(idScadenza.Value));
             var TipoGiorniMese = idTipoGiorniMese.Value;
-            var PartendoDalGiorno = GB.ValueToDBNULL(TipoGiorniMese != "G", GB.StringHTMLToDate(idData.Value));
-            var GiornoDelMese = GB.ValueToDBNULL(TipoGiorniMese == "G", GB.StringHTMLToDate(idData.Value));
+            var PartendoDalGiorno = GB.ValueToDBNULL(TipoGiorniMese != "G", () => GB.StringHTMLToDate(idData.Value));
+            var GiornoDelMese = GB.ValueToDBNULL(TipoGiorniMese == "G", () => GB.StringHTMLToDate(idData.Value));
             var NumeroGiorni = GB.HTMLIntToInt(idNumeroGiorni.Value, 0);
 
             if (IDMovimento > -1)
