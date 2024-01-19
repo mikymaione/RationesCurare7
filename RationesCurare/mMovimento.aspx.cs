@@ -51,6 +51,8 @@ namespace RationesCurare
             {
                 ViewState["PreviousPage"] = Request.UrlReferrer;
 
+                idCassa.Focus();
+
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
                     var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
@@ -243,5 +245,14 @@ namespace RationesCurare
             }
         }
 
+        protected void idGiroconto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var isNotGiroconto = idGiroconto.SelectedIndex == 0;
+
+            divDescrizione.Visible = isNotGiroconto;
+            divMacroarea.Visible = isNotGiroconto;
+
+            idSoldi.Focus();
+        }
     }
 }
