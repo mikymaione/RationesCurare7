@@ -127,7 +127,7 @@ namespace RationesCurare
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
                 var param1 = getParamsForSave();
-                return db.EseguiSQLNoQuery(IDMovimento > -1 ? cDB.Queries.Periodici_Aggiorna : cDB.Queries.Periodici_Inserisci, param1);
+                return db.EseguiSQLNoQueryAutoCommit(IDMovimento > -1 ? cDB.Queries.Periodici_Aggiorna : cDB.Queries.Periodici_Inserisci, param1);
             }
         }
 
@@ -195,7 +195,7 @@ namespace RationesCurare
                         cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                     };
 
-                    db.EseguiSQLNoQuery(cDB.Queries.Periodici_Elimina, param);
+                    db.EseguiSQLNoQueryAutoCommit(cDB.Queries.Periodici_Elimina, param);
                 }
 
                 Response.Redirect(ViewState["PreviousPage"].ToString());

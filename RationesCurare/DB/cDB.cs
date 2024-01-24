@@ -9,12 +9,25 @@ namespace RationesCurare7.DB
     public class cDB : IDisposable
     {
 
-        private string dateFile;
+        private readonly Dictionary<Queries, string> QueriesGiaLette = new Dictionary<Queries, string>();
+
+        private readonly string dateFile;
+        private readonly SQLiteConnection Connessione;
+        private DateTime UltimaModifica = DateTime.MinValue;
 
         public cDB(string path_db)
         {
+            var connectionString = $"Data Source={path_db}";
+            Connessione = new SQLiteConnection(connectionString);
+            Connessione.Open();
+
             dateFile = System.IO.Path.ChangeExtension(path_db, ".date");
-            ApriConnessione(path_db);
+        }
+
+        public void Dispose()
+        {
+            Connessione?.Close();
+            Connessione?.Dispose();
         }
 
         public enum Queries
@@ -69,61 +82,39 @@ namespace RationesCurare7.DB
             Calendario_Dettaglio
         }
 
-        private static Dictionary<Queries, string> QueriesGiaLette = new Dictionary<Queries, string>();
-
-        private DbConnection Connessione;
-        public DateTime UltimaModifica = DateTime.MinValue;
-
-        private static string QueriesToString(Queries q)
-        {
-            return ConvertQueriesToString(q) + ".sql";
-        }
-
-        private static string ConvertQueriesToString(Queries q)
-        {
-            return q.ToString();
-        }
-
-        public DbTransaction BeginTransaction() =>
+        public SQLiteTransaction BeginTransaction() =>
             Connessione.BeginTransaction();
 
-        public int EseguiSQLNoQuery(Queries q, DbParameter[] param)
+        public int EseguiSQLNoQueryAutoCommit(Queries q, DbParameter[] param)
         {
-            DbTransaction tr = null;
-
-            return EseguiSQLNoQuery(ref tr, q, param);
-        }
-
-        public int EseguiSQLNoQuery(ref DbTransaction Trans, Queries q, DbParameter[] param)
-        {
-            return EseguiSQLNoQuery(ref Trans, LeggiQuery(q), param);
-        }
-
-        public int EseguiSQLNoQuery(string sql)
-        {
-            return EseguiSQLNoQuery(sql, null);
-        }
-
-        public int EseguiSQLNoQuery(string sql, DbParameter[] param)
-        {
-            DbTransaction tr = null;
-
-            return EseguiSQLNoQuery(ref tr, sql, param);
-        }
-
-        public int EseguiSQLNoQuery(ref DbTransaction Trans, string sql, DbParameter[] param)
-        {
-            using (var cm = CreaCommandNoConnection(sql, param))
+            using (var trans = BeginTransaction())
             {
-                if (Trans != null)
-                    cm.Transaction = Trans;
+                var r = EseguiSQLNoQuery(trans, LeggiQuery(q), param);
 
+                if (r > 0)
+                    trans.Commit();
+                else
+                    trans.Rollback();
+
+                return r;
+            }
+        }
+
+        public int EseguiSQLNoQuery(SQLiteTransaction trans, Queries q, DbParameter[] param)
+        {
+            return EseguiSQLNoQuery(trans, LeggiQuery(q), param);
+        }
+
+        public int EseguiSQLNoQuery(SQLiteTransaction trans, string sql, DbParameter[] param)
+        {
+            using (var cm = CreaCommandNoConnection(trans, sql, param))
+            {
                 var i = cm.ExecuteNonQuery();
 
                 if (i > 0)
                 {
                     UltimaModifica = DBNow();
-                    AggiornaDataDB();
+                    AggiornaDataDB(trans);
                     AggiornaDataFile();
                 }
 
@@ -143,11 +134,6 @@ namespace RationesCurare7.DB
             return EseguiSQLDataTable(q, null);
         }
 
-        public DataTable EseguiSQLDataTable(string sql)
-        {
-            return EseguiSQLDataTable(sql, null);
-        }
-
         public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, long MaxRows = -1)
         {
             return EseguiSQLDataTable(LeggiQuery(q), param, null, MaxRows);
@@ -163,16 +149,17 @@ namespace RationesCurare7.DB
             if (MaxRows > -1)
                 sql += " limit " + MaxRows;
 
-            using (var cm = CreaCommandNoConnection(sql, param))
+            using (var trans = BeginTransaction())
+            using (var cm = CreaCommandNoConnection(trans, sql, param))
             using (var a = new SQLiteDataAdapter((SQLiteCommand)cm))
                 a.Fill(t);
 
             return t;
         }
 
-        private DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
+        private DbCommand CreaCommandNoConnection(SQLiteTransaction trans, string sql, DbParameter[] param)
         {
-            var cm = new SQLiteCommand(sql, (SQLiteConnection)Connessione);
+            var cm = new SQLiteCommand(sql, Connessione, trans);
 
             if (param != null)
                 for (int x = 0; x <= param.Length - 1; x++)
@@ -198,46 +185,33 @@ namespace RationesCurare7.DB
 
         public DbDataReader EseguiSQLDataReader(string sql)
         {
-            DbTransaction tr = null;
-
-            return EseguiSQLDataReader(ref tr, sql, null);
+            using (var trans = BeginTransaction())
+                return EseguiSQLDataReader(trans, sql, null);
         }
 
         public DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
         {
-            DbTransaction tr = null;
-
-            return EseguiSQLDataReader(ref tr, sql, param);
+            using (var trans = BeginTransaction())
+                return EseguiSQLDataReader(trans, sql, param);
         }
 
-        public DbDataReader EseguiSQLDataReader(ref DbTransaction Trans, string sql, DbParameter[] param)
+        public DbDataReader EseguiSQLDataReader(SQLiteTransaction trans, string sql, DbParameter[] param)
         {
-            DbDataReader dr = null;
-
-            using (var cm = CreaCommandNoConnection(sql, param))
-            {
-                if (Trans != null)
-                    cm.Transaction = Trans;
-
-                dr = cm.ExecuteReader();
-            }
-
-            return dr;
+            using (var cm = CreaCommandNoConnection(trans, sql, param))
+                return cm.ExecuteReader();
         }
 
-        public string LeggiQuery(Queries q)
+        private string LeggiQuery(Queries q)
         {
             if (!QueriesGiaLette.ContainsKey(q))
             {
                 var z = "";
+                var queryName = $"{q}.sql";
+                var queryPath = System.IO.Path.Combine(RationesCurare.GB.DBW, queryName);
 
-                using (var sr = new System.IO.StreamReader(System.IO.Path.Combine(RationesCurare.GB.DBW, QueriesToString(q))))
-                {
+                using (var sr = new System.IO.StreamReader(queryPath))
                     while (sr.Peek() != -1)
                         z += sr.ReadLine() + Environment.NewLine;
-
-                    sr.Close();
-                }
 
                 z = z.Replace("Datepart('d',", "strftime('%d',");
                 z = z.Replace("Datepart('yyyy',", "strftime('%Y',");
@@ -249,6 +223,7 @@ namespace RationesCurare7.DB
 
             return QueriesGiaLette[q];
         }
+
         public static string DateToSQLite(DateTime d)
         {
             //yyyy-MM-dd HH:mm:ss.fff
@@ -260,22 +235,18 @@ namespace RationesCurare7.DB
             return h;
         }
 
-        public static DbParameter NewPar(string Nome, object Valore)
+        public static SQLiteParameter NewPar(string Nome, object Valore)
         {
             if (Valore is DateTime time)
-            {
                 return new SQLiteParameter(Nome, DbType.String)
                 {
                     Value = DateToSQLite(time)
                 };
-            }
             else
-            {
                 return new SQLiteParameter(Nome, Valore);
-            }
         }
 
-        public static DbParameter NewPar(string Nome, object Valore, DbType tipo)
+        public static SQLiteParameter NewPar(string Nome, object Valore, DbType tipo)
         {
             if (!(Valore is DBNull) && (tipo == DbType.Date || tipo == DbType.DateTime))
             {
@@ -294,35 +265,6 @@ namespace RationesCurare7.DB
             }
         }
 
-        public void ChiudiConnessione()
-        {
-            try
-            {
-                Connessione.Close();
-                Connessione.Dispose();
-            }
-            catch
-            {
-                //cannot close               
-            }
-        }
-
-        public static string DammiStringaConnessione(string path_db)
-        {
-            return "Data Source=" + path_db;
-        }
-
-        public void ApriConnessione(string path_db, bool ForceClose = false)
-        {
-            var s = DammiStringaConnessione(path_db);
-
-            if (ForceClose)
-                ChiudiConnessione();
-
-            Connessione = new SQLiteConnection(s);
-            Connessione.Open();
-        }
-
         private void AggiornaDataFile()
         {
             var ora = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -330,26 +272,22 @@ namespace RationesCurare7.DB
             using (var sw = new System.IO.StreamWriter(dateFile, false))
                 sw.WriteLine(ora);
         }
-        private void AggiornaDataDB()
+
+        private void AggiornaDataDB(SQLiteTransaction trans)
         {
             const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
-            var pars = new DbParameter[] {
+            var pars = new SQLiteParameter[] {
                 NewPar("UltimaModifica", UltimaModifica)
             };
 
-            using (var cm = CreaCommandNoConnection(sql, pars))
+            using (var cm = CreaCommandNoConnection(trans, sql, pars))
             {
                 var r = cm.ExecuteNonQuery();
 
                 if (r < 1)
                     throw new Exception("Can not update last modification date on user DB!");
             }
-        }
-
-        public void Dispose()
-        {
-            ChiudiConnessione();
         }
 
     }

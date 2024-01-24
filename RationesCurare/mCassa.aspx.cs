@@ -69,7 +69,7 @@ namespace RationesCurare
                         cDB.NewPar("Nascondi", "1".Equals(idNascondi.Value), System.Data.DbType.Boolean),
                     };
 
-                    db.EseguiSQLNoQuery("".Equals(IDCassa) ? cDB.Queries.Casse_Inserisci : cDB.Queries.Casse_Aggiorna, param);
+                    db.EseguiSQLNoQueryAutoCommit("".Equals(IDCassa) ? cDB.Queries.Casse_Inserisci : cDB.Queries.Casse_Aggiorna, param);
 
                     Response.Redirect(ViewState["PreviousPage"].ToString());
                 }

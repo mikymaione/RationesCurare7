@@ -129,11 +129,10 @@ namespace RationesCurare
             var data = GB.StringHTMLToDateTime(idData.Value);
 
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+            using (var tran = db.BeginTransaction())
             {
-                var tran = db.BeginTransaction();
-
                 var param1 = getParamsForSave(soldi, data);
-                var m1 = db.EseguiSQLNoQuery(ref tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
+                var m1 = db.EseguiSQLNoQuery(tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
 
                 // con giroconto
                 if (isNewRecord && idGiroconto.SelectedIndex > 0)
@@ -147,7 +146,7 @@ namespace RationesCurare
                         cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String)
                     };
 
-                    var m2 = db.EseguiSQLNoQuery(ref tran, cDB.Queries.Movimenti_Inserisci, param2);
+                    var m2 = db.EseguiSQLNoQuery(tran, cDB.Queries.Movimenti_Inserisci, param2);
 
                     if (m1 + m2 == 2)
                     {
@@ -234,7 +233,7 @@ namespace RationesCurare
                         cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
                     };
 
-                    db.EseguiSQLNoQuery(cDB.Queries.Movimenti_Elimina, param);
+                    db.EseguiSQLNoQueryAutoCommit(cDB.Queries.Movimenti_Elimina, param);
                 }
 
                 Response.Redirect(ViewState["PreviousPage"].ToString());

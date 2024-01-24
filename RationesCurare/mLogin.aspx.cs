@@ -188,7 +188,7 @@ namespace RationesCurare
                         cDB.NewPar("Valuta", "EUR", System.Data.DbType.String),
                     };
 
-                    db.EseguiSQLNoQuery(cDB.Queries.DBInfo_Inserisci, param);
+                    db.EseguiSQLNoQueryAutoCommit(cDB.Queries.DBInfo_Inserisci, param);
 
                     Response.Redirect("mMenu.aspx");
                 }
