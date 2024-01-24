@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
+using System.Diagnostics;
 
 namespace RationesCurare7.DB
 {
@@ -114,8 +115,13 @@ namespace RationesCurare7.DB
                 if (i > 0)
                 {
                     UltimaModifica = DBNow();
-                    AggiornaDataDB(trans);
-                    AggiornaDataFile();
+
+                    var a = AggiornaDataDB(trans);
+
+                    if (a > 0)
+                        AggiornaDataFile();
+                    else
+                        return -1;
                 }
 
                 return i;
@@ -149,12 +155,16 @@ namespace RationesCurare7.DB
             if (MaxRows > -1)
                 sql += " limit " + MaxRows;
 
-            using (var trans = BeginTransaction())
-            using (var cm = CreaCommandNoConnection(trans, sql, param))
+            using (var cm = CreaCommandNoConnection(sql, param))
             using (var a = new SQLiteDataAdapter((SQLiteCommand)cm))
                 a.Fill(t);
 
             return t;
+        }
+
+        private DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
+        {
+            return CreaCommandNoConnection(null, sql, param);
         }
 
         private DbCommand CreaCommandNoConnection(SQLiteTransaction trans, string sql, DbParameter[] param)
@@ -185,34 +195,29 @@ namespace RationesCurare7.DB
 
         public DbDataReader EseguiSQLDataReader(string sql)
         {
-            using (var trans = BeginTransaction())
-                return EseguiSQLDataReader(trans, sql, null);
+            return EseguiSQLDataReader(sql, null);
         }
 
         public DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
         {
-            using (var trans = BeginTransaction())
-                return EseguiSQLDataReader(trans, sql, param);
+            using (var cm = CreaCommandNoConnection(sql, param))
+                return cm.ExecuteReader();
         }
 
-        public DbDataReader EseguiSQLDataReader(SQLiteTransaction trans, string sql, DbParameter[] param)
+        private string ReadAllFile(string path)
         {
-            using (var cm = CreaCommandNoConnection(trans, sql, param))
-                return cm.ExecuteReader();
+            using (var sr = new System.IO.StreamReader(path))
+                return sr.ReadToEnd();
         }
 
         private string LeggiQuery(Queries q)
         {
             if (!QueriesGiaLette.ContainsKey(q))
             {
-                var z = "";
                 var queryName = $"{q}.sql";
                 var queryPath = System.IO.Path.Combine(RationesCurare.GB.DBW, queryName);
 
-                using (var sr = new System.IO.StreamReader(queryPath))
-                    while (sr.Peek() != -1)
-                        z += sr.ReadLine() + Environment.NewLine;
-
+                var z = ReadAllFile(queryPath);
                 z = z.Replace("Datepart('d',", "strftime('%d',");
                 z = z.Replace("Datepart('yyyy',", "strftime('%Y',");
                 z = z.Replace("Format(m.data, 'yyyy')", "strftime('%Y',m.data)");
@@ -273,7 +278,7 @@ namespace RationesCurare7.DB
                 sw.WriteLine(ora);
         }
 
-        private void AggiornaDataDB(SQLiteTransaction trans)
+        private int AggiornaDataDB(SQLiteTransaction trans)
         {
             const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
@@ -282,12 +287,7 @@ namespace RationesCurare7.DB
             };
 
             using (var cm = CreaCommandNoConnection(trans, sql, pars))
-            {
-                var r = cm.ExecuteNonQuery();
-
-                if (r < 1)
-                    throw new Exception("Can not update last modification date on user DB!");
-            }
+                return cm.ExecuteNonQuery();
         }
 
     }
