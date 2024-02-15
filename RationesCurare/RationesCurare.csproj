@@ -110,13 +110,17 @@
     <Content Include="DB\DBW\Utente_Carica.sql" />
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon\android-chrome-192x192.png" />
+    <Content Include="favicon\android-chrome-512x512.png" />
     <Content Include="favicon\apple-touch-icon.png" />
     <Content Include="favicon\browserconfig.xml" />
     <Content Include="favicon\favicon-16x16.png" />
     <Content Include="favicon\favicon-32x32.png" />
     <Content Include="favicon\favicon.ico" />
+    <Content Include="favicon\mstile-144x144.png" />
     <Content Include="favicon\mstile-150x150.png" />
-    <Content Include="favicon\rc-512x512.png" />
+    <Content Include="favicon\mstile-310x150.png" />
+    <Content Include="favicon\mstile-310x310.png" />
+    <Content Include="favicon\mstile-70x70.png" />
     <Content Include="favicon\safari-pinned-tab.svg" />
     <Content Include="Global.asax" />
     <Content Include="mCassa.aspx" />
@@ -224,8 +228,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon\site.json" />
     <Content Include="css\rc\UbuntuMono-Regular.ttf" />
+    <Content Include="favicon\site.json" />
     <None Include="packages.config" />
     <Content Include="RC.Master" />
     <None Include="Web.Debug.config">
