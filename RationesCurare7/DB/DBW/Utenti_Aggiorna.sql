@@ -1,7 +1,7 @@
 update utenti set
-	nome = @nome,	
+	nome = @Nome,	
 	Psw = @Psw,
-	path = @path,
+	path = @Path,
 	Email = @Email,	
 	TipoDB = @TipoDB
 where

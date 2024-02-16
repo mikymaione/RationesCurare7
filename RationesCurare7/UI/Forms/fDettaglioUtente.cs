@@ -26,7 +26,7 @@ namespace RationesCurare7.UI.Forms
         {
             set
             {
-                cUtenti u = new cUtenti();
+                var u = new cUtenti();
                 u.CaricaByPath(value);
                 ID__ = u.ID;
 
@@ -232,7 +232,6 @@ namespace RationesCurare7.UI.Forms
         private void Salva()
         {
             var erro = false;
-            var a = "";
 
             if (cGB.MsgBox("Tutto corretto?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 if (Controlla())
@@ -240,7 +239,7 @@ namespace RationesCurare7.UI.Forms
                     var dbda = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                     dbda = Path.Combine(dbda, "standard.rqd8");
 
-                    a = Path.Combine(ePathDB.Text, eEmail.Text + ".rqd8");
+                    var a = Path.Combine(ePathDB.Text, eEmail.Text + ".rqd8");
 
                     if (RecuperaDB.Equals(""))
                     {

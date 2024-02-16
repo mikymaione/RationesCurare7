@@ -5,9 +5,9 @@ insert into utenti (
 	Email,	
 	TipoDB	
 ) values (
-	@nome,	
+	@Nome,	
 	@Psw,
-	@path,
+	@Path,
 	@Email,	
 	@TipoDB	
 )
