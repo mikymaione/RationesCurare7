@@ -8,7 +8,7 @@
 	"background_color": "#F79E10",
 	"lang": "it",
 	"dir": "ltr",
-	"orientation": "any",
+	"orientation": "natural",
 	"prefer_related_applications": false,
 	"start_url": "/mLogin.aspx",
 	"categories": [
@@ -19,28 +19,52 @@
 	},
 	"screenshots": [
 		{
+			"src": "/favicon/screenshotsM/home.png",
+			"sizes": "375x667",
+			"type": "image/png",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "/favicon/screenshotsM/filters.png",
+			"sizes": "375x667",
+			"type": "image/png",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "/favicon/screenshotsM/content.png",
+			"sizes": "780x600",
+			"type": "image/png",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "/favicon/screenshotsM/transaction.png",
+			"sizes": "780x600",
+			"type": "image/png",
+			"form_factor": "narrow"
+		},
+		{
 			"src": "/favicon/screenshots/home.png",
 			"sizes": "780x600",
 			"type": "image/png",
-			"platform": "wide"
+			"form_factor": "wide"
 		},
 		{
 			"src": "/favicon/screenshots/filters.png",
 			"sizes": "780x600",
 			"type": "image/png",
-			"platform": "wide"
+			"form_factor": "wide"
 		},
 		{
 			"src": "/favicon/screenshots/content.png",
 			"sizes": "780x600",
 			"type": "image/png",
-			"platform": "wide"
+			"form_factor": "wide"
 		},
 		{
 			"src": "/favicon/screenshots/transaction.png",
 			"sizes": "780x600",
 			"type": "image/png",
-			"platform": "wide"
+			"form_factor": "wide"
 		}
 	],
 	"icons": [
