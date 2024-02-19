@@ -6,8 +6,8 @@
     <h2>Grafico a barre</h2>
 
     <nav>
-        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: initial">Mensile</a> |		    
-        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: initial">Annuale</a>
+        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Mensile</a> |		    
+        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Annuale</a>
     </nav>
 
     <asp:Chart ID="Chart1" runat="server" 
@@ -35,7 +35,8 @@
     <script>
         let c = document.getElementById("<%=Chart1.ClientID %>");
 
-        if (c != null)
+        if (c != null) {
             c.style.height = 'auto';
+        }
     </script>
 </asp:Content>
