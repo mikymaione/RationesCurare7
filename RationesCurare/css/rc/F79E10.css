@@ -123,6 +123,10 @@
     color: #F79E10;
 }
 
+button {
+    font-size: large;
+}
+
 select {
     box-sizing: border-box;
     width: 100%;
