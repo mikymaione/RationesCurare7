@@ -105,15 +105,14 @@
         <label id="lMovimento2"></label>
     </div>
 
-    <div>
-        <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
-
+    <div class="divSpaceBetween">
         <script>
             function confirmDelete() {
                 return confirm("Vuoi eliminare questo elemento?");                
             }
         </script>
 
+        <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
         <asp:Button ID="bElimina" runat="server" Text="Elimina" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />
     </div>
     <div>

@@ -8,6 +8,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: 'Ubuntu Mono';
+    font-size: large;
 }
 
 .menu {
@@ -58,7 +59,7 @@
 
     .trLabelC {
         color: #464453;
-        font-size: larger;
+        font-size: x-large;
     }
 }
 
@@ -108,7 +109,7 @@
 
     .trLabelC {
         color: white;
-        font-size: larger;
+        font-size: x-large;
     }
 }
 
@@ -129,6 +130,7 @@ select {
 
 input {
     box-sizing: border-box;
+    font-size: large;
 }
 
     input:not([type='submit']) {
@@ -155,6 +157,7 @@ input {
 
 .trLabel {
     color: #F79E10;
+    font-size: x-large;
 }
 
 .trGrid {
@@ -170,6 +173,11 @@ input {
             color: black;
         }
 
+.divSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+}
+
 .googleIcon {
     font-family: 'Material Icons';
 }
@@ -178,7 +186,7 @@ input {
     position: fixed;
     bottom: 20px;
     z-index: 99;
-    font-size: 24px;
+    font-size: xx-large;
     border: none;
     outline: none;
     background-color: #464453;
