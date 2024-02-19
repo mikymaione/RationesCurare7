@@ -84,7 +84,7 @@
     }
 
     .disab figcaption, h2, h3, ruby {
-        color: black;
+        color: #F2F2F2;
     }
 
     em, a:link, a:visited {
@@ -107,7 +107,7 @@
     }
 
     .trLabelC {
-        color: black;
+        color: white;
         font-size: larger;
     }
 }
