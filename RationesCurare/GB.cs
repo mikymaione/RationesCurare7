@@ -194,6 +194,10 @@ namespace RationesCurare
 
         public static object ValueToDBNULL(bool PutNull, Func<object> ElseValue) => PutNull ? DBNull.Value : ElseValue();
 
+        public static DateTime DateEndOfMonth(DateTime d) => DateStartOfMonth(d).AddMonths(1).AddSeconds(-1);
+
+        public static DateTime DateStartOfMonth(DateTime d) => new DateTime(d.Year, d.Month, 1);
+
         public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
 
         public static DateTime StringToDate(string o, DateTime default_)

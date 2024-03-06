@@ -2,7 +2,6 @@
 using System;
 using System.Drawing.Text;
 using System.Drawing;
-using System.Xml.Linq;
 
 namespace RationesCurare
 {
@@ -42,8 +41,8 @@ namespace RationesCurare
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
                 var m = GB.StringToMonth(idData.Value, DateTime.Now);
-                var inizio = new DateTime(m.Year, m.Month, 1);
-                var fine = inizio.AddMonths(1).AddSeconds(-1);
+                var inizio = GB.DateStartOfMonth(m);
+                var fine = GB.DateEndOfMonth(inizio);
 
                 var p = new System.Data.Common.DbParameter[] {
                     cDB.NewPar("da", inizio),

@@ -8,6 +8,6 @@ GROUP BY
 	m.MacroArea
 HAVING	
 	Soldini_TOT <> 0
-	AND Titolo <> ''
+	AND m.MacroArea <> ''
 ORDER BY
 	SUM(m.soldi) DESC

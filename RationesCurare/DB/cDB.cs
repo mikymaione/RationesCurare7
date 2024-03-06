@@ -231,11 +231,11 @@ namespace RationesCurare7.DB
 
         public static string DateToSQLite(DateTime d)
         {
-            //yyyy-MM-dd HH:mm:ss.fff
+            //yyyy-MM-dd HH:mm:ss
             string h = "";
 
             h += d.Year + "-" + (d.Month < 10 ? "0" : "") + d.Month + "-" + (d.Day < 10 ? "0" : "") + d.Day + " ";
-            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second + ".000";
+            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second;
 
             return h;
         }

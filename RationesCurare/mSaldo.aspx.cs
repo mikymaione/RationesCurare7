@@ -63,8 +63,8 @@ namespace RationesCurare
                 cDB.NewPar("bData", bData.Checked ? 1 : 0),
                 cDB.NewPar("SoldiDa", GB.ObjectToDouble(eSoldiDa.Text, 0)),
                 cDB.NewPar("SoldiA", GB.ObjectToDouble(eSoldiA.Text, 0)),
-                cDB.NewPar("DataDa", GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1))),
-                cDB.NewPar("DataA", GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20)))
+                cDB.NewPar("DataDa", GB.DateStartOfMonth(GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1)))),
+                cDB.NewPar("DataA", GB.DateEndOfMonth(GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20))))
             };
 
         protected void Page_Load(object sender, EventArgs e)
@@ -78,7 +78,9 @@ namespace RationesCurare
             if (GB.Instance.getCurrentSession(Session) != null)
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, ParametriRicerca(), GB.ObjectToInt(eMax.Text, 50));
+                    var p = ParametriRicerca();
+
+                    GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, p, GB.ObjectToInt(eMax.Text, 50));
                     GridView1.DataBind();
                 }
         }
