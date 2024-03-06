@@ -21,7 +21,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2024-02-19" scheme="YYYY-MM-DD">
+    <meta name="date" content="2024-03-06" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
 
@@ -34,7 +34,7 @@
     <style>
         a {
             font-family: 'Material Icons';
-            font-size: xxx-large;
+            font-size: xx-large;
             text-decoration: none;
         }
     </style>
@@ -49,6 +49,7 @@
             <a runat="server" id="nav_mSaldo" href="mSaldo.aspx">payments</a>
             <a runat="server" id="nav_mPeriodici" href="mPeriodici.aspx">update</a>
 		    <a runat="server" id="nav_mGrafico" href="mGrafico.aspx?T=Y">bar_chart</a>
+            <a runat="server" id="nav_mGraficoTorta" href="mGraficoTorta.aspx">pie_chart</a>
 		    <a runat="server" id="nav_mLogout" href="mLogin.aspx?C=L">logout</a>
         </nav>
         <hr>

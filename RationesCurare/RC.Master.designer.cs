@@ -78,6 +78,15 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlAnchor nav_mGrafico;
 
         /// <summary>
+        /// nav_mGraficoTorta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor nav_mGraficoTorta;
+
+        /// <summary>
         /// nav_mLogout control.
         /// </summary>
         /// <remarks>

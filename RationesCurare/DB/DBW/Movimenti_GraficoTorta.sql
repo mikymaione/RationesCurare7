@@ -1,8 +1,13 @@
 SELECT  
-	m.MacroArea,
-	sum(m.soldi) as Soldini_TOT 
-FROM movimenti m  
-group by  
+	PRINTF("%,.2f %s", sum(m.soldi), m.MacroArea) as Titolo,
+	SUM(m.soldi) AS Soldini_TOT 
+FROM movimenti m
+WHERE
+	m.Data BETWEEN @da and @a
+GROUP BY  
 	m.MacroArea
-order by
-	sum(m.soldi)	
+HAVING	
+	Soldini_TOT <> 0
+	AND Titolo <> ''
+ORDER BY
+	SUM(m.soldi) DESC

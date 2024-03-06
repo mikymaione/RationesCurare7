@@ -213,6 +213,22 @@ namespace RationesCurare
             return i;
         }
 
+        public static DateTime StringToMonth(string o, DateTime default_)
+        {
+            var i = default_;
+
+            try
+            {
+                i = DateTime.ParseExact(o, "yyyy-MM", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                //error
+            }
+
+            return i;
+        }
+
         public static string ObjectToDateTimeString(object o)
         {
             var d = ObjectToDateTime(o, DateTime.Now);

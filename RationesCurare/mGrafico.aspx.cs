@@ -28,6 +28,11 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var ubuntuFont = loadUbuntuFont();
+
+            Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
+            Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
+
             try
             {
                 var t = Request["T"];
@@ -37,14 +42,6 @@ namespace RationesCurare
             catch
             {
                 //no type
-            }
-
-            if (!IsPostBack)
-            {
-                var ubuntuFont = loadUbuntuFont();
-
-                Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
-                Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
             }
         }
 

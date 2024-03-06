@@ -126,6 +126,7 @@
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
     <Content Include="mGrafico.aspx" />
+    <Content Include="mGraficoTorta.aspx" />
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
     <Content Include="mMovimento.aspx" />
@@ -168,6 +169,13 @@
     </Compile>
     <Compile Include="mGrafico.aspx.designer.cs">
       <DependentUpon>mGrafico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mGraficoTorta.aspx.cs">
+      <DependentUpon>mGraficoTorta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mGraficoTorta.aspx.designer.cs">
+      <DependentUpon>mGraficoTorta.aspx</DependentUpon>
     </Compile>
     <Compile Include="mLogin.aspx.cs">
       <DependentUpon>mLogin.aspx</DependentUpon>

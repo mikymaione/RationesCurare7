@@ -131,11 +131,13 @@ select {
     box-sizing: border-box;
     width: 100%;
     font-size: large;
+    font-family: 'Ubuntu Mono';
 }
 
 input {
     box-sizing: border-box;
     font-size: large;
+    font-family: 'Ubuntu Mono';
 }
 
     input:not([type='submit']) {
