@@ -58,10 +58,12 @@ namespace RationesCurare
             FindFor();
         }
 
-        public void FindFor()
+        private void FindFor()
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
+                var totale = 0d;
+
                 var inizio = GB.DateStartOfMonth(GB.StringToDate(idDataDa.Value, DateTime.Now));
                 var fine = GB.DateEndOfMonth(GB.StringToDate(idDataA.Value, DateTime.Now));
 
@@ -71,8 +73,11 @@ namespace RationesCurare
                 };
 
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoTortaSaldo, p))
-                    while (dr.Read())
-                        lTotale.Text = dr.GetDouble(0).ToString("C");
+                    if (dr.HasRows)
+                        while (dr.Read())
+                            totale = GB.ObjectToDouble(dr[0], 0);
+
+                lTotale.Text = totale.ToString("C");
 
                 Chart1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p);
                 Chart1.DataBind();
