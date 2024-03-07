@@ -8,6 +8,12 @@ namespace RationesCurare
     public partial class mGraficoTorta : System.Web.UI.Page
     {
 
+        private DateTime CurrentData
+        {
+            get => GB.DateStartOfMonth(GB.StringToDate(idData.Text, DateTime.Now));
+            set => idData.Text = GB.ObjectToDateStringHTML(value);
+        }
+
         private Font loadUbuntuFont()
         {
             var css = MapPath("css");
@@ -31,17 +37,16 @@ namespace RationesCurare
             Chart1.Legends[0].Font = ubuntuFont;
 
             if (!IsPostBack)
-                idData.Value = DateTime.Now.ToString("yyyy-MM");
+                CurrentData = GB.DateStartOfMonth(DateTime.Now);
 
             FindFor();
         }
 
-        private void FindFor()
+        public void FindFor()
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
-                var m = GB.StringToMonth(idData.Value, DateTime.Now);
-                var inizio = GB.DateStartOfMonth(m);
+                var inizio = GB.DateStartOfMonth(CurrentData);
                 var fine = GB.DateEndOfMonth(inizio);
 
                 var p = new System.Data.Common.DbParameter[] {
@@ -57,15 +62,18 @@ namespace RationesCurare
 
         protected void bPrev_Click(object sender, EventArgs e)
         {
-            var m = GB.StringToMonth(idData.Value, DateTime.Now);
-            idData.Value = m.AddMonths(-1).ToString("yyyy-MM");
+            CurrentData = CurrentData.AddMonths(-1);
             FindFor();
         }
 
         protected void bNext_Click(object sender, EventArgs e)
         {
-            var m = GB.StringToMonth(idData.Value, DateTime.Now);
-            idData.Value = m.AddMonths(1).ToString("yyyy-MM");
+            CurrentData = CurrentData.AddMonths(1);
+            FindFor();
+        }
+
+        protected void idData_TextChanged(object sender, EventArgs e)
+        {
             FindFor();
         }
 

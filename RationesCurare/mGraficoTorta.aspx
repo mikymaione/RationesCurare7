@@ -12,11 +12,11 @@
             }
         </style>
 
-        <label class="required" for="idData">Data</label>
-        <input class="noWidth" id="idData" runat="server" type="month" size="7" required>
+        <label class="required" for="idData">Periodo</label>        
+        <asp:TextBox ID="idData" runat="server" CssClass="noWidth" type="date" required OnTextChanged="idData_TextChanged" AutoPostBack="True" />
 
-        <asp:Button ID="bPrev" runat="server" Text="⇦" OnClick="bPrev_Click" ToolTip="Mese precedente" />
-        <asp:Button ID="bNext" runat="server" Text="⇨" OnClick="bNext_Click" ToolTip="Mese successivo" />
+        <asp:Button ID="bPrev" runat="server" CssClass="googleIcon bottom" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Mese precedente" />
+        <asp:Button ID="bNext" runat="server" CssClass="googleIcon bottom" Text="skip_next" OnClick="bNext_Click" ToolTip="Mese successivo" />
     </div>
 
     <asp:Chart ID="Chart1" runat="server" 

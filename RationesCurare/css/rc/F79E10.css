@@ -11,6 +11,10 @@
     font-size: large;
 }
 
+.bottom {
+    vertical-align: bottom;
+}
+
 .menu {
     display: flex;
 }
