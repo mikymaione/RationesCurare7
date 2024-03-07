@@ -184,9 +184,7 @@
     <Compile Include="UI\Controlli\cGroupList.Designer.cs">
       <DependentUpon>cGroupList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controlli\cMacroAree.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UI\Controlli\cMacroAree.cs" />
     <Compile Include="UI\Controlli\cMacroAree.Designer.cs">
       <DependentUpon>cMacroAree.cs</DependentUpon>
     </Compile>

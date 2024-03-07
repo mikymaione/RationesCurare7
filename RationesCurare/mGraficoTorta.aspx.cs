@@ -70,8 +70,11 @@ namespace RationesCurare
                     cDB.NewPar("a", fine)
                 };
 
-                var q = cDB.Queries.Movimenti_GraficoTorta;
-                Chart1.DataSource = d.EseguiSQLDataTable(q, p);
+                using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoTortaSaldo, p))
+                    while (dr.Read())
+                        lTotale.Text = dr.GetDouble(0).ToString("C");
+
+                Chart1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p);
                 Chart1.DataBind();
             }
         }

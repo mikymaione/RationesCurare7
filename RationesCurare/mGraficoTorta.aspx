@@ -14,6 +14,12 @@
             display: flex;
             gap: 0.5em;
         }
+
+        .footer {
+            color: white;
+            background-color: black;
+            text-align: right;
+        }
     </style>
 
     <div>
@@ -46,9 +52,13 @@
         </ChartAreas>
 
         <Legends>
-            <asp:Legend Name="Legend1" Title="Legenda" />
+            <asp:Legend Name="Legend1" Title="Legenda" BackColor="Transparent" />
         </Legends>
     </asp:Chart>
+
+    <div class="footer">
+        <asp:Label ID="lTotale" runat="server"></asp:Label>
+    </div>
 
     <script>
         let c = document.getElementById("<%=Chart1.ClientID %>");
