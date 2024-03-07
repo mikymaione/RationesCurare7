@@ -5,18 +5,30 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Grafico a torta</h2>
 
-    <div>        
-        <style>
-            .noWidth {
-                width: auto !important;
-            }
-        </style>
+    <style>
+        div {
+            margin-bottom: 1rem;       
+        }       
 
-        <label class="required" for="idData">Periodo</label>        
-        <asp:TextBox ID="idData" runat="server" CssClass="noWidth" type="date" required OnTextChanged="idData_TextChanged" AutoPostBack="True" />
+        .buttons {
+            display: flex;
+            gap: 0.5em;
+        }
+    </style>
 
-        <asp:Button ID="bPrev" runat="server" CssClass="googleIcon bottom" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Mese precedente" />
-        <asp:Button ID="bNext" runat="server" CssClass="googleIcon bottom" Text="skip_next" OnClick="bNext_Click" ToolTip="Mese successivo" />
+    <div>
+        <label class="required" for="idDataDa">Da</label>                
+        <input id="idDataDa" runat="server" type="date" required>
+    </div>
+    <div>
+        <label class="required" for="idDataA">A</label>                
+        <input id="idDataA" runat="server" type="date" required>
+    </div>
+
+    <div class="buttons">
+        <asp:Button ID="bPrev" runat="server" CssClass="googleIcon" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Mese precedente" />
+        <asp:Button ID="bNext" runat="server" CssClass="googleIcon" Text="skip_next" OnClick="bNext_Click" ToolTip="Mese successivo" />
+        <asp:Button ID="bCerca" runat="server" Text="Cerca" OnClick="bCerca_Click" />
     </div>
 
     <asp:Chart ID="Chart1" runat="server" 

@@ -11,10 +11,6 @@
     font-size: large;
 }
 
-.bottom {
-    vertical-align: bottom;
-}
-
 .menu {
     display: flex;
 }
@@ -127,8 +123,13 @@
     color: #F79E10;
 }
 
+.noWidth {
+    width: auto !important;
+}
+
 button {
     font-size: large;
+    font-family: 'Ubuntu Mono';
 }
 
 select {

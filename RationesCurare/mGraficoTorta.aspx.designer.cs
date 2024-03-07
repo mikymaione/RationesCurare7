@@ -15,13 +15,22 @@ namespace RationesCurare
     {
 
         /// <summary>
-        /// idData control.
+        /// idDataDa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idData;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl idDataDa;
+
+        /// <summary>
+        /// idDataA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl idDataA;
 
         /// <summary>
         /// bPrev control.
@@ -40,6 +49,15 @@ namespace RationesCurare
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bNext;
+
+        /// <summary>
+        /// bCerca control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bCerca;
 
         /// <summary>
         /// Chart1 control.

@@ -10,8 +10,24 @@ namespace RationesCurare
 
         private DateTime CurrentData
         {
-            get => GB.DateStartOfMonth(GB.StringToDate(idData.Text, DateTime.Now));
-            set => idData.Text = GB.ObjectToDateStringHTML(value);
+            get
+            {
+                var da = GB.DateStartOfMonth(GB.StringToDate(idDataDa.Value, DateTime.Now));
+                var a = GB.DateStartOfMonth(GB.StringToDate(idDataA.Value, DateTime.Now));
+
+                var m = DateTime.Compare(da, a) > 0 ? da : a;
+
+                return m;
+            }
+
+            set
+            {
+                var inizio = GB.DateStartOfMonth(value);
+                var fine = GB.DateEndOfMonth(inizio);
+
+                idDataDa.Value = GB.ObjectToDateStringHTML(inizio);
+                idDataA.Value = GB.ObjectToDateStringHTML(fine);
+            }
         }
 
         private Font loadUbuntuFont()
@@ -46,8 +62,8 @@ namespace RationesCurare
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
-                var inizio = GB.DateStartOfMonth(CurrentData);
-                var fine = GB.DateEndOfMonth(inizio);
+                var inizio = GB.DateStartOfMonth(GB.StringToDate(idDataDa.Value, DateTime.Now));
+                var fine = GB.DateEndOfMonth(GB.StringToDate(idDataA.Value, DateTime.Now));
 
                 var p = new System.Data.Common.DbParameter[] {
                     cDB.NewPar("da", inizio),
@@ -72,7 +88,7 @@ namespace RationesCurare
             FindFor();
         }
 
-        protected void idData_TextChanged(object sender, EventArgs e)
+        protected void bCerca_Click(object sender, EventArgs e)
         {
             FindFor();
         }
