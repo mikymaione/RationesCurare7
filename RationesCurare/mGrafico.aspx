@@ -23,7 +23,7 @@
         <ChartAreas>
             <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
                 <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont">
-                    <LabelStyle ForeColor="#F79E10" />
+                    <LabelStyle ForeColor="#F79E10" Format="{0:C0}" />
                 </AxisY>
                 <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont">
                     <LabelStyle ForeColor="#F79E10" />

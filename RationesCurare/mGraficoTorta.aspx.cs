@@ -2,6 +2,8 @@
 using System;
 using System.Drawing.Text;
 using System.Drawing;
+using System.Data;
+using System.Linq;
 
 namespace RationesCurare
 {
@@ -62,8 +64,6 @@ namespace RationesCurare
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             {
-                var totale = 0d;
-
                 var inizio = GB.DateStartOfMonth(GB.StringToDate(idDataDa.Value, DateTime.Now));
                 var fine = GB.DateEndOfMonth(GB.StringToDate(idDataA.Value, DateTime.Now));
 
@@ -75,11 +75,44 @@ namespace RationesCurare
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoTortaSaldo, p))
                     if (dr.HasRows)
                         while (dr.Read())
-                            totale = GB.ObjectToDouble(dr[0], 0);
+                            lTotale.Text = GB.ObjectToMoneyString(dr[0]);
 
-                lTotale.Text = totale.ToString("C");
+                var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p);
 
-                Chart1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p);
+                if (dt.Rows.Count == 0)
+                {
+                    Chart1.DataSource = dt;
+                }
+                else
+                {
+                    foreach (DataRow r in dt.Rows)
+                        r[0] = $"{GB.ObjectToMoneyStringNoDecimal(r[1])} - {r[0]}";
+
+                    var enu = dt.AsEnumerable();
+
+                    var pos =
+                        from r in enu
+                        where
+                            r[1] as double? > 0
+                        orderby
+                            r[1] descending
+                        select
+                            r;
+
+                    var neg =
+                        from r in enu
+                        where
+                            r[1] as double? <= 0
+                        orderby
+                            r[1] ascending
+                        select
+                            r;
+
+                    var sorted = pos.Union(neg);
+
+                    Chart1.DataSource = sorted.CopyToDataTable();
+                }
+
                 Chart1.DataBind();
             }
         }

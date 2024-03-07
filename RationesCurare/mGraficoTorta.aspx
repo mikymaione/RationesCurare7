@@ -44,7 +44,7 @@
         Width="745px" Height="500px" CssClass="img-max-size">
 
         <Series>
-            <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="Titolo" ChartType="Pie" Legend="Legend1" />                            
+            <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="MacroArea" ChartType="Pie" Legend="Legend1" />                            
         </Series>
 
         <ChartAreas>
@@ -52,7 +52,7 @@
         </ChartAreas>
 
         <Legends>
-            <asp:Legend Name="Legend1" Title="Legenda" BackColor="Transparent" />
+            <asp:Legend Name="Legend1" BackColor="Transparent" ForeColor="#F79E10" TitleForeColor="#F79E10" />
         </Legends>
     </asp:Chart>
 

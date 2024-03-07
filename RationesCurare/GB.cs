@@ -127,6 +127,15 @@ namespace RationesCurare
             return i;
         }
 
+        public static string ObjectToMoneyStringNoDecimal(object o) =>
+           ObjectToMoneyString(o, "{0:C0}");
+
+        public static string ObjectToMoneyString(object o) =>
+            ObjectToMoneyString(o, "{0:C}");
+
+        private static string ObjectToMoneyString(object o, string format) =>
+          string.Format(format, ObjectToMoney(o));
+
         public static double ObjectToMoney(object o) =>
             ObjectToMoney(o, 0);
 
