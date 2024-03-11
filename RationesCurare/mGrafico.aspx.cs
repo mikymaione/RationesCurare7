@@ -1,6 +1,5 @@
 ﻿using RationesCurare7.DB;
 using System;
-using System.Drawing.Text;
 using System.Drawing;
 
 namespace RationesCurare
@@ -8,27 +7,12 @@ namespace RationesCurare
     public partial class mGrafico : System.Web.UI.Page
     {
 
-        static Color goodColor = ColorTranslator.FromHtml("#F79E10");
-        static Color badColor = ColorTranslator.FromHtml("#464453");
-
-        private Font loadUbuntuFont()
-        {
-            var css = MapPath("css");
-            var css_rc = System.IO.Path.Combine(css, "rc");
-            var font_file = System.IO.Path.Combine(css_rc, "UbuntuMono-Regular.ttf");
-
-            var collection = new PrivateFontCollection();
-            collection.AddFontFile(font_file);
-
-            var fontFamily = new FontFamily("Ubuntu Mono", collection);
-            var font = new Font(fontFamily, 14);
-
-            return font;
-        }
+        private static readonly Color goodColor = ColorTranslator.FromHtml("#F79E10");
+        private static readonly Color badColor = ColorTranslator.FromHtml("#464453");
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var ubuntuFont = loadUbuntuFont();
+            var ubuntuFont = GB.LoadUbuntuFont(this);
 
             Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
             Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;

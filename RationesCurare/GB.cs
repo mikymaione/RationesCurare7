@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Drawing.Text;
+using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Web;
 using System.Web.SessionState;
 using System.Web.UI.WebControls;
@@ -9,6 +10,7 @@ namespace RationesCurare
 {
     public class GB
     {
+
         private GB()
         {
             // singleton pattern
@@ -305,6 +307,25 @@ namespace RationesCurare
                     return li.Value;
 
             return null;
+        }
+
+        private static Font UbuntuMono;
+        public static Font LoadUbuntuFont(System.Web.UI.Page page)
+        {
+            if (UbuntuMono == null)
+            {
+                var css = page.MapPath("css");
+                var css_rc = System.IO.Path.Combine(css, "rc");
+                var font_file = System.IO.Path.Combine(css_rc, "UbuntuMono-Regular.ttf");
+
+                var collection = new PrivateFontCollection();
+                collection.AddFontFile(font_file);
+
+                var fontFamily = new FontFamily("Ubuntu Mono", collection);
+                UbuntuMono = new Font(fontFamily, 14);
+            }
+
+            return UbuntuMono;
         }
 
     }

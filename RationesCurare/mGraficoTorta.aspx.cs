@@ -1,6 +1,5 @@
 ﻿using RationesCurare7.DB;
 using System;
-using System.Drawing.Text;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace RationesCurare
     public partial class mGraficoTorta : System.Web.UI.Page
     {
 
-        private static Color[] KELLY_COLORS = {
+        private static readonly Color[] KELLY_COLORS = {
             ColorTranslator.FromHtml("0xFFB300"),    // Vivid Yellow
             ColorTranslator.FromHtml("0x803E75"),    // Strong Purple
             ColorTranslator.FromHtml("0xFF6800"),    // Vivid Orange
@@ -57,24 +56,9 @@ namespace RationesCurare
             }
         }
 
-        private Font loadUbuntuFont()
-        {
-            var css = MapPath("css");
-            var css_rc = System.IO.Path.Combine(css, "rc");
-            var font_file = System.IO.Path.Combine(css_rc, "UbuntuMono-Regular.ttf");
-
-            var collection = new PrivateFontCollection();
-            collection.AddFontFile(font_file);
-
-            var fontFamily = new FontFamily("Ubuntu Mono", collection);
-            var font = new Font(fontFamily, 14);
-
-            return font;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            var ubuntuFont = loadUbuntuFont();
+            var ubuntuFont = GB.LoadUbuntuFont(this);
 
             Chart1.Series[0]["PieLabelStyle"] = "Disabled";
             Chart1.Legends[0].Font = ubuntuFont;
