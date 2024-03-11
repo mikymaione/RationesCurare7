@@ -216,12 +216,7 @@ namespace RationesCurare7.DB
             {
                 var queryName = $"{q}.sql";
                 var queryPath = System.IO.Path.Combine(RationesCurare.GB.DBW, queryName);
-
                 var z = ReadAllFile(queryPath);
-                z = z.Replace("Datepart('d',", "strftime('%d',");
-                z = z.Replace("Datepart('yyyy',", "strftime('%Y',");
-                z = z.Replace("Format(m.data, 'yyyy')", "strftime('%Y',m.data)");
-                z = z.Replace("Format(m.data, 'yyyy/mm')", "strftime('%Y/%m',m.data)");
 
                 QueriesGiaLette.Add(q, z);
             }

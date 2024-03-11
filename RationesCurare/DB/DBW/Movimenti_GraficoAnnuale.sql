@@ -1,6 +1,6 @@
 SELECT  
-	Format(m.data, 'yyyy') as Mese,  	
-	sum(m.soldi) as Soldini_TOT	
-FROM movimenti m  
+	strftime('%Y', data) as Mese,  	
+	sum(soldi) as Soldini_TOT	
+FROM movimenti
 group by  
-	Format(m.data, 'yyyy')
+	Mese
