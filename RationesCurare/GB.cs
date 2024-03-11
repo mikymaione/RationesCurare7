@@ -14,22 +14,19 @@ namespace RationesCurare
             // singleton pattern
         }
 
+        public static GB Instance { get; protected set; } = new GB();
+
         public static string DBW =>
            System.IO.Path.Combine(HttpContext.Current.Request.MapPath("DB"), "DBW");
-
-        public static GB Instance { get; protected set; } = new GB();
 
         public static string GetQueryString(HttpRequest request, string name) =>
             request.QueryString.AllKeys.Contains(name) ? request.QueryString[name] : "";
 
-        public cSession getCurrentSession(HttpSessionState session)
-        {
-            return (cSession)session["CurrentSession"];
-        }
-        public void setCurrentSession(HttpSessionState session, cSession _cSession)
-        {
+        public cSession getCurrentSession(HttpSessionState session) =>
+            (cSession)session["CurrentSession"];
+
+        public void setCurrentSession(HttpSessionState session, cSession _cSession) =>
             session["CurrentSession"] = _cSession;
-        }
 
         public static string getDBPathByName(string nome)
         {
@@ -45,8 +42,10 @@ namespace RationesCurare
 
             try
             {
-                var myCookie = new HttpCookie("RCWEB");
-                myCookie.Expires = DateTime.Now.AddDays(7);
+                var myCookie = new HttpCookie("RCWEB")
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                };
 
                 for (var i = 0; i < cookies.Length; i++)
                     myCookie[cookies[i]] = values[i];
@@ -172,10 +171,8 @@ namespace RationesCurare
             }
         }
 
-        public static double HTMLDoubleToDouble(string o)
-        {
-            return double.Parse(o.Replace(".", ","));
-        }
+        public static double HTMLDoubleToDouble(string o) =>
+            double.Parse(o.Replace(".", ","));
 
         public static string ObjectToHTMLDouble(object o, double default_)
         {
@@ -201,13 +198,17 @@ namespace RationesCurare
             return i;
         }
 
-        public static object ValueToDBNULL(bool PutNull, Func<object> ElseValue) => PutNull ? DBNull.Value : ElseValue();
+        public static object ValueToDBNULL(bool PutNull, Func<object> ElseValue) =>
+            PutNull ? DBNull.Value : ElseValue();
 
-        public static DateTime DateEndOfMonth(DateTime d) => DateStartOfMonth(d).AddMonths(1).AddSeconds(-1);
+        public static DateTime DateEndOfMonth(DateTime d) =>
+            DateStartOfMonth(d).AddMonths(1).AddSeconds(-1);
 
-        public static DateTime DateStartOfMonth(DateTime d) => new DateTime(d.Year, d.Month, 1);
+        public static DateTime DateStartOfMonth(DateTime d) =>
+            new DateTime(d.Year, d.Month, 1);
 
-        public static DateTime DateToOnlyDate(DateTime d) => new DateTime(d.Year, d.Month, d.Day);
+        public static DateTime DateToOnlyDate(DateTime d) =>
+            new DateTime(d.Year, d.Month, d.Day);
 
         public static DateTime StringToDate(string o, DateTime default_)
         {
@@ -263,26 +264,20 @@ namespace RationesCurare
             return d?.ToString("yyyy-MM-ddTHH:mm");
         }
 
-        public static DateTime StringHTMLToDate(string o)
-        {
-            return DateTime.ParseExact(o, "yyyy-MM-dd", null);
-        }
+        public static DateTime StringHTMLToDate(string o) =>
+            DateTime.ParseExact(o, "yyyy-MM-dd", null);
 
-        public static DateTime StringHTMLToDateTime(string o)
-        {
-            return DateTime.ParseExact(o, "yyyy-MM-ddTHH:mm", null);
-        }
+        public static DateTime StringHTMLToDateTime(string o) =>
+            DateTime.ParseExact(o, "yyyy-MM-ddTHH:mm", null);
 
         public static DateTime? ObjectToDateTime(object o, DateTime? default_)
         {
-            if (o is DateTime)
+            if (o is DateTime dt)
             {
-                return (DateTime)o;
+                return dt;
             }
-            else if (o is string)
+            else if (o is string x)
             {
-                var x = o.ToString();
-
                 if (x.Length == 10)
                 {
                     return DateTime.ParseExact(x, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
@@ -294,20 +289,20 @@ namespace RationesCurare
                 }
             }
             else if (default_.HasValue)
+            {
                 return (DateTime)default_;
+            }
             else
+            {
                 return null;
+            }
         }
 
         public static string ComboBoxItemsByValue(DropDownList d, string value)
         {
             foreach (ListItem li in d.Items)
-            {
                 if (string.Compare(li.Value, value, true) == 0)
-                {
                     return li.Value;
-                }
-            }
 
             return null;
         }
