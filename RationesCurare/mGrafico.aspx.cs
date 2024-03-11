@@ -1,6 +1,11 @@
 ﻿using RationesCurare7.DB;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace RationesCurare
 {
@@ -53,7 +58,52 @@ namespace RationesCurare
                             break;
                     }
 
-                    Chart1.DataSource = d.EseguiSQLDataTable(q);
+                    var dt = d.EseguiSQLDataTable(q);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        var enu = dt.AsEnumerable();
+
+                        switch (T)
+                        {
+                            case "Y":
+                                var years = enu.Select(r => int.Parse(r[0] as string));
+
+                                var startY = years.First();
+                                var endY = years.Last();
+
+                                for (int y = startY; y <= endY; y++)
+                                    if (!years.Contains(y))
+                                        dt.Rows.Add(
+                                            new object[]
+                                            {
+                                                y, 0
+                                            }
+                                        );
+                                break;
+
+                            case "M":
+                            default:
+                                var dates = enu.Select(r => DateTime.ParseExact(r[0] as string, "yyyy/MM", System.Globalization.CultureInfo.InvariantCulture));
+
+                                var startD = dates.First();
+                                var endD = dates.Last();
+
+                                for (var date = startD; date <= endD; date = date.AddMonths(1))
+                                    if (!dates.Contains(date))
+                                        dt.Rows.Add(
+                                            new object[]
+                                            {
+                                                date.ToString("yyyy/MM"), 0
+                                            }
+                                        );
+                                break;
+                        }
+                    }
+
+                    dt.DefaultView.Sort = "Mese asc";
+
+                    Chart1.DataSource = dt;
                     Chart1.DataBind();
                 }
             }
