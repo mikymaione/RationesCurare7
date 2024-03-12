@@ -130,6 +130,7 @@
 button {
     font-size: large;
     font-family: 'Ubuntu Mono';
+    cursor: pointer;
 }
 
 select {
