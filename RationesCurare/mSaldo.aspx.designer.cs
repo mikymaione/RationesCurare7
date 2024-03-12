@@ -57,7 +57,7 @@ namespace RationesCurare
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eSoldiDa;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl eSoldiDa;
 
         /// <summary>
         /// eSoldiA control.
@@ -66,7 +66,7 @@ namespace RationesCurare
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eSoldiA;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl eSoldiA;
 
         /// <summary>
         /// eMacroarea control.

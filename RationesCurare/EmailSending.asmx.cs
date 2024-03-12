@@ -795,11 +795,10 @@ namespace maionemiky
 
                     if (System.IO.Directory.Exists(dira))
                     {
-                        var f = System.IO.Path.Combine(dira, email + ".date");
+                        var f = System.IO.Path.Combine(dira, $"{email}.date");
 
                         if (System.IO.File.Exists(f))
                             using (var sr = new System.IO.StreamReader(f))
-                            {
                                 try
                                 {
                                     dSERVER = DateTime.ParseExact(sr.ReadLine(), "yyyyMMddHHmmss", null);
@@ -808,9 +807,6 @@ namespace maionemiky
                                 {
                                     //cannot parse
                                 }
-
-                                sr.Close();
-                            }
                     }
                 }
                 catch

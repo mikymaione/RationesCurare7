@@ -45,7 +45,7 @@
     </div>
     <div>
         <label class="required" for="idSoldi">Importo</label>
-        <input id="idSoldi" runat="server" type="number" step="0.01" min="-10000000" max="10000000" required onchange="resoconto();">
+        <input id="idSoldi" runat="server" type="number" inputmode="decimal" step="0.01" min="-10000000" max="10000000" required onchange="resoconto();">
     </div>
     <div>
         <label class="required" for="idData">Data</label>

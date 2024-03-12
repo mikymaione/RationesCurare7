@@ -35,13 +35,13 @@
         <tr>
             <td>Da</td>
             <td>
-                <asp:TextBox ID="eSoldiDa" runat="server" TextMode="Number" MaxLength="20" Width="100%" />
+                <input id="eSoldiDa" runat="server" type="number" inputmode="decimal" step="0.01" min="-10000000" max="10000000">
             </td>
         </tr>
         <tr>
             <td>A</td>
             <td>
-                <asp:TextBox ID="eSoldiA" runat="server" TextMode="Number" MaxLength="20" Width="100%" />
+                <input id="eSoldiA" runat="server" type="number" inputmode="decimal" step="0.01" min="-10000000" max="10000000">
             </td>
         </tr>
 

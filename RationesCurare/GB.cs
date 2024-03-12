@@ -173,8 +173,17 @@ namespace RationesCurare
             }
         }
 
-        public static double HTMLDoubleToDouble(string o) =>
-            double.Parse(o.Replace(".", ","));
+        public static double HTMLDoubleToDouble(string o)
+        {
+            try
+            {
+                return double.Parse(o.Replace(".", ","));
+            }
+            catch
+            {
+                return 0;
+            }
+        }
 
         public static string ObjectToHTMLDouble(object o, double default_)
         {

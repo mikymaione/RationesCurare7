@@ -61,8 +61,8 @@ namespace RationesCurare
                 cDB.NewPar("MacroArea", "%" + eMacroarea.Text +"%"),
                 cDB.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
                 cDB.NewPar("bData", bData.Checked ? 1 : 0),
-                cDB.NewPar("SoldiDa", GB.ObjectToDouble(eSoldiDa.Text, 0)),
-                cDB.NewPar("SoldiA", GB.ObjectToDouble(eSoldiA.Text, 0)),
+                cDB.NewPar("SoldiDa", GB.HTMLDoubleToDouble(eSoldiDa.Value)),
+                cDB.NewPar("SoldiA", GB.HTMLDoubleToDouble(eSoldiA.Value)),
                 cDB.NewPar("DataDa", GB.DateStartOfMonth(GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1)))),
                 cDB.NewPar("DataA", GB.DateEndOfMonth(GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20))))
             };
@@ -90,8 +90,8 @@ namespace RationesCurare
             eDescrizione.Text = "";
             eMacroarea.Text = "";
 
-            eSoldiDa.Text = "";
-            eSoldiA.Text = "";
+            eSoldiDa.Value = "";
+            eSoldiA.Value = "";
 
             eDataDa.Text = "";
             eDataA.Text = "";
