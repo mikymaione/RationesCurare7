@@ -221,6 +221,9 @@ namespace RationesCurare
         public static DateTime DateToOnlyDate(DateTime d) =>
             new DateTime(d.Year, d.Month, d.Day);
 
+        public static string DateTimeToSQLiteTimeStamp(DateTime dateTime) =>
+            dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+
         public static DateTime StringToDate(string o, DateTime default_)
         {
             var i = default_;

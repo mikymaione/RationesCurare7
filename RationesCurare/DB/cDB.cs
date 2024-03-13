@@ -1,9 +1,9 @@
-﻿using System;
+﻿using RationesCurare;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
-using System.Diagnostics;
 
 namespace RationesCurare7.DB
 {
@@ -14,7 +14,6 @@ namespace RationesCurare7.DB
 
         private readonly string dateFile;
         private readonly SQLiteConnection Connessione;
-        private DateTime UltimaModifica = DateTime.MinValue;
 
         public cDB(string path_db)
         {
@@ -101,12 +100,10 @@ namespace RationesCurare7.DB
             }
         }
 
-        public int EseguiSQLNoQuery(SQLiteTransaction trans, Queries q, DbParameter[] param)
-        {
-            return EseguiSQLNoQuery(trans, LeggiQuery(q), param);
-        }
+        public int EseguiSQLNoQuery(SQLiteTransaction trans, Queries q, DbParameter[] param) =>
+            EseguiSQLNoQuery(trans, LeggiQuery(q), param);
 
-        public int EseguiSQLNoQuery(SQLiteTransaction trans, string sql, DbParameter[] param)
+        private int EseguiSQLNoQuery(SQLiteTransaction trans, string sql, DbParameter[] param)
         {
             using (var cm = CreaCommandNoConnection(trans, sql, param))
             {
@@ -114,8 +111,6 @@ namespace RationesCurare7.DB
 
                 if (i > 0)
                 {
-                    UltimaModifica = DBNow();
-
                     var a = AggiornaDataDB(trans);
 
                     if (a > 0)
@@ -128,24 +123,13 @@ namespace RationesCurare7.DB
             }
         }
 
-        public static DateTime DBNow()
-        {
-            var d = DateTime.Now;
+        public DataTable EseguiSQLDataTable(Queries q) =>
+            EseguiSQLDataTable(q, null);
 
-            return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
-        }
+        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, long MaxRows = -1) =>
+            EseguiSQLDataTable(LeggiQuery(q), param, null, MaxRows);
 
-        public DataTable EseguiSQLDataTable(Queries q)
-        {
-            return EseguiSQLDataTable(q, null);
-        }
-
-        public DataTable EseguiSQLDataTable(Queries q, DbParameter[] param, long MaxRows = -1)
-        {
-            return EseguiSQLDataTable(LeggiQuery(q), param, null, MaxRows);
-        }
-
-        public DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null, long MaxRows = -1)
+        private DataTable EseguiSQLDataTable(string sql, DbParameter[] param, DataColumn[] colonne = null, long MaxRows = -1)
         {
             var t = new DataTable();
 
@@ -156,23 +140,21 @@ namespace RationesCurare7.DB
                 sql += " limit " + MaxRows;
 
             using (var cm = CreaCommandNoConnection(sql, param))
-            using (var a = new SQLiteDataAdapter((SQLiteCommand)cm))
+            using (var a = new SQLiteDataAdapter(cm))
                 a.Fill(t);
 
             return t;
         }
 
-        private DbCommand CreaCommandNoConnection(string sql, DbParameter[] param)
-        {
-            return CreaCommandNoConnection(null, sql, param);
-        }
+        private SQLiteCommand CreaCommandNoConnection(string sql, DbParameter[] param) =>
+            CreaCommandNoConnection(null, sql, param);
 
-        private DbCommand CreaCommandNoConnection(SQLiteTransaction trans, string sql, DbParameter[] param)
+        private SQLiteCommand CreaCommandNoConnection(SQLiteTransaction trans, string sql, DbParameter[] param)
         {
             var cm = new SQLiteCommand(sql, Connessione, trans);
 
             if (param != null)
-                for (int x = 0; x <= param.Length - 1; x++)
+                for (int x = 0; x < param.Length; x++)
                 {
                     if (param[x].DbType == DbType.Decimal)
                         param[x].DbType = DbType.Currency;
@@ -183,22 +165,16 @@ namespace RationesCurare7.DB
             return cm;
         }
 
-        public DbDataReader EseguiSQLDataReader(Queries q)
-        {
-            return EseguiSQLDataReader(LeggiQuery(q));
-        }
+        public DbDataReader EseguiSQLDataReader(Queries q) =>
+            EseguiSQLDataReader(LeggiQuery(q));
 
-        public DbDataReader EseguiSQLDataReader(Queries q, DbParameter[] param)
-        {
-            return EseguiSQLDataReader(LeggiQuery(q), param);
-        }
+        public DbDataReader EseguiSQLDataReader(Queries q, DbParameter[] param) =>
+            EseguiSQLDataReader(LeggiQuery(q), param);
 
-        public DbDataReader EseguiSQLDataReader(string sql)
-        {
-            return EseguiSQLDataReader(sql, null);
-        }
+        private DbDataReader EseguiSQLDataReader(string sql) =>
+            EseguiSQLDataReader(sql, null);
 
-        public DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
+        private DbDataReader EseguiSQLDataReader(string sql, DbParameter[] param)
         {
             using (var cm = CreaCommandNoConnection(sql, param))
                 return cm.ExecuteReader();
@@ -215,7 +191,7 @@ namespace RationesCurare7.DB
             if (!QueriesGiaLette.ContainsKey(q))
             {
                 var queryName = $"{q}.sql";
-                var queryPath = System.IO.Path.Combine(RationesCurare.GB.DBW, queryName);
+                var queryPath = System.IO.Path.Combine(GB.DBW, queryName);
                 var z = ReadAllFile(queryPath);
 
                 QueriesGiaLette.Add(q, z);
@@ -224,23 +200,12 @@ namespace RationesCurare7.DB
             return QueriesGiaLette[q];
         }
 
-        public static string DateToSQLite(DateTime d)
-        {
-            //yyyy-MM-dd HH:mm:ss
-            string h = "";
-
-            h += d.Year + "-" + (d.Month < 10 ? "0" : "") + d.Month + "-" + (d.Day < 10 ? "0" : "") + d.Day + " ";
-            h += (d.Hour < 10 ? "0" : "") + d.Hour + ":" + (d.Minute < 10 ? "0" : "") + d.Minute + ":" + (d.Second < 10 ? "0" : "") + d.Second;
-
-            return h;
-        }
-
         public static SQLiteParameter NewPar(string Nome, object Valore)
         {
             if (Valore is DateTime time)
                 return new SQLiteParameter(Nome, DbType.String)
                 {
-                    Value = DateToSQLite(time)
+                    Value = GB.DateTimeToSQLiteTimeStamp(time)
                 };
             else
                 return new SQLiteParameter(Nome, Valore);
@@ -249,20 +214,15 @@ namespace RationesCurare7.DB
         public static SQLiteParameter NewPar(string Nome, object Valore, DbType tipo)
         {
             if (!(Valore is DBNull) && (tipo == DbType.Date || tipo == DbType.DateTime))
-            {
-                //"YYYY-MM-DD HH:MM:SS.SSS"                
                 return new SQLiteParameter(Nome, DbType.String)
                 {
-                    Value = ((DateTime)Valore).ToString("yyyy-MM-dd HH:mm:ss")
+                    Value = GB.DateTimeToSQLiteTimeStamp((DateTime)Valore)
                 };
-            }
             else
-            {
                 return new SQLiteParameter(Nome, tipo)
                 {
                     Value = Valore
                 };
-            }
         }
 
         private void AggiornaDataFile()
@@ -278,7 +238,7 @@ namespace RationesCurare7.DB
             const string sql = "update DBInfo set UltimaModifica = @UltimaModifica";
 
             var pars = new SQLiteParameter[] {
-                NewPar("UltimaModifica", UltimaModifica)
+                NewPar("UltimaModifica", DateTime.Now)
             };
 
             using (var cm = CreaCommandNoConnection(trans, sql, pars))
