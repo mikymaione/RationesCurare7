@@ -139,6 +139,7 @@
   <ItemGroup>
     <Compile Include="cSession.cs" />
     <Compile Include="DB\cDB.cs" />
+    <Compile Include="DB\DataWrapper\cMovimenti.cs" />
     <Compile Include="DB\DataWrapper\cPeriodici.cs" />
     <Compile Include="DB\DataWrapper\PeriodiciService.cs" />
     <Compile Include="EmailSending.asmx.cs">
