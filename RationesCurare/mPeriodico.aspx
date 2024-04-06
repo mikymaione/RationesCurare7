@@ -38,7 +38,11 @@
             }
 
             function selectMacroArea_OnSuccess(response, userContext, methodName) {
-                document.getElementById('<%=idMacroarea.ClientID%>').value = response;
+                let ma = String(response);
+
+                if (ma) {
+                    document.getElementById('<%=idMacroarea.ClientID%>').value = ma;
+                }                
             }
         </script>
 

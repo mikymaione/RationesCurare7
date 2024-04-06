@@ -1,4 +1,5 @@
-﻿using RationesCurare7.DB;
+﻿using RationesCurare.DB.DataWrapper;
+using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
 
@@ -183,44 +184,23 @@ namespace RationesCurare
         [System.Web.Services.WebMethod]
         public static string getMacroAreaByDescrizione(string userName, string descrizione_)
         {
-            var descrizione = descrizione_.TrimEnd();
+            var m = new CMovimenti();
 
-            var PathDB = GB.getDBPathByName(userName);
-
-            using (var db = new cDB(PathDB))
-            using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_GetMacroAree_E_Descrizioni))
-                if (dr.HasRows)
-                    while (dr.Read())
-                        if (descrizione.Equals(dr["descrizione"] as string, StringComparison.OrdinalIgnoreCase))
-                            return dr["MacroArea"] as string;
-
-            return "";
+            return m.GetMacroAreaByDescrizione(userName, descrizione_);
         }
 
         protected List<string> getMacroAree()
         {
-            var macroaree = new List<string>();
+            var m = new CMovimenti();
 
-            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-            using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSourceMA))
-                if (dr.HasRows)
-                    while (dr.Read())
-                        macroaree.Add(dr["MacroArea"] as string);
-
-            return macroaree;
+            return m.GetMacroAree(Session);
         }
 
         protected List<string> getDescrizioni()
         {
-            var descrizioni = new List<string>();
+            var m = new CMovimenti();
 
-            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-            using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSource))
-                if (dr.HasRows)
-                    while (dr.Read())
-                        descrizioni.Add(dr["descrizione"] as string);
-
-            return descrizioni;
+            return m.GetDescrizioni(Session);
         }
 
         protected void bElimina_Click(object sender, EventArgs e)
