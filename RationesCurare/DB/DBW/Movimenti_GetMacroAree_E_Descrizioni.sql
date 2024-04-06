@@ -3,6 +3,6 @@
 	descrizione
 from Movimenti
 where
-	MacroArea <> ''
+	length(MacroArea) > 0
 order by
 	1, 2
