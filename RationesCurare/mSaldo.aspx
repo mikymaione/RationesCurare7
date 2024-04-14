@@ -35,13 +35,13 @@
         <tr>
             <td>Da</td>
             <td>
-                <input id="eSoldiDa" runat="server" type="number" inputmode="decimal" step="0.01" min="-10000000" max="10000000">
+                <input id="eSoldiDa" runat="server" type="number" step="0.01" min="-10000000" max="10000000">
             </td>
         </tr>
         <tr>
             <td>A</td>
             <td>
-                <input id="eSoldiA" runat="server" type="number" inputmode="decimal" step="0.01" min="-10000000" max="10000000">
+                <input id="eSoldiA" runat="server" type="number" step="0.01" min="-10000000" max="10000000">
             </td>
         </tr>
 
