@@ -4,6 +4,7 @@ update Movimenti set
 	descrizione = @descrizione,
 	soldi = @soldi,
 	data = @data,
-	MacroArea = @MacroArea
+	MacroArea = @MacroArea,
+	IDGiroconto = @IDGiroconto
 where
 	ID = @ID

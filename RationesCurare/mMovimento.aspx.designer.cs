@@ -69,13 +69,13 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl idData;
 
         /// <summary>
-        /// divDescrizione control.
+        /// lDescrizione control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDescrizione;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lDescrizione;
 
         /// <summary>
         /// idDescrizione control.
@@ -87,13 +87,13 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlInputText idDescrizione;
 
         /// <summary>
-        /// divMacroarea control.
+        /// lMacroarea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMacroarea;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lMacroarea;
 
         /// <summary>
         /// idMacroarea control.

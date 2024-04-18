@@ -2,6 +2,7 @@
 using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RationesCurare
 {
@@ -10,11 +11,13 @@ namespace RationesCurare
 
         protected long IDMovimento = -1;
 
+        private long CurIDGiroconto = -1;
+
         private string Tipo = "";
 
         public string SottoTitolo = "";
 
-        public bool isNewRecord => IDMovimento == -1;
+        private bool isNewRecord => IDMovimento == -1;
 
         protected string userName => GB.Instance.getCurrentSession(Session).UserName;
 
@@ -91,13 +94,36 @@ namespace RationesCurare
                                     idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, dr["Tipo"] as string);
                                     idSoldi.Value = GB.ObjectToHTMLDouble(dr["Soldi"], 0);
                                     idData.Value = GB.ObjectToDateTimeStringHTML(dr["Data"]);
+                                    CurIDGiroconto = GB.ObjectToInt(dr["IDGiroconto"], -1);
+
+                                    setRequired();
                                 }
                     }
                 }
             }
         }
 
-        private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data)
+        private void setRequired()
+        {
+            var isGiroconto = idGiroconto.SelectedIndex > 0 || CurIDGiroconto > 0;
+
+            if (isGiroconto)
+            {
+                idDescrizione.Attributes.Remove("required");
+                idMacroarea.Attributes.Remove("required");
+                lDescrizione.Attributes.Remove("class");
+                lMacroarea.Attributes.Remove("class");
+            }
+            else
+            {
+                idDescrizione.Attributes.Add("required", "required");
+                idMacroarea.Attributes.Add("required", "required");
+                lDescrizione.Attributes.Add("class", "required");
+                lMacroarea.Attributes.Add("class", "required");
+            }
+        }
+
+        private System.Data.Common.DbParameter[] getParamsForSave(double soldi, DateTime data, long IDGiroconto)
         {
             if (isNewRecord)
             {
@@ -107,7 +133,8 @@ namespace RationesCurare
                     cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                    cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String)
+                    cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String),
+                    cDB.NewPar("IDGiroconto", IDGiroconto)
                 };
             }
             else
@@ -119,7 +146,8 @@ namespace RationesCurare
                     cDB.NewPar("soldi", soldi, System.Data.DbType.Double),
                     cDB.NewPar("data", data, System.Data.DbType.DateTime),
                     cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String),
-                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32)
+                    cDB.NewPar("ID", IDMovimento, System.Data.DbType.Int32),
+                    cDB.NewPar("IDGiroconto", IDGiroconto)
                 };
             }
         }
@@ -131,41 +159,68 @@ namespace RationesCurare
 
             using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
             using (var tran = db.BeginTransaction())
-            {
-                var param1 = getParamsForSave(soldi, data);
-                var m1 = db.EseguiSQLNoQuery(tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
-
-                // con giroconto
-                if (isNewRecord && idGiroconto.SelectedIndex > 0)
+                try
                 {
-                    var param2 = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
-                        cDB.NewPar("tipo", idGiroconto.SelectedValue.TrimEnd(), System.Data.DbType.String),
-                        cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
-                        cDB.NewPar("soldi", -soldi, System.Data.DbType.Double),
-                        cDB.NewPar("data", data, System.Data.DbType.DateTime),
-                        cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String)
-                    };
+                    var param1 = getParamsForSave(soldi, data, CurIDGiroconto);
+                    var m1 = db.EseguiSQLNoQuery(tran, IDMovimento > -1 ? cDB.Queries.Movimenti_Aggiorna : cDB.Queries.Movimenti_Inserisci, param1);
 
-                    var m2 = db.EseguiSQLNoQuery(tran, cDB.Queries.Movimenti_Inserisci, param2);
+                    if (m1 < 1)
+                        throw new Exception("Record non inserito!");
 
-                    if (m1 + m2 == 2)
+                    // con giroconto
+                    if (isNewRecord && idGiroconto.SelectedIndex > 0)
                     {
+                        var IDGiroconto = db.LastInsertRowId(tran);
+
+                        if (IDGiroconto < 0)
+                            throw new Exception("ID giroconto non fornito!");
+
+                        var param2 = new System.Data.Common.DbParameter[] {
+                            cDB.NewPar("nome", idNome.Value.TrimEnd(), System.Data.DbType.String),
+                            cDB.NewPar("tipo", idGiroconto.SelectedValue.TrimEnd(), System.Data.DbType.String),
+                            cDB.NewPar("descrizione", idDescrizione.Value.TrimEnd(), System.Data.DbType.String),
+                            cDB.NewPar("soldi", -soldi, System.Data.DbType.Double),
+                            cDB.NewPar("data", data, System.Data.DbType.DateTime),
+                            cDB.NewPar("MacroArea", idMacroarea.Value.TrimEnd(), System.Data.DbType.String),
+                            cDB.NewPar("IDGiroconto", IDGiroconto),
+                        };
+
+                        var m2 = db.EseguiSQLNoQuery(tran, cDB.Queries.Movimenti_Inserisci, param2);
+                        var IDGiroconto2 = db.LastInsertRowId(tran);
+
+                        if (IDGiroconto2 < 0)
+                            throw new Exception("ID giroconto non fornito!");
+
+                        if (m2 < 1)
+                            throw new Exception("Record non inserito!");
+
+                        var idP = cDB.NewPar("ID", IDGiroconto);
+                        var idGP = cDB.NewPar("IDGiroconto", IDGiroconto2);
+
+                        var param3 = param1
+                            .Append(idP)
+                            .Append(idGP)
+                            .ToArray();
+
+                        var m3 = db.EseguiSQLNoQuery(tran, cDB.Queries.Movimenti_Aggiorna, param3);
+
+                        if (m3 < 0)
+                            throw new Exception("Record non aggiornabile!");
+
                         tran.Commit();
                         return 2;
                     }
                     else
                     {
-                        tran.Rollback();
-                        return 0;
+                        tran.Commit();
+                        return 1;
                     }
                 }
-                else
+                catch
                 {
-                    tran.Commit();
-                    return m1;
+                    tran.Rollback();
+                    throw;
                 }
-            }
         }
 
         protected void bSalva_Click(object sender, EventArgs e)
@@ -226,11 +281,7 @@ namespace RationesCurare
 
         protected void idGiroconto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var isNotGiroconto = idGiroconto.SelectedIndex == 0;
-
-            divDescrizione.Visible = isNotGiroconto;
-            divMacroarea.Visible = isNotGiroconto;
-
+            setRequired();
             idSoldi.Focus();
         }
     }

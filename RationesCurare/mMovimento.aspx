@@ -51,7 +51,7 @@
         <label class="required" for="idData">Data</label>
         <input id="idData" runat="server" type="datetime-local" required>
     </div>
-    <div id="divDescrizione" runat="server">
+    <div>
         <script>
             function selectMacroArea() {
                 let des = document.getElementById('<%=idDescrizione.ClientID%>').value;
@@ -69,8 +69,8 @@
             }
         </script>
 
-        <label class="required" for="idDescrizione">Descrizione</label>
-        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required>
+        <label id="lDescrizione" class="required" for="idDescrizione" runat="server">Descrizione</label>
+        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required >
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -82,9 +82,9 @@
             %>
         </datalist>
     </div>
-    <div id="divMacroarea" runat="server">
-        <label class="required" for="idMacroarea">Macroarea</label>
-        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required>
+    <div>
+        <label id="lMacroarea" class="required" for="idMacroarea" runat="server">Macroarea</label>
+        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required >
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())

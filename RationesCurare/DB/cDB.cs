@@ -180,6 +180,19 @@ namespace RationesCurare7.DB
                 return cm.ExecuteReader();
         }
 
+        public long LastInsertRowId(SQLiteTransaction trans)
+        {
+            const string sql = "SELECT last_insert_rowid()";
+
+            using (var cm = CreaCommandNoConnection(trans, sql, null))
+            using (var dr = cm.ExecuteReader())
+                if (dr.HasRows)
+                    while (dr.Read())
+                        return dr.GetInt64(0);
+
+            return -1;
+        }
+
         private string ReadAllFile(string path)
         {
             using (var sr = new System.IO.StreamReader(path))

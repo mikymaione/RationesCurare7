@@ -30,7 +30,8 @@ namespace RationesCurare.DB.DataWrapper
                                 cDB.NewPar("descrizione", pi.descrizione, System.Data.DbType.String),
                                 cDB.NewPar("soldi", pi.soldi, System.Data.DbType.Double),
                                 cDB.NewPar("data", pi.GiornoDelMese, System.Data.DbType.DateTime),
-                                cDB.NewPar("MacroArea", pi.MacroArea, System.Data.DbType.String)
+                                cDB.NewPar("MacroArea", pi.MacroArea, System.Data.DbType.String),
+                                cDB.NewPar("IDGiroconto", -1),
                             };
 
                             var m = db.EseguiSQLNoQuery(trans, cDB.Queries.Movimenti_Inserisci, param);

@@ -4,12 +4,14 @@ insert into Movimenti (
 	descrizione,
 	soldi,
 	data,
-	MacroArea
+	MacroArea,
+	IDGiroconto
 ) values (
 	@nome, 
 	@tipo, 
 	@descrizione,
 	@soldi,
 	@data,
-	@MacroArea
+	@MacroArea,
+	@IDGiroconto
 )
