@@ -21,7 +21,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2024-04-14" scheme="YYYY-MM-DD">
+    <meta name="date" content="2024-04-18" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
 
