@@ -1,7 +1,7 @@
 {
 	"id": "RationesCurare",
 	"name": "Rationes Curare",
-	"short_name": "Rationes Curare",
+	"short_name": "RC",
 	"description": "An open-source software for the management of the personal economy",
 	"display": "standalone",
 	"theme_color": "#F79E10",
@@ -68,6 +68,10 @@
 		}
 	],
 	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "48x48"
+		},
 		{
 			"src": "/favicon/android-chrome-192x192.png",
 			"sizes": "192x192",
