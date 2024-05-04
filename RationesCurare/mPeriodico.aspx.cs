@@ -157,14 +157,14 @@ namespace RationesCurare
         {
             var m = new CMovimenti();
 
-            return m.GetMacroAree(Session);
+            return m.GetMacroAree(Session, '"', '”');
         }
 
         protected List<string> getDescrizioni()
         {
             var m = new CMovimenti();
 
-            return m.GetDescrizioni(Session);
+            return m.GetDescrizioni(Session, '"', '”');
         }
 
         protected void bElimina_Click(object sender, EventArgs e)

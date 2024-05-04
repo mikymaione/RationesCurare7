@@ -47,7 +47,7 @@
         </script>
 
         <label class="required" for="idDescrizione">Descrizione</label>
-        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required>
+        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off">
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -61,7 +61,7 @@
     </div>
     <div>
         <label class="required" for="idMacroarea">Macroarea</label>
-        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required>
+        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off">
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())

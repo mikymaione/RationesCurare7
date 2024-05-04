@@ -8,7 +8,10 @@ namespace RationesCurare.DB.DataWrapper
     public class CMovimenti
     {
 
-        public List<string> GetMacroAree(HttpSessionState session)
+        private string RemoveChar(string s, char oldChar, char newChar) =>
+            s.Replace(oldChar, newChar);
+
+        public List<string> GetMacroAree(HttpSessionState session, char oldChar, char newChar)
         {
             var macroaree = new List<string>();
 
@@ -16,12 +19,12 @@ namespace RationesCurare.DB.DataWrapper
             using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSourceMA))
                 if (dr.HasRows)
                     while (dr.Read())
-                        macroaree.Add(dr["MacroArea"] as string);
+                        macroaree.Add(RemoveChar(dr["MacroArea"] as string, oldChar, newChar));
 
             return macroaree;
         }
 
-        public List<string> GetDescrizioni(HttpSessionState session)
+        public List<string> GetDescrizioni(HttpSessionState session, char oldChar, char newChar)
         {
             var descrizioni = new List<string>();
 
@@ -29,7 +32,7 @@ namespace RationesCurare.DB.DataWrapper
             using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSource))
                 if (dr.HasRows)
                     while (dr.Read())
-                        descrizioni.Add(dr["descrizione"] as string);
+                        descrizioni.Add(RemoveChar(dr["descrizione"] as string, oldChar, newChar));
 
             return descrizioni;
         }
