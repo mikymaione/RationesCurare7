@@ -1,4 +1,29 @@
-﻿body {
+html { 
+    scrollbar-color: #F79E10 Canvas;
+}
+
+:focus-visible { 
+    outline-color: #F79E10; 
+}
+
+::selection { 
+    background-color: #F79E10; 
+}
+
+::marker { 
+    color: #F79E10; 
+}
+
+:is(
+    ::-webkit-calendar-picker-indicator,
+    ::-webkit-clear-button,
+    ::-webkit-inner-spin-button, 
+    ::-webkit-outer-spin-button
+) {
+    color: #F79E10;
+}
+
+body {
     max-width: 745px;
     margin: auto;
     padding-top: 0px;
@@ -9,24 +34,25 @@
     overflow-y: scroll;
     font-family: 'Ubuntu Mono';
     font-size: large;
-}
-
-div.awesomplete mark {
-    background: #F79E10;
-}
-
-div.awesomplete li:hover mark {
-    background: #F79E10;
-}
-
-div.awesomplete li[aria-selected="true"] mark {
-    background: #F79E10;
+    accent-color: #F79E10;
 }
 
 div.awesomplete {
     display: inherit;
     margin-bottom: 0rem;
 }
+
+    div.awesomplete mark {
+        background: #F79E10;
+    }
+
+    div.awesomplete li:hover mark {
+        background: #F79E10;
+    }
+
+    div.awesomplete li[aria-selected="true"] mark {
+        background: #F79E10;
+    }
 
 @media (prefers-color-scheme: dark) {
     div.awesomplete ul,
@@ -157,22 +183,16 @@ div.awesomplete {
 }
 
 button {
-    font-size: large;
-    font-family: 'Ubuntu Mono';
     cursor: pointer;
 }
 
 select {
     box-sizing: border-box;
-    width: 100%;
-    font-size: large;
-    font-family: 'Ubuntu Mono';
+    width: 100%;    
 }
 
 input {
     box-sizing: border-box;
-    font-size: large;
-    font-family: 'Ubuntu Mono';
 }
 
     input:not([type='submit']) {
@@ -190,7 +210,7 @@ input {
     }
 
     input:user-invalid {
-        border-color: #F79E10;
+        background-color: #F79E10;
     }
 
 .descrizione {
