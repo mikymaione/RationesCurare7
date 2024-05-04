@@ -9,7 +9,7 @@
     <meta name="date" content="2024-05-06" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="An open-source software for the management of the personal economy">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="msapplication-TileColor" content="#f79e10">
