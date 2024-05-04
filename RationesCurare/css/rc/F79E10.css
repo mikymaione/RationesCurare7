@@ -11,6 +11,35 @@
     font-size: large;
 }
 
+div.awesomplete mark {
+    background: #F79E10;
+}
+
+div.awesomplete li:hover mark {
+    background: #F79E10;
+}
+
+div.awesomplete li[aria-selected="true"] mark {
+    background: #F79E10;
+}
+
+div.awesomplete {
+    display: inherit;
+    margin-bottom: 0rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    div.awesomplete ul,
+    div.awesomplete ul li {
+        background-color: #474747 !important;
+        color: #FFF !important;
+    }
+
+    div.awesomplete > ul:before {
+        background-color: #474747;
+    }
+}
+
 .menu {
     display: flex;
 }
@@ -70,17 +99,17 @@
     }
 
     button {
-        background: #333;
+        background: #474747;
         color: #FFF;
     }
 
     input {
-        background: #333;
+        background: #474747;
         color: #FFF;
     }
 
     select {
-        background: #333;
+        background: #474747;
         color: #FFF;
     }
 

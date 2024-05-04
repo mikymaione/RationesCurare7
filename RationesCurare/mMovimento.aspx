@@ -1,13 +1,18 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mMovimento.aspx.cs" Inherits="RationesCurare.mMovimento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="css/rc/awesomplete.css" />
+    <script src="css/rc/awesomplete.min.js"></script>
+
     <style>
         div {
             margin-bottom: 1rem;
-        }       
+        }
     </style>
 
     <script>
+    	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
         function resoconto() {
             let idSoldi = document.getElementById('<%=idSoldi.ClientID%>');
             let movi_soldi = idSoldi.value.length == 0 ? 0 : parseFloat(idSoldi.value);
@@ -70,7 +75,8 @@
         </script>
 
         <label id="lDescrizione" class="required" for="idDescrizione" runat="server">Descrizione</label>
-        <input id="idDescrizione" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" >
+        <br>
+        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" >
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -81,10 +87,20 @@
                 }
             %>
         </datalist>
+        
+        <script>
+            if (isMobile) {
+                let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
+                let dlDescrizioni = document.getElementById("dlDescrizioni");
+
+                new Awesomplete(idDescrizione, {list: dlDescrizioni});
+            }
+        </script>
     </div>
     <div>
         <label id="lMacroarea" class="required" for="idMacroarea" runat="server">Macroarea</label>
-        <input id="idMacroarea" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off">
+        <br>
+        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off">
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())
@@ -95,6 +111,19 @@
                 }
             %>
         </datalist>
+        
+        <script>
+            if (isMobile) {
+                try {
+                    let idMacroarea = document.getElementById("<%=idMacroarea.ClientID%>");
+                    let dlMacroaree = document.getElementById("dlMacroaree");
+
+                    new Awesomplete(idMacroarea, {list: dlMacroaree});
+                } catch(err) {
+                    alert(err);
+                }
+            }
+        </script>
     </div>    
     <div>
         <label class="required" for="idNome">Autore</label>

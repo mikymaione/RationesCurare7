@@ -15,13 +15,13 @@
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#f79e10">
 
-    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240312">
+    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240504">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <meta charset="UTF-8">
 
-    <meta name="date" content="2024-04-18" scheme="YYYY-MM-DD">
+    <meta name="date" content="2024-05-04" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="RationesCurare">
 

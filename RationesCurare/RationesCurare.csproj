@@ -77,6 +77,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\rc\awesomplete.css" />
+    <Content Include="css\rc\awesomplete.min.js" />
     <Content Include="css\rc\F79E10.css" />
     <Content Include="DB\DBW\Casse_Aggiorna.sql" />
     <Content Include="DB\DBW\Casse_Carica.sql" />
@@ -239,6 +241,8 @@
   <ItemGroup>
     <Content Include="css\rc\UbuntuMono-Regular.ttf" />
     <Content Include="favicon\site.json" />
+    <Content Include="css\rc\awesomplete.css.map" />
+    <Content Include="css\rc\awesomplete.min.js.map" />
     <None Include="packages.config" />
     <Content Include="RC.Master" />
     <None Include="Web.Debug.config">
