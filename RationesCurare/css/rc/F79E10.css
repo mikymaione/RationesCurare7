@@ -102,8 +102,6 @@ div.awesomplete {
     }
 
     .not-active {
-        pointer-events: none;
-        cursor: default;
         text-decoration: none;
         color: #464453 !important;
     }
@@ -152,8 +150,6 @@ div.awesomplete {
     }
 
     .not-active {
-        pointer-events: none;
-        cursor: default;
         text-decoration: none;
         color: #FFF !important;
     }
