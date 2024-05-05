@@ -54,6 +54,7 @@
     </div>
     <div>
         <label class="required" for="idData">Data</label>
+        <br>
         <input id="idData" runat="server" type="datetime-local" required>
     </div>
     <div>

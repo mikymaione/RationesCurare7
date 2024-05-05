@@ -82,6 +82,7 @@
 
         <tr>
             <td colspan="2">
+                <br>
                 <asp:Button ID="bCerca" runat="server" Text="Filtra" />
                 <asp:Button ID="bResetta" runat="server" Text="Pulisci" OnClick="bResetta_Click" />
             </td>

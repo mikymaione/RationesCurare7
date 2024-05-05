@@ -89,6 +89,26 @@ div.awesomplete {
 }
 
 @media (prefers-color-scheme: light) {
+    body {
+        background: white;
+        color: black;
+    }
+
+    button {
+        background: #f0f0f0;
+        color: black;
+    }
+
+    input {
+        background: #f0f0f0;
+        color: black;
+    }
+
+    select {
+        background: #f0f0f0;
+        color: black;
+    }
+
     .disab figcaption, h2, h3, ruby {
         color: #464453;
     }
@@ -180,6 +200,10 @@ div.awesomplete {
 
 button {
     cursor: pointer;
+    box-sizing: border-box;
+    border: 1px outset #F79E10;
+    border-radius: 0;
+    font-size: large;
 }
 
 select {
@@ -199,10 +223,28 @@ input {
     input[type='submit'] {
         box-sizing: border-box;
         cursor: pointer;
+        border: 1px outset #F79E10;
+        border-radius: 0;
+        font-size: large;
     }
 
-    input[type='checkbox'] {
-        width: auto;
+    input[type='checkbox'] {        
+        width: 1rem;
+        height: 1rem;
+    }
+
+    input[type="date"]
+    {        
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        min-height: 1.5rem;
+    }
+
+    input[type="datetime-local"]
+    {        
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        min-height: 1.5rem;
     }
 
     input:user-invalid {
@@ -244,20 +286,20 @@ input {
     position: fixed;
     bottom: 20px;
     z-index: 99;
-    font-size: xx-large;
-    border: none;
+    font-size: xx-large !important;
+    border: none !important;
     outline: none;
     background-color: #464453;
     color: white;
     cursor: pointer;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 5px !important;
     /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased !important;
     /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility !important;
     /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale !important;
     /* Support for IE. */
     font-feature-settings: 'liga';
 }

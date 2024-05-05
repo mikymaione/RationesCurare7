@@ -144,15 +144,16 @@
     </div>
     <div>
         <label class="required" for="idData">Partendo dal giorno</label>
+        <br>
         <input id="idData" runat="server" type="date" required>
     </div>
     <div id="divNumeroGiorni">
         <label class="required" for="idNumeroGiorni">Ogni quanti giorni</label>
-        <input id="idNumeroGiorni" runat="server" type="number" step="1" min="1" max="3650" maxlength="4" autofocus required onchange="resoconto();">
-    </div>    
+        <input id="idNumeroGiorni" runat="server" type="number" step="1" min="1" max="3650" inputmode="numeric" required onchange="resoconto();">
+    </div>
     <div>        
-        <input id="bScadenza" runat="server" type="checkbox" onchange="showNumeroGiorni();">
-        <label class="required" for="idScadenza">Scadenza</label>        
+        <input id="bScadenza" runat="server" type="checkbox" onchange="showNumeroGiorni();"><label class="required" for="<%=bScadenza.ClientID%>">Scadenza</label>
+        <br>
         <input id="idScadenza" runat="server" type="date" required>
     </div>
     <div>
