@@ -1,6 +1,6 @@
 ﻿using RationesCurare7.DB;
 using System;
-using System.Drawing;
+using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -56,8 +56,8 @@ namespace RationesCurare
 
         private System.Data.Common.DbParameter[] ParametriRicerca() =>
             new System.Data.Common.DbParameter[] {
-                cDB.NewPar("tipo1", Tipo),
-                cDB.NewPar("tipo2", Tipo),
+                cDB.NewPar("tipo1", idCassa.SelectedValue),
+                cDB.NewPar("tipo2", idCassa.SelectedValue),
                 cDB.NewPar("descrizione", "%" + eDescrizione.Text + "%"),
                 cDB.NewPar("MacroArea", "%" + eMacroarea.Text +"%"),
                 cDB.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
@@ -71,14 +71,26 @@ namespace RationesCurare
         protected void Page_Load(object sender, EventArgs e)
         {
             var TipoDesc = string.IsNullOrEmpty(Tipo) ? "Saldo" : Tipo;
-            Title = $"RationesCurare - {TipoDesc}";
-            SottoTitolo = TipoDesc;
+            var TipoDescTitle = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(TipoDesc);
+
+            Title = $"RationesCurare - {TipoDescTitle}";
+            SottoTitolo = TipoDescTitle;
 
             Form.DefaultButton = bCerca.UniqueID;
 
             if (GB.Instance.getCurrentSession(Session) != null)
                 using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
+                    if (!Page.IsPostBack)
+                    {
+                        var casse = d.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
+                        idCassa.DataSource = casse;
+                        idCassa.DataBind();
+
+                        if (Tipo.Length > 0)
+                            idCassa.SelectedValue = GB.ComboBoxItemsByValue(idCassa, Tipo);
+                    }
+
                     var p = ParametriRicerca();
 
                     GridView1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_Ricerca, p, GB.ObjectToInt(eMax.Text, 50));

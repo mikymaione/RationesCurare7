@@ -64,6 +64,17 @@
         </tr>
 
         <tr>
+            <td colspan="2">Filtra per account</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true">
+                    <asp:ListItem Value="" Text="--nessuno--" Selected="true" />
+                </asp:DropDownList>
+            </td>
+        </tr>
+
+        <tr>
             <td colspan="2">Massimo numero righe</td>
         </tr>
         <tr>
