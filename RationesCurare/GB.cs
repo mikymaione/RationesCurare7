@@ -340,5 +340,17 @@ namespace RationesCurare
             return UbuntuMono;
         }
 
+        public static string GetColor(object o)
+        {
+            var d = ObjectToDouble(o, 0);
+
+            if (d > -0.001 && d < 0.001)
+                return "moneyNeutro";
+            else if (d < 0)
+                return "moneyBad";
+            else
+                return "moneyGood";
+        }
+
     }
 }

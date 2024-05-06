@@ -19,8 +19,9 @@
 
             <asp:TemplateField HeaderText="Saldo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
-                    <asp:Label ID="lblsoldi" runat="server" Text='<%# Eval("Saldo", "{0:c}") %>' />
+                    <asp:Label ID="lblsoldi" runat="server" CssClass='<%# RationesCurare.GB.GetColor(Eval("Saldo")) %>' Text='<%# Eval("Saldo", "{0:c}") %>' />
                 </ItemTemplate>
+
                 <FooterTemplate>
                     <asp:Label ID="lblTotal" runat="server" />
                 </FooterTemplate>

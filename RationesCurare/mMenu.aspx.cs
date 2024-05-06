@@ -1,5 +1,6 @@
 ﻿using RationesCurare7.DB;
 using System;
+using System.Drawing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -8,7 +9,7 @@ namespace RationesCurare
     public partial class mMenu : Page
     {
         protected void bNuovo_Click(object sender, EventArgs e)
-        {            
+        {
             Response.Redirect($"mMovimento.aspx?ID=-1");
         }
 

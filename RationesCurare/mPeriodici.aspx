@@ -54,7 +54,7 @@
 
             <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
-                    <asp:Label ID="lblsoldi" runat="server" Text='<%# Eval("Soldi", "{0:c}") %>' />
+                    <asp:Label ID="lblsoldi" runat="server" CssClass='<%# RationesCurare.GB.GetColor(Eval("Soldi")) %>' Text='<%# Eval("Soldi", "{0:c}") %>' />
                 </ItemTemplate>                
             </asp:TemplateField>
         </Columns>

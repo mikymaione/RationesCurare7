@@ -307,3 +307,31 @@ input {
     .myBtn:hover {
         background-color: #F79E10;
     }
+
+@media (prefers-color-scheme: light) {
+    .moneyNeutro {
+        color: #000000;
+    }
+
+    .moneyGood {
+        color: #005000;
+    }
+
+    .moneyBad {
+        color: #640000;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .moneyNeutro {
+        color: #FFFFFF;
+    }
+
+    .moneyGood {
+        color: #DCFFDC;
+    }
+
+    .moneyBad {
+        color: #FFB4B4;
+    }
+}
