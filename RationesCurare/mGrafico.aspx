@@ -11,7 +11,7 @@
     </nav>
 
     <asp:Chart ID="Chart1" runat="server" 
-        ImageStorageMode="UseImageLocation" ImageLocation="~/public/ChartImages/chartStatComp_#SEQ(100,10)" 
+        ImageStorageMode="UseHttpHandler"
         OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" BackColor="Transparent"
         AntiAliasing="Graphics" TextAntiAliasingQuality="High"
         Width="745px" Height="500px" CssClass="img-max-size">
