@@ -91,10 +91,14 @@
         
         <script>
             if (isMobile) {
-                let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
-                let dlDescrizioni = document.getElementById("dlDescrizioni");
+                try {
+                    let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
+                    let dlDescrizioni = document.getElementById("dlDescrizioni");
 
-                new Awesomplete(idDescrizione, {list: dlDescrizioni});
+                    new Awesomplete(idDescrizione, { list: dlDescrizioni });
+                } catch (err) {
+                    print(err);
+                }
             }
         </script>
     </div>
@@ -121,7 +125,7 @@
 
                     new Awesomplete(idMacroarea, {list: dlMacroaree});
                 } catch(err) {
-                    alert(err);
+                    print(err);
                 }
             }
         </script>

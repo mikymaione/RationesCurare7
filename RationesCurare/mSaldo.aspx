@@ -1,7 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mSaldo.aspx.cs" Inherits="RationesCurare.mSaldo" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link rel="stylesheet" href="css/rc/awesomplete.css" />
+    <script src="css/rc/awesomplete.min.js"></script>
+
     <h2><%=SottoTitolo%></h2>
+
+    <script>
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    </script>
 
     <table width="100%">
         <thead>
@@ -50,7 +57,30 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:TextBox ID="eMacroarea" runat="server" MaxLength="250" Width="100%" />
+                <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" autocomplete="off">
+                <datalist id="dlMacroaree">
+                    <%
+                        foreach (var ma in getMacroAree())
+                        {
+                    %>
+                            <option value="<%=ma%>">
+                    <% 
+                        }
+                    %>
+                </datalist>
+
+                <script>
+                    if (isMobile) {
+                        try {
+                            let idMacroarea = document.getElementById("<%=idMacroarea.ClientID%>");
+                            let dlMacroaree = document.getElementById("dlMacroaree");
+
+                            new Awesomplete(idMacroarea, {list: dlMacroaree});
+                        } catch(err) {
+                            print(err);
+                        }
+                    }
+                </script>
             </td>
         </tr>
 
@@ -58,8 +88,31 @@
             <td colspan="2">Filtra per descrizione</td>
         </tr>
         <tr>
-            <td colspan="2">
-                <asp:TextBox ID="eDescrizione" runat="server" MaxLength="500" Width="100%" />
+            <td colspan="2">                
+                <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" autocomplete="off" >
+                <datalist id="dlDescrizioni">
+                    <%
+                        foreach (var de in getDescrizioni())
+                        {
+                    %>
+                            <option value="<%=de%>">
+                    <% 
+                        }
+                    %>
+                </datalist>
+
+                <script>
+                    if (isMobile) {
+                        try {
+                            let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
+                            let dlDescrizioni = document.getElementById("dlDescrizioni");
+
+                            new Awesomplete(idDescrizione, { list: dlDescrizioni });
+                        } catch (err) {
+                            print(err);
+                        }
+                    }
+                </script>
             </td>
         </tr>
 

@@ -38,7 +38,7 @@ body {
 }
 
 div.awesomplete {
-    display: inherit;
+    display: inline;
     margin-bottom: 0rem;
 }
 

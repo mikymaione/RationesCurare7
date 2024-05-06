@@ -69,22 +69,22 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl eSoldiA;
 
         /// <summary>
-        /// eMacroarea control.
+        /// idMacroarea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eMacroarea;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idMacroarea;
 
         /// <summary>
-        /// eDescrizione control.
+        /// idDescrizione control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eDescrizione;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idDescrizione;
 
         /// <summary>
         /// idCassa control.

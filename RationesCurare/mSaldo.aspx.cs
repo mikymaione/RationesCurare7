@@ -1,5 +1,7 @@
-﻿using RationesCurare7.DB;
+﻿using RationesCurare.DB.DataWrapper;
+using RationesCurare7.DB;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -58,8 +60,8 @@ namespace RationesCurare
             new System.Data.Common.DbParameter[] {
                 cDB.NewPar("tipo1", idCassa.SelectedValue),
                 cDB.NewPar("tipo2", idCassa.SelectedValue),
-                cDB.NewPar("descrizione", "%" + eDescrizione.Text + "%"),
-                cDB.NewPar("MacroArea", "%" + eMacroarea.Text +"%"),
+                cDB.NewPar("descrizione", "%" + idDescrizione.Value + "%"),
+                cDB.NewPar("MacroArea", "%" + idMacroarea.Value +"%"),
                 cDB.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
                 cDB.NewPar("bData", bData.Checked ? 1 : 0),
                 cDB.NewPar("SoldiDa", GB.HTMLDoubleToDouble(eSoldiDa.Value)),
@@ -100,8 +102,8 @@ namespace RationesCurare
 
         protected void bResetta_Click(object sender, EventArgs e)
         {
-            eDescrizione.Text = "";
-            eMacroarea.Text = "";
+            idDescrizione.Value = "";
+            idMacroarea.Value = "";
 
             eSoldiDa.Value = "";
             eSoldiA.Value = "";
@@ -111,6 +113,20 @@ namespace RationesCurare
 
             bSoldi.Checked = false;
             bData.Checked = false;
+        }
+
+        protected List<string> getMacroAree()
+        {
+            var m = new CMovimenti();
+
+            return m.GetMacroAree(Session, '"', '”');
+        }
+
+        protected List<string> getDescrizioni()
+        {
+            var m = new CMovimenti();
+
+            return m.GetDescrizioni(Session, '"', '”');
         }
 
     }
