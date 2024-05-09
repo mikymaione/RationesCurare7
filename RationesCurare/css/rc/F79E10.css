@@ -41,7 +41,10 @@ div.awesomplete {
     display: inline;
     margin-bottom: 0rem;
 }
-
+    div.awesomplete ul {
+        width: calc(100vw - 30px);
+    }
+    
     div.awesomplete mark {
         background: #F79E10;
     }
