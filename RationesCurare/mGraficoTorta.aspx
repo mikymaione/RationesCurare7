@@ -6,6 +6,10 @@
     <h2>Grafico a torta</h2>
 
     <style>
+        body {
+            margin-top: -16px;
+        }
+
         div {
             margin-bottom: 1rem;       
         }       
