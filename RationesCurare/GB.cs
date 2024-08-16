@@ -218,6 +218,12 @@ namespace RationesCurare
         public static DateTime DateStartOfMonth(DateTime d) =>
             new DateTime(d.Year, d.Month, 1);
 
+        public static DateTime DateStartOfTheDay(DateTime d) =>
+            new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
+
+        public static DateTime DateEndOfTheDay(DateTime d) =>
+            new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
+
         public static DateTime DateToOnlyDate(DateTime d) =>
             new DateTime(d.Year, d.Month, d.Day);
 

@@ -66,8 +66,8 @@ namespace RationesCurare
                 cDB.NewPar("bData", bData.Checked ? 1 : 0),
                 cDB.NewPar("SoldiDa", GB.HTMLDoubleToDouble(eSoldiDa.Value)),
                 cDB.NewPar("SoldiA", GB.HTMLDoubleToDouble(eSoldiA.Value)),
-                cDB.NewPar("DataDa", GB.DateStartOfMonth(GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1)))),
-                cDB.NewPar("DataA", GB.DateEndOfMonth(GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20))))
+                cDB.NewPar("DataDa", GB.DateStartOfTheDay(GB.StringToDate(eDataDa.Text, new DateTime(1986, 1, 1)))),
+                cDB.NewPar("DataA", GB.DateEndOfTheDay(GB.StringToDate(eDataA.Text, DateTime.Now.AddYears(20))))
             };
 
         protected void Page_Load(object sender, EventArgs e)
