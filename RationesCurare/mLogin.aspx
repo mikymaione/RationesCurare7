@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <title>Rationes Curare</title>
+    <title>RationesCurare</title>
 
     <style>
         div {
@@ -41,6 +41,7 @@
 </head>
 <body>
     <h1>RationesCurare</h1>
+    <p>an open-source software for the management of the personal economy.</p>
     <hr />
     <h2>Login</h2>
 
@@ -80,6 +81,6 @@
     </form>
 
     <hr />
-    <ruby>© 2006-2024, [MAIONE MIKY]</ruby>
+    <ruby>RationesCurare © 2006-2024, [MAIONE MIKY]</ruby>
 </body>
 </html>

@@ -33,7 +33,7 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 
-    <title>Rationes Curare</title>
+    <title>RationesCurare</title>
 
     <style>
         a {
@@ -44,8 +44,6 @@
     </style>
 </head>
 <body>
-    <h1>RationesCurare</h1>
-
     <form id="form1" runat="server">
         <nav class="menu">
             <a runat="server" id="nav_mMenu" title="Saldo" href="mMenu.aspx">point_of_sale</a>
@@ -62,6 +60,6 @@
     </form>
 
     <hr>
-    <ruby>© 2006-2024, [MAIONE MIKY]</ruby>
+    <ruby>RationesCurare © 2006-2024, [MAIONE MIKY]</ruby>
 </body>
 </html>
