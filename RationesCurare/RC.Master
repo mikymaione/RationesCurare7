@@ -27,7 +27,7 @@
 
     <link rel="manifest" href="/favicon/site.json">  
 
-    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240509">
+    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240820">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
