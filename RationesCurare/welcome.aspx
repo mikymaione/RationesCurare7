@@ -6,7 +6,7 @@
 <head runat="server">
 
     <meta charset="UTF-8">
-    <meta name="date" content="2024-08-16" scheme="YYYY-MM-DD">
+    <meta name="date" content="2024-08-20" scheme="YYYY-MM-DD">
     <meta name="author" content="Maione Michele">
     <meta name="description" content="An open-source software for the management of the personal economy">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
