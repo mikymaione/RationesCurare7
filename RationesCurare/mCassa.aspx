@@ -2,6 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        body {
+            margin-top: -16px;
+        }
+
         div {
             margin-bottom: 1rem;
         }

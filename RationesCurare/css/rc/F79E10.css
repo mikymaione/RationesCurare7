@@ -1,23 +1,23 @@
-html { 
+html {
     scrollbar-color: #F79E10 Canvas;
 }
 
-:focus-visible { 
-    outline-color: #F79E10; 
+:focus-visible {
+    outline-color: #F79E10;
 }
 
-::selection { 
-    background-color: #F79E10; 
+::selection {
+    background-color: #F79E10;
 }
 
-::marker { 
-    color: #F79E10; 
+::marker {
+    color: #F79E10;
 }
 
 :is(
     ::-webkit-calendar-picker-indicator,
     ::-webkit-clear-button,
-    ::-webkit-inner-spin-button, 
+    ::-webkit-inner-spin-button,
     ::-webkit-outer-spin-button
 ) {
     color: #F79E10;
@@ -26,10 +26,7 @@ html {
 body {
     max-width: 745px;
     margin: auto;
-    padding-top: 0px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: 'Ubuntu Mono';
@@ -44,7 +41,7 @@ div.awesomplete {
     div.awesomplete ul {
         width: calc(100vw - 30px);
     }
-    
+
     div.awesomplete mark {
         background: #F79E10;
     }
@@ -210,11 +207,13 @@ button {
 }
 
 select {
+    font-family: 'Ubuntu Mono';
     box-sizing: border-box;
-    width: 100%;    
+    width: 100%;
 }
 
 input {
+    font-family: 'Ubuntu Mono';
     box-sizing: border-box;
 }
 
@@ -231,20 +230,20 @@ input {
         font-size: large;
     }
 
-    input[type='checkbox'] {        
+    input[type='checkbox'] {
         width: 1rem;
         height: 1rem;
     }
 
     input[type="date"]
-    {        
+    {
         -webkit-appearance: none;
         -moz-appearance: none;
         min-height: 1.5rem;
     }
 
     input[type="datetime-local"]
-    {        
+    {
         -webkit-appearance: none;
         -moz-appearance: none;
         min-height: 1.5rem;

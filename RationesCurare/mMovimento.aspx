@@ -5,6 +5,10 @@
     <script src="css/rc/awesomplete.min.js"></script>
 
     <style>
+        body {
+            margin-top: -16px;
+        }
+
         div {
             margin-bottom: 1rem;
         }
