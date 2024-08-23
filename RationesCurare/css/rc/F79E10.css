@@ -207,12 +207,14 @@ button {
 }
 
 select {
+    font-size: medium;
     font-family: 'Ubuntu Mono';
     box-sizing: border-box;
     width: 100%;
 }
 
 input {
+    font-size: medium;
     font-family: 'Ubuntu Mono';
     box-sizing: border-box;
 }
