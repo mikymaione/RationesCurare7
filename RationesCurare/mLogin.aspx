@@ -70,7 +70,7 @@
         <div>            
             <asp:Button ID="bEntra" runat="server" Text="Entra" OnClick="bEntra_Click" />
             <asp:Button ID="bRegistrati" runat="server" Text="Registrati" OnClick="bRegistrati_Click" />                                              
-            <a href="welcome.aspx"><button type="button">Installa la app</button></a> 
+            <a href="index.aspx"><button type="button">Installa la app</button></a> 
         </div>
 
         <div>

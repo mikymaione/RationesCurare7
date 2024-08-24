@@ -2,6 +2,10 @@ html {
     scrollbar-color: #F79E10 Canvas;
 }
 
+.mycolor {
+    background-color: #F79E10;
+}
+
 :focus-visible {
     outline-color: #F79E10;
 }
@@ -23,6 +27,10 @@ html {
     color: #F79E10;
 }
 
+.bottomspace {
+    margin-bottom: 1rem;
+}
+
 body {
     max-width: 745px;
     margin: auto;
@@ -32,6 +40,10 @@ body {
     font-family: 'Ubuntu Mono';
     font-size: large;
     accent-color: #F79E10;
+}
+
+button {
+    font-family: 'Ubuntu Mono';
 }
 
 div.awesomplete {

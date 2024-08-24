@@ -2,11 +2,13 @@
 
 namespace RationesCurare
 {
-    public partial class welcome : System.Web.UI.Page
+    public partial class index : System.Web.UI.Page
     {
+        
         protected void bEntra_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/mLogin.aspx");
+            Response.Redirect("mLogin.aspx");
         }
+
     }
 }

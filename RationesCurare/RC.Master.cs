@@ -16,11 +16,11 @@ namespace RationesCurare
 
             if (s == null)
             {
-                Response.Redirect("welcome.aspx");
+                Response.Redirect("index.aspx");
             }
             else if (!s.LoggedIN)
             {
-                Response.Redirect("welcome.aspx");
+                Response.Redirect("index.aspx");
             }
             else
             {
