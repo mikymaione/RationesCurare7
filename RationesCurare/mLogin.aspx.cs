@@ -1,5 +1,6 @@
 ﻿using RationesCurare7.DB;
 using System;
+using System.Globalization;
 
 namespace RationesCurare
 {
@@ -78,6 +79,7 @@ namespace RationesCurare
                 GB.Instance.getCurrentSession(Session).LoggedIN = true;
                 GB.Instance.getCurrentSession(Session).UserName = nome;
                 GB.Instance.getCurrentSession(Session).PathDB = f + ".rqd8";
+                GB.Instance.getCurrentSession(Session).Culture = LeggiValutaInDbInfo(nome);
 
                 if ("1".Equals(cbMemorizza.Value))
                 {
@@ -120,83 +122,36 @@ namespace RationesCurare
             DoLogin();
         }
 
-        protected void bRegistrati_Click(object sender, EventArgs e)
+        CultureInfo LeggiValutaInDbInfo(string email)
         {
-            if (divNickName.Visible)
-            {
-                var utente = eNickName.Value.TrimEnd();
-                var nome = eUtente.Value.TrimEnd();
-                var psw = ePsw.Value.TrimEnd();
+            var maybeValuta = "";
+            var maybeLanguage = "";
 
-                if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
-                {
-                    var p = MapPath("App_Data");
-                    var f = System.IO.Path.Combine(p, nome);
+            var p = new System.Data.SQLite.SQLiteParameter[] {
+                cDB.NewPar("Email", email)
+            };
 
-                    if (System.IO.File.Exists(f + ".rqd8") || System.IO.File.Exists(f + ".psw"))
+            using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+            using (var dr = db.EseguiSQLDataReader(cDB.Queries.DBInfo_Dettaglio, p))
+                if (dr.HasRows)
+                    while (dr.Read())
                     {
-                        lErrore.Text = "Utente già esistente!";
+                        maybeValuta = Convert.ToString(dr["Valuta"]);
+                        maybeLanguage = Convert.ToString(dr["Lingua"]);
                     }
-                    else
-                    {
-                        var standard = System.IO.Path.Combine(p, "standard.rqd8");
 
-                        try
-                        {
-                            System.IO.File.Copy(standard, f + ".rqd8");
+            var valuta = string.IsNullOrEmpty(maybeValuta) ? "EUR" : maybeValuta;
+            var language = string.IsNullOrEmpty(maybeLanguage) ? "it-IT" : maybeLanguage;
 
-                            using (var sw = new System.IO.StreamWriter(f + ".psw"))
-                                sw.WriteLine(psw);
+            var culturesByValuta = GB.GetCultureByValuta(valuta);
+            var culturesByLanguage = GB.GetCultureByLanguage(language);
 
-                            CreaUtenteInDbInfo(nome, utente, psw);
-                        }
-                        catch (Exception ex)
-                        {
-                            lErrore.Text = ex.Message;
-                        }
-                    }
-                }
-                else
-                {
-                    lErrore.Text = "Email o password non valide!";
-                }
-            }
+            if (culturesByLanguage.Count > 0)
+                return culturesByLanguage[0];
+            else if (culturesByValuta.Count > 0)
+                return culturesByValuta[0];
             else
-            {
-                divNickName.Visible = true;
-            }
-        }
-
-        void CreaUtenteInDbInfo(string email, string nome, string psw)
-        {
-            try
-            {
-                Login_(email, psw, false);
-
-                using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-                {
-                    var UltimaModifica = DateTime.Now.AddYears(-15);
-                    var UltimoAggiornamentoDB = DateTime.Now.AddYears(-15);
-
-                    var param = new System.Data.Common.DbParameter[] {
-                        cDB.NewPar("nome", nome, System.Data.DbType.String),
-                        cDB.NewPar("Psw", psw, System.Data.DbType.String),
-                        cDB.NewPar("Email", email, System.Data.DbType.String),
-                        cDB.NewPar("SincronizzaDB", true, System.Data.DbType.Boolean),
-                        cDB.NewPar("UltimaModifica", UltimaModifica, System.Data.DbType.DateTime),
-                        cDB.NewPar("UltimoAggiornamentoDB", UltimoAggiornamentoDB, System.Data.DbType.DateTime),
-                        cDB.NewPar("Valuta", "EUR", System.Data.DbType.String),
-                    };
-
-                    db.EseguiSQLNoQueryAutoCommit(cDB.Queries.DBInfo_Inserisci, param);
-
-                    Response.Redirect("mMenu.aspx");
-                }
-            }
-            catch (Exception ex)
-            {
-                lErrore.Text = $"Errore: {ex.Message}";
-            }
+                return CultureInfo.CurrentCulture;
         }
 
     }

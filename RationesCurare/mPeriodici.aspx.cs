@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
-    public partial class mPeriodici : System.Web.UI.Page
+    public partial class mPeriodici : CulturePage
     {
 
         protected void bNuovo_Click(object sender, EventArgs e)

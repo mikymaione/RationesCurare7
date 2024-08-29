@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 using System.Web.UI.WebControls;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace RationesCurare
 {
@@ -188,7 +190,7 @@ namespace RationesCurare
         public static string ObjectToHTMLDouble(object o, double default_)
         {
             var d = ObjectToDouble(o, default_);
-            var s = d.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            var s = d.ToString(CultureInfo.InvariantCulture);
 
             return s;
         }
@@ -253,7 +255,7 @@ namespace RationesCurare
 
             try
             {
-                i = DateTime.ParseExact(o, "yyyy-MM", System.Globalization.CultureInfo.InvariantCulture);
+                i = DateTime.ParseExact(o, "yyyy-MM", CultureInfo.InvariantCulture);
             }
             catch
             {
@@ -357,6 +359,42 @@ namespace RationesCurare
             else
                 return "moneyGood";
         }
+
+        private static readonly Dictionary<RegionInfo, CultureInfo> RegionInfos =
+            CultureInfo
+                .GetCultures(CultureTypes.SpecificCultures)
+                .ToDictionary(
+                    culture => new RegionInfo(culture.Name),
+                    culture => culture
+                );
+
+        public static readonly List<LanguageCodeDescription> LanguageCurrencies =
+            RegionInfos
+                .Select(pair => new LanguageCodeDescription
+                {
+                    code = pair.Value.Name,
+                    description = $"{pair.Value.EnglishName} - {pair.Key.CurrencyEnglishName}",
+                })
+                .OrderBy(e => e.description)
+                .ToList();
+
+        public static List<RegionInfo> GetRegionInfoByLingua(string language) =>
+            RegionInfos
+                .Where(pair => pair.Value.Name.Equals(language, StringComparison.InvariantCultureIgnoreCase))
+                .Select(pair => pair.Key)
+                .ToList();
+
+        public static List<CultureInfo> GetCultureByValuta(string valuta) =>
+            RegionInfos
+                .Where(pair => pair.Key.ISOCurrencySymbol.Equals(valuta, StringComparison.InvariantCultureIgnoreCase))
+                .Select(pair => pair.Value)
+                .ToList();
+
+        public static List<CultureInfo> GetCultureByLanguage(string language) =>
+            CultureInfo
+               .GetCultures(CultureTypes.SpecificCultures)
+               .Where(c => c.Name.Equals(language, StringComparison.InvariantCultureIgnoreCase))
+               .ToList();
 
     }
 }

@@ -7,7 +7,7 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace RationesCurare
 {
-    public partial class mGraficoTorta : System.Web.UI.Page
+    public partial class mGraficoTorta : CulturePage
     {
 
         private static readonly Color[] KELLY_COLORS = {
@@ -83,7 +83,7 @@ namespace RationesCurare
                     cDB.NewPar("da", inizio),
                     cDB.NewPar("a", fine)
                 };
-
+                
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoTortaSaldo, p))
                     if (dr.HasRows)
                         while (dr.Read())

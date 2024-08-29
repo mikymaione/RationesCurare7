@@ -1,15 +1,12 @@
 ﻿using RationesCurare7.DB;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace RationesCurare
 {
-    public partial class mGrafico : System.Web.UI.Page
+    public partial class mGrafico : CulturePage
     {
 
         private static readonly Color goodColor = ColorTranslator.FromHtml("#F79E10");

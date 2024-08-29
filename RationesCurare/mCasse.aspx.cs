@@ -5,7 +5,7 @@ using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
-    public partial class mCasse : Page
+    public partial class mCasse : CulturePage
     {
         protected void bNuovo_Click(object sender, EventArgs e)
         {

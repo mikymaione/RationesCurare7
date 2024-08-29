@@ -62,9 +62,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -86,6 +86,7 @@
     <Content Include="DB\DBW\Casse_Inserisci.sql" />
     <Content Include="DB\DBW\Casse_Lista.sql" />
     <Content Include="DB\DBW\Casse_Ricerca.sql" />
+    <Content Include="DB\DBW\DBInfo_Dettaglio.sql" />
     <Content Include="DB\DBW\DBInfo_Inserisci.sql" />
     <Content Include="DB\DBW\Movimenti_Aggiorna.sql" />
     <Content Include="DB\DBW\Movimenti_AutoCompleteSource.sql" />
@@ -113,18 +114,146 @@
     <Content Include="EmailSending.asmx" />
     <Content Include="favicon\android-chrome-192x192.png" />
     <Content Include="favicon\android-chrome-512x512.png" />
+    <Content Include="favicon\android\android-launchericon-144-144.png" />
+    <Content Include="favicon\android\android-launchericon-192-192.png" />
+    <Content Include="favicon\android\android-launchericon-48-48.png" />
+    <Content Include="favicon\android\android-launchericon-512-512.png" />
+    <Content Include="favicon\android\android-launchericon-72-72.png" />
+    <Content Include="favicon\android\android-launchericon-96-96.png" />
     <Content Include="favicon\apple-touch-icon.png" />
     <Content Include="favicon\browserconfig.xml" />
     <Content Include="favicon\favicon-16x16.png" />
     <Content Include="favicon\favicon-32x32.png" />
     <Content Include="favicon\favicon.ico" />
+    <Content Include="favicon\favicon.svg" />
+    <Content Include="favicon\ios\100.png" />
+    <Content Include="favicon\ios\1024.png" />
+    <Content Include="favicon\ios\114.png" />
+    <Content Include="favicon\ios\120.png" />
+    <Content Include="favicon\ios\128.png" />
+    <Content Include="favicon\ios\144.png" />
+    <Content Include="favicon\ios\152.png" />
+    <Content Include="favicon\ios\16.png" />
+    <Content Include="favicon\ios\167.png" />
+    <Content Include="favicon\ios\180.png" />
+    <Content Include="favicon\ios\192.png" />
+    <Content Include="favicon\ios\20.png" />
+    <Content Include="favicon\ios\256.png" />
+    <Content Include="favicon\ios\29.png" />
+    <Content Include="favicon\ios\32.png" />
+    <Content Include="favicon\ios\40.png" />
+    <Content Include="favicon\ios\50.png" />
+    <Content Include="favicon\ios\512.png" />
+    <Content Include="favicon\ios\57.png" />
+    <Content Include="favicon\ios\58.png" />
+    <Content Include="favicon\ios\60.png" />
+    <Content Include="favicon\ios\64.png" />
+    <Content Include="favicon\ios\72.png" />
+    <Content Include="favicon\ios\76.png" />
+    <Content Include="favicon\ios\80.png" />
+    <Content Include="favicon\ios\87.png" />
+    <Content Include="favicon\maskable_icon_x192.png" />
+    <Content Include="favicon\maskable_icon_x512.png" />
+    <Content Include="favicon\mask_store.png" />
+    <Content Include="favicon\mono_icon_x192.png" />
+    <Content Include="favicon\mono_icon_x512.png" />
     <Content Include="favicon\mstile-144x144.png" />
     <Content Include="favicon\mstile-150x150.png" />
     <Content Include="favicon\mstile-310x150.png" />
     <Content Include="favicon\mstile-310x310.png" />
     <Content Include="favicon\mstile-70x70.png" />
     <Content Include="favicon\safari-pinned-tab.svg" />
+    <Content Include="favicon\screenshotsM\content.png" />
+    <Content Include="favicon\screenshotsM\filters.png" />
+    <Content Include="favicon\screenshotsM\home.png" />
+    <Content Include="favicon\screenshotsM\transaction.png" />
+    <Content Include="favicon\screenshots\content.png" />
+    <Content Include="favicon\screenshots\filters.png" />
+    <Content Include="favicon\screenshots\home.png" />
+    <Content Include="favicon\screenshots\transaction.png" />
+    <Content Include="favicon\windows11\LargeTile.scale-100.png" />
+    <Content Include="favicon\windows11\LargeTile.scale-125.png" />
+    <Content Include="favicon\windows11\LargeTile.scale-150.png" />
+    <Content Include="favicon\windows11\LargeTile.scale-200.png" />
+    <Content Include="favicon\windows11\LargeTile.scale-400.png" />
+    <Content Include="favicon\windows11\SmallTile.scale-100.png" />
+    <Content Include="favicon\windows11\SmallTile.scale-125.png" />
+    <Content Include="favicon\windows11\SmallTile.scale-150.png" />
+    <Content Include="favicon\windows11\SmallTile.scale-200.png" />
+    <Content Include="favicon\windows11\SmallTile.scale-400.png" />
+    <Content Include="favicon\windows11\SplashScreen.scale-100.png" />
+    <Content Include="favicon\windows11\SplashScreen.scale-125.png" />
+    <Content Include="favicon\windows11\SplashScreen.scale-150.png" />
+    <Content Include="favicon\windows11\SplashScreen.scale-200.png" />
+    <Content Include="favicon\windows11\SplashScreen.scale-400.png" />
+    <Content Include="favicon\windows11\Square150x150Logo.scale-100.png" />
+    <Content Include="favicon\windows11\Square150x150Logo.scale-125.png" />
+    <Content Include="favicon\windows11\Square150x150Logo.scale-150.png" />
+    <Content Include="favicon\windows11\Square150x150Logo.scale-200.png" />
+    <Content Include="favicon\windows11\Square150x150Logo.scale-400.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-20.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-30.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-36.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-40.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-44.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-60.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-64.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-72.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-80.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-lightunplated_targetsize-96.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-20.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-30.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-36.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-40.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-44.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-60.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-64.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-72.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-80.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.altform-unplated_targetsize-96.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.scale-100.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.scale-125.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.scale-150.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.scale-200.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.scale-400.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-16.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-20.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-24.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-256.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-30.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-32.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-36.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-40.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-44.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-48.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-60.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-64.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-72.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-80.png" />
+    <Content Include="favicon\windows11\Square44x44Logo.targetsize-96.png" />
+    <Content Include="favicon\windows11\StoreLogo.scale-100.png" />
+    <Content Include="favicon\windows11\StoreLogo.scale-125.png" />
+    <Content Include="favicon\windows11\StoreLogo.scale-150.png" />
+    <Content Include="favicon\windows11\StoreLogo.scale-200.png" />
+    <Content Include="favicon\windows11\StoreLogo.scale-400.png" />
+    <Content Include="favicon\windows11\Wide310x150Logo.scale-100.png" />
+    <Content Include="favicon\windows11\Wide310x150Logo.scale-125.png" />
+    <Content Include="favicon\windows11\Wide310x150Logo.scale-150.png" />
+    <Content Include="favicon\windows11\Wide310x150Logo.scale-200.png" />
+    <Content Include="favicon\windows11\Wide310x150Logo.scale-400.png" />
     <Content Include="Global.asax" />
+    <Content Include="iisstart.htm" />
+    <Content Include="index.aspx" />
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
     <Content Include="mGrafico.aspx" />
@@ -134,12 +263,15 @@
     <Content Include="mMovimento.aspx" />
     <Content Include="mPeriodici.aspx" />
     <Content Include="mPeriodico.aspx" />
+    <Content Include="mRegister.aspx" />
     <Content Include="mSaldo.aspx" />
     <Content Include="Web.config" />
-    <Content Include="welcome.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cSession.cs" />
+    <Compile Include="CulturePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="DB\cDB.cs" />
     <Compile Include="DB\DataWrapper\cMovimenti.cs" />
     <Compile Include="DB\DataWrapper\cPeriodici.cs" />
@@ -152,6 +284,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageCodeDescription.cs" />
     <Compile Include="mCassa.aspx.cs">
       <DependentUpon>mCassa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,6 +355,13 @@
     <Compile Include="mPeriodico.aspx.designer.cs">
       <DependentUpon>mPeriodico.aspx</DependentUpon>
     </Compile>
+    <Compile Include="mRegister.aspx.cs">
+      <DependentUpon>mRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mRegister.aspx.designer.cs">
+      <DependentUpon>mRegister.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mSaldo.aspx.cs">
       <DependentUpon>mSaldo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,13 +376,6 @@
     </Compile>
     <Compile Include="RC.Master.designer.cs">
       <DependentUpon>RC.Master</DependentUpon>
-    </Compile>
-    <Compile Include="welcome.aspx.cs">
-      <DependentUpon>welcome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="welcome.aspx.designer.cs">
-      <DependentUpon>welcome.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

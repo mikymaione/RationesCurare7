@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace RationesCurare
 {
-    public partial class mMovimento : System.Web.UI.Page
+    public partial class mMovimento : CulturePage
     {
 
         protected long IDMovimento = -1;

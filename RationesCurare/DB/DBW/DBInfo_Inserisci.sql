@@ -5,7 +5,8 @@ insert into DBInfo (
 	SincronizzaDB,
 	UltimaModifica,
 	UltimoAggiornamentoDB,
-	Valuta
+	Valuta,
+	Lingua
 ) values (
 	@Nome,
 	@Psw,	
@@ -13,5 +14,6 @@ insert into DBInfo (
 	@SincronizzaDB,
 	@UltimaModifica,
 	@UltimoAggiornamentoDB,
-	@Valuta
+	@Valuta,
+	@Lingua
 )

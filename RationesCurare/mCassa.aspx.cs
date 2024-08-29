@@ -4,7 +4,7 @@ using System.Web.UI;
 
 namespace RationesCurare
 {
-    public partial class mCassa : Page
+    public partial class mCassa : CulturePage
     {
 
         protected string IDCassa = "";

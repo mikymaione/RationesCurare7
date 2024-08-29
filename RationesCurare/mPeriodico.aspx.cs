@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace RationesCurare
 {
-    public partial class mPeriodico : Page
+    public partial class mPeriodico : CulturePage
     {
         protected long IDMovimento = -1;
         public string SottoTitolo = "";

@@ -11,7 +11,7 @@ namespace RationesCurare
 {
 
 
-    public partial class mLogin
+    public partial class mRegister
     {
 
         /// <summary>
@@ -22,6 +22,15 @@ namespace RationesCurare
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// Controllo eNickName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText eNickName;
 
         /// <summary>
         /// Controllo eUtente.
@@ -42,22 +51,22 @@ namespace RationesCurare
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword ePsw;
 
         /// <summary>
-        /// Controllo cbMemorizza.
+        /// Controllo eLanguage.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cbMemorizza;
+        protected global::System.Web.UI.WebControls.DropDownList eLanguage;
 
         /// <summary>
-        /// Controllo bEntra.
+        /// Controllo bRegistrati.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bEntra;
+        protected global::System.Web.UI.WebControls.Button bRegistrati;
 
         /// <summary>
         /// Controllo lErrore.

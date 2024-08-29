@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace RationesCurare
 {
-    public partial class mSaldo : Page
+    public partial class mSaldo : CulturePage
     {
 
         public string SottoTitolo = "";
@@ -51,7 +51,7 @@ namespace RationesCurare
                         var lbl = (Label)e.Row.FindControl("lblTotal");
 
                         while (dr.Read())
-                            lbl.Text = GB.ObjectToDouble(dr["Saldo"], 0).ToString("c");
+                            lbl.Text = GB.ObjectToMoneyString(dr["Saldo"]);
                     }
             }
         }

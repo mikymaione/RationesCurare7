@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mLogin.aspx.cs" Inherits="RationesCurare.mLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mRegister.aspx.cs" Inherits="RationesCurare.mRegister" %>
 
 <!DOCTYPE html>
 
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <title>RationesCurare - Sign In</title>
+    <title>RationesCurare - Sign Up</title>
 
     <style>
         div {
@@ -43,30 +43,27 @@
     <h1>RationesCurare</h1>
     <p>an open-source software for the management of the personal economy.</p>
     <hr />
-    <h2>Sign In</h2>
+    <h2>Sign Up</h2>
 
-    <form id="form1" runat="server">            
+    <form id="form1" runat="server">    
+        <div>
+            <label class="required" for="eNickName">Your Name</label>          
+            <input id="eNickName" name="eNickName" runat="server" placeholder="Utente" required>
+        </div>
         <div>
             <label class="required" for="eUtente">Email</label>          
             <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
         </div>
         <div>
-            <label class="required" for="ePsw">Password</label>          
+            <label class="required" for="ePsw">Password</label>
             <input id="ePsw" name="ePsw" runat="server" placeholder="Password" type="password" required>
         </div>
-
         <div>
-            <label for="cbMemorizza">Remember Me</label>
-            <select id="cbMemorizza" runat="server">
-                <option value="0" selected>No</option>
-                <option value="1">Yes</option>                
-            </select>
+            <label class="required" for="eLanguage">Language</label>
+            <asp:DropDownList ID="eLanguage" runat="server" DataTextField="description" DataValueField="code" />
         </div>
-
-        <div>            
-            <asp:Button ID="bEntra" runat="server" Text="Sign In" OnClick="bEntra_Click" />            
-            <a href="mRegister.aspx"><button type="button">Sign Up</button></a> 
-            <a href="index.aspx"><button type="button">Install The App</button></a> 
+        <div>                    
+            <asp:Button ID="bRegistrati" runat="server" Text="Sign Up" OnClick="bRegistrati_Click" />            
         </div>
 
         <div>

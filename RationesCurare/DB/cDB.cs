@@ -34,6 +34,7 @@ namespace RationesCurare7.DB
         {
             Aggiornamenti,
             DBInfo_Inserisci,
+            DBInfo_Dettaglio,
             Movimenti_Inserisci,
             Movimenti_Aggiorna,
             Movimenti_AggiornaMacroAree,
