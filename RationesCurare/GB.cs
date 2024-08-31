@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.SessionState;
 using System.Web.UI.WebControls;
 using System.Globalization;
-using System.Collections.Generic;
 
 namespace RationesCurare
 {
@@ -38,6 +37,33 @@ namespace RationesCurare
             var f = System.IO.Path.Combine(p, nome);
 
             return f + ".rqd8";
+        }
+
+        public static bool ControllaCredenziali(string App_Data, string nome, string psw)
+        {
+            if (nome != null && nome.Length > 4 && psw != null && psw.Length > 1)
+            {
+                var f = System.IO.Path.Combine(App_Data, nome);
+
+                if (System.IO.File.Exists(f + ".rqd8"))
+                    if (System.IO.File.Exists(f + ".psw"))
+                        try
+                        {
+                            using (var sr = new System.IO.StreamReader(f + ".psw"))
+                            {
+                                var psw_ = sr.ReadLine();
+
+                                if (psw.Equals(psw_, StringComparison.OrdinalIgnoreCase))
+                                    return true;
+                            }
+                        }
+                        catch
+                        {
+                            //cannot access file
+                        }
+            }
+
+            return false;
         }
 
         public static bool SetCookie(HttpResponse Response, string[] cookies, string[] values)
@@ -359,42 +385,6 @@ namespace RationesCurare
             else
                 return "moneyGood";
         }
-
-        private static readonly Dictionary<RegionInfo, CultureInfo> RegionInfos =
-            CultureInfo
-                .GetCultures(CultureTypes.SpecificCultures)
-                .ToDictionary(
-                    culture => new RegionInfo(culture.Name),
-                    culture => culture
-                );
-
-        public static readonly List<LanguageCodeDescription> LanguageCurrencies =
-            RegionInfos
-                .Select(pair => new LanguageCodeDescription
-                {
-                    code = pair.Value.Name,
-                    description = $"{pair.Value.EnglishName} - {pair.Key.CurrencyEnglishName}",
-                })
-                .OrderBy(e => e.description)
-                .ToList();
-
-        public static List<RegionInfo> GetRegionInfoByLingua(string language) =>
-            RegionInfos
-                .Where(pair => pair.Value.Name.Equals(language, StringComparison.InvariantCultureIgnoreCase))
-                .Select(pair => pair.Key)
-                .ToList();
-
-        public static List<CultureInfo> GetCultureByValuta(string valuta) =>
-            RegionInfos
-                .Where(pair => pair.Key.ISOCurrencySymbol.Equals(valuta, StringComparison.InvariantCultureIgnoreCase))
-                .Select(pair => pair.Value)
-                .ToList();
-
-        public static List<CultureInfo> GetCultureByLanguage(string language) =>
-            CultureInfo
-               .GetCultures(CultureTypes.SpecificCultures)
-               .Where(c => c.Name.Equals(language, StringComparison.InvariantCultureIgnoreCase))
-               .ToList();
 
     }
 }

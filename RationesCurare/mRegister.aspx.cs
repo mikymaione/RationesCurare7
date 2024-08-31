@@ -11,34 +11,9 @@ namespace RationesCurare
         {
             if (!IsPostBack)
             {
-                eLanguage.DataSource = GB.LanguageCurrencies;
+                eLanguage.DataSource = GestioneValute.LanguageCurrencies;
                 eLanguage.DataBind();
             }
-        }
-
-        private bool ControllaCredenziali(string nome, string psw)
-        {
-            var p = MapPath("App_Data");
-            var f = System.IO.Path.Combine(p, nome);
-
-            if (System.IO.File.Exists(f + ".rqd8"))
-                if (System.IO.File.Exists(f + ".psw"))
-                    try
-                    {
-                        using (var sr = new System.IO.StreamReader(f + ".psw"))
-                        {
-                            var psw_ = sr.ReadLine();
-
-                            if (psw.Equals(psw_, StringComparison.OrdinalIgnoreCase))
-                                return true;
-                        }
-                    }
-                    catch
-                    {
-                        //cannot access file
-                    }
-
-            return false;
         }
 
         protected void bRegistrati_Click(object sender, EventArgs e)
@@ -84,14 +59,13 @@ namespace RationesCurare
 
         private void Login_(string nome, string psw, string lingua)
         {
-            if (nome != null && nome.Length > 4
-                && psw != null && psw.Length > 1
-                && ControllaCredenziali(nome, psw))
-            {
-                var p = MapPath("App_Data");
-                var f = System.IO.Path.Combine(p, nome);
+            var App_Data = MapPath("App_Data");
 
-                var cultures = GB.GetCultureByLanguage(lingua);
+            if (GB.ControllaCredenziali(App_Data, nome, psw))
+            {
+                var f = System.IO.Path.Combine(App_Data, nome);
+
+                var cultures = GestioneValute.GetCultureByLanguage(lingua);
 
                 GB.Instance.setCurrentSession(Session, new cSession());
                 GB.Instance.getCurrentSession(Session).LoggedIN = true;
@@ -111,7 +85,7 @@ namespace RationesCurare
             {
                 Login_(email, psw, lingua);
 
-                var regionInfo = GB.GetRegionInfoByLingua(lingua);
+                var regionInfo = GestioneValute.GetRegionInfoByLingua(lingua);
                 var valuta = regionInfo.Count == 0 ? "EUR" : regionInfo[0].ISOCurrencySymbol;
 
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
