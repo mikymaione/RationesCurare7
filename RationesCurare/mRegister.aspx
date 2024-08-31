@@ -64,11 +64,16 @@
             <small class="mytextcolor giustificato">Since the password will be used to encrypt your database and there is no possibility of recovery, we recommend that you save the password in your browser's password manager.</small>
         </div>
         <div>
+            <label class="required" for="eCurrency">Currency</label>
+            <asp:DropDownList ID="eCurrency" runat="server" DataTextField="description" DataValueField="code" AutoPostBack="true" OnSelectedIndexChanged="eCurrency_SelectedIndexChanged" />            
+        </div>
+        <div>
             <label class="required" for="eLanguage">Language</label>
             <asp:DropDownList ID="eLanguage" runat="server" DataTextField="description" DataValueField="code" />
         </div>
         <div>                    
-            <asp:Button ID="bRegistrati" runat="server" Text="Sign Up" OnClick="bRegistrati_Click" />            
+            <asp:Button ID="bRegistrati" runat="server" Text="Sign Up" OnClick="bRegistrati_Click" />      
+            <a href="index.aspx"><button type="button">Go Back</button></a>
         </div>
 
         <div>

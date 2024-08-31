@@ -18,6 +18,18 @@ namespace RationesCurare
                     culture => culture
                 );
 
+        public static readonly List<LanguageCodeDescription> Currencies =
+            RegionInfos
+                .GroupBy(pair => pair.Key.ISOCurrencySymbol)
+                .Select(g => g.First())
+                .Select(pair => new LanguageCodeDescription
+                {
+                    code = pair.Key.ISOCurrencySymbol,
+                    description = pair.Key.CurrencyEnglishName,
+                })
+                .OrderBy(e => e.description)
+                .ToList();
+
         public static readonly List<LanguageCodeDescription> LanguageCurrencies =
             RegionInfos
                 .Select(pair => new LanguageCodeDescription
@@ -38,6 +50,16 @@ namespace RationesCurare
             RegionInfos
                 .Where(pair => pair.Key.ISOCurrencySymbol.Equals(valuta, StringComparison.InvariantCultureIgnoreCase))
                 .Select(pair => pair.Value)
+                .ToList();
+
+        public static List<LanguageCodeDescription> GetLanguageCurrenciesByValuta(string valuta) =>
+            GetCultureByValuta(valuta)
+                .Select(c => new LanguageCodeDescription
+                {
+                    code = c.Name,
+                    description = c.EnglishName,
+                })
+                .OrderBy(e => e.description)
                 .ToList();
 
         public static List<CultureInfo> GetCultureByLanguage(string language) =>

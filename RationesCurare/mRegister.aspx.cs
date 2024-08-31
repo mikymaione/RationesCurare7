@@ -11,8 +11,10 @@ namespace RationesCurare
         {
             if (!IsPostBack)
             {
-                eLanguage.DataSource = GestioneValute.LanguageCurrencies;
-                eLanguage.DataBind();
+                eCurrency.DataSource = GestioneValute.Currencies;
+                eCurrency.DataBind();
+
+                riempiValute();
             }
         }
 
@@ -113,6 +115,17 @@ namespace RationesCurare
             {
                 lErrore.Text = $"Error: {ex.Message}";
             }
+        }
+
+        private void riempiValute()
+        {
+            eLanguage.DataSource = GestioneValute.GetLanguageCurrenciesByValuta(eCurrency.SelectedValue);
+            eLanguage.DataBind();
+        }
+
+        protected void eCurrency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            riempiValute();
         }
 
     }

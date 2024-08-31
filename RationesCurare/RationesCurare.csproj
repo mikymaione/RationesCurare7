@@ -281,6 +281,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GB.cs" />
+    <Compile Include="GestioneValute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
