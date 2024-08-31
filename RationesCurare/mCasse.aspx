@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mCasse.aspx.cs" Inherits="RationesCurare.mCasse" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Gestione account</title>
+    <title>RationesCurare - Account Management</title>
 
-    <style>        
+    <style>
         .trGrid {
             cursor: pointer;
         }
@@ -20,7 +20,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Gestione account</h2>    
+    <h2>Account Management</h2>    
 
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Nome" Width="100%" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging" HeaderStyle-HorizontalAlign="Left"
@@ -29,13 +29,13 @@
         <HeaderStyle BackColor="Black" ForeColor="White" />
 
         <Columns>
-            <asp:BoundField DataField="Nome" HeaderText="Nome" />
-            <asp:BoundField DataField="NascondiS" HeaderText="Nascondi" />
+            <asp:BoundField DataField="Nome" HeaderText="Account" />
+            <asp:BoundField DataField="Nascondi" HeaderText="Hide" />
         </Columns>
 
         <RowStyle CssClass="trGrid"></RowStyle>
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo account" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="New Account" Text="account_balance_wallet" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

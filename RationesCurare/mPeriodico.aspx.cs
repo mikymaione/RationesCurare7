@@ -31,8 +31,8 @@ namespace RationesCurare
             bElimina.Visible = IDMovimento != -1;
 
             SottoTitolo = IDMovimento == -1
-                ? "Nuovo periodico"
-                : $"Periodico {IDMovimento}";
+                ? "New recurring transaction"
+                : $"Recurring transaction #{IDMovimento}";
 
             if (!Page.IsPostBack)
             {
@@ -80,6 +80,8 @@ namespace RationesCurare
                     }
                 }
             }
+
+            Title = SottoTitolo;
         }
 
         private System.Data.Common.DbParameter[] getParamsForSave()
@@ -141,7 +143,7 @@ namespace RationesCurare
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 
@@ -184,7 +186,7 @@ namespace RationesCurare
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 

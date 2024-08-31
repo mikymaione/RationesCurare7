@@ -1,13 +1,13 @@
-﻿<%@ Page Title="RationesCurare - Grafico a barre" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mGrafico.aspx.cs" Inherits="RationesCurare.mGrafico" %>
+﻿<%@ Page Title="RationesCurare - Bar chart" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mGrafico.aspx.cs" Inherits="RationesCurare.mGrafico" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Grafico a barre</h2>
+    <h2>Bar chart</h2>
 
     <nav>
-        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Mensile</a> |		    
-        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Annuale</a>
+        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Monthly</a> |		    
+        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Annual</a>
     </nav>
 
     <asp:Chart ID="Chart1" runat="server" 

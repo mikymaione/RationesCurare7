@@ -1,8 +1,6 @@
 ﻿select
 	Nome,
-	CASE Nascondi
-		WHEN 0  THEN 'No' ELSE 'Sì'
-	END NascondiS
+	Nascondi
 from Casse
 order by
 	Nome

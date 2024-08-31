@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="css/rc/awesomplete.css" />
     <script src="css/rc/awesomplete.min.js"></script>
 
+    <title>RationesCurare - New amount</title>
+
     <style>
         body {
             margin-top: -16px;
@@ -43,23 +45,23 @@
     <asp:ScriptManager ID="smMain" runat="server" EnablePageMethods="true" />
     
     <div>
-        <label class="required" for="idCassa">Dal account</label>
+        <label class="required" for="idCassa">From account</label>
         <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();" />
     </div>
     <div id="divGiroconto" runat="server">
-        <label for="idGiroconto">Al account</label>
+        <label for="idGiroconto">To account</label>
         <asp:DropDownList ID="idGiroconto" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();" OnSelectedIndexChanged="idGiroconto_SelectedIndexChanged" AutoPostBack="True">
-            <asp:ListItem Value="" Text="--nessuno--" Selected="true" />
+            <asp:ListItem Value="" Text="«no account»" Selected="true" />
         </asp:DropDownList>
     </div>
     <div>
-        <label class="required" for="idSoldi">Importo</label>
-        <input id="idSoldi" runat="server" type="number" step="0.01" min="-10000000" max="10000000" required onchange="resoconto();">
+        <label class="required" for="idSoldi">Transaction amount</label>
+        <input id="idSoldi" runat="server" type="number" step="0.01" min="-10000000" max="10000000" required onchange="resoconto();" placeholder="Transaction amount in money">
     </div>
     <div>
-        <label class="required" for="idData">Data</label>
+        <label class="required" for="idData">Date</label>
         <br>
-        <input id="idData" runat="server" type="datetime-local" required>
+        <input id="idData" runat="server" type="datetime-local" required placeholder="Date the transaction was performed">
     </div>
     <div>
         <script>
@@ -79,9 +81,9 @@
             }
         </script>
 
-        <label id="lDescrizione" class="required" for="idDescrizione" runat="server">Descrizione</label>
+        <label id="lDescrizione" class="required" for="idDescrizione" runat="server">Description</label>
         <br>
-        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" >
+        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" placeholder="Operation Description" >
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -107,9 +109,9 @@
         </script>
     </div>
     <div>
-        <label id="lMacroarea" class="required" for="idMacroarea" runat="server">Macroarea</label>
+        <label id="lMacroarea" class="required" for="idMacroarea" runat="server">Category</label>
         <br>
-        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off">
+        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off" placeholder="Category to which the transaction belongs">
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())
@@ -135,11 +137,11 @@
         </script>
     </div>    
     <div>
-        <label class="required" for="idNome">Autore</label>
+        <label class="required" for="idNome">Author</label>
         <input id="idNome" runat="server" maxlength="255" autocomplete="on" required>
     </div>
 
-    <h3>Resoconto</h3>
+    <h3>Summary</h3>
     <div>
         <label id="lMovimento1"></label>
     </div>
@@ -150,12 +152,12 @@
     <div class="divSpaceBetween">
         <script>
             function confirmDelete() {
-                return confirm("Vuoi eliminare questo elemento?");                
+                return confirm("Do you want to delete this item?");                
             }
         </script>
 
-        <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
-        <asp:Button ID="bElimina" runat="server" Text="Elimina" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />
+        <asp:Button ID="bSalva" runat="server" Text="Save" OnClick="bSalva_Click" />
+        <asp:Button ID="bElimina" runat="server" Text="Delete" OnClientClick="return confirmDelete();" OnClick="bElimina_Click" />
     </div>
     <div>
         <em>

@@ -46,13 +46,13 @@
 <body>
     <form id="form1" runat="server">
         <nav class="menu">
-            <a runat="server" id="nav_mMenu" title="Saldo" href="mMenu.aspx">point_of_sale</a>
-            <a runat="server" id="nav_mCasse" title="Gestione account" href="mCasse.aspx">account_balance_wallet</a>
-            <a runat="server" id="nav_mSaldo" title="Movimenti" href="mSaldo.aspx">payments</a>
-            <a runat="server" id="nav_mPeriodici" title="Periodici" href="mPeriodici.aspx">update</a>
-            <a runat="server" id="nav_mGrafico" title="Grafico a barre" href="mGrafico.aspx?T=Y">bar_chart</a>
-            <a runat="server" id="nav_mGraficoTorta" title="Grafico a torta" href="mGraficoTorta.aspx">pie_chart</a>
-            <a runat="server" id="nav_mLogout" title="Disconnetti" href="mLogin.aspx?C=L">logout</a>
+            <a runat="server" id="nav_mMenu" title="Balance" href="mMenu.aspx">point_of_sale</a>
+            <a runat="server" id="nav_mCasse" title="Account Management" href="mCasse.aspx">account_balance_wallet</a>
+            <a runat="server" id="nav_mSaldo" title="Transactions" href="mSaldo.aspx">payments</a>
+            <a runat="server" id="nav_mPeriodici" title="Recurring transaction management" href="mPeriodici.aspx">update</a>
+            <a runat="server" id="nav_mGrafico" title="Bar chart" href="mGrafico.aspx?T=Y">bar_chart</a>
+            <a runat="server" id="nav_mGraficoTorta" title="Pie chart" href="mGraficoTorta.aspx">pie_chart</a>
+            <a runat="server" id="nav_mLogout" title="Log Out" href="mLogin.aspx?C=L">logout</a>
         </nav>
         <hr>
 

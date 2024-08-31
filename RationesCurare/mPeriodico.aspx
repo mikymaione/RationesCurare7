@@ -28,8 +28,8 @@
     <asp:ScriptManager ID="smMain" runat="server" EnablePageMethods="true" />
     
     <div>
-        <label class="required" for="idSoldi">Importo</label>
-        <input id="idSoldi" runat="server" type="number" step="0.01" min="-10000000" max="10000000" autofocus required onchange="resoconto();">
+        <label class="required" for="idSoldi">Transaction amount</label>
+        <input id="idSoldi" runat="server" type="number" step="0.01" min="-10000000" max="10000000" autofocus required onchange="resoconto();" placeholder="Transaction amount in money">
     </div>    
     <div>
         <script>
@@ -51,9 +51,9 @@
             }
         </script>
 
-        <label class="required" for="idDescrizione">Descrizione</label>
+        <label class="required" for="idDescrizione">Description</label>
         <br>
-        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off">
+        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" placeholder="Operation Description">
         <datalist id="dlDescrizioni">
             <%
                 foreach (var de in getDescrizioni())
@@ -75,9 +75,9 @@
         </script>
     </div>
     <div>
-        <label class="required" for="idMacroarea">Macroarea</label>
+        <label class="required" for="idMacroarea">Category</label>
         <br>
-        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off">
+        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" required autocomplete="off" placeholder="Category to which the transaction belongs">
         <datalist id="dlMacroaree">
             <%
                 foreach (var ma in getMacroAree())
@@ -99,7 +99,7 @@
         </script>
     </div>
     <div>
-        <label class="required" for="idCassa">Dal account</label>
+        <label class="required" for="idCassa">From account</label>
         <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true" onchange="resoconto();"></asp:DropDownList>
     </div>
     <div>
@@ -131,37 +131,37 @@
                 }
             }
         </script>
-        <label class="required" for="idTipoGiorniMese">Periodicità</label>
+        <label class="required" for="idTipoGiorniMese">Periodicity</label>
         <select id="idTipoGiorniMese" runat="server" required onchange="showNumeroGiorni();">
-            <option value="G">Giornaliero</option>
-            <option value="M">Mensile</option>
-            <option value="B">Bimestrale</option>
-            <option value="T">Trimestrale</option>
-            <option value="Q">Quadrimestrale</option>
-            <option value="S">Semestrale</option>
-            <option value="A">Annuale</option>
+            <option value="G">Everyday</option>
+            <option value="M" selected>Every month</option>
+            <option value="B">Every two months</option>
+            <option value="T">Every three months</option>
+            <option value="Q">Every four months</option>
+            <option value="S">Every six months</option>
+            <option value="A">Every year</option>
         </select>
     </div>
     <div>
-        <label class="required" for="idData">Partendo dal giorno</label>
+        <label class="required" for="idData">Starting from the day</label>
         <br>
         <input id="idData" runat="server" type="date" required>
     </div>
     <div id="divNumeroGiorni">
-        <label class="required" for="idNumeroGiorni">Ogni quanti giorni</label>
-        <input id="idNumeroGiorni" runat="server" type="number" step="1" min="1" max="3650" inputmode="numeric" required onchange="resoconto();">
+        <label class="required" for="idNumeroGiorni">Every how many days</label>
+        <input id="idNumeroGiorni" runat="server" type="number" step="1" min="1" max="3650" inputmode="numeric" required onchange="resoconto();" placeholder="How often does it repeat?">
     </div>
     <div>        
-        <input id="bScadenza" runat="server" type="checkbox" onchange="showNumeroGiorni();"><label class="required" for="<%=bScadenza.ClientID%>">Scadenza</label>
+        <input id="bScadenza" runat="server" type="checkbox" onchange="showNumeroGiorni();"><label class="required" for="<%=bScadenza.ClientID%>">Enable expiration</label>
         <br>
-        <input id="idScadenza" runat="server" type="date" required>
+        <input id="idScadenza" runat="server" type="date" required placeholder="Date it expires">
     </div>
     <div>
-        <label class="required" for="idNome">Autore</label>
+        <label class="required" for="idNome">Author</label>
         <input id="idNome" runat="server" maxlength="255" autocomplete="on" required>
     </div>
 
-    <h3>Resoconto</h3>
+    <h3>Summary</h3>
     <div>
         <label id="lMovimento1"></label>
     </div>
@@ -172,7 +172,7 @@
     <div class="divSpaceBetween">
         <script>
             function confirmDelete() {
-                return confirm("Vuoi eliminare questo elemento?");                
+                return confirm("Do you want to delete this item?");                
             }
         </script>
 

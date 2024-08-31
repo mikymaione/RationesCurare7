@@ -1,9 +1,9 @@
-﻿<%@ Page Title="RationesCurare - Grafico a torta" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mGraficoTorta.aspx.cs" Inherits="RationesCurare.mGraficoTorta" %>
+﻿<%@ Page Title="RationesCurare - Pie chart" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mGraficoTorta.aspx.cs" Inherits="RationesCurare.mGraficoTorta" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Grafico a torta</h2>
+    <h2>Pie chart</h2>
 
     <style>
         body {
@@ -27,18 +27,18 @@
     </style>
 
     <div>
-        <label class="required" for="idDataDa">Da</label>                
+        <label class="required" for="idDataDa">From</label>                
         <input id="idDataDa" runat="server" type="date" required>
     </div>
     <div>
-        <label class="required" for="idDataA">A</label>                
+        <label class="required" for="idDataA">Until</label>                
         <input id="idDataA" runat="server" type="date" required>
     </div>
 
     <div class="buttons">
-        <asp:Button ID="bPrev" runat="server" CssClass="googleIcon" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Mese precedente" />
-        <asp:Button ID="bNext" runat="server" CssClass="googleIcon" Text="skip_next" OnClick="bNext_Click" ToolTip="Mese successivo" />
-        <asp:Button ID="bCerca" runat="server" Text="Cerca" OnClick="bCerca_Click" />
+        <asp:Button ID="bPrev" runat="server" CssClass="googleIcon" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Previous month" />
+        <asp:Button ID="bNext" runat="server" CssClass="googleIcon" Text="skip_next" OnClick="bNext_Click" ToolTip="Next month" />
+        <asp:Button ID="bCerca" runat="server" Text="Search" OnClick="bCerca_Click" />
     </div>
 
     <asp:Chart ID="Chart1" runat="server" 

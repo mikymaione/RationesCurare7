@@ -132,12 +132,12 @@ namespace RationesCurare
 
                     db.EseguiSQLNoQueryAutoCommit(cDB.Queries.DBInfo_Inserisci, param);
 
-                    Response.Redirect("mCassa.aspx");
+                    Response.Redirect("mMenu.aspx");
                 }
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 

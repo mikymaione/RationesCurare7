@@ -36,27 +36,32 @@
     <style>
         div {
             margin-bottom: 1rem;
-        }      
+        }
+
+        small {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <h1>RationesCurare</h1>
-    <p>an open-source software for the management of the personal economy.</p>
+    <h1><img class="mycolor" src="favicon/favicon.svg"> RationesCurare</h1>
+    <p class="giustificato">an open-source software for the management of the personal economy.</p>
     <hr />
     <h2>Sign Up</h2>
 
     <form id="form1" runat="server">    
         <div>
             <label class="required" for="eNickName">Your Name</label>          
-            <input id="eNickName" name="eNickName" runat="server" placeholder="Utente" required>
+            <input id="eNickName" name="eNickName" runat="server" placeholder="Default change author" required>
         </div>
         <div>
             <label class="required" for="eUtente">Email</label>          
-            <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
+            <input id="eUtente" name="eUtente" runat="server" placeholder="You will not receive any advertising" type="email" required>
         </div>
         <div>
-            <label class="required" for="ePsw">Password</label>
-            <input id="ePsw" name="ePsw" runat="server" placeholder="Password" type="password" required>
+            <label class="required" for="ePsw">Password</label>            
+            <input id="ePsw" name="ePsw" runat="server" placeholder="Non-changeable and non-recoverable" type="password" required>
+            <small class="mytextcolor giustificato">Since the password will be used to encrypt your database and there is no possibility of recovery, we recommend that you save the password in your browser's password manager.</small>
         </div>
         <div>
             <label class="required" for="eLanguage">Language</label>

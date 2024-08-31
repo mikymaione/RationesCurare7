@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mMenu.aspx.cs" Inherits="RationesCurare.mMenu" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Saldo</h2>
+    <h2>Balance</h2>
 
     <asp:GridView ID="GridView1" runat="server" DataKeyNames="Tipo" AutoGenerateColumns="False" AllowPaging="False" AllowSorting="False" ShowFooter="True" Width="100%" GridLines="None" RowStyle-CssClass="trGrid"
         OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
@@ -17,7 +17,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Saldo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
+            <asp:TemplateField HeaderText="Balance" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:Label ID="lblsoldi" runat="server" CssClass='<%# RationesCurare.GB.GetColor(Eval("Saldo")) %>' Text='<%# Eval("Saldo", "{0:c}") %>' />
                 </ItemTemplate>
@@ -34,5 +34,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="New amount" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

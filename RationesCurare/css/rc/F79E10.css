@@ -6,6 +6,10 @@ html {
     background-color: #F79E10;
 }
 
+.mytextcolor {
+    color: #F79E10;
+}
+
 :focus-visible {
     outline-color: #F79E10;
 }

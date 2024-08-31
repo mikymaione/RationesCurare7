@@ -16,19 +16,19 @@
     <h2><%=SottoTitolo %></h2>
 
     <div>
-        <label class="required" for="idNome">Nome</label>
+        <label class="required" for="idNome">Name</label>
         <input id="idNome" runat="server" maxlength="255" autocomplete="on" autofocus required >
     </div>
     <div>
-        <label for="idNascondi">Nascondi</label>
+        <label for="idNascondi">Hide</label>
         <select id="idNascondi" runat="server">
             <option value="0">No</option>
-            <option value="1">Sì</option>
+            <option value="1">Yes</option>
         </select>
     </div>
 
     <div>
-        <asp:Button ID="bSalva" runat="server" Text="Salva" OnClick="bSalva_Click" />
+        <asp:Button ID="bSalva" runat="server" Text="Save" OnClick="bSalva_Click" />
     </div>
     <div>
         <em>

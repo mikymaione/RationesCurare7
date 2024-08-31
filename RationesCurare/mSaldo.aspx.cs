@@ -72,7 +72,7 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var TipoDesc = string.IsNullOrEmpty(Tipo) ? "Saldo" : Tipo;
+            var TipoDesc = string.IsNullOrEmpty(Tipo) ? "Balance" : Tipo;
             var TipoDescTitle = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(TipoDesc);
 
             Title = $"RationesCurare - {TipoDescTitle}";

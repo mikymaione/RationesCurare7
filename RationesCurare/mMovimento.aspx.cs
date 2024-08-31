@@ -48,8 +48,8 @@ namespace RationesCurare
             bElimina.Visible = !isNewRecord;
 
             SottoTitolo = isNewRecord
-                ? "Nuovo importo"
-                : $"Importo {IDMovimento}";
+                ? "New amount"
+                : $"Transaction #{IDMovimento}";
 
             if (!Page.IsPostBack)
             {
@@ -232,7 +232,7 @@ namespace RationesCurare
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 
@@ -275,7 +275,7 @@ namespace RationesCurare
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 

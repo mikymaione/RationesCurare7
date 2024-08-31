@@ -40,26 +40,26 @@
     </style>
 </head>
 <body>
-    <h1>RationesCurare</h1>
-    <p>an open-source software for the management of the personal economy.</p>
+    <h1><img class="mycolor" src="favicon/favicon.svg"> RationesCurare</h1>
+    <p class="giustificato">an open-source software for the management of the personal economy.</p>
     <hr />
     <h2>Sign In</h2>
 
     <form id="form1" runat="server">            
         <div>
             <label class="required" for="eUtente">Email</label>          
-            <input id="eUtente" name="eUtente" runat="server" placeholder="Email" type="email" required>
+            <input id="eUtente" name="eUtente" runat="server" placeholder="Email you signed up with" type="email" required>
         </div>
         <div>
             <label class="required" for="ePsw">Password</label>          
-            <input id="ePsw" name="ePsw" runat="server" placeholder="Password" type="password" required>
+            <input id="ePsw" name="ePsw" runat="server" placeholder="Database decryption password" type="password" required>
         </div>
 
         <div>
             <label for="cbMemorizza">Remember Me</label>
             <select id="cbMemorizza" runat="server">
-                <option value="0" selected>No</option>
-                <option value="1">Yes</option>                
+                <option value="0">No</option>
+                <option value="1" selected>Yes</option>                
             </select>
         </div>
 

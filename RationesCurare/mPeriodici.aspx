@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mPeriodici.aspx.cs" Inherits="RationesCurare.mPeriodici" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Gestione periodici</title>
+    <title>RationesCurare - Recurring transaction management</title>
 
     <style>        
         .trGrid {
@@ -20,7 +20,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Gestione periodici</h2>    
+    <h2>Recurring transaction management</h2>    
 
     <asp:GridView
         ID="GridView1" runat="server" GridLines="None" AllowSorting="False" 
@@ -34,7 +34,7 @@
         <PagerSettings Mode="NumericFirstLast" Position="TopAndBottom" />
 
         <Columns>
-            <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
+            <asp:TemplateField HeaderText="Description" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
                 <ItemTemplate>
                     <div>
                         <asp:Label runat="server" Text='<%# Eval("MacroArea") %>' CssClass="trLabel" />
@@ -52,7 +52,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
+            <asp:TemplateField HeaderText="Amount" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:Label ID="lblsoldi" runat="server" CssClass='<%# RationesCurare.GB.GetColor(Eval("Soldi")) %>' Text='<%# Eval("Soldi", "{0:c}") %>' />
                 </ItemTemplate>                
@@ -60,5 +60,5 @@
         </Columns>
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo periodico" Text="update" ID="bNuovo" OnClick="bNuovo_Click" />
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="New recurring transaction" Text="update" ID="bNuovo" OnClick="bNuovo_Click" />
 </asp:Content>

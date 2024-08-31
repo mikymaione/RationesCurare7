@@ -13,51 +13,51 @@
     <table width="100%">
         <thead>
             <tr style="background-color: black; color: white">
-                <th colspan="2" style="text-align: left">Filtri</th>
+                <th colspan="2" style="text-align: left">Filters</th>
             </tr>
         </thead>
         <tr>
             <td colspan="2">
-                <asp:CheckBox ID="bData" runat="server" Text="Filtra per queste date" />
+                <asp:CheckBox ID="bData" runat="server" Text="Enable filter by dates" />
             </td>
         </tr>
         <tr>
-            <td>Da</td>
+            <td>From</td>
             <td>
-                <asp:TextBox ID="eDataDa" runat="server" TextMode="Date" MaxLength="10" Width="100%" />
+                <asp:TextBox ID="eDataDa" runat="server" TextMode="Date" MaxLength="10" Width="100%" Placeholder="Date the transaction was performed" />
             </td>
         </tr>
         <tr>
-            <td>A</td>
+            <td>Until</td>
             <td>
-                <asp:TextBox ID="eDataA" runat="server" TextMode="Date" MaxLength="10" Width="100%" />
+                <asp:TextBox ID="eDataA" runat="server" TextMode="Date" MaxLength="10" Width="100%" Placeholder="Date the transaction was performed" />
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <asp:CheckBox ID="bSoldi" runat="server" Text="Filtra per questi importi" />
+                <asp:CheckBox ID="bSoldi" runat="server" Text="Enable filter by amounts" />
             </td>
         </tr>
 
         <tr>
-            <td>Da</td>
+            <td>From</td>
             <td>
-                <input id="eSoldiDa" runat="server" type="number" step="0.01" min="-10000000" max="10000000">
+                <input id="eSoldiDa" runat="server" type="number" step="0.01" min="-10000000" max="10000000" placeholder="Transaction amount in money">
             </td>
         </tr>
         <tr>
-            <td>A</td>
+            <td>To</td>
             <td>
-                <input id="eSoldiA" runat="server" type="number" step="0.01" min="-10000000" max="10000000">
+                <input id="eSoldiA" runat="server" type="number" step="0.01" min="-10000000" max="10000000" placeholder="Transaction amount in money">
             </td>
         </tr>
 
         <tr>
-            <td colspan="2">Filtra per macroarea</td>
+            <td colspan="2">Filter by category</td>
         </tr>
         <tr>
             <td colspan="2">
-                <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" autocomplete="off">
+                <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" autocomplete="off" placeholder="Category to which the transaction belongs">
                 <datalist id="dlMacroaree">
                     <%
                         foreach (var ma in getMacroAree())
@@ -85,11 +85,11 @@
         </tr>
 
         <tr>
-            <td colspan="2">Filtra per descrizione</td>
+            <td colspan="2">Filter by description</td>
         </tr>
         <tr>
             <td colspan="2">                
-                <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" autocomplete="off" >
+                <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" autocomplete="off" placeholder="Operation Description">
                 <datalist id="dlDescrizioni">
                     <%
                         foreach (var de in getDescrizioni())
@@ -117,7 +117,7 @@
         </tr>
 
         <tr>
-            <td colspan="2">Filtra per account</td>
+            <td colspan="2">Filter by account</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -128,7 +128,7 @@
         </tr>
 
         <tr>
-            <td colspan="2">Massimo numero righe</td>
+            <td colspan="2">Maximum number of amounts to show</td>
         </tr>
         <tr>
             <td colspan="2">
@@ -147,8 +147,16 @@
         <tr>
             <td colspan="2">
                 <br>
-                <asp:Button ID="bCerca" runat="server" Text="Filtra" />
-                <asp:Button ID="bResetta" runat="server" Text="Pulisci" OnClick="bResetta_Click" />
+                <style>
+                    .spazia {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                </style>
+                <asp:Panel ID="pSearch" runat="server" DefaultButton="bCerca" CssClass="spazia">
+                    <asp:Button ID="bCerca" runat="server" Text="Search" />
+                    <asp:Button ID="bResetta" runat="server" Text="Clear all filters" OnClick="bResetta_Click" />
+                </asp:Panel>
             </td>
         </tr>
     </table>
@@ -164,7 +172,7 @@
         <PagerSettings Mode="NumericFirstLast" Position="TopAndBottom" />
 
         <Columns>
-            <asp:TemplateField HeaderText="Descrizione" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
+            <asp:TemplateField HeaderText="Description" ItemStyle-Wrap="true" HeaderStyle-HorizontalAlign="Left">
                 <ItemTemplate>                    
                     <div>
                         <asp:Label runat="server" Text='<%# Eval("Tipo") %>' CssClass="trLabelC" Visible="<%# TipoVisibile %>" />
@@ -183,7 +191,7 @@
                 </ItemTemplate>
             </asp:TemplateField>            
 
-            <asp:TemplateField HeaderText="Importo" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
+            <asp:TemplateField HeaderText="Amount" ItemStyle-Wrap="false" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" FooterStyle-HorizontalAlign="Right" FooterStyle-Wrap="false">
                 <ItemTemplate>
                     <asp:Label ID="lblsoldi" runat="server" CssClass='<%# RationesCurare.GB.GetColor(Eval("soldi")) %>' Text='<%# Eval("soldi", "{0:c}") %>' />
                 </ItemTemplate>
@@ -195,5 +203,5 @@
 
     </asp:GridView>
 
-    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="Nuovo importo" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />    
+    <asp:Button runat="server" CssClass="myBtn googleIcon" ToolTip="New amount" Text="local_atm" ID="bNuovo" OnClick="bNuovo_Click" />    
 </asp:Content>

@@ -32,7 +32,7 @@ namespace RationesCurare
                 idNome.Attributes.Add("readonly", "readonly");
 
             SottoTitolo = isNewRecord
-                  ? "Nuovo account"
+                  ? "New account"
                   : $"Account {IDCassa}";
 
             if (!Page.IsPostBack)
@@ -55,6 +55,8 @@ namespace RationesCurare
                                 }
                     }
             }
+
+            Title = SottoTitolo;
         }
 
         protected void bSalva_Click(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace RationesCurare
             }
             catch (Exception ex)
             {
-                lErrore.Text = $"Errore: {ex.Message}";
+                lErrore.Text = $"Error: {ex.Message}";
             }
         }
 

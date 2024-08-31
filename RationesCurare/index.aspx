@@ -35,7 +35,7 @@
 
 	<style>
 		body {
-			font-size: medium;
+			font-size: large;
 		}
 
 		p {
@@ -55,7 +55,7 @@
 	<p>RationesCurare is a web application designed to help you manage your home finances with ease, freely licensed under the <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.html#license-text">GNU</a> GPL.</p>
 	<p>Designed to be easy to use, yet powerful and flexible, RationesCurare allows you to track bank accounts, stocks, income and expenses. As quick and intuitive to use as a checkbook register, it is based on professional accounting principles to ensure balanced books and accurate reports.</p>
 
-	<section>
+	<section class="giustificato">
 		<h3>Features</h3>
 		<ul>
 			<li>
