@@ -59,7 +59,7 @@ namespace RationesCurare
 
                 using (var db = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
                 {
-                    var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Lista);
+                    var casse = db.EseguiSQLDataTable(cDB.Queries.Casse_Ricerca);
                     idCassa.DataSource = casse;
                     idCassa.DataBind();
 
