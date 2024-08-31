@@ -10,7 +10,7 @@
 	"dir": "ltr",
 	"orientation": "natural",
 	"prefer_related_applications": false,
-	"start_url": "/mLogin.aspx",
+	"start_url": "/index.aspx",
 	"categories": [
 		"finance"
 	],

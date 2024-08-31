@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-    <h1><img class="mycolor" src="favicon/favicon.svg"> RationesCurare</h1>
+    <h1 style="display: flex"><img src="favicon/favicon_orange.svg">RationesCurare</h1>
     <p class="giustificato">an open-source software for the management of the personal economy.</p>
     <hr />
     <h2>Sign Up</h2>
