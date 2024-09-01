@@ -10,7 +10,7 @@
 	"dir": "ltr",
 	"orientation": "natural",
 	"prefer_related_applications": false,
-	"start_url": "/index.aspx",
+	"start_url": "/welcome.aspx",
 	"categories": [
 		"finance"
 	],
