@@ -11,7 +11,7 @@ namespace RationesCurare
 {
 
 
-    public partial class index
+    public partial class welcome
     {
 
         /// <summary>
