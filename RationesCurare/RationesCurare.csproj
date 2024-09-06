@@ -112,6 +112,7 @@
     <Content Include="DB\DBW\Periodici_Scadenza.sql" />
     <Content Include="DB\DBW\Utente_Carica.sql" />
     <Content Include="EmailSending.asmx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="favicon\android-chrome-192x192.png" />
     <Content Include="favicon\android-chrome-512x512.png" />
     <Content Include="favicon\android\android-launchericon-144-144.png" />
@@ -279,6 +280,13 @@
     <Compile Include="EmailSending.asmx.cs">
       <DependentUpon>EmailSending.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GB.cs" />
     <Compile Include="GestioneValute.cs" />
