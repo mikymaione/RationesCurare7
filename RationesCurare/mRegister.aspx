@@ -73,7 +73,7 @@
         </div>
         <div>                    
             <asp:Button ID="bRegistrati" runat="server" Text="Sign Up" OnClick="bRegistrati_Click" />      
-            <a href="welcome.aspx"><button type="button">Go Back</button></a>
+            <a href="index.aspx"><button type="button">Go Back</button></a>
         </div>
 
         <div>

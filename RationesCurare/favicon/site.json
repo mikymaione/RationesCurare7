@@ -4,13 +4,13 @@
 	"short_name": "RC",
 	"description": "An open-source software for the management of the personal economy",
 	"display": "standalone",
-	"theme_color": "#F79E10",
-	"background_color": "#F79E10",
-	"lang": "it",
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"lang": "en",
 	"dir": "ltr",
 	"orientation": "natural",
 	"prefer_related_applications": false,
-	"start_url": "/welcome.aspx",
+	"start_url": "/index.aspx",
 	"categories": [
 		"finance"
 	],

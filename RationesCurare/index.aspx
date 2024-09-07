@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="welcome.aspx.cs" Inherits="RationesCurare.welcome" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="RationesCurare.index" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
 
 	<meta charset="UTF-8">
-	<meta name="date" content="2024-09-06" scheme="YYYY-MM-DD">
+	<meta name="date" content="2024-09-07" scheme="YYYY-MM-DD">
 	<meta name="author" content="Maione Michele">
 	<meta name="description" content="An open-source software for the management of the personal economy">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,7 +27,7 @@
 
 	<link rel="manifest" href="/favicon/site.json">
 
-	<link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240906">
+	<link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240907">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 

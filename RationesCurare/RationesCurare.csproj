@@ -266,8 +266,7 @@
     <Content Include="favicon\windows11\Wide310x150Logo.scale-200.png" />
     <Content Include="favicon\windows11\Wide310x150Logo.scale-400.png" />
     <Content Include="Global.asax" />
-    <Content Include="iisstart.htm" />
-    <Content Include="welcome.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
     <Content Include="mGrafico.aspx" />
@@ -306,12 +305,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="welcome.aspx.cs">
-      <DependentUpon>welcome.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="welcome.aspx.designer.cs">
-      <DependentUpon>welcome.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="LanguageCodeDescription.cs" />
     <Compile Include="mCassa.aspx.cs">

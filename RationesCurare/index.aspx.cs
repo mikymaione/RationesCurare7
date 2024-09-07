@@ -2,7 +2,7 @@
 
 namespace RationesCurare
 {
-    public partial class welcome : System.Web.UI.Page
+    public partial class index : System.Web.UI.Page
     {
 
         private string Richiesta => GB.GetQueryString(Request, "C");

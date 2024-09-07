@@ -54,7 +54,7 @@
 
 	<section class="giustificato">
 		<h3>Something went wrong!</h3>
-		<p>An error occurred while loading the page. Please return to the <a href="welcome.aspx">main page</a> or contact the site <a rel="noopener" target="_blank" href="mailto:mikymaione@hotmail.it">administrator</a> if the problem persists.</p>
+		<p>An error occurred while loading the page. Please return to the <a href="index.aspx">main page</a> or contact the site <a rel="noopener" target="_blank" href="mailto:mikymaione@hotmail.it">administrator</a> if the problem persists.</p>
 		<asp:Literal ID="ErrorMessageLiteral" runat="server"></asp:Literal>
 		<asp:Literal ID="ErrorDetailLiteral" runat="server"></asp:Literal>
 	</section>
