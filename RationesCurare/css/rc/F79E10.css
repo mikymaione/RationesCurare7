@@ -104,6 +104,11 @@ div.awesomplete {
     text-justify: inter-character;
 }
 
+.noGiustificato {
+    text-align: start !important;
+    text-justify: none !important;
+}
+
 @media (prefers-color-scheme: light) {
     body {
         background: white;
