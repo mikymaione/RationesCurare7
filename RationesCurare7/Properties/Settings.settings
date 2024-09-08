@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RationesCurare7_maionemikyWS_EmailSending" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://www.maionemiky.it/EmailSending.asmx</Value>
+      <Value Profile="(Default)">https://www.rationescurare.org/EmailSending.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

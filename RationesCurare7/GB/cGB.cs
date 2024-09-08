@@ -15,11 +15,10 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Win32;
 using RationesCurare7.DB;
 using RationesCurare7.DB.DataWrapper;
-using RationesCurare7.maionemikyWS;
+using RationesCurare7.WS;
 using RationesCurare7.Properties;
 using RationesCurare7.UI.Forms;
 

@@ -9,7 +9,7 @@ You should have received a copy of the GNU General Public License along with thi
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using RationesCurare7.maionemikyWS;
+using RationesCurare7.WS;
 
 namespace RationesCurare7.UI.Forms
 {

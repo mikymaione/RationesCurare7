@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace RationesCurare7.maionemikyWS {
+namespace RationesCurare7.WS {
     using System.Diagnostics;
     using System;
     using System.Xml.Serialization;

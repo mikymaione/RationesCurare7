@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using ICSharpCode.SharpZipLib.Zip;
-using RationesCurare7.maionemikyWS;
+using RationesCurare7.WS;
 
 namespace RationesCurare7.GB
 {

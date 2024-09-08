@@ -75,6 +75,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SQLITE DLL\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -100,9 +104,6 @@
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>..\packages\Mono.Data.Sqlite.1.0.61\lib\net40\Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139">
-      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib" />
   </ItemGroup>
@@ -408,7 +409,7 @@
     <Compile Include="UI\Stampe\fStampa.Designer.cs">
       <DependentUpon>fStampa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\maionemikyWS\Reference.cs">
+    <Compile Include="Web References\WS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -610,24 +611,24 @@
     <None Include="UI\Stampe\dsDB.xss">
       <DependentUpon>dsDB.xsd</DependentUpon>
     </None>
-    <None Include="Web References\maionemikyWS\Comparazione.datasource">
+    <None Include="Web References\WS\Comparazione.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\maionemikyWS\CredenzialiRisultato.datasource">
+    <None Include="Web References\WS\CredenzialiRisultato.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\maionemikyWS\CredenzialiRisultatoFull.datasource">
+    <None Include="Web References\WS\CredenzialiRisultatoFull.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\maionemikyWS\Licenza.datasource">
+    <None Include="Web References\WS\Licenza.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\maionemikyWS\Reference.map">
+    <None Include="Web References\WS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\maionemikyWS\emailsending.wsdl" />
-    <None Include="Web References\maionemikyWS\emailsending.disco" />
+    <None Include="Web References\WS\emailsending.wsdl" />
+    <None Include="Web References\WS\emailsending.disco" />
     <Compile Include="UI\Forms\fSQLParams.Designer.cs">
       <DependentUpon>fSQLParams.cs</DependentUpon>
     </Compile>
@@ -1001,10 +1002,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://www.maionemiky.it/EmailSending.asmx">
+    <WebReferenceUrl Include="https://www.rationescurare.org/EmailSending.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\maionemikyWS\</RelPath>
-      <UpdateFromURL>https://www.maionemiky.it/EmailSending.asmx</UpdateFromURL>
+      <RelPath>Web References\WS\</RelPath>
+      <UpdateFromURL>https://www.rationescurare.org/EmailSending.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
