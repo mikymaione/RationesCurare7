@@ -122,24 +122,20 @@
         <tr>
             <td colspan="2">
                 <asp:DropDownList ID="idCassa" runat="server" DataTextField="Nome" DataValueField="Nome" AppendDataBoundItems="true">
-                    <asp:ListItem Value="" Text="--nessuno--" Selected="true" />
+                    <asp:ListItem Value="" Text="«no account»" Selected="true" />
                 </asp:DropDownList>
             </td>
         </tr>
 
         <tr>
-            <td colspan="2">Maximum number of amounts to show</td>
+            <td colspan="2">Maximum number of items to show</td>
         </tr>
         <tr>
             <td colspan="2">
                 <asp:DropDownList ID="eMax" runat="server" Width="100%">
-                    <asp:ListItem Selected="True" Value="50">50</asp:ListItem>
-                    <asp:ListItem Value="250">250</asp:ListItem>
-                    <asp:ListItem Value="500">500</asp:ListItem>
-                    <asp:ListItem Value="1000">1000</asp:ListItem>
-                    <asp:ListItem Value="10000">10000</asp:ListItem>
-                    <asp:ListItem Value="100000">100000</asp:ListItem>
-                    <asp:ListItem Value="1000000">1000000</asp:ListItem>
+                    <asp:ListItem Selected="True" Value="50">Last 50</asp:ListItem>                    
+                    <asp:ListItem Value="1000">Last 1000</asp:ListItem>                    
+                    <asp:ListItem Value="1000000000">All items</asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>
