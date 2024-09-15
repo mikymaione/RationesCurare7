@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RationesCurare")]
 [assembly: AssemblyDescription("Gestione piccola contabilità")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("[MAIONE MIKY]")]
+[assembly: AssemblyCompany("[MAIONE MIKΨ]")]
 [assembly: AssemblyProduct("RationesCurare")]
-[assembly: AssemblyCopyright("Copyright © [MAIONE MIKY] 2008-2024")]
-[assembly: AssemblyTrademark("[MAIONE MIKY]")]
+[assembly: AssemblyCopyright("Copyright © [MAIONE MIKΨ] 2008-2024")]
+[assembly: AssemblyTrademark("[MAIONE MIKΨ]")]
 [assembly: AssemblyCulture("")]
 
 // Se si imposta ComVisible su false, i tipi in questo assembly non saranno visibili 

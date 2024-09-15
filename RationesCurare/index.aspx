@@ -130,6 +130,6 @@
     </script>
 
 	<hr />
-	<ruby>RationesCurare © 2006-2024, [MAIONE MIKY]</ruby>
+	<ruby>RationesCurare © 2006-2024, [MAIONE MIKΨ]</ruby>
 </body>
 </html>
