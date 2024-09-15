@@ -72,6 +72,11 @@ namespace RationesCurare
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Cerca();
+        }
+
+        private void Cerca()
+        {
             var TipoDesc = string.IsNullOrEmpty(Tipo) ? "Balance" : Tipo;
             var TipoDescTitle = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(TipoDesc);
 
@@ -113,6 +118,13 @@ namespace RationesCurare
 
             bSoldi.Checked = false;
             bData.Checked = false;
+
+            eMax.SelectedIndex = 0;
+
+            if (TipoNonSettato)
+                idCassa.SelectedIndex = 0;
+
+            Cerca();
         }
 
         protected List<string> getMacroAree()
