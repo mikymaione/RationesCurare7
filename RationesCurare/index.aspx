@@ -68,6 +68,9 @@
 				<b>Professional accounting</b>: ensures balanced books and accurate reports;
 			</li>
 			<li>
+				<b>Security and privacy</b>: TLS encryption for secure communication and 256-bit AES full database encryption;
+			</li>
+			<li>
 				<b>Open source</b>: developed, maintained, documented, and translated entirely by volunteers. Check the <a target="_blank" href="https://github.com/mikymaione/RationesCurare7">GitHub</a> repository.
 			</li>
 		</ul>
