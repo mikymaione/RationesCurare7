@@ -85,6 +85,7 @@ namespace RationesCurare7
                         }
 
                     if (trov && File.Exists(il_setup))
+                    {
                         if (cGB.MsgBox($"Vuoi installare la nuova versione di {Application.ProductName}?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, true) == DialogResult.Yes)
                         {
                             cGB.MsgI("Il programma verrà aggiornato alla nuova versione!");
@@ -98,10 +99,16 @@ namespace RationesCurare7
                         {
                             cGB.MsgI("Il programma non verrà aggiornato!");
                         }
+                    }
+                    else
+                    {
+                        cGB.MsgI("Il programma di installazione non è stato trovato!");
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
                     //some error
+                    cGB.MsgI($"Errore: {ex.Message}");
                 }
             }
 

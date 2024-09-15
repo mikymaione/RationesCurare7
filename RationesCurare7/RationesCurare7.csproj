@@ -58,7 +58,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
@@ -879,9 +879,9 @@
     <None Include="Resources\page_white_database.png" />
     <None Include="Resources\database_lightning.png" />
     <None Include="Resources\money.png" />
-    <Content Include="SQLITE DLL\SQLite.Interop.dll" />
     <Content Include="SQLITE DLL\System.Data.SQLite.dll" />
-    <Content Include="SQLITE DLL\System.Windows.Forms.DataVisualization.dll" />
+    <Content Include="SQLITE DLL\x64\SQLite.Interop.dll" />
+    <Content Include="SQLITE DLL\x86\SQLite.Interop.dll" />
     <Content Include="Utenti\Amnesia-anime.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

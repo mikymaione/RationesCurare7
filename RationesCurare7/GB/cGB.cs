@@ -468,7 +468,9 @@ namespace RationesCurare7
 
         public static void MsgI(string testo, int durata = 5000)
         {
-            MyNotifyIcon.BalloonTipText = testo;
+            var testo64 = testo.Length > 64 ? testo.Substring(0, 64) : testo;
+
+            MyNotifyIcon.BalloonTipText = testo64;
             MyNotifyIcon.Text = MyNotifyIcon.BalloonTipText;
             MyNotifyIcon.Visible = true;
             MyNotifyIcon.ShowBalloonTip(durata);
