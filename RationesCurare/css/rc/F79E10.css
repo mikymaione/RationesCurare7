@@ -10,6 +10,12 @@ html {
     scrollbar-color: #F79E10 Canvas;
 }
 
+.copyright {
+    text-align: justify;
+    text-justify: inter-character;
+    font-size: medium;
+}
+
 .mycolor {
     background-color: #F79E10;
 }

@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with thi
 <head runat="server">
 
 	<meta charset="UTF-8">
-	<meta name="date" content="2024-09-07" scheme="YYYY-MM-DD">
+	<meta name="date" content="2024-10-27" scheme="YYYY-MM-DD">
 	<meta name="author" content="Maione Michele">
 	<meta name="description" content="An open-source software for the management of the personal economy">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -34,7 +34,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 	<link rel="manifest" href="/favicon/site.json">
 
-	<link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20240907">
+	<link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20241027">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -45,22 +45,23 @@ You should have received a copy of the GNU General Public License along with thi
 			font-size: large;
 		}
 
-		p {
-			text-align: justify;
-		}
-
 		div {
             margin-bottom: 1rem;
         }
 	</style>
 </head>
 <body>
-	<h1 style="display: flex"><img src="favicon/favicon_orange.svg">RationesCurare</h1>
-	<p>an open-source software for the management of the personal economy.</p>
+	<div style="display: flex">
+		<img src="favicon/favicon_orange.svg">
+		<h1 class="giustificato">RationesCurare</h1>
+	</div>
+
+	<p class="giustificato">an open-source software for the management of the personal economy.</p>
+
 	<hr />
 
-	<p>RationesCurare is a web application designed to help you manage your home finances with ease, freely licensed under the <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.html#license-text">GNU</a> GPL.</p>
-	<p>Designed to be easy to use, yet powerful and flexible, RationesCurare allows you to track bank accounts, stocks, income and expenses. As quick and intuitive to use as a checkbook register, it is based on professional accounting principles to ensure balanced books and accurate reports.</p>
+	<p class="giustificato">RationesCurare is a web application designed to help you manage your home finances with ease, freely licensed under the <a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.html#license-text">GNU</a> GPL.</p>
+	<p class="giustificato">Designed to be easy to use, yet powerful and flexible, RationesCurare allows you to track bank accounts, stocks, income and expenses. As quick and intuitive to use as a checkbook register, it is based on professional accounting principles to ensure balanced books and accurate reports.</p>
 
 	<section class="giustificato">
 		<h3>Features</h3>
@@ -85,7 +86,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 	<section>
 		<h2>Get started</h2>
-		<p>Ready to take control of your personal finances?</p>
+		<p class="giustificato">Ready to take control of your personal finances?</p>
 		
 		<form id="form1" runat="server">       
 			<button id="butInstall" name="butInstall" type="button" class="bottomspace" style="display: none;">Install the app on your device</button> 
@@ -140,6 +141,6 @@ You should have received a copy of the GNU General Public License along with thi
     </script>
 
 	<hr />
-	<ruby>RationesCurare © 2006-2024, [MAIONE MIKΨ]</ruby>
+	<ruby class="copyright">RationesCurare © 2006-2024, [MAIONE MIKΨ]</ruby>
 </body>
 </html>
