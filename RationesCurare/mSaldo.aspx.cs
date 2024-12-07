@@ -9,7 +9,6 @@ using RationesCurare.DB.DataWrapper;
 using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -26,6 +25,8 @@ namespace RationesCurare
         public bool TipoVisibile => TipoNonSettato;
 
         private string Tipo => GB.GetQueryString(Request, "T");
+
+        protected string userName => GB.Instance.getCurrentSession(Session).UserName;
 
         protected void bNuovo_Click(object sender, EventArgs e)
         {
@@ -69,7 +70,7 @@ namespace RationesCurare
                 cDB.NewPar("tipo1", idCassa.SelectedValue),
                 cDB.NewPar("tipo2", idCassa.SelectedValue),
                 cDB.NewPar("descrizione", "%" + idDescrizione.Value + "%"),
-                cDB.NewPar("MacroArea", "%" + idMacroarea.Value +"%"),
+                cDB.NewPar("MacroArea", "%" + idMacroarea.Value + "%"),
                 cDB.NewPar("bSoldi", bSoldi.Checked ? 1 : 0),
                 cDB.NewPar("bData", bData.Checked ? 1 : 0),
                 cDB.NewPar("SoldiDa", GB.HTMLDoubleToDouble(eSoldiDa.Value)),
@@ -142,11 +143,12 @@ namespace RationesCurare
             return m.GetMacroAree(Session, '"', '”');
         }
 
-        protected List<string> getDescrizioni()
+        [System.Web.Services.WebMethod]
+        public static List<string> getDescrizioni(string userName, string s)
         {
             var m = new CMovimenti();
 
-            return m.GetDescrizioni(Session, '"', '”');
+            return m.GetDescrizioni(userName, s, '"', '”');
         }
 
     }

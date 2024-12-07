@@ -10,7 +10,6 @@ using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
-using System.Xml.Linq;
 
 namespace RationesCurare
 {
@@ -169,11 +168,12 @@ namespace RationesCurare
             return m.GetMacroAree(Session, '"', '”');
         }
 
-        protected List<string> getDescrizioni()
+        [System.Web.Services.WebMethod]
+        public static List<string> getDescrizioni(string userName, string s)
         {
             var m = new CMovimenti();
 
-            return m.GetDescrizioni(Session, '"', '”');
+            return m.GetDescrizioni(userName, s, '"', '”');
         }
 
         protected void bElimina_Click(object sender, EventArgs e)

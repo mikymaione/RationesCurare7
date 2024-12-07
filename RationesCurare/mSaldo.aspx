@@ -5,9 +5,12 @@
     <script src="css/rc/awesomplete.min.js"></script>
 
     <h2><%=SottoTitolo%></h2>
+    
+    <asp:ScriptManager ID="smMain" runat="server" EnablePageMethods="true" />
 
     <script>
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        var awsDesc, awsMacro;
     </script>
 
     <table width="100%">
@@ -75,7 +78,7 @@
                             let idMacroarea = document.getElementById("<%=idMacroarea.ClientID%>");
                             let dlMacroaree = document.getElementById("dlMacroaree");
 
-                            new Awesomplete(idMacroarea, {list: dlMacroaree});
+                            awsMacro = new Awesomplete(idMacroarea, {list: dlMacroaree});
                         } catch(err) {
                             print(err);
                         }
@@ -88,26 +91,49 @@
             <td colspan="2">Filter by description</td>
         </tr>
         <tr>
+            <script>
+                function updateDescrizioni() {
+                    let input = document.getElementById('<%=idDescrizione.ClientID%>').value;
+                    let userName = '<%=userName%>';
+
+                    PageMethods.getDescrizioni(userName, input, onGetDescrizioniSuccess);
+                }
+
+                function onGetDescrizioniSuccess(response) {                    
+                    if (isMobile) {                        
+                        let ds = [];
+                        
+                        response.forEach(function (descrizione) {                            
+                            ds.push(descrizione);
+                        });
+
+                        let idDescrizione = document.getElementById('<%=idDescrizione.ClientID%>');                    
+                        awsDesc.list = ds;
+                    } else {
+                        let dlDescrizioni = document.getElementById('dlDescrizioni');
+                        dlDescrizioni.innerHTML = '';
+
+                        response.forEach(function (descrizione) {
+                            let option = document.createElement('option');
+                            option.value = descrizione;
+                            dlDescrizioni.appendChild(option);
+                        });
+                    }                    
+                }
+            </script>
+            
             <td colspan="2">                
-                <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" autocomplete="off" placeholder="Operation Description">
-                <datalist id="dlDescrizioni">
-                    <%
-                        foreach (var de in getDescrizioni())
-                        {
-                    %>
-                            <option value="<%=de%>">
-                    <% 
-                        }
-                    %>
-                </datalist>
+                <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" oninput="updateDescrizioni()" autocomplete="off" placeholder="Operation Description">
+                <datalist id="dlDescrizioni" />
 
                 <script>
-                    if (isMobile) {
+                    if (isMobile) {                        
                         try {
                             let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
                             let dlDescrizioni = document.getElementById("dlDescrizioni");
+                            dlDescrizioni.remove();
 
-                            new Awesomplete(idDescrizione, { list: dlDescrizioni });
+                            awsDesc = new Awesomplete(idDescrizione);
                         } catch (err) {
                             print(err);
                         }

@@ -31,15 +31,24 @@ namespace RationesCurare.DB.DataWrapper
             return macroaree;
         }
 
-        public List<string> GetDescrizioni(HttpSessionState session, char oldChar, char newChar)
+        public List<string> GetDescrizioni(string userName, string s, char oldChar, char newChar)
         {
             var descrizioni = new List<string>();
 
-            using (var db = new cDB(GB.Instance.getCurrentSession(session).PathDB))
-            using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSource))
-                if (dr.HasRows)
-                    while (dr.Read())
-                        descrizioni.Add(RemoveChar(dr["descrizione"] as string, oldChar, newChar));
+            if (s != null && s.Length > 1) 
+            {
+                var PathDB = GB.getDBPathByName(userName);
+
+                var p = new[] {
+                    cDB.NewPar("descrizione", $"%{s}%"),                
+                };
+
+                using (var db = new cDB(PathDB))
+                using (var dr = db.EseguiSQLDataReader(cDB.Queries.Movimenti_AutoCompleteSource, p))
+                    if (dr.HasRows)
+                        while (dr.Read())                        
+                            descrizioni.Add(RemoveChar(dr["descrizione"] as string, oldChar, newChar));                
+            }
 
             return descrizioni;
         }

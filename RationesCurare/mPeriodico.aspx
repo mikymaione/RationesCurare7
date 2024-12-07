@@ -34,6 +34,7 @@
     <div>
         <script>
             var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var awsDesc, awsMacro;
             
             function selectMacroArea() {
                 let des = document.getElementById('<%=idDescrizione.ClientID%>').value;
@@ -49,28 +50,50 @@
                     document.getElementById('<%=idMacroarea.ClientID%>').value = ma;
                 }                
             }
+
+            function updateDescrizioni() {
+                let input = document.getElementById('<%=idDescrizione.ClientID%>').value;
+                let userName = '<%=userName%>';
+
+                PageMethods.getDescrizioni(userName, input, onGetDescrizioniSuccess);
+            }
+
+            function onGetDescrizioniSuccess(response) {
+                if (isMobile) {
+                    let ds = [];
+
+                    response.forEach(function (descrizione) {
+                        ds.push(descrizione);
+                    });
+
+                    let idDescrizione = document.getElementById('<%=idDescrizione.ClientID%>');
+                    awsDesc.list = ds;
+                 } else {
+                    let dlDescrizioni = document.getElementById('dlDescrizioni');
+
+                    dlDescrizioni.innerHTML = '';
+
+                    response.forEach(function (descrizione) {
+                        let option = document.createElement('option');
+                        option.value = descrizione;
+                        dlDescrizioni.appendChild(option);
+                    });
+                }
+            }
         </script>
 
         <label class="required" for="idDescrizione">Description</label>
         <br>
-        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" required autocomplete="off" placeholder="Operation Description">
-        <datalist id="dlDescrizioni">
-            <%
-                foreach (var de in getDescrizioni())
-                {
-            %>
-                    <option value="<%=de%>">
-            <% 
-                }
-            %>
-        </datalist>
+        <input id="idDescrizione" data-minchars="1" name="idDescrizione" runat="server" list="dlDescrizioni" onblur="selectMacroArea()" oninput="updateDescrizioni()" required autocomplete="off" placeholder="Operation Description">
+        <datalist id="dlDescrizioni" />
         
         <script>
             if (isMobile) {
                 let idDescrizione = document.getElementById("<%=idDescrizione.ClientID%>");
                 let dlDescrizioni = document.getElementById("dlDescrizioni");
+                dlDescrizioni.remove();
 
-                new Awesomplete(idDescrizione, {list: dlDescrizioni});
+                awsDesc = new Awesomplete(idDescrizione);
             }
         </script>
     </div>
@@ -94,7 +117,7 @@
                 let idMacroarea = document.getElementById("<%=idMacroarea.ClientID%>");
                 let dlMacroaree = document.getElementById("dlMacroaree");
 
-                new Awesomplete(idMacroarea, {list: dlMacroaree});
+                awsMacro = new Awesomplete(idMacroarea, {list: dlMacroaree});
             }
         </script>
     </div>
