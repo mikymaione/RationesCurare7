@@ -23,7 +23,7 @@
     <h2>Account Management</h2>    
 
     <asp:GridView ID="GridView1" runat="server" GridLines="None" AutoGenerateColumns="False" DataKeyNames="Nome" Width="100%" RowStyle-CssClass="trGrid"
-        OnSelectedIndexChanging="GridView1_SelectedIndexChanging" HeaderStyle-HorizontalAlign="Left"
+        HeaderStyle-HorizontalAlign="Left"
         OnRowDataBound="GridView1_RowDataBound">
        
         <HeaderStyle BackColor="Black" ForeColor="White" />

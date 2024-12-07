@@ -7,6 +7,8 @@ You should have received a copy of the GNU General Public License along with thi
 */
 using RationesCurare7.DB;
 using System;
+using System.Security.Policy;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace RationesCurare
@@ -37,7 +39,16 @@ namespace RationesCurare
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
+                var tipo = DataBinder.Eval(e.Row.DataItem, "Tipo").ToString();
+                var url = $"mSaldo.aspx?T={tipo}";
+
+                e.Row.Attributes["onmousedown"] = $@"
+                    if (event.button === 0) {{
+                        window.location.href = '{url}';
+                    }} else if (event.button === 1) {{
+                        window.open('{url}', '_blank');
+                    }}
+                ";
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {
@@ -51,15 +62,6 @@ namespace RationesCurare
                             lbl.Text = GB.ObjectToMoneyString(dr["Saldo"]);
                     }
             }
-        }
-
-        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            var dt = GridView1.DataSource as System.Data.DataTable;
-            var r = dt.Rows[e.NewSelectedIndex];
-            var nome = r.ItemArray[0];
-
-            Response.Redirect("mSaldo.aspx?T=" + nome);
         }
 
     }

@@ -159,8 +159,7 @@
 
     <hr />
 
-    <asp:GridView ID="GridView1" runat="server" GridLines="None" AllowSorting="False" AutoGenerateColumns="False" DataKeyNames="ID" Width="100%" AllowPaging="False" ShowFooter="True" RowStyle-CssClass="trGrid"
-        OnSelectedIndexChanging="GridView1_SelectedIndexChanging"
+    <asp:GridView ID="GridView1" runat="server" GridLines="None" AllowSorting="False" AutoGenerateColumns="False" DataKeyNames="ID" Width="100%" AllowPaging="False" ShowFooter="True" RowStyle-CssClass="trGrid"        
         OnRowDataBound="GridView1_RowDataBound">
         
         <FooterStyle BackColor="Black" ForeColor="White" />

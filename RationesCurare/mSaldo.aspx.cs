@@ -9,6 +9,7 @@ using RationesCurare.DB.DataWrapper;
 using RationesCurare7.DB;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -31,23 +32,23 @@ namespace RationesCurare
             var tipo = TipoNonSettato ? "" : $"&T={Tipo}";
 
             Response.Redirect($"mMovimento.aspx?ID=-1{tipo}");
-        }
-
-        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            var dt = GridView1.DataSource as System.Data.DataTable;
-            var r = dt.Rows[e.NewSelectedIndex];
-            var nome = r.ItemArray[0];
-            var tipo = TipoNonSettato ? "" : $"&T={Tipo}";
-
-            Response.Redirect($"mMovimento.aspx?ID={nome}{tipo}");
-        }
+        }     
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
+                var id = DataBinder.Eval(e.Row.DataItem, "ID");
+                var tipo = TipoNonSettato ? "" : $"&T={Tipo}";
+                var url = $"mMovimento.aspx?ID={id}{tipo}";
+
+                e.Row.Attributes["onmousedown"] = $@"
+                    if (event.button === 0) {{
+                        window.location.href = '{url}';
+                    }} else if (event.button === 1) {{
+                        window.open('{url}', '_blank');
+                    }}
+                ";
             }
             else if (e.Row.RowType == DataControlRowType.Footer)
             {

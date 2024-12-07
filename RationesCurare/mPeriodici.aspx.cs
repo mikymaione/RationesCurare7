@@ -7,6 +7,7 @@ You should have received a copy of the GNU General Public License along with thi
 */
 using RationesCurare7.DB;
 using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace RationesCurare
@@ -17,22 +18,22 @@ namespace RationesCurare
         protected void bNuovo_Click(object sender, EventArgs e)
         {
             Response.Redirect($"mPeriodico.aspx?ID=-1");
-        }
-
-        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            var dt = GridView1.DataSource as System.Data.DataTable;
-            var r = dt.Rows[e.NewSelectedIndex];
-            var id = r.ItemArray[0];
-
-            Response.Redirect($"mPeriodico.aspx?ID={id}");
-        }
+        } 
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
+                var id = DataBinder.Eval(e.Row.DataItem, "ID").ToString(); // Ottieni l'ID della riga
+                var url = $"mPeriodico.aspx?ID={id}";
+          
+                e.Row.Attributes["onmousedown"] = $@"
+                    if (event.button === 0) {{
+                        window.location.href = '{url}';  // Tasto sinistro (clic normale)
+                    }} else if (event.button === 1) {{
+                        window.open('{url}', '_blank');  // Tasto centrale (rotella del mouse)
+                    }}
+                ";
             }
         }
 
