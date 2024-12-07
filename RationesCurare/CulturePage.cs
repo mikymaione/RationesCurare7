@@ -14,11 +14,16 @@ namespace RationesCurare
     {
         protected override void InitializeCulture()
         {
-            var culture = GB.Instance.getCurrentSession(Session).Culture;
+            var cs = GB.Instance.getCurrentSession(Session);
+            
+            if (cs != null)
+            {                
+                var culture = cs.Culture;
 
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
+            }
+            
             base.InitializeCulture();
         }
 
