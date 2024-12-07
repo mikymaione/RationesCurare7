@@ -103,6 +103,9 @@ div.awesomplete {
     .menu a {
         display: inline-block;
         list-style: none;
+        font-family: 'Material Icons';
+        font-size: xx-large;
+        text-decoration: none;
     }
 
         .menu a:not(:last-of-type) {
@@ -302,6 +305,13 @@ input {
 .trGrid {
     cursor: pointer;
 }
+
+    .trGrid a {
+        all: unset;
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
     .trGrid:hover {
         color: black !important;

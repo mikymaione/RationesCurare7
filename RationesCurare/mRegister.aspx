@@ -34,7 +34,7 @@ You should have received a copy of the GNU General Public License along with thi
 
     <link rel="manifest" href="/favicon/site.json">  
 
-    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20241027">
+    <link rel="stylesheet" type="text/css" href="css/rc/F79E10.css?version=20241207">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
