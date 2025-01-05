@@ -110,6 +110,8 @@
     <Content Include="DB\DBW\Movimenti_GraficoAnnuale.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoMensile.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoSaldo.sql" />
+    <Content Include="DB\DBW\Movimenti_GraficoSaldoSpline.sql" />
+    <Content Include="DB\DBW\Movimenti_GraficoSplineAnnuale.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoTorta.sql" />
     <Content Include="DB\DBW\Movimenti_GraficoTortaSaldo.sql" />
     <Content Include="DB\DBW\Movimenti_Inserisci.sql" />
@@ -270,6 +272,7 @@
     <Content Include="mCassa.aspx" />
     <Content Include="mCasse.aspx" />
     <Content Include="mGrafico.aspx" />
+    <Content Include="mGraficoLinee.aspx" />
     <Content Include="mGraficoTorta.aspx" />
     <Content Include="mLogin.aspx" />
     <Content Include="mMenu.aspx" />
@@ -333,6 +336,13 @@
     </Compile>
     <Compile Include="mGrafico.aspx.designer.cs">
       <DependentUpon>mGrafico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mGraficoLinee.aspx.cs">
+      <DependentUpon>mGraficoLinee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mGraficoLinee.aspx.designer.cs">
+      <DependentUpon>mGraficoLinee.aspx</DependentUpon>
     </Compile>
     <Compile Include="mGraficoTorta.aspx.cs">
       <DependentUpon>mGraficoTorta.aspx</DependentUpon>

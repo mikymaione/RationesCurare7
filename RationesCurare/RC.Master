@@ -51,6 +51,7 @@ You should have received a copy of the GNU General Public License along with thi
             <a runat="server" id="nav_mPeriodici" title="Recurring transaction management" href="mPeriodici.aspx">update</a>
             <a runat="server" id="nav_mGrafico" title="Bar chart" href="mGrafico.aspx?T=Y">bar_chart</a>
             <a runat="server" id="nav_mGraficoTorta" title="Pie chart" href="mGraficoTorta.aspx">pie_chart</a>
+            <a runat="server" id="nav_mGraficoLinee" title="Line chart" href="mGraficoLinee.aspx">show_chart</a>
             <a runat="server" id="nav_mLogout" title="Log Out" href="mLogin.aspx?C=L">logout</a>
         </nav>
         <hr>

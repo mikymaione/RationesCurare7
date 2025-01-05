@@ -49,6 +49,7 @@ namespace RationesCurare
                 nav_mPeriodici,
                 nav_mGrafico,
                 nav_mGraficoTorta,
+                nav_mGraficoLinee,
                 nav_mLogout
             };
 
