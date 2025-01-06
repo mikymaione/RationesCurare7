@@ -7,7 +7,6 @@ You should have received a copy of the GNU General Public License along with thi
 */
 using RationesCurare7.DB;
 using System;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Web.UI.DataVisualization.Charting;
@@ -16,31 +15,6 @@ namespace RationesCurare
 {
     public partial class mGraficoTorta : CulturePage
     {
-
-        private static readonly Color[] KELLY_COLORS = {
-            ColorTranslator.FromHtml("0xFFB300"),    // Vivid Yellow
-            ColorTranslator.FromHtml("0x803E75"),    // Strong Purple
-            ColorTranslator.FromHtml("0xFF6800"),    // Vivid Orange
-            ColorTranslator.FromHtml("0xA6BDD7"),    // Very Light Blue
-            ColorTranslator.FromHtml("0xC10020"),    // Vivid Red
-            ColorTranslator.FromHtml("0xCEA262"),    // Grayish Yellow
-            ColorTranslator.FromHtml("0x817066"),    // Medium Gray
-
-            ColorTranslator.FromHtml("0x007D34"),    // Vivid Green
-            ColorTranslator.FromHtml("0xF6768E"),    // Strong Purplish Pink
-            ColorTranslator.FromHtml("0x00538A"),    // Strong Blue
-            ColorTranslator.FromHtml("0xFF7A5C"),    // Strong Yellowish Pink
-            ColorTranslator.FromHtml("0x53377A"),    // Strong Violet
-            ColorTranslator.FromHtml("0xFF8E00"),    // Vivid Orange Yellow
-            ColorTranslator.FromHtml("0xB32851"),    // Strong Purplish Red
-            ColorTranslator.FromHtml("0xF4C800"),    // Vivid Greenish Yellow
-            ColorTranslator.FromHtml("0x7F180D"),    // Strong Reddish Brown
-            ColorTranslator.FromHtml("0x93AA00"),    // Vivid Yellowish Green
-            ColorTranslator.FromHtml("0x593315"),    // Deep Yellowish Brown
-            ColorTranslator.FromHtml("0xF13A13"),    // Vivid Reddish Orange
-            ColorTranslator.FromHtml("0x232C16"),    // Dark Olive Green
-        };
-
         private DateTime CurrentData
         {
             get
@@ -69,10 +43,7 @@ namespace RationesCurare
 
             Chart1.Series[0]["PieLabelStyle"] = "Disabled";
             Chart1.Legends[0].Font = ubuntuFont;
-
-            Chart1.Palette = ChartColorPalette.None;
-            Chart1.PaletteCustomColors = KELLY_COLORS;
-
+            
             if (!IsPostBack)
                 CurrentData = GB.DateStartOfMonth(DateTime.Now);
 

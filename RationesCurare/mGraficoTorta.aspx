@@ -42,6 +42,7 @@
     </div>
 
     <asp:Chart ID="Chart1" runat="server" 
+        Palette="None"
         ImageStorageMode="UseHttpHandler"
         SuppressExceptions="True" BackColor="Transparent"
         AntiAliasing="Graphics" TextAntiAliasingQuality="High"
