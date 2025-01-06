@@ -9,7 +9,6 @@ using RationesCurare7.DB;
 using System;
 using System.Data;
 using System.Linq;
-using System.Web.UI.DataVisualization.Charting;
 
 namespace RationesCurare
 {
@@ -26,7 +25,6 @@ namespace RationesCurare
 
                 return m;
             }
-
             set
             {
                 var inizio = GB.DateStartOfMonth(value);
@@ -43,7 +41,7 @@ namespace RationesCurare
 
             Chart1.Series[0]["PieLabelStyle"] = "Disabled";
             Chart1.Legends[0].Font = ubuntuFont;
-            
+
             if (!IsPostBack)
                 CurrentData = GB.DateStartOfMonth(DateTime.Now);
 
@@ -61,19 +59,13 @@ namespace RationesCurare
                     cDB.NewPar("da", inizio),
                     cDB.NewPar("a", fine)
                 };
-                
+
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoTortaSaldo, p))
                     if (dr.HasRows)
                         while (dr.Read())
                             lTotale.Text = GB.ObjectToMoneyString(dr[0]);
 
-                var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p);
-
-                if (dt.Rows.Count == 0)
-                {
-                    Chart1.DataSource = dt;
-                }
-                else
+                using (var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoTorta, p))
                 {
                     foreach (DataRow r in dt.Rows)
                         r[0] = $"{GB.ObjectToMoneyStringNoDecimal(r[1])} - {r[0]}";
@@ -98,12 +90,22 @@ namespace RationesCurare
                         select
                             r;
 
-                    Chart1.DataSource = pos
-                        .Union(neg)
-                        .CopyToDataTable();
-                }
+                    var union = pos.Union(neg);
 
-                Chart1.DataBind();
+                    if (union.Any())
+                    {
+                        using (var sDt = union.CopyToDataTable())
+                        {
+                            Chart1.DataSource = sDt;
+                            Chart1.DataBind();
+                        }
+                    }
+                    else
+                    {
+                        Chart1.DataSource = dt;
+                        Chart1.DataBind();
+                    }
+                }
             }
         }
 

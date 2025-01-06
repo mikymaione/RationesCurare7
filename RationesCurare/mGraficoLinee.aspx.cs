@@ -30,8 +30,9 @@ namespace RationesCurare
         private void FindFor()
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+            using (var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoSplineAnnuale))
             {
-                Chart1.DataSource = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoSplineAnnuale);
+                Chart1.DataSource = dt;
                 Chart1.DataBind();
             }
         }

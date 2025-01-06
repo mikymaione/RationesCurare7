@@ -62,53 +62,44 @@ namespace RationesCurare
                             break;
                     }
 
-                    var dt = d.EseguiSQLDataTable(q);
-
-                    if (dt.Rows.Count > 0)
+                    using (var dt = d.EseguiSQLDataTable(q))
                     {
-                        var enu = dt.AsEnumerable();
-
-                        switch (T)
+                        if (dt.Rows.Count > 0)
                         {
-                            case "Y":
-                                var years = enu.Select(r => int.Parse(r[0] as string));
+                            var enu = dt.AsEnumerable();
 
-                                var startY = years.First();
-                                var endY = years.Last();
+                            switch (T)
+                            {
+                                case "Y":
+                                    var years = enu.Select(r => int.Parse(r[0] as string));
 
-                                for (int y = startY; y <= endY; y++)
-                                    if (!years.Contains(y))
-                                        dt.Rows.Add(
-                                            new object[]
-                                            {
-                                                y, 0
-                                            }
-                                        );
-                                break;
+                                    var startY = years.First();
+                                    var endY = years.Last();
 
-                            case "M":
-                            default:
-                                var dates = enu.Select(r => DateTime.ParseExact(r[0] as string, "yyyy/MM", System.Globalization.CultureInfo.InvariantCulture));
+                                    for (int y = startY; y <= endY; y++)
+                                        if (!years.Contains(y))
+                                            dt.Rows.Add(new object[] { y, 0 });
+                                    break;
 
-                                var startD = dates.First();
-                                var endD = dates.Last();
+                                case "M":
+                                default:
+                                    var dates = enu.Select(r => DateTime.ParseExact(r[0] as string, "yyyy/MM", System.Globalization.CultureInfo.InvariantCulture));
 
-                                for (var date = startD; date <= endD; date = date.AddMonths(1))
-                                    if (!dates.Contains(date))
-                                        dt.Rows.Add(
-                                            new object[]
-                                            {
-                                                date.ToString("yyyy/MM"), 0
-                                            }
-                                        );
-                                break;
+                                    var startD = dates.First();
+                                    var endD = dates.Last();
+
+                                    for (var date = startD; date <= endD; date = date.AddMonths(1))
+                                        if (!dates.Contains(date))
+                                            dt.Rows.Add(new object[] { date.ToString("yyyy/MM"), 0 });
+                                    break;
+                            }
                         }
+
+                        dt.DefaultView.Sort = "Mese asc";
+
+                        Chart1.DataSource = dt;
+                        Chart1.DataBind();
                     }
-
-                    dt.DefaultView.Sort = "Mese asc";
-
-                    Chart1.DataSource = dt;
-                    Chart1.DataBind();
                 }
             }
         }

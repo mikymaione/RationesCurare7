@@ -7,5 +7,4 @@ WHERE
 GROUP BY  
 	m.MacroArea
 HAVING	
-	Soldini_TOT <> 0
-	AND m.MacroArea <> ''
+	m.MacroArea <> ''
