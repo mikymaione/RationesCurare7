@@ -1,6 +1,8 @@
 SELECT  
-	strftime('%Y', data) as Mese,  	
-	sum(soldi) as Soldini_TOT	
+	strftime('%Y', data) AS Mese,  	
+	SUM(soldi) AS Soldini_TOT	
 FROM movimenti
-group by  
+WHERE
+	data BETWEEN @dataDa AND @dataA
+GROUP BY
 	Mese

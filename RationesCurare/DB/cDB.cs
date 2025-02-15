@@ -59,7 +59,7 @@ namespace RationesCurare7.DB
             Movimenti_GraficoMensile,
             Movimenti_GraficoSaldo,
             Movimenti_GraficoTortaSaldo,
-            Movimenti_GraficoSaldoSpline,            
+            Movimenti_GraficoSaldoSpline,
             Movimenti_GraficoSplineAnnuale,
             Movimenti_Data,
             Movimenti_SaldoPerCassa,

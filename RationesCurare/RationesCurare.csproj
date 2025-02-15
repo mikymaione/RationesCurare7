@@ -104,6 +104,7 @@
     <Content Include="DB\DBW\Movimenti_Aggiorna.sql" />
     <Content Include="DB\DBW\Movimenti_AutoCompleteSource.sql" />
     <Content Include="DB\DBW\Movimenti_AutoCompleteSourceMA.sql" />
+    <Content Include="DB\DBW\Movimenti_Data.sql" />
     <Content Include="DB\DBW\Movimenti_Dettaglio.sql" />
     <Content Include="DB\DBW\Movimenti_Elimina.sql" />
     <Content Include="DB\DBW\Movimenti_GetMacroAree_E_Descrizioni.sql" />

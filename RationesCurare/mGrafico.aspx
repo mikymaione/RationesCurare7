@@ -5,10 +5,36 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Bar chart</h2>
 
-    <nav>
-        <a id="bGraficoM" href="mGrafico.aspx?T=M" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Monthly</a> |		    
-        <a id="bGraficoY" href="mGrafico.aspx?T=Y" runat="server" style="font-family: 'Ubuntu Mono'; font-size: large">Annual</a>
-    </nav>
+    <style>
+         div {
+             margin-bottom: 1rem;
+         }
+
+        .buttons {
+            display: flex;
+            gap: 0.5em;
+        }
+
+        .footer {
+            color: white;
+            background-color: black;
+            text-align: right;
+        }
+    </style>
+
+    <div>
+        <label class="required" for="idDataDa">From</label>                
+        <input id="idDataDa" runat="server" type="date" required>
+    </div>
+    <div>
+        <label class="required" for="idDataA">Until</label>                
+        <input id="idDataA" runat="server" type="date" required>
+    </div>
+
+    <div class="buttons">
+        <asp:Button ID="bType" runat="server" CssClass="googleIcon" Text="date_range" ToolTip="Monthly" OnClick="bType_Click" />
+        <asp:Button ID="bCerca" runat="server" CssClass="googleIcon" Text="query_stats" ToolTip="Search" OnClick="bCerca_Click" />
+    </div>
 
     <asp:Chart ID="Chart1" runat="server" 
         ImageStorageMode="UseHttpHandler"
@@ -31,6 +57,10 @@
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>
+
+    <div class="footer">
+        <asp:Label ID="lTotale" runat="server"></asp:Label>
+    </div>
 
     <script>
         let c = document.getElementById("<%=Chart1.ClientID %>");
