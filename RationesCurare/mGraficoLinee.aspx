@@ -11,27 +11,27 @@
         AntiAliasing="Graphics" TextAntiAliasingQuality="High"
         Width="745px" Height="500px" CssClass="img-max-size">
 
-    <Series>
-        <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="Anno" ChartType="Line" />
-    </Series>
+        <Series>
+            <asp:Series Name="Series1" YValueMembers="Soldini_TOT" XValueMember="Anno" ChartType="Line" />
+        </Series>
 
-    <ChartAreas>
-        <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
-            <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont">
-                <LabelStyle ForeColor="#F79E10" Format="{0:C0}" />
-            </AxisY>
-            <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont">
-                <LabelStyle ForeColor="#F79E10" />
-            </AxisX>
-        </asp:ChartArea>
-    </ChartAreas>
-</asp:Chart>
+        <ChartAreas>
+            <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
+                <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" Format="{0:C0}" />
+                </AxisY>
+                <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" />
+                </AxisX>
+            </asp:ChartArea>
+        </ChartAreas>
+    </asp:Chart>
 
-<script>
-    let c = document.getElementById("<%=Chart1.ClientID %>");
+    <script>
+        let c = document.getElementById("<%=Chart1.ClientID %>");
 
-    if (c != null) {
-        c.style.height = 'auto';
-    }
-</script>
+        if (c != null) {
+            c.style.height = 'auto';
+        }
+    </script>
 </asp:Content>
