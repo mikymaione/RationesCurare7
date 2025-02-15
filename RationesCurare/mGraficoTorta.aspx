@@ -38,7 +38,7 @@
     <div class="buttons">
         <asp:Button ID="bPrev" runat="server" CssClass="googleIcon" Text="skip_previous" OnClick="bPrev_Click" ToolTip="Previous month" />
         <asp:Button ID="bNext" runat="server" CssClass="googleIcon" Text="skip_next" OnClick="bNext_Click" ToolTip="Next month" />
-        <asp:Button ID="bCerca" runat="server" Text="Search" OnClick="bCerca_Click" />
+        <asp:Button ID="bCerca" runat="server" CssClass="googleIcon" Text="query_stats" OnClick="bCerca_Click" ToolTip="Search" />
     </div>
 
     <asp:Chart ID="Chart1" runat="server" 
