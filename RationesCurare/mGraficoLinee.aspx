@@ -5,6 +5,14 @@
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Line chart</h2>
 
+    <style>
+        .footer {
+            color: white;
+            background-color: black;
+            text-align: right;
+        }
+    </style>
+
     <asp:Chart ID="Chart1" runat="server" 
         ImageStorageMode="UseHttpHandler"
         OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" BackColor="Transparent"
@@ -26,6 +34,10 @@
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>
+    
+    <div class="footer">
+        <asp:Label ID="lTotale" runat="server"></asp:Label>
+    </div>
 
     <script>
         let c = document.getElementById("<%=Chart1.ClientID %>");

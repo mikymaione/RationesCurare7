@@ -30,10 +30,17 @@ namespace RationesCurare
         private void FindFor()
         {
             using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
-            using (var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoSplineAnnuale))
             {
-                Chart1.DataSource = dt;
-                Chart1.DataBind();
+                using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_Saldo))
+                    if (dr.HasRows)
+                        while (dr.Read())
+                            lTotale.Text = GB.ObjectToMoneyString(dr[0]);
+
+                using (var dt = d.EseguiSQLDataTable(cDB.Queries.Movimenti_GraficoSplineAnnuale))
+                {
+                    Chart1.DataSource = dt;
+                    Chart1.DataBind();
+                }
             }
         }
 
