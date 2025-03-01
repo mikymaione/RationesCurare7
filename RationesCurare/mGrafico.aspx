@@ -6,9 +6,13 @@
     <h2>Bar chart</h2>
 
     <style>
-         div {
-             margin-bottom: 1rem;
-         }
+        body {
+            margin-top: -16px;
+        }
+
+        div {
+            margin-bottom: 1rem;
+        }
 
         .buttons {
             display: flex;

@@ -11,8 +11,8 @@
         }
 
         div {
-            margin-bottom: 1rem;       
-        }       
+            margin-bottom: 1rem;
+        }
 
         .buttons {
             display: flex;
