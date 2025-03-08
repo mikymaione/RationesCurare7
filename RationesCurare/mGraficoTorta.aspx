@@ -43,7 +43,7 @@
 
     <asp:Chart ID="Chart1" runat="server" 
         Palette="None"
-        ImageStorageMode="UseHttpHandler"
+        ImageStorageMode="UseImageLocation" ImageType="Png"
         SuppressExceptions="True" BackColor="Transparent"
         AntiAliasing="Graphics" TextAntiAliasingQuality="High"
         Width="745px" Height="500px" CssClass="img-max-size">

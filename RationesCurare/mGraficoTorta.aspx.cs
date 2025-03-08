@@ -39,6 +39,12 @@ namespace RationesCurare
         {
             var ubuntuFont = GB.LoadUbuntuFont(this);
 
+            var session = GB.Instance.getCurrentSession(Session);
+
+            var folder = $"~/public/ChartImages/{session.UserName}";
+            System.IO.Directory.CreateDirectory(Server.MapPath(folder));
+            
+            Chart1.ImageLocation = $"{folder}/PieChart.png";
             Chart1.Series[0]["PieLabelStyle"] = "Disabled";
             Chart1.Legends[0].Font = ubuntuFont;
 

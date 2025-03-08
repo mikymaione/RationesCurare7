@@ -61,11 +61,17 @@ namespace RationesCurare
         {
             var ubuntuFont = GB.LoadUbuntuFont(this);
 
+            var session = GB.Instance.getCurrentSession(Session);
+
+            var folder = $"~/public/ChartImages/{session.UserName}";
+            System.IO.Directory.CreateDirectory(Server.MapPath(folder));
+            
+            Chart1.ImageLocation = $"{folder}/BarChart.png";
             Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
             Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
 
             if (!IsPostBack)
-                using (var d = new cDB(GB.Instance.getCurrentSession(Session).PathDB))
+                using (var d = new cDB(session.PathDB))
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_Data))
                     if (dr.HasRows)
                         while (dr.Read())
