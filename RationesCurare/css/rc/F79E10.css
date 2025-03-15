@@ -119,11 +119,13 @@ div.awesomplete {
 .giustificato {
     text-align: justify;
     text-justify: inter-character;
+    hyphens: auto;
 }
 
 .noGiustificato {
     text-align: start !important;
     text-justify: none !important;
+    hyphens: none !important;
 }
 
 @media (prefers-color-scheme: light) {
