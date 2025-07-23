@@ -35,6 +35,21 @@
         <input id="idDataA" runat="server" type="date" required>
     </div>
 
+    <div>
+        <label for="idMacroarea">Category</label>                
+        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" autocomplete="off" placeholder="Category to which the transaction belongs">
+        <datalist id="dlMacroaree">
+            <%
+                foreach (var ma in getMacroAree())
+                {
+            %>
+                    <option value="<%=ma%>">
+            <% 
+                }
+            %>
+        </datalist>
+    </div>
+
     <div class="buttons">
         <asp:Button ID="bType" runat="server" CssClass="googleIcon" Text="date_range" ToolTip="Monthly" OnClick="bType_Click" />
         <asp:Button ID="bCerca" runat="server" CssClass="googleIcon" Text="query_stats" ToolTip="Search" OnClick="bCerca_Click" />

@@ -5,8 +5,10 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/. 
 */
+using RationesCurare.DB.DataWrapper;
 using RationesCurare7.DB;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -65,7 +67,7 @@ namespace RationesCurare
 
             var folder = $"~/public/ChartImages/{session.UserName}";
             System.IO.Directory.CreateDirectory(Server.MapPath(folder));
-            
+
             Chart1.ImageLocation = $"{folder}/BarChart.png";
             Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
             Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
@@ -92,7 +94,8 @@ namespace RationesCurare
 
                 var p = new System.Data.Common.DbParameter[] {
                     cDB.NewPar("dataDa", inizio),
-                    cDB.NewPar("dataA", fine)
+                    cDB.NewPar("dataA", fine),
+                    cDB.NewPar("MacroArea", "%" + idMacroarea.Value + "%")
                 };
 
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoSaldo, p))
@@ -180,6 +183,13 @@ namespace RationesCurare
             }
 
             FindFor();
+        }
+
+        protected List<string> getMacroAree()
+        {
+            var m = new CMovimenti();
+
+            return m.GetMacroAree(Session, '"', '”');
         }
 
     }
