@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace RationesCurare
 {
-    public partial class mGrafico : CulturePage
+    public partial class mGraficoPct : CulturePage
     {
 
         private static readonly Color goodColor = ColorTranslator.FromHtml("#F79E10");
@@ -47,7 +47,7 @@ namespace RationesCurare
             var folder = $"~/public/ChartImages/{session.UserName}";
             System.IO.Directory.CreateDirectory(Server.MapPath(folder));
 
-            Chart1.ImageLocation = $"{folder}/BarChart.png";
+            Chart1.ImageLocation = $"{folder}/PercentageBarChart.png";
             Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
             Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
 
@@ -70,11 +70,12 @@ namespace RationesCurare
             {
                 var inizio = GB.DateStartOfMonth(GB.StringToDate(idDataDa.Value, DateTime.Now));
                 var fine = GB.DateEndOfMonth(GB.StringToDate(idDataA.Value, DateTime.Now));
+                var macroarea = $"%{idMacroarea.Value}%";
 
                 var p = new System.Data.Common.DbParameter[] {
+                    cDB.NewPar("MacroArea", macroarea),
                     cDB.NewPar("dataDa", inizio),
-                    cDB.NewPar("dataA", fine),
-                    cDB.NewPar("MacroArea", "%" + idMacroarea.Value + "%")
+                    cDB.NewPar("dataA", fine)
                 };
 
                 using (var dr = d.EseguiSQLDataReader(cDB.Queries.Movimenti_GraficoSaldo, p))
@@ -82,7 +83,7 @@ namespace RationesCurare
                         while (dr.Read())
                             lTotale.Text = GB.ObjectToMoneyString(dr[0]);
 
-                var q = CurrentGraphType == GraphType.year ? cDB.Queries.Movimenti_GraficoAnnuale : cDB.Queries.Movimenti_GraficoMensile;
+                var q = CurrentGraphType == GraphType.year ? cDB.Queries.Movimenti_GraficoAnnualePct : cDB.Queries.Movimenti_GraficoMensilePct;
 
                 using (var dt = d.EseguiSQLDataTable(q, p))
                 {
@@ -98,7 +99,7 @@ namespace RationesCurare
                                 var startY = years.First();
                                 var endY = years.Last();
 
-                                for (int y = startY; y <= endY; y++)
+                                for (var y = startY; y <= endY; y++)
                                     if (!years.Contains(y))
                                         dt.Rows.Add(new object[] { y, 0 });
                                 break;

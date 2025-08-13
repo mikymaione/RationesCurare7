@@ -1,0 +1,91 @@
+﻿<%@ Page Title="RationesCurare - Percentage bar chart" Language="C#" MasterPageFile="~/RC.Master" AutoEventWireup="true" CodeBehind="mGraficoPct.aspx.cs" Inherits="RationesCurare.mGraficoPct" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
+<asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h2>Percentage bar chart</h2>
+
+    <style>
+        body {
+            margin-top: -16px;
+        }
+
+        div {
+            margin-bottom: 1rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.5em;
+        }
+
+        .footer {
+            color: white;
+            background-color: black;
+            text-align: right;
+        }
+    </style>
+
+    <div>
+        <label class="required" for="idDataDa">From</label>                
+        <input id="idDataDa" runat="server" type="date" required>
+    </div>
+    <div>
+        <label class="required" for="idDataA">Until</label>                
+        <input id="idDataA" runat="server" type="date" required>
+    </div>
+
+    <div>
+        <label for="idMacroarea">Category</label>                
+        <input id="idMacroarea" data-minchars="1" runat="server" maxlength="250" list="dlMacroaree" autocomplete="off" placeholder="Category to which the transaction belongs">
+        <datalist id="dlMacroaree">
+            <%
+                foreach (var ma in getMacroAree())
+                {
+            %>
+                    <option value="<%=ma%>">
+            <% 
+                }
+            %>
+        </datalist>
+    </div>
+
+    <div class="buttons">
+        <asp:Button ID="bType" runat="server" CssClass="googleIcon" Text="date_range" ToolTip="Monthly" OnClick="bType_Click" />
+        <asp:Button ID="bCerca" runat="server" CssClass="googleIcon" Text="query_stats" ToolTip="Search" OnClick="bCerca_Click" />
+    </div>
+
+    <asp:Chart ID="Chart1" runat="server" 
+        ImageStorageMode="UseImageLocation" ImageType="Png"
+        OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" BackColor="Transparent"
+        AntiAliasing="Graphics" TextAntiAliasingQuality="High"
+        Width="745px" Height="500px" CssClass="img-max-size">
+
+        <Series>
+            <asp:Series Name="Series1" YValueMembers="PCT" XValueMember="Mese" />
+        </Series>
+
+        <ChartAreas>
+            <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
+                <AxisY LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" Format="{0:0}%" />
+                </AxisY>
+                <AxisX IntervalAutoMode="VariableCount" IsLabelAutoFit="False" LabelAutoFitStyle="IncreaseFont, DecreaseFont">
+                    <LabelStyle ForeColor="#F79E10" />
+                </AxisX>
+            </asp:ChartArea>
+        </ChartAreas>
+    </asp:Chart>
+
+    <div class="footer">
+        <asp:Label ID="lTotale" runat="server"></asp:Label>
+    </div>
+
+    <script>
+        let c = document.getElementById("<%=Chart1.ClientID %>");
+
+        if (c != null) {
+            c.style.height = 'auto';
+        }
+    </script>
+</asp:Content>
