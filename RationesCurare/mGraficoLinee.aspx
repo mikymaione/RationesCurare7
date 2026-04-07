@@ -22,7 +22,7 @@
     </style>
 
     <asp:Chart ID="Chart1" runat="server" 
-        ImageStorageMode="UseImageLocation" ImageType="Png"
+        ImageType="Png"
         OnPrePaint="Chart1_PrePaint" SuppressExceptions="True" BackColor="Transparent"
         AntiAliasing="Graphics" TextAntiAliasingQuality="High"
         Width="745px" Height="500px" CssClass="img-max-size">

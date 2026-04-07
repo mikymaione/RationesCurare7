@@ -43,11 +43,7 @@ namespace RationesCurare
             var ubuntuFont = GB.LoadUbuntuFont(this);
 
             var session = GB.Instance.getCurrentSession(Session);
-
-            var folder = $"~/public/ChartImages/{session.UserName}";
-            System.IO.Directory.CreateDirectory(Server.MapPath(folder));
-
-            Chart1.ImageLocation = $"{folder}/PercentageBarChart.png";
+            
             Chart1.ChartAreas[0].AxisX.LabelStyle.Font = ubuntuFont;
             Chart1.ChartAreas[0].AxisY.LabelStyle.Font = ubuntuFont;
 
