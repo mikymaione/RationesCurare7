@@ -3,7 +3,9 @@ SELECT
 	SUM(soldi) AS Soldini_TOT	
 FROM movimenti
 WHERE
-	(MacroArea like :MacroArea) and
-	data BETWEEN @dataDa AND @dataA
+	(MacroArea like @MacroArea)
+	AND (data BETWEEN @dataDa AND @dataA)
 GROUP BY
-	Mese
+	1
+ORDER BY
+	1

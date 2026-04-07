@@ -18,8 +18,8 @@ FROM (
 		FROM movimenti
 		WHERE
 			soldi > 0
-			AND MacroArea like :MacroArea
-			AND data BETWEEN :dataDa AND :dataA
+			AND MacroArea like @MacroArea
+			AND data BETWEEN @dataDa AND @dataA
 		GROUP BY
 			Mese
 
@@ -32,8 +32,8 @@ FROM (
 		FROM movimenti
 		WHERE
 			soldi < 0
-			AND MacroArea like :MacroArea
-			AND data BETWEEN :dataDa AND :dataA
+			AND MacroArea like @MacroArea
+			AND data BETWEEN @dataDa AND @dataA
 		GROUP BY
 			Mese
 
